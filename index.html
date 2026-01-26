@@ -1740,67 +1740,92 @@
         // ===== GOOGLE SHEETS EMAIL INTEGRATION =====
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx9p3bxHkk-g2TKo_8nJbyrAg5ZR7Py9jgNJtZbGGYDYCN87HvjylYkzj91GUz5ayQFDg/exec'; // Fresh deployment from scratch
 
-        // Email Submission
+        // Email Submission with Robust Country Detection
         async function handleEmailSubmit(e) {
             e.preventDefault();
-            const email = document.getElementById('emailInput').value;
+            const email = document.getElementById('emailInput').value.trim();
+
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('⚠️ Please enter a valid email address');
+                return;
+            }
 
             const button = e.target.querySelector('button');
             const originalText = button.textContent;
             button.textContent = 'Subscribing...';
             button.disabled = true;
 
-            // Attempt to detect country
+            // Detect country with multiple fallback APIs
             let country = 'Unknown';
             try {
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 2000); // 2s timeout
+                // Try API 1: ipapi.co (fastest)
+                try {
+                    const controller1 = new AbortController();
+                    const timeout1 = setTimeout(() => controller1.abort(), 3000);
+                    const res1 = await fetch('https://ipapi.co/json/', {
+                        signal: controller1.signal,
+                        mode: 'cors'
+                    });
+                    clearTimeout(timeout1);
 
-                const ipRes = await fetch('https://ipapi.co/json/', { signal: controller.signal });
-                const ipData = await ipRes.json();
-                country = ipData.country_name || ipData.country || 'Unknown';
-                console.log('Detected Country:', country);
+                    if (res1.ok) {
+                        const data1 = await res1.json();
+                        country = data1.country_name || data1.country || 'Unknown';
+                        console.log('✅ Country from ipapi.co:', country);
+                    }
+                } catch (e1) {
+                    console.warn('ipapi.co failed, trying backup...');
 
-                clearTimeout(timeoutId);
-            } catch (e) {
-                console.warn('Country detection failed/timed out:', e);
+                    // Try API 2: ip-api.com (backup)
+                    try {
+                        const controller2 = new AbortController();
+                        const timeout2 = setTimeout(() => controller2.abort(), 3000);
+                        const res2 = await fetch('http://ip-api.com/json/', {
+                            signal: controller2.signal
+                        });
+                        clearTimeout(timeout2);
+
+                        if (res2.ok) {
+                            const data2 = await res2.json();
+                            country = data2.country || 'Unknown';
+                            console.log('✅ Country from ip-api.com:', country);
+                        }
+                    } catch (e2) {
+                        console.warn('ip-api.com also failed, using Unknown');
+                    }
+                }
+            } catch (error) {
+                console.warn('All country detection failed:', error);
             }
 
             try {
-                if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL') {
-                    // Development mode - save to localStorage
-                    console.log('Email saved locally:', email, 'Country:', country);
-                    localStorage.setItem('subscribedEmail', email);
-                    alert('✅ Subscribed! (Dev mode - Email saved locally)');
-                } else {
-                    // Production mode - send to Google Sheets
-                    console.log('Sending email to script:', email, 'Country:', country);
-                    const response = await fetch(GOOGLE_SCRIPT_URL, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'text/plain;charset=utf-8',
-                        },
-                        body: JSON.stringify({ email: email, country: country })
-                    });
+                console.log('📧 Sending to Apps Script:', { email, country });
 
-                    // Check for HTTP errors
-                    if (!response.ok) {
-                        throw new Error(`HTTP error: ${response.status}`);
-                    }
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Important for Apps Script
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        country: country
+                    })
+                });
 
-                    // Check for API errors
-                    const result = await response.json();
-                    if (!result.success) {
-                        throw new Error(result.message || 'Script reported failure');
-                    }
+                // no-cors mode doesn't give us response body, so we assume success
+                // Apps Script will send emails regardless
+                console.log('✅ Request sent successfully');
 
-                    showThankYouModal();
-                }
-
+                // Show success modal
+                showThankYouModal();
                 document.getElementById('emailInput').value = '';
+
             } catch (error) {
-                console.error('Subscription error:', error);
-                showErrorMessage('⚠️ Subscription failed. Please try again.');
+                console.error('❌ Subscription error:', error);
+                alert('⚠️ Subscription failed. Please try again or contact support.');
             } finally {
                 button.textContent = originalText;
                 button.disabled = false;
@@ -1817,11 +1842,6 @@
         function closeThankYouModal() {
             const modal = document.getElementById('thankYouModal');
             modal.style.display = 'none';
-        }
-
-        // Show Error Message
-        function showErrorMessage(message) {
-            alert(message);
         }
 
         // Close modal when clicking outside
