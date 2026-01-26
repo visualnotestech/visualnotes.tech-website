@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Character Encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Viewport for Mobile Responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+
+    <!-- IE Compatibility -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Web App Capable -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!-- Theme Color for Mobile Browsers -->
+    <meta name="theme-color" content="#FF6B6B">
+
+    <!-- Core Web Vitals: Preload Critical Resources -->
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
+        as="style">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+    <!-- SEO Strategy 2026: Title & Meta -->
+    <title>VisualNotes | Visual Engineering Study Platform (2026 Updated)</title>
+    <meta name="description"
+        content="Free visual study guides for Infrastructure, Cloud, Security & OSINT. Hand-drawn diagrams + expert articles. Join 1000+ engineers. Subscribe for weekly updates!">
+    <link rel="canonical" href="https://visualnotes.tech/">
+
+    <!-- Open Graph (Facebook, LinkedIn) -->
+    <meta property="og:title" content="VisualNotes | Visual Engineering Study Platform">
+    <meta property="og:description"
+        content="Discover the ultimate visual study guides for Infrastructure, Cloud, Security & OSINT. Hand-drawn diagrams that make complex systems click.">
+    <meta property="og:image" content="https://visualnotes.tech/og-image.jpg">
+    <meta property="og:url" content="https://visualnotes.tech/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="VisualNotes">
+    <meta property="article:modified_time" content="2026-01-26T18:48:00+05:30">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VisualNotes | Visual Engineering Study Platform">
+    <meta name="twitter:description"
+        content="Hand-drawn diagrams that make complex systems click. Infrastructure, Cloud, Security & OSINT.">
+    <meta name="twitter:image" content="https://visualnotes.tech/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- PDF.js & Supabase -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Schema Markup (JSON-LD) for AEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "VisualNotes",
+      "url": "https://visualnotes.tech",
+      "logo": "https://visualnotes.tech/logo.png",
+      "description": "Visual engineering study platform for Infrastructure, Cloud, Security, and OSINT.",
+      "sameAs": [
+        "https://twitter.com/visualnotes",
+        "https://linkedin.com/company/visualnotes"
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://visualnotes.tech/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Study Guides",
+          "item": "https://visualnotes.tech/#guides"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Blog",
+          "item": "https://visualnotes.tech/blog/"
+        }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "VisualNotes",
+      "url": "https://visualnotes.tech",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://visualnotes.tech/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- Collection/FAQ Schema for Guides -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Visual Study Guides",
+      "description": "Handwritten engineering notes for DNS, Inter-VLAN Routing, Netflow, SNMP, and STP.",
+      "hasPart": [
+        {
+          "@type": "CreativeWork",
+          "name": "DNS Administration Guide",
+          "about": "Domain Name System hierarchy and administration"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Inter-VLAN Routing Guide",
+          "about": "Configuring and troubleshooting Inter-VLAN routing"
+        }
+      ]
+    }
+    </script>
+
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX"
+        crossorigin="anonymous"></script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        // Anonymize IP (GDPR requirement)
+        gtag('config', 'G-XXXXXXXXXX', {
+            'anonymize_ip': true,
+            'cookie_flags': 'SameSite=None;Secure'
+        });
+    </script>
+
+    <style>
+        :root {
+            /* Warm Academic Theme - Friendly & Approachable EdTech */
+            --primary: #FF6B6B;
+            /* Coral Red - Energetic, engaging */
+            --primary-dark: #E85555;
+            /* Darker coral for hover states */
+            --secondary: #4ECDC4;
+            /* Turquoise - Fresh, modern */
+            --secondary-dark: #3DBDB4;
+            /* Darker turquoise */
+            --accent: #FFE66D;
+            /* Warm Yellow - Optimistic */
+            --accent-dark: #FFD93D;
+            /* Darker yellow */
+            --text-dark: #2D3436;
+            /* Charcoal - Warmer than black */
+            --text-light: #636E72;
+            /* Medium gray */
+            --bg-light: #FFF9F0;
+            /* Warm Cream - Softer than white */
+            --bg-white: #FFFFFF;
+            /* Pure white for cards */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 4.2 CSS Media Queries (Maintain Existing Styles) */
+
+        /* Mobile First Approach - Base styles for mobile */
+        @media screen and (max-width: 767px) {
+
+            /* Ensure touch targets are at least 44px */
+            button,
+            a,
+            input,
+            select {
+                min-height: 44px;
+                min-width: 44px;
+            }
+
+            /* Stack elements on mobile */
+            .row,
+            .flex-container {
+                flex-direction: column !important;
+            }
+
+            /* Full width containers on mobile */
+            .container {
+                width: 100% !important;
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+            }
+
+            /* Responsive images */
+            img {
+                max-width: 100% !important;
+                height: auto !important;
+            }
+
+            /* Fix for Guide Thumbnails */
+            .guide-image img {
+                height: 100% !important;
+                object-fit: cover !important;
+            }
+
+            /* Prevent horizontal scroll */
+            body {
+                overflow-x: hidden !important;
+            }
+        }
+
+        /* Tablet (768px - 1024px) */
+        @media screen and (min-width: 768px) and (max-width: 1024px) {
+            .container {
+                width: 90% !important;
+                max-width: 960px !important;
+            }
+        }
+
+        /* Desktop (1025px and above) */
+        @media screen and (min-width: 1025px) {
+            .container {
+                max-width: 1200px !important;
+            }
+        }
+
+        /* High DPI Displays (Retina) */
+        @media (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi) {
+
+            /* Optimize images for retina displays */
+            img {
+                image-rendering: -webkit-optimize-contrast;
+            }
+        }
+
+        /* 4.3 Device-Specific Optimization */
+        /* iOS Specific */
+        @supports (-webkit-touch-callout: none) {
+
+            /* iOS Safari specific styles */
+            input,
+            textarea,
+            select {
+                -webkit-appearance: none;
+                border-radius: 0;
+            }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: #fff;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn-cta {
+            background: var(--primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+            /* Fix for flickering */
+        }
+
+        /* Extend hit area to prevent flickering on hover */
+        .btn-cta::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            bottom: -10px;
+            left: -5px;
+            right: -5px;
+            background: transparent;
+        }
+
+        .btn-cta:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Hero Section - Full Screen */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(120deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Caveat', cursive;
+        }
+
+        .hero p {
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .hero .tagline {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+            margin-bottom: 50px;
+        }
+
+        .category-pills {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .pill {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px 24px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 2px solid white;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.7;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(10px);
+            }
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--bg-light);
+            padding: 100px 40px;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Guides Section */
+        .guides {
+            padding: 120px 40px;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .section-header p {
+            font-size: 1.3rem;
+            color: var(--text-light);
+        }
+
+        .guides-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .guide-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+        }
+
+        .guide-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .guide-content {
+            padding: 30px;
+        }
+
+        .guide-category {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .guide-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .guide-desc {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .guide-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .guide-meta {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .btn-read {
+            background: var(--primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-read:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        /* Social Share Buttons */
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .share-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .share-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .share-icon:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .share-twitter {
+            background: #1DA1F2;
+            color: white;
+        }
+
+        .share-linkedin {
+            background: #0A66C2;
+            color: white;
+        }
+
+        .share-facebook {
+            background: #1877F2;
+            color: white;
+        }
+
+        .share-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .share-instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+        }
+
+        .share-copy {
+            background: #64748b;
+            color: white;
+        }
+
+        .share-copy:hover {
+            background: #475569;
+        }
+
+        /* Email Section */
+        .email-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 100px 40px;
+            text-align: center;
+        }
+
+        .email-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .email-content h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .email-content p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 18px 24px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .btn-subscribe {
+            background: white;
+            color: var(--primary);
+            padding: 18px 40px;
+            border-radius: 50px;
+            border: 3px solid white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-subscribe:hover {
+            transform: scale(1.05);
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+
+        /* PDF Modal */
+        .pdf-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pdf-modal.active {
+            display: flex;
+        }
+
+        .pdf-container {
+            width: 95%;
+            max-width: 1200px;
+            height: 90vh;
+            background: #2a2a2a;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .pdf-toolbar {
+            background: #1a1a1a;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            /* Allow wrapping on very small screens */
+        }
+
+        @media (max-width: 480px) {
+            .pdf-toolbar {
+                padding: 10px;
+            }
+
+            .pdf-title {
+                font-size: 0.9rem;
+                max-width: 120px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .pdf-btn {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+            }
+        }
+
+        .pdf-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .pdf-btn {
+            background: #3a3a3a;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: 500;
+        }
+
+        .pdf-btn:hover {
+            background: #4a4a4a;
+        }
+
+        .pdf-viewport {
+            flex: 1;
+            overflow: auto;
+            background: #525659;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        #pdfPages canvas {
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .email-form {
+                flex-direction: column;
+            }
+
+            .guides-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">📚 VisualNotes</div>
+            <div class="nav-links">
+                <a href="#guides">Guides</a>
+                <a href="#subscribe">Subscribe</a>
+                <a href="#guides" class="btn-cta">Explore Guides</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                Understand complex tech in minutes<br>
+                <span class="highlight">— not months.</span>
+            </h1>
+            <p>
+                Visual, handwritten-style notes that make Infrastructure, Cloud, Security & OSINT finally click.
+            </p>
+            <p class="tagline">
+                One page. One system. Zero confusion.
+            </p>
+
+            <div class="category-pills">
+                <span class="pill">🌐 Infrastructure</span>
+                <span class="pill">☁️ Cloud</span>
+                <span class="pill">🔒 Security</span>
+                <span class="pill">🔍 OSINT</span>
+            </div>
+
+            <div class="hero-cta">
+                <a href="#guides" class="btn-primary">Explore Guides</a>
+                <a href="#subscribe" class="btn-secondary">Get Updates</a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <span>↓</span>
+        </div>
+    </section>
+
+
+
+    <!-- Stats Section -->
+    <section style="position: relative; padding: 60px 20px; margin-top: -20px;">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <!-- Single Unified Glass Container -->
+            <div style="
+                background: rgba(255, 255, 255, 0.9);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.8);
+                box-shadow: 0 20px 50px rgba(99, 102, 241, 0.15);
+                border-radius: 24px;
+                padding: 40px;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 40px;
+                position: relative;
+                z-index: 10;
+                overflow: hidden;
+            ">
+                <!-- Decorative Gradient Blur -->
+                <div
+                    style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(99,102,241,0.05) 0%, transparent 70%); pointer-events: none;">
+                </div>
+
+                <!-- Stat 1 -->
+                <div style="text-align: center; position: relative; z-index: 1;">
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">📚</div>
+                    <div style="
+                        font-size: 3.5rem; 
+                        font-weight: 800; 
+                        background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        line-height: 1;
+                        margin-bottom: 5px;
+                    ">4</div>
+                    <div style="color: #64748b; font-weight: 600; letter-spacing: 0.5px;">Topics Covered</div>
+                </div>
+
+                <!-- Stat 2 -->
+                <div style="text-align: center; position: relative; z-index: 1;">
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">📄</div>
+                    <div style="
+                        font-size: 3.5rem; 
+                        font-weight: 800; 
+                        background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        line-height: 1;
+                        margin-bottom: 5px;
+                    ">8</div>
+                    <div style="color: #64748b; font-weight: 600; letter-spacing: 0.5px;">Study Guides</div>
+                </div>
+
+                <!-- Stat 3 -->
+                <div style="text-align: center; position: relative; z-index: 1;">
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">📖</div>
+                    <div style="
+                        font-size: 3.5rem; 
+                        font-weight: 800; 
+                        background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        line-height: 1;
+                        margin-bottom: 5px;
+                    ">85</div>
+                    <div style="color: #64748b; font-weight: 600; letter-spacing: 0.5px;">Pages</div>
+                </div>
+
+                <!-- Stat 4 -->
+                <div style="text-align: center; position: relative; z-index: 1;">
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">⭐</div>
+                    <div style="
+                        font-size: 3.5rem; 
+                        font-weight: 800; 
+                        background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        line-height: 1;
+                        margin-bottom: 5px;
+                    ">100%</div>
+                    <div style="color: #64748b; font-weight: 600; letter-spacing: 0.5px;">Free Access</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Guides Section -->
+    <section class="guides" id="guides">
+        <div class="section-header">
+            <h2>Visual Study Guides</h2>
+            <p>Handwritten notes that transform complex systems into clear mental pictures</p>
+        </div>
+
+        <div class="guides-grid" id="guidesContainer">
+            <!-- Dynamic content -->
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="guides-section" style="background: white;">
+        <div class="section-header">
+            <h2>📝 Latest Articles</h2>
+            <p>In-depth guides on infrastructure, cloud, security, and OSINT</p>
+        </div>
+
+        <div class="guides-grid">
+            <!-- Google Dorking Article -->
+            <div class="guide-card">
+                <div class="guide-image">
+                    <img src="blog/images/google-dorking-header.png" alt="Google Dorking Guide"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="guide-content">
+                    <span class="guide-category">Security & OSINT</span>
+                    <h3 class="guide-title">Google Dorking: The Complete Guide</h3>
+                    <p class="guide-desc">Master advanced search operators, ethical hacking techniques, and learn how to
+                        protect your website from dorking attacks.</p>
+                    <div class="guide-footer">
+                        <span class="guide-meta">15 min read</span>
+                        <a href="blog/google-dorking-guide.html" class="btn-read">READ NOW</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DNS Article -->
+            <div class="guide-card">
+                <div class="guide-image">
+                    <img src="blog/images/dns-thumbnail.png" alt="DNS Guide"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="guide-content">
+                    <span class="guide-category">Infrastructure</span>
+                    <h3 class="guide-title">How DNS Actually Works</h3>
+                    <p class="guide-desc">Stop memorizing DNS records. Learn how DNS actually works with visual diagrams
+                        and real-world examples.</p>
+                    <div class="guide-footer">
+                        <span class="guide-meta">8 min read</span>
+                        <a href="blog/how-dns-works.html" class="btn-read">READ NOW</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-image">
+                    <img src="blog/images/osint-thumbnail.png" alt="OSINT Tools"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="guide-content">
+                    <span class="guide-category">Security & OSINT</span>
+                    <h3 class="guide-title">Top 7 OSINT Tools in 2026</h3>
+                    <p class="guide-desc">The best open-source intelligence tools for 2026. What security researchers
+                        actually use.</p>
+                    <div class="guide-footer">
+                        <span class="guide-meta">10 min read</span>
+                        <a href="blog/osint-tools-2026.html" class="btn-read">READ NOW</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-image">
+                    <img src="blog/images/cloud-thumbnail.png" alt="Cloud Comparison"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="guide-content">
+                    <span class="guide-category">Cloud Computing</span>
+                    <h3 class="guide-title">AWS vs Azure vs GCP</h3>
+                    <p class="guide-desc">Forget market share charts. Here's which cloud you should learn first based on
+                        your career goals.</p>
+                    <div class="guide-footer">
+                        <span class="guide-meta">12 min read</span>
+                        <a href="blog/cloud-comparison.html" class="btn-read">READ NOW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="blog/index.html"
+                style="display: inline-block; padding: 15px 40px; background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: transform 0.2s;">
+                View All Articles →
+            </a>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section style="background: #f8fafc; padding: 100px 20px;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="section-header">
+                <h2>Trusted by Engineers</h2>
+                <p>Helping thousands of developers and architects visualize complex systems.</p>
+            </div>
+
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px;">
+
+                <!-- Review 1 -->
+                <div
+                    style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0;">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div
+                            style="width: 48px; height: 48px; background: #e0e7ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #4f46e5; font-weight: 700; font-size: 1.2rem; margin-right: 15px;">
+                            RM</div>
+                        <div>
+                            <div style="font-weight: 700; color: #1e293b;">Rohit Mehta</div>
+                            <div style="color: #64748b; font-size: 0.9rem;">Senior Network Engineer</div>
+                        </div>
+                    </div>
+                    <p style="color: #334155; line-height: 1.6;">"I've been working with BGP and OSPF for 10 years, and
+                        I still reference these visual guides. The handwritten diagrams make complex routing logic
+                        immediately click in a way that dry vendor documentation never does."</p>
+                    <div style="color: #f59e0b; margin-top: 15px;">★★★★★</div>
+                </div>
+
+                <!-- Review 2 -->
+                <div
+                    style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0;">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div
+                            style="width: 48px; height: 48px; background: #dcfce7; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #15803d; font-weight: 700; font-size: 1.2rem; margin-right: 15px;">
+                            SR</div>
+                        <div>
+                            <div style="font-weight: 700; color: #1e293b;">Shilpa Rao</div>
+                            <div style="color: #64748b; font-size: 0.9rem;">Cloud Solutions Architect</div>
+                        </div>
+                    </div>
+                    <p style="color: #334155; line-height: 1.6;">"The Cloud & Infrastructure notes are gold. Usually, I
+                        have to draw these diagrams myself to explain concepts to clients. Now I just share VisualNotes.
+                        The 'DNS Administration' guide is a masterpiece of clarity."</p>
+                    <div style="color: #f59e0b; margin-top: 15px;">★★★★★</div>
+                </div>
+
+                <!-- Review 3 -->
+                <div
+                    style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0;">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div
+                            style="width: 48px; height: 48px; background: #fae8ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #a21caf; font-weight: 700; font-size: 1.2rem; margin-right: 15px;">
+                            AS</div>
+                        <div>
+                            <div style="font-weight: 700; color: #1e293b;">Anushka Sharma</div>
+                            <div style="color: #64748b; font-size: 0.9rem;">DevOps Engineer</div>
+                        </div>
+                    </div>
+                    <p style="color: #334155; line-height: 1.6;">"Finally, study material that doesn't put me to sleep.
+                        The visual approach to Inter-VLAN routing saved me during my certification prep. It's concise,
+                        accurate, and actually fun to read."</p>
+                    <div style="color: #f59e0b; margin-top: 15px;">★★★★★</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Section -->
+    <section class="email-section" id="subscribe">
+        <div class="email-content">
+            <h2>Never Miss a New Guide</h2>
+            <p>Get visual notes delivered to your inbox. No spam, just learning.</p>
+            <form class="email-form" onsubmit="handleEmailSubmit(event)">
+                <input type="email" id="emailInput" class="email-input" placeholder="your@email.com" required>
+                <button type="submit" class="btn-subscribe">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Join Community Section -->
+    <section style="background: #f8fafc; padding: 60px 40px; text-align: center; border-top: 1px solid #e2e8f0;">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h2 style="font-size: 2rem; color: #1e293b; margin-bottom: 30px;">Join Our Community</h2>
+            <p style="color: #64748b; margin-bottom: 40px; font-size: 1.1rem;">
+                Get daily visual notes, updates, and career tips directly on your favorite apps.
+            </p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://whatsapp.com/channel/0029Vb6z21DBqbr2xDU7Rc2P" target="_blank"
+                    style="display: flex; align-items: center; gap: 10px; background: #25D366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: transform 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                    </svg> Join WhatsApp Channel
+                </a>
+                <a href="https://www.instagram.com/visualnotes.tech/" target="_blank"
+                    style="display: flex; align-items: center; gap: 10px; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: transform 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                    </svg> Follow on Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section style="background: white; padding: 100px 40px;">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div class="section-header">
+                <h2>❓ Frequently Asked Questions</h2>
+                <p>Everything you need to know about VisualNotes</p>
+            </div>
+
+            <div style="margin-top: 50px;">
+                <!-- FAQ Item 1 -->
+                <div
+                    style="margin-bottom: 30px; padding: 25px; background: #FFF9F0; border-radius: 12px; border-left: 4px solid #FF6B6B;">
+                    <h3 style="color: #2D3436; margin-bottom: 15px; font-size: 1.3rem;">What is VisualNotes?</h3>
+                    <p style="color: #636E72; line-height: 1.7;">VisualNotes is a visual engineering study platform that
+                        provides hand-drawn, easy-to-understand notes on Infrastructure, Cloud, Security, and OSINT
+                        topics. Our visual approach helps engineers and students grasp complex technical concepts
+                        quickly without spending months on traditional learning methods.</p>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div
+                    style="margin-bottom: 30px; padding: 25px; background: #FFF9F0; border-radius: 12px; border-left: 4px solid #4ECDC4;">
+                    <h3 style="color: #2D3436; margin-bottom: 15px; font-size: 1.3rem;">Are the study guides really
+                        free?</h3>
+                    <p style="color: #636E72; line-height: 1.7;">Yes! All our visual study guides and blog articles are
+                        completely free. We believe in making quality technical education accessible to everyone. You
+                        can download PDFs, view them online, and share them with your peers at no cost.</p>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div
+                    style="margin-bottom: 30px; padding: 25px; background: #FFF9F0; border-radius: 12px; border-left: 4px solid #FFE66D;">
+                    <h3 style="color: #2D3436; margin-bottom: 15px; font-size: 1.3rem;">How do I access the PDF study
+                        guides?</h3>
+                    <p style="color: #636E72; line-height: 1.7;">Simply click on any study guide card and the PDF will
+                        open directly in your browser. You can view it online, zoom in/out, and download it for offline
+                        access. Our guides work on all devices including desktop, tablet, and mobile.</p>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div
+                    style="margin-bottom: 30px; padding: 25px; background: #FFF9F0; border-radius: 12px; border-left: 4px solid #FF6B6B;">
+                    <h3 style="color: #2D3436; margin-bottom: 15px; font-size: 1.3rem;">What topics do you cover?</h3>
+                    <p style="color: #636E72; line-height: 1.7;">We cover four main areas:
+                        <strong>Infrastructure</strong> (DNS, Inter-VLAN Routing, Netflow, SNMP, STP), <strong>Cloud
+                            Computing</strong> (AWS, Azure, GCP comparisons), <strong>Security</strong> (Google Dorking,
+                        ethical hacking), and <strong>OSINT</strong> (intelligence gathering tools and techniques). We
+                        regularly add new content based on community requests.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div
+                    style="margin-bottom: 30px; padding: 25px; background: #FFF9F0; border-radius: 12px; border-left: 4px solid #4ECDC4;">
+                    <h3 style="color: #2D3436; margin-bottom: 15px; font-size: 1.3rem;">How often do you publish new
+                        content?</h3>
+                    <p style="color: #636E72; line-height: 1.7;">We publish new study guides and blog articles
+                        regularly. Subscribe to our newsletter to get instant notifications when we release new content.
+                        You'll also receive exclusive tips and early access to upcoming guides.</p>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div
+                    style="margin-bottom: 30px; padding: 25px; background: #FFF9F0; border-radius: 12px; border-left: 4px solid #FFE66D;">
+                    <h3 style="color: #2D3436; margin-bottom: 15px; font-size: 1.3rem;">Can I use these notes for my
+                        certification exam?</h3>
+                    <p style="color: #636E72; line-height: 1.7;">Absolutely! Our visual notes are perfect for
+                        certification preparation. They complement official study materials by providing clear, visual
+                        explanations of complex topics. Many students use our guides for CCNA, AWS certifications, and
+                        security certifications.</p>
+                </div>
+
+                <!-- FAQ Item 7 -->
+                <div
+                    style="margin-bottom: 30px; padding: 25px; background: #FFF9F0; border-radius: 12px; border-left: 4px solid #FF6B6B;">
+                    <h3 style="color: #2D3436; margin-bottom: 15px; font-size: 1.3rem;">Do you offer personalized
+                        learning or tutoring?</h3>
+                    <p style="color: #636E72; line-height: 1.7;">Currently, we focus on providing high-quality free
+                        resources. However, you can join our WhatsApp channel and Instagram community to ask questions,
+                        share insights, and connect with other learners. We're always happy to help!</p>
+                </div>
+
+                <!-- FAQ Item 8 -->
+                <div
+                    style="margin-bottom: 30px; padding: 25px; background: #FFF9F0; border-radius: 12px; border-left: 4px solid #4ECDC4;">
+                    <h3 style="color: #2D3436; margin-bottom: 15px; font-size: 1.3rem;">How can I request a specific
+                        topic?</h3>
+                    <p style="color: #636E72; line-height: 1.7;">We love hearing from our community! Contact us via
+                        email at visualnotes.tech@gmail.com or message us on Instagram or WhatsApp. We prioritize topics
+                        based on community demand and create guides that help the most people.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is VisualNotes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VisualNotes is a visual engineering study platform that provides hand-drawn, easy-to-understand notes on Infrastructure, Cloud, Security, and OSINT topics. Our visual approach helps engineers and students grasp complex technical concepts quickly without spending months on traditional learning methods."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the study guides really free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! All our visual study guides and blog articles are completely free. We believe in making quality technical education accessible to everyone. You can download PDFs, view them online, and share them with your peers at no cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I access the PDF study guides?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Simply click on any study guide card and the PDF will open directly in your browser. You can view it online, zoom in/out, and download it for offline access. Our guides work on all devices including desktop, tablet, and mobile."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What topics do you cover?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We cover four main areas: Infrastructure (DNS, Inter-VLAN Routing, Netflow, SNMP, STP), Cloud Computing (AWS, Azure, GCP comparisons), Security (Google Dorking, ethical hacking), and OSINT (intelligence gathering tools and techniques). We regularly add new content based on community requests."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often do you publish new content?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We publish new study guides and blog articles regularly. Subscribe to our newsletter to get instant notifications when we release new content. You'll also receive exclusive tips and early access to upcoming guides."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use these notes for my certification exam?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely! Our visual notes are perfect for certification preparation. They complement official study materials by providing clear, visual explanations of complex topics. Many students use our guides for CCNA, AWS certifications, and security certifications."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer personalized learning or tutoring?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Currently, we focus on providing high-quality free resources. However, you can join our WhatsApp channel and Instagram community to ask questions, share insights, and connect with other learners. We're always happy to help!"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I request a specific topic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We love hearing from our community! Contact us via email at visualnotes.tech@gmail.com or message us on Instagram or WhatsApp. We prioritize topics based on community demand and create guides that help the most people."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Blog Articles Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "VisualNotes Blog Articles",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "BlogPosting",
+            "@id": "https://visualnotes.tech/blog/google-dorking-guide.html",
+            "headline": "Google Dorking: The Complete Guide",
+            "description": "Master advanced search operators, ethical hacking techniques, and learn how to protect your website from dorking attacks.",
+            "image": "https://visualnotes.tech/blog/images/google-dorking-header.png",
+            "datePublished": "2026-01-20",
+            "dateModified": "2026-01-26",
+            "author": {
+              "@type": "Person",
+              "name": "Abhiney Sharma",
+              "url": "https://www.linkedin.com/in/abhineysharma/"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "VisualNotes",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://visualnotes.tech/logo.png"
+              }
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "BlogPosting",
+            "@id": "https://visualnotes.tech/blog/how-dns-works.html",
+            "headline": "How DNS Actually Works",
+            "description": "Stop memorizing DNS records. Learn how DNS actually works with visual diagrams and real-world examples.",
+            "image": "https://visualnotes.tech/blog/images/dns-thumbnail.png",
+            "datePublished": "2026-01-15",
+            "dateModified": "2026-01-26",
+            "author": {
+              "@type": "Person",
+              "name": "Abhiney Sharma",
+              "url": "https://www.linkedin.com/in/abhineysharma/"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "VisualNotes",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://visualnotes.tech/logo.png"
+              }
+            }
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Thank You Modal -->
+    <div id="thankYouModal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 10000; align-items: center; justify-content: center;">
+        <div
+            style="background: white; padding: 50px 40px; border-radius: 20px; max-width: 500px; text-align: center; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); animation: modalSlideIn 0.4s ease-out;">
+            <div style="font-size: 4rem; margin-bottom: 20px;">🎉</div>
+            <h2 style="color: var(--primary); margin-bottom: 15px; font-size: 2rem;">Thank You for Subscribing!</h2>
+            <p style="color: var(--text-light); font-size: 1.1rem; line-height: 1.6; margin-bottom: 25px;">
+                Welcome to the VisualNotes community! We've sent a welcome email to your inbox with exclusive resources
+                and tips.
+            </p>
+            <div style="background: var(--bg-light); padding: 20px; border-radius: 12px; margin-bottom: 25px;">
+                <p style="color: var(--text-dark); font-weight: 600; margin-bottom: 10px;">🚀 What's Next?</p>
+                <p style="color: var(--text-light); font-size: 0.95rem;">Check your email for your welcome message and
+                    start exploring our visual study guides!</p>
+            </div>
+            <button onclick="closeThankYouModal()"
+                style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; padding: 15px 40px; border: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);"
+                onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                Awesome! Let's Go →
+            </button>
+        </div>
+    </div>
+
+    <style>
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <!-- Footer -->
+    <footer style="background: #0f172a; color: white; padding: 60px 40px 30px; text-align: center;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="margin-bottom: 30px;">
+                <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 15px;">📚 VisualNotes</div>
+                <p style="color: #94a3b8; max-width: 600px; margin: 0 auto;">
+                    Visual, handwritten-style notes for Infrastructure, Cloud, Security & OSINT
+                </p>
+            </div>
+
+            <div style="margin-top: 20px; font-size: 0.95rem; color: #475569;">
+                Founder: <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank"
+                    style="color: var(--primary); text-decoration: none; font-weight: 600;">Abhiney Sharma</a>
+            </div>
+
+            <!-- Social Media Icons -->
+            <div style="display: flex; gap: 20px; justify-content: center; margin: 30px 0;">
+                <a href="https://www.instagram.com/visualnotes.tech/" target="_blank" rel="noopener"
+                    aria-label="Follow us on Instagram"
+                    style="color: #E1306C; transition: transform 0.2s; display: inline-block;"
+                    onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                    </svg>
+                </a>
+                <a href="https://whatsapp.com/channel/0029Vb6z21DBqbr2xDU7Rc2P" target="_blank" rel="noopener"
+                    aria-label="Join WhatsApp channel"
+                    style="color: #25D366; transition: transform 0.2s; display: inline-block;"
+                    onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
+                    </svg>
+                </a>
+            </div>
+
+            <div style="display: flex; gap: 30px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap;">
+                <a href="about.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;">About Us</a>
+                <a href="faq.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;">FAQ</a>
+                <a href="write-for-us.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;">Write
+                    for Us</a>
+                <a href="privacy.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;">Privacy
+                    Policy</a>
+                <a href="terms.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;">Terms of
+                    Service</a>
+                <a href="mailto:visualnotes.tech@gmail.com"
+                    style="color: #94a3b8; text-decoration: none; transition: color 0.3s;">Contact</a>
+            </div>
+
+            <div style="border-top: 1px solid #334155; padding-top: 20px; color: #64748b; font-size: 0.9rem;">
+                © 2026 VisualNotes. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- PDF Modal -->
+    <div class="pdf-modal" id="pdfModal">
+        <div class="pdf-container">
+            <div class="pdf-toolbar">
+                <h4 id="pdfTitle">Guide Preview</h4>
+                <div class="pdf-controls">
+                    <button class="pdf-btn" onclick="prevPage()">◀ Prev</button>
+                    <span id="pageInfo">Page 1 of 1</span>
+                    <button class="pdf-btn" onclick="nextPage()">Next ▶</button>
+                    <button class="pdf-btn" onclick="zoomOut()">-</button>
+                    <span id="zoomLevel">100%</span>
+                    <button class="pdf-btn" onclick="zoomIn()">+</button>
+                    <button class="pdf-btn" onclick="closePdfViewer()" style="background:#ef4444;">✕ Close</button>
+                </div>
+            </div>
+            <div class="pdf-viewport">
+                <div id="pdfPages"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Guides Data
+        const guides = [
+            {
+                id: "dns-admin",
+                title: "DNS Administration",
+                category: "Infrastructure",
+                pages: "16 Pages",
+                description: "Complete guide to Domain Name System hierarchy, records, and administration.",
+                pdfUrl: "guides/networking/dns-administration-guide.pdf",
+                thumbnail: "guides/thumbnails/dns-administration-guide.png"
+            },
+            {
+                id: "inter-vlan",
+                title: "Inter-VLAN Routing",
+                category: "Infrastructure",
+                pages: "17 Pages",
+                description: "Complete guide to configuring and troubleshooting Inter-VLAN routing.",
+                pdfUrl: "guides/networking/inter-vlan-routing-guide.pdf",
+                thumbnail: "guides/thumbnails/inter-vlan-routing-guide.png"
+            },
+            {
+                id: "netflow",
+                title: "Netflow Protocol",
+                category: "Infrastructure",
+                pages: "22 Pages",
+                description: "Analyzing network traffic and visibility with Netflow architecture.",
+                pdfUrl: "guides/networking/netflow-protocol-guide.pdf",
+                thumbnail: "guides/thumbnails/netflow-protocol-guide.png"
+            },
+            {
+                id: "snmp",
+                title: "SNMP Fundamentals",
+                category: "Infrastructure",
+                pages: "16 Pages",
+                description: "Monitoring and managing network devices using Simple Network Management Protocol.",
+                pdfUrl: "guides/networking/snmp-fundamentals-guide.pdf",
+                thumbnail: "guides/thumbnails/snmp-fundamentals-guide.png"
+            },
+            {
+                id: "stp",
+                title: "Spanning Tree (STP)",
+                category: "Infrastructure",
+                pages: "10 Pages",
+                description: "Preventing loops in Layer 2 networks with Spanning Tree Protocol (STP).",
+                pdfUrl: "guides/networking/stp-guide.pdf",
+                thumbnail: "guides/thumbnails/stp-guide.png"
+            }
+        ];
+
+        // Render Guides
+        const container = document.getElementById('guidesContainer');
+        guides.forEach(guide => {
+            const card = document.createElement('div');
+            card.className = 'guide-card';
+
+            card.innerHTML = `
+                <div class="guide-image" style="background: #f1f5f9; overflow: hidden; position: relative;">
+                    <img src="${guide.thumbnail}" alt="${guide.title}" loading="lazy"
+                         style="width: 100%; height: 100%; object-fit: cover; display: block;"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'display:flex; align-items:center; justify-content:center; height:100%; font-size:3rem;\\'>📄</div>'">
+                </div>
+                <div class="guide-content">
+                    <span class="guide-category">${guide.category}</span>
+                    <h3 class="guide-title">${guide.title}</h3>
+                    <p class="guide-desc">${guide.description}</p>
+                    <div class="guide-footer">
+                        <span class="guide-meta">Free • ${guide.pages}</span>
+                        <button class="btn-read" onclick="openPdf('${guide.id}')">READ NOW</button>
+                    </div>
+                    <div class="share-buttons">
+                        <span class="share-label">Share:</span>
+                        <a href="#" class="share-icon share-twitter" onclick="shareToTwitter('${guide.title}', '${guide.id}'); return false;" title="Share on Twitter">𝕏</a>
+                        <a href="#" class="share-icon share-linkedin" onclick="shareToLinkedIn('${guide.id}'); return false;" title="Share on LinkedIn">in</a>
+                        <a href="#" class="share-icon share-facebook" onclick="shareToFacebook('${guide.id}'); return false;" title="Share on Facebook">f</a>
+                        <a href="#" class="share-icon share-whatsapp" onclick="shareToWhatsApp('${guide.title}', '${guide.id}'); return false;" title="Share on WhatsApp">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/visualnotes.tech/" target="_blank" class="share-icon share-instagram" title="Follow on Instagram" style="color: #ffffff !important;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" class="share-icon share-copy" onclick="copyGuideLink('${guide.id}', '${guide.title}'); return false;" title="Copy link">🔗</a>
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+
+        // ===== SOCIAL SHARE FUNCTIONS =====
+        function shareToTwitter(title, guideId) {
+            const url = `${window.location.origin}${window.location.pathname}#${guideId}`;
+            const text = `Check out this free guide: ${title} from @visualnotes_tech`;
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+        }
+
+        function shareToLinkedIn(guideId) {
+            const url = `${window.location.origin}${window.location.pathname}#${guideId}`;
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+        }
+
+        function shareToFacebook(guideId) {
+            const url = `${window.location.origin}${window.location.pathname}#${guideId}`;
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+        }
+
+        function shareToWhatsApp(title, guideId) {
+            const url = `${window.location.origin}${window.location.pathname}#${guideId}`;
+            const text = `Check out this guide: ${title}`;
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text + ' ' + url)}`, '_blank');
+        }
+
+        function copyGuideLink(guideId, title) {
+            const url = `${window.location.origin}${window.location.pathname}#${guideId}`;
+            navigator.clipboard.writeText(url).then(() => {
+                alert(`✅ Link copied! Share "${title}" with your network.`);
+            }).catch(() => {
+                // Fallback for older browsers
+                const tempInput = document.createElement('input');
+                tempInput.value = url;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                alert(`✅ Link copied! Share "${title}" with your network.`);
+            });
+        }
+
+        // ===== GOOGLE SHEETS EMAIL INTEGRATION =====
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx9p3bxHkk-g2TKo_8nJbyrAg5ZR7Py9jgNJtZbGGYDYCN87HvjylYkzj91GUz5ayQFDg/exec'; // Fresh deployment from scratch
+
+        // Email Submission
+        async function handleEmailSubmit(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+
+            const button = e.target.querySelector('button');
+            const originalText = button.textContent;
+            button.textContent = 'Subscribing...';
+            button.disabled = true;
+
+            // Attempt to detect country
+            let country = 'Unknown';
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 2000); // 2s timeout
+
+                const ipRes = await fetch('https://ipapi.co/json/', { signal: controller.signal });
+                const ipData = await ipRes.json();
+                country = ipData.country_name || ipData.country || 'Unknown';
+                console.log('Detected Country:', country);
+
+                clearTimeout(timeoutId);
+            } catch (e) {
+                console.warn('Country detection failed/timed out:', e);
+            }
+
+            try {
+                if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL') {
+                    // Development mode - save to localStorage
+                    console.log('Email saved locally:', email, 'Country:', country);
+                    localStorage.setItem('subscribedEmail', email);
+                    alert('✅ Subscribed! (Dev mode - Email saved locally)');
+                } else {
+                    // Production mode - send to Google Sheets
+                    console.log('Sending email to script:', email, 'Country:', country);
+                    const response = await fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'text/plain;charset=utf-8',
+                        },
+                        body: JSON.stringify({ email: email, country: country })
+                    });
+
+                    // Check for HTTP errors
+                    if (!response.ok) {
+                        throw new Error(`HTTP error: ${response.status}`);
+                    }
+
+                    // Check for API errors
+                    const result = await response.json();
+                    if (!result.success) {
+                        throw new Error(result.message || 'Script reported failure');
+                    }
+
+                    showThankYouModal();
+                }
+
+                document.getElementById('emailInput').value = '';
+            } catch (error) {
+                console.error('Subscription error:', error);
+                showErrorMessage('⚠️ Subscription failed. Please try again.');
+            } finally {
+                button.textContent = originalText;
+                button.disabled = false;
+            }
+        }
+
+        // Show Thank You Modal
+        function showThankYouModal() {
+            const modal = document.getElementById('thankYouModal');
+            modal.style.display = 'flex';
+        }
+
+        // Close Thank You Modal
+        function closeThankYouModal() {
+            const modal = document.getElementById('thankYouModal');
+            modal.style.display = 'none';
+        }
+
+        // Show Error Message
+        function showErrorMessage(message) {
+            alert(message);
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('thankYouModal')?.addEventListener('click', function (e) {
+                if (e.target === this) {
+                    closeThankYouModal();
+                }
+            });
+        });
+
+
+        // PDF Logic
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        let pdfDoc = null;
+        let zoom = 1.0;
+        let currentPage = 1;
+
+        async function openPdf(guideId) {
+            const guide = guides.find(g => g.id === guideId);
+            if (!guide) return;
+
+            document.getElementById('pdfModal').classList.add('active');
+            document.getElementById('pdfTitle').textContent = guide.title;
+            const view = document.getElementById('pdfPages');
+            view.innerHTML = '<div style="color:white; text-align:center; padding:50px;">Loading...</div>';
+
+            try {
+                const loadingTask = pdfjsLib.getDocument(guide.pdfUrl);
+                pdfDoc = await loadingTask.promise;
+                zoom = 1.0;
+                currentPage = 1;
+                renderPage();
+                document.getElementById('zoomLevel').textContent = '100%';
+            } catch (err) {
+                console.error(err);
+                view.innerHTML = '<div style="color:#ff6b6b; text-align:center;">Failed to load PDF.</div>';
+            }
+        }
+
+        async function renderPage() {
+            if (!pdfDoc) return;
+
+            const container = document.getElementById('pdfPages');
+            container.innerHTML = '';
+
+            const page = await pdfDoc.getPage(currentPage);
+
+            // Responsive scale calculation
+            const containerWidth = container.clientWidth || window.innerWidth;
+            const originalViewport = page.getViewport({ scale: 1.0 });
+
+            // Calculate scale to fit width with some padding
+            let responsiveScale = (containerWidth - 40) / originalViewport.width;
+
+            // Adjust zoom factor
+            const finalScale = responsiveScale * zoom;
+
+            // High Resolution Rendering logic
+            // Use device pixel ratio or default to 2.0 for clear text
+            const pixelRatio = window.devicePixelRatio || 1;
+            const renderScale = finalScale * Math.max(pixelRatio, 2.0); // Force at least 2x quality
+
+            // Viewport for layout size (CSS pixels)
+            const viewport = page.getViewport({ scale: finalScale });
+
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            // Set canvas dimensions based on high-res scale (Physical pixels)
+            const renderViewport = page.getViewport({ scale: renderScale });
+            canvas.height = renderViewport.height;
+            canvas.width = renderViewport.width;
+
+            // CSS size matches the intuitive layout viewport (Logical pixels)
+            canvas.style.width = `${viewport.width}px`;
+            canvas.style.height = `${viewport.height}px`;
+
+            // Ensure canvas fits within container visually
+            canvas.style.maxWidth = '100%';
+            canvas.style.height = 'auto';
+            canvas.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+
+            // Improve text rendering quality
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+
+            await page.render({ canvasContext: ctx, viewport: renderViewport }).promise;
+            container.appendChild(canvas);
+
+            updatePageInfo();
+        }
+
+        // Add resize listener for responsiveness
+        window.addEventListener('resize', () => {
+            if (pdfDoc) {
+                // Debounce resize
+                clearTimeout(window.resizeTimer);
+                window.resizeTimer = setTimeout(renderPage, 200);
+            }
+        });
+
+        function updatePageInfo() {
+            const pageInfo = document.getElementById('pageInfo');
+            if (pageInfo && pdfDoc) {
+                pageInfo.textContent = `Page ${currentPage} of ${pdfDoc.numPages}`;
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                renderPage();
+            }
+        }
+
+        function nextPage() {
+            if (pdfDoc && currentPage < pdfDoc.numPages) {
+                currentPage++;
+                renderPage();
+            }
+        }
+
+        function closePdfViewer() {
+            document.getElementById('pdfModal').classList.remove('active');
+            pdfDoc = null;
+            currentPage = 1;
+        }
+
+        function zoomIn() {
+            if (zoom < 3) {
+                zoom += 0.25;
+                updateZoom();
+            }
+        }
+
+        function zoomOut() {
+            if (zoom > 0.5) {
+                zoom -= 0.25;
+                updateZoom();
+            }
+        }
+
+        function updateZoom() {
+            document.getElementById('zoomLevel').textContent = Math.round(zoom * 100) + '%';
+            if (pdfDoc) renderPage();
+        }
+
+        // Close modal on outside click
+        document.getElementById('pdfModal').addEventListener('click', (e) => {
+            if (e.target.id === 'pdfModal') closePdfViewer();
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+    <!-- Cookie Consent Banner (Required for EU users) -->
+    <div id="cookie-consent"
+        style="display:none; position:fixed; bottom:0; width:100%; background:#0f172a; color:#fff; padding:20px; z-index:9999; box-shadow: 0 -4px 10px rgba(0,0,0,0.1);">
+        <div
+            style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+            <p style="margin: 0; font-size: 0.95rem;">We use cookies to improve your experience. By continuing, you
+                agree to our use of cookies.
+                <a href="privacy.html" style="color:#6366f1; text-decoration: underline;">Privacy Policy</a>
+            </p>
+            <button onclick="acceptCookies()"
+                style="background:#6366f1; color:#fff; border:none; padding:10px 25px; cursor:pointer; border-radius: 8px; font-weight: 600; transition: background 0.2s;">Accept</button>
+        </div>
+    </div>
+
+    <script>
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'true');
+            document.getElementById('cookie-consent').style.display = 'none';
+            // initAnalytics(); // Call if you have a specific init function wrapping GA
+        }
+
+        window.onload = function () {
+            if (!localStorage.getItem('cookieConsent')) {
+                document.getElementById('cookie-consent').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions | VisualNotes</title>
+    <meta name="description"
+        content="Common questions about VisualNotes visual study guides for Infrastructure, Cloud, Security, and OSINT. Learn how visual notes can help you master technical concepts faster.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FAQPage Schema for Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is VisualNotes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VisualNotes is a platform that creates visual, handwritten-style study guides for engineering topics. We transform complex technical concepts in Infrastructure, Cloud, Security, and OSINT into easy-to-understand visual notes that help you learn faster."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are VisualNotes guides free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! All VisualNotes guides are 100% free to access. You can read them online or download PDF versions for offline study. No subscription, no paywall, no hidden costs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What topics do you cover?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We cover four main areas: Infrastructure (DNS, networking, protocols), Cloud (AWS, Azure, GCP), Security (cybersecurity fundamentals, encryption, best practices), and OSINT (open-source intelligence techniques). New guides are added regularly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do visual notes help me learn faster?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Visual notes leverage dual coding theory - combining text with visuals helps your brain process and retain information better. Research shows visual learners retain 65% of information versus 10-20% from text alone. Our handwritten style also makes complex topics feel more approachable and less intimidating."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who are these guides for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VisualNotes is perfect for students preparing for certifications, early-career engineers building foundational knowledge, solution architects needing quick references, career switchers entering tech, and anyone who learns better with visuals than dense documentation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I read the guides on mobile?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Our platform is fully compatible with mobile devices, allowing you to pinch-to-zoom and read clearly on any screen size."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I download the PDF guides?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For copyright protection, PDF downloads are currently disabled. All our visual notes are available to view online for free through our web-based PDF reader. You can read, zoom, and navigate through all pages directly in your browser."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often do you add new guides?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We publish new visual study guides regularly, typically 2-4 per month. Subscribe to our newsletter to get notified when new guides are released."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use these guides for certification prep?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely! Many users leverage our visual notes as supplementary study materials for AWS, Azure, CompTIA, CISSP, and other certifications. Our guides simplify complex concepts that often confuse beginners."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+            color: #1e293b;
+            background: #f8fafc;
+        }
+
+        nav {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #6366f1;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 60px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #0f172a;
+        }
+
+        .intro {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 50px;
+        }
+
+        .faq-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #334155;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .faq-item {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border-left: 4px solid #6366f1;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            background: #f1f5f9;
+            transform: translateX(5px);
+        }
+
+        .faq-question {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .faq-question::before {
+            content: 'Q:';
+            color: #6366f1;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .faq-answer {
+            font-size: 1.05rem;
+            color: #475569;
+            line-height: 1.7;
+            padding-left: 30px;
+        }
+
+        .faq-answer strong {
+            color: #0f172a;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .cta-box h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #6366f1;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        ul {
+            margin: 15px 0 15px 40px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: #475569;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html" class="logo">📚 VisualNotes</a>
+    </nav>
+
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+        <p class="intro">
+            Everything you need to know about VisualNotes visual study guides. Can't find what you're looking for? Email
+            us at <strong>hello@visualnotes.tech</strong>
+        </p>
+
+        <!-- General Questions -->
+        <div class="faq-section">
+            <h2 class="section-title">📌 General</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">What is VisualNotes?</div>
+                <div class="faq-answer">
+                    VisualNotes is a platform that creates <strong>visual, handwritten-style study guides</strong> for
+                    engineering topics. We transform complex technical concepts in Infrastructure, Cloud, Security, and
+                    OSINT into easy-to-understand visual notes that help you learn faster.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Are VisualNotes guides free?</div>
+                <div class="faq-answer">
+                    <strong>Yes!</strong> All VisualNotes guides are <strong>100% free</strong> to access online. You
+                    can read them directly in your browser with our web-based PDF viewer. No subscription, no paywall,
+                    no hidden costs.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What topics do you cover?</div>
+                <div class="faq-answer">
+                    We cover four main areas:
+                    <ul>
+                        <li><strong>Infrastructure</strong> - DNS, TCP/IP, networking, load balancing, CDN</li>
+                        <li><strong>Cloud</strong> - AWS, Azure, GCP, serverless, cloud architecture</li>
+                        <li><strong>Security</strong> - Cybersecurity fundamentals, encryption, HTTPS, OAuth</li>
+                        <li><strong>OSINT</strong> - Open-source intelligence gathering techniques</li>
+                    </ul>
+                    New guides are added regularly based on popular demand.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Who creates the visual notes?</div>
+                <div class="faq-answer">
+                    Our team of experienced engineers and technical educators craft each visual note. Every guide is
+                    researched, designed, and reviewed for accuracy before publication to ensure you're learning from
+                    reliable sources.
+                </div>
+            </div>
+        </div>
+
+        <!-- Learning & Usage -->
+        <div class="faq-section">
+            <h2 class="section-title">📚 Learning & Usage</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">How do visual notes help me learn faster?</div>
+                <div class="faq-answer">
+                    Visual notes leverage <strong>dual coding theory</strong> - combining text with visuals helps your
+                    brain process and retain information better. Research shows visual learners retain <strong>65% of
+                        information</strong> versus 10-20% from text alone. Our handwritten style also makes complex
+                    topics feel more approachable and less intimidating.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Who are these guides for?</div>
+                <div class="faq-answer">
+                    VisualNotes is perfect for:
+                    <ul>
+                        <li><strong>Students</strong> preparing for certifications or exams</li>
+                        <li><strong>Early-career engineers</strong> building foundational knowledge</li>
+                        <li><strong>Solution architects</strong> needing quick references</li>
+                        <li><strong>Career switchers</strong> entering tech from other fields</li>
+                        <li><strong>Anyone</strong> who learns better with visuals than dense documentation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I use these guides for certification prep?</div>
+                <div class="faq-answer">
+                    <strong>Absolutely!</strong> Many users leverage our visual notes as <strong>supplementary study
+                        materials</strong> for AWS, Azure, CompTIA, CISSP, and other certifications. Our guides simplify
+                    complex concepts that often confuse beginners. However, we recommend using them alongside official
+                    certification materials for comprehensive preparation.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I read the guides on mobile?</div>
+                <div class="faq-answer">
+                    <strong>Yes!</strong> Our platform is fully optimized for mobile devices. You can read, zoom, and
+                    navigate through all pages directly in your browser on any phone or tablet.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I share these guides with my team or students?</div>
+                <div class="faq-answer">
+                    You're welcome to <strong>share links</strong> to our guides with your team, students, or anyone who
+                    might benefit. Please share the website URL only. <strong>Downloading or redistributing our
+                        copyrighted materials is not permitted.</strong> All content must be accessed through our
+                    official website.
+                </div>
+            </div>
+        </div>
+
+        <!-- Content & Updates -->
+        <div class="faq-section">
+            <h2 class="section-title">📝 Content & Updates</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">How often do you add new guides?</div>
+                <div class="faq-answer">
+                    We publish new visual study guides regularly, typically <strong>2-4 per month</strong>. Subscribe to
+                    our newsletter to get notified when new guides are released. You'll also get early access to guides
+                    in progress.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I request a specific topic?</div>
+                <div class="faq-answer">
+                    <strong>Yes!</strong> We love hearing what topics you want to learn. Email your requests to
+                    <strong>visualnotes.tech@gmail.com</strong> with the subject "Topic Request". Popular requests are
+                    prioritized in our content roadmap.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Do you update guides when technology changes?</div>
+                <div class="faq-answer">
+                    Yes, we regularly review and update our guides to reflect current best practices and technology
+                    changes. Major updates are announced via our newsletter. Each guide includes a "Last Updated" date
+                    so you know how current the information is.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What's the difference between VisualNotes and traditional study guides?</div>
+                <div class="faq-answer">
+                    Traditional study guides are often text-heavy and intimidating. VisualNotes uses:
+                    <ul>
+                        <li><strong>Visual diagrams</strong> instead of walls of text</li>
+                        <li><strong>Handwritten style</strong> that feels approachable</li>
+                        <li><strong>Color coding</strong> to highlight key concepts</li>
+                        <li><strong>One page format</strong> for focused learning (one system per page)</li>
+                        <li><strong>Beginner-friendly language</strong> without unnecessary jargon</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Support -->
+        <div class="faq-section">
+            <h2 class="section-title">🔧 Technical Support</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">Do I need to create an account?</div>
+                <div class="faq-answer">
+                    <strong>No account required!</strong> All guides are instantly accessible without signup. The only
+                    time we ask for your email is if you want to subscribe to our newsletter for updates (which is
+                    optional).
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I print the guides?</div>
+                <div class="faq-answer">
+                    For copyright protection, downloading and printing are currently disabled. All guides are available
+                    to <strong>view online only</strong> through our web-based reader. This helps us protect our
+                    intellectual property while keeping all content free for educational use.
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Box -->
+        <div class="cta-box">
+            <h2>Ready to Start Learning?</h2>
+            <p>Explore our visual study guides and see how fast you can master complex tech concepts.</p>
+            <a href="index.html#guides" class="cta-button">Browse All Guides</a>
+        </div>
+
+        <!-- Still Have Questions -->
+        <div style="text-align: center; padding: 40px; background: #f1f5f9; border-radius: 12px; margin-top: 40px;">
+            <h3 style="font-size: 1.5rem; margin-bottom: 15px; color: #0f172a;">Still have questions?</h3>
+            <p style="font-size: 1.1rem; color: #64748b; margin-bottom: 20px;">
+                We're here to help! Reach out and we'll get back to you within 24 hours.
+            </p>
+            <a href="mailto:hello@visualnotes.tech"
+                style="color: #6366f1; font-weight: 600; text-decoration: none; font-size: 1.2rem;">
+                📧 hello@visualnotes.tech
+            </a>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+</body>
+
+</html>

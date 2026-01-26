@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 7 OSINT Tools in 2026: A Security Researcher's Privacy Kit</title>
+    <meta name="description"
+        content="The best open-source intelligence tools for 2026. From social media recon to domain analysis, here's what security researchers actually use.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Top 7 OSINT Tools in 2026: Security Researcher's Kit">
+    <meta property="og:description"
+        content="The best open-source intelligence tools for 2026. What security researchers actually use.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://visualnotes.tech/blog/osint-tools-2026.html">
+
+    <!-- Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Top 7 OSINT Tools in 2026: A Security Researcher's Privacy Kit",
+      "description": "A comprehensive guide to the best OSINT tools for open-source intelligence gathering in 2026.",
+      "author": {
+        "@type": "Organization",
+        "name": "VisualNotes"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VisualNotes"
+      },
+      "datePublished": "2026-01-24",
+      "dateModified": "2026-01-24"
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: #1e293b;
+            background: #f8fafc;
+        }
+
+        nav {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #6366f1;
+            text-decoration: none;
+        }
+
+        article {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 60px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+
+        .meta {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            color: #334155;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin: 30px 0 15px;
+            color: #475569;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        strong {
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .highlight {
+            background: #fef3c7;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .tool-card {
+            background: #f8fafc;
+            border-left: 4px solid #f97316;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .tool-card h3 {
+            margin-top: 0;
+            color: #f97316;
+        }
+
+        .tool-card .badge {
+            display: inline-block;
+            background: #f97316;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .pro-tip {
+            background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .pro-tip h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        ul,
+        ol {
+            margin: 20px 0 20px 40px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+
+        .warning-box {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box h4 {
+            color: #ef4444;
+            margin-bottom: 10px;
+        }
+
+        code {
+            background: #f1f5f9;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            color: #be123c;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="../index.html" class="logo">📚 VisualNotes</a>
+    </nav>
+
+    <article>
+        <h1>Top 7 OSINT Tools in 2026: A Security Researcher's Privacy Kit</h1>
+
+        <div class="meta">
+            Published January 24, 2026 • 10 min read • Security & OSINT
+        </div>
+
+        <p>Here's something most people don't realize: <strong>most "hacking" isn't code</strong>. It's knowing where to
+            look.</p>
+
+        <p>Open-Source Intelligence (OSINT) is the art of finding publicly available information that most people
+            overlook. And in 2026, the tools have gotten <em>scary good</em>.</p>
+
+        <p>Whether you're a security researcher, journalist, or just privacy-conscious, these are the tools
+            professionals actually use. No fluff, no outdated lists—just what works right now.</p>
+
+        <div class="warning-box">
+            <h4>⚠️ Legal Disclaimer</h4>
+            <p>OSINT tools are legal when used for <strong>ethical purposes</strong> (security research, journalism,
+                background checks). Using them to stalk, harass, or commit crimes is illegal. Always respect privacy
+                laws and terms of service.</p>
+        </div>
+
+        <h2>1. Maltego – The Visual Investigation Powerhouse</h2>
+
+        <div class="tool-card">
+            <h3>🔗 Maltego</h3>
+            <div>
+                <span class="badge">Link Analysis</span>
+                <span class="badge">Visual Mapping</span>
+                <span class="badge">Freemium</span>
+            </div>
+            <p><strong>What it does:</strong> Connects the dots between people, companies, domains, and social media
+                accounts using visual graphs.</p>
+            <p><strong>Best for:</strong> Mapping relationships (e.g., "Who owns this domain?" → "What other domains do
+                they own?" → "What social media accounts are linked?")</p>
+            <p><strong>Why it's #1:</strong> Nothing beats Maltego for <em>seeing</em> connections. It's like
+                mind-mapping for investigators.</p>
+        </div>
+
+        <p><strong>Real-world use case:</strong> A journalist used Maltego to trace a fake news website back to a
+            network of 50+ similar sites, all owned by the same shell company.</p>
+
+        <p><strong>Downside:</strong> The free version (Community Edition) is limited. The paid version ($999/year) is
+            worth it if you're serious.</p>
+
+        <h2>2. Shodan – The Search Engine for Everything Connected</h2>
+
+        <div class="tool-card">
+            <h3>🌐 Shodan</h3>
+            <div>
+                <span class="badge">IoT Search</span>
+                <span class="badge">Vulnerability Scanning</span>
+                <span class="badge">Paid</span>
+            </div>
+            <p><strong>What it does:</strong> Searches for internet-connected devices (webcams, routers, servers,
+                industrial systems).</p>
+            <p><strong>Best for:</strong> Finding exposed databases, misconfigured servers, or vulnerable IoT devices.
+            </p>
+            <p><strong>Why it's powerful:</strong> Google searches websites. Shodan searches <em>everything else</em>.
+            </p>
+        </div>
+
+        <p><strong>Example search:</strong> <code>port:3389 country:US</code> finds all Windows Remote Desktop servers
+            in the U.S. (many with default passwords).</p>
+
+        <p><strong>Ethical note:</strong> Just because something is <em>findable</em> doesn't mean you should access it.
+            Shodan is for <strong>research</strong>, not exploitation.</p>
+
+        <h2>3. theHarvester – Email & Subdomain Hunter</h2>
+
+        <div class="tool-card">
+            <h3>📧 theHarvester</h3>
+            <div>
+                <span class="badge">Email Discovery</span>
+                <span class="badge">Subdomain Enum</span>
+                <span class="badge">Free & Open Source</span>
+            </div>
+            <p><strong>What it does:</strong> Scrapes search engines, LinkedIn, and other sources to find email
+                addresses, subdomains, and employee names for a target domain.</p>
+            <p><strong>Best for:</strong> Reconnaissance before a penetration test or phishing awareness training.</p>
+            <p><strong>Why it's essential:</strong> Email addresses are the gateway to social engineering attacks.
+                Knowing what's exposed helps you defend.</p>
+        </div>
+
+        <p><strong>Command example:</strong> <code>theHarvester -d example.com -b google</code></p>
+
+        <p>This finds all publicly indexed emails and subdomains for <code>example.com</code>.</p>
+
+        <h2>4. SpiderFoot – The All-in-One Automation Beast</h2>
+
+        <div class="tool-card">
+            <h3>🕷️ SpiderFoot</h3>
+            <div>
+                <span class="badge">Automation</span>
+                <span class="badge">100+ Data Sources</span>
+                <span class="badge">Free & Paid</span>
+            </div>
+            <p><strong>What it does:</strong> Automates OSINT by querying 100+ data sources (WHOIS, DNS, social media,
+                breach databases) and correlating results.</p>
+            <p><strong>Best for:</strong> Lazy investigators (in a good way). Set it and forget it.</p>
+            <p><strong>Why it's underrated:</strong> Most people manually check 5-10 sources. SpiderFoot checks
+                <em>everything</em> and highlights what matters.
+            </p>
+        </div>
+
+        <p><strong>Pro tip:</strong> Run SpiderFoot on your <em>own</em> domain first. You'll be shocked at what's
+            publicly exposed.</p>
+
+        <h2>5. Recon-ng – The Modular Framework for Pros</h2>
+
+        <div class="tool-card">
+            <h3>⚙️ Recon-ng</h3>
+            <div>
+                <span class="badge">Modular</span>
+                <span class="badge">Command-Line</span>
+                <span class="badge">Free & Open Source</span>
+            </div>
+            <p><strong>What it does:</strong> A framework (like Metasploit, but for OSINT) with modules for DNS, WHOIS,
+                social media, and more.</p>
+            <p><strong>Best for:</strong> Advanced users who want full control and customization.</p>
+            <p><strong>Why it's powerful:</strong> You can chain modules together (e.g., "Find all subdomains → Check
+                for open ports → Identify technologies").</p>
+        </div>
+
+        <p><strong>Learning curve:</strong> Steeper than GUI tools, but worth it if you're technical.</p>
+
+        <h2>6. Sherlock – Find Usernames Across 300+ Sites</h2>
+
+        <div class="tool-card">
+            <h3>🔍 Sherlock</h3>
+            <div>
+                <span class="badge">Username Search</span>
+                <span class="badge">Social Media</span>
+                <span class="badge">Free & Open Source</span>
+            </div>
+            <p><strong>What it does:</strong> Searches for a username across 300+ social media platforms and websites.
+            </p>
+            <p><strong>Best for:</strong> Finding someone's digital footprint or checking if your username is taken.</p>
+            <p><strong>Why it's useful:</strong> People reuse usernames. One username can lead to Twitter, GitHub,
+                Reddit, and more.</p>
+        </div>
+
+        <p><strong>Command example:</strong> <code>python3 sherlock username123</code></p>
+
+        <p>This checks if <code>username123</code> exists on Instagram, TikTok, LinkedIn, etc.</p>
+
+        <h2>7. OSINT Framework – The Ultimate Resource Directory</h2>
+
+        <div class="tool-card">
+            <h3>📚 OSINT Framework</h3>
+            <div>
+                <span class="badge">Resource Hub</span>
+                <span class="badge">Free</span>
+                <span class="badge">Web-Based</span>
+            </div>
+            <p><strong>What it does:</strong> A categorized directory of <strong>every OSINT tool and resource</strong>
+                (500+ links).</p>
+            <p><strong>Best for:</strong> Finding the right tool for a specific task (e.g., "How do I search Russian
+                social media?").</p>
+            <p><strong>Why it's essential:</strong> You can't remember every tool. This is your cheat sheet.</p>
+        </div>
+
+        <p><strong>Access it here:</strong> <code>osintframework.com</code></p>
+
+        <div class="pro-tip">
+            <h4>🎯 Bonus Tool: Have I Been Pwned</h4>
+            <p>Not strictly OSINT, but <strong>haveibeenpwned.com</strong> lets you check if an email address was in a
+                data breach. Essential for security research and personal privacy checks.</p>
+        </div>
+
+        <h2>How to Use OSINT Tools Ethically</h2>
+
+        <p>With great power comes great responsibility. Here's the golden rule:</p>
+
+        <p><strong>If you wouldn't want it done to you, don't do it to others.</strong></p>
+
+        <p>Ethical OSINT use cases:</p>
+        <ul>
+            <li>✅ Security research (finding vulnerabilities to report)</li>
+            <li>✅ Journalism (verifying sources, investigating corruption)</li>
+            <li>✅ Background checks (hiring, due diligence)</li>
+            <li>✅ Personal privacy audits (what's exposed about <em>you</em>?)</li>
+        </ul>
+
+        <p>Unethical use cases:</p>
+        <ul>
+            <li>❌ Stalking or harassment</li>
+            <li>❌ Doxxing (publishing private info to harm someone)</li>
+            <li>❌ Corporate espionage</li>
+            <li>❌ Accessing systems without permission</li>
+        </ul>
+
+        <h2>Getting Started with OSINT</h2>
+
+        <p>If you're new to OSINT, here's a simple first project:</p>
+
+        <ol>
+            <li><strong>Pick a target</strong> (your own domain or a public figure)</li>
+            <li><strong>Run theHarvester</strong> to find emails and subdomains</li>
+            <li><strong>Use Sherlock</strong> to find social media accounts</li>
+            <li><strong>Map connections in Maltego</strong> (free version)</li>
+        </ol>
+
+        <p>You'll be amazed at how much is publicly available.</p>
+
+        <h2>Key Takeaways</h2>
+
+        <ul>
+            <li><strong>Maltego</strong> – Best for visual link analysis</li>
+            <li><strong>Shodan</strong> – Search engine for IoT and servers</li>
+            <li><strong>theHarvester</strong> – Email and subdomain discovery</li>
+            <li><strong>SpiderFoot</strong> – Automated OSINT aggregation</li>
+            <li><strong>Recon-ng</strong> – Modular framework for advanced users</li>
+            <li><strong>Sherlock</strong> – Username search across 300+ platforms</li>
+            <li><strong>OSINT Framework</strong> – Directory of 500+ tools</li>
+        </ul>
+
+        <p>OSINT isn't about "hacking." It's about <strong>knowing where to look</strong>. And in 2026, the tools make
+            it easier than ever.</p>
+        <div class="share-section" style="margin-top: 60px; padding-top: 40px; border-top: 1px solid #e2e8f0;">
+            <h3 style="margin-top: 0; margin-bottom: 20px;">Share this guide:</h3>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <a href="#" onclick="shareArticle('twitter'); return false;"
+                    style="background: #000000; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s;">𝕏</a>
+                <a href="#" onclick="shareArticle('linkedin'); return false;"
+                    style="background: #0077b5; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s;">in</a>
+                <a href="#" onclick="shareArticle('facebook'); return false;"
+                    style="background: #1877f2; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s;">f</a>
+                <a href="#" onclick="shareArticle('whatsapp'); return false;"
+                    style="background: #25d366; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                    </svg>
+                </a>
+                <a href="#" onclick="copyLink(); return false;"
+                    style="background: #64748b; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s;">🔗</a>
+            </div>
+        </div>
+
+        <script>
+            function shareArticle(platform) {
+                const url = encodeURIComponent(window.location.href);
+                const title = encodeURIComponent(document.title);
+                let shareUrl = '';
+
+                switch (platform) {
+                    case 'twitter':
+                        shareUrl = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+                        break;
+                    case 'linkedin':
+                        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+                        break;
+                    case 'facebook':
+                        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                        break;
+                    case 'whatsapp':
+                        shareUrl = `https://api.whatsapp.com/send?text=${title}%20${url}`;
+                        break;
+                }
+
+                if (shareUrl) window.open(shareUrl, '_blank');
+            }
+
+            function copyLink() {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Link copied to clipboard!');
+            }
+        </script>
+    </article>
+</body>
+
+</html>

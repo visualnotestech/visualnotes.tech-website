@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Dorking: The Complete Guide to Advanced Search Techniques (2026)</title>
+    <meta name="description"
+        content="Master Google Dorking with this comprehensive guide. Learn advanced search operators, ethical hacking techniques, and how to protect your website from dorking attacks.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Google Dorking: The Complete Guide to Advanced Search Techniques">
+    <meta property="og:description"
+        content="Master Google Dorking with this comprehensive guide covering operators, ethics, and protection strategies.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://visualnotes.tech/blog/google-dorking-guide.html">
+
+    <!-- Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Google Dorking: The Complete Guide to Advanced Search Techniques (2026)",
+      "description": "A comprehensive guide to Google Dorking, covering advanced search operators, ethical hacking, legal implications, and protection strategies.",
+      "author": {
+        "@type": "Organization",
+        "name": "VisualNotes"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VisualNotes"
+      },
+      "datePublished": "2026-01-26",
+      "dateModified": "2026-01-26"
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: #1e293b;
+            background: #f8fafc;
+        }
+
+        nav {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #6366f1;
+            text-decoration: none;
+        }
+
+        article {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 60px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+
+        .meta {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            color: #334155;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin: 30px 0 15px;
+            color: #475569;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        strong {
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .highlight {
+            background: #fef3c7;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .warning-box {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box h4 {
+            color: #ef4444;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .info-box h4 {
+            color: #3b82f6;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        ul,
+        ol {
+            margin: 20px 0 20px 40px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+
+        code {
+            background: #f1f5f9;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            color: #be123c;
+        }
+
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background: none;
+            color: #e2e8f0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+
+        th {
+            background: #f1f5f9;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .article-image {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-caption {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        a {
+            color: #6366f1;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #4f46e5;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="../index.html" class="logo">📚 VisualNotes</a>
+    </nav>
+
+    <article>
+        <h1>Google Dorking: The Complete Guide to Advanced Search Techniques (2026)</h1>
+
+        <div class="meta">
+            Published January 26, 2026 • 15 min read • Security & OSINT
+        </div>
+
+        <img src="images/google-dorking-header.png" alt="Google Dorking Advanced Search Techniques"
+            class="article-image">
+        <p class="image-caption">Google Dorking: Unlocking the power of advanced search operators</p>
+
+        <p>Google Dorking is more than just a clever search trick—it's a <strong>powerful reconnaissance
+                technique</strong> used by cybersecurity professionals, researchers, and ethical hackers to uncover
+            information that's publicly accessible but often overlooked.</p>
+
+        <p>In this comprehensive guide, you'll learn everything about Google Dorking: from basic operators to advanced
+            techniques, legal implications, and how to protect your own website from dorking attacks.</p>
+
+        <h2>What is Google Dorking?</h2>
+
+        <p><strong>Google Dorking</strong> (also known as Google Hacking) is the practice of using advanced search
+            operators to find specific information indexed by Google. These operators allow you to filter search results
+            with surgical precision, revealing data that standard searches would never uncover.</p>
+
+        <p>While the technique itself is <span class="highlight">completely legal</span>, it becomes problematic when
+            used to access or exploit sensitive information without authorization.</p>
+
+        <h2>Essential Google Dork Operators</h2>
+
+        <img src="images/dork-operators.png" alt="Essential Google Dork Operators" class="article-image">
+        <p class="image-caption">The fundamental operators every dorker should know</p>
+
+        <p>Here are the core operators that form the foundation of Google Dorking:</p>
+
+        <ul>
+            <li><code>site:</code> - Search within a specific domain or website</li>
+            <li><code>filetype:</code> - Find specific file types (PDF, DOCX, XLS, etc.)</li>
+            <li><code>intitle:</code> - Search for pages with specific words in the title</li>
+            <li><code>inurl:</code> - Find pages with specific terms in the URL</li>
+            <li><code>intext:</code> - Search for specific text within page content</li>
+            <li><code>cache:</code> - View Google's cached version of a page</li>
+            <li><code>related:</code> - Find websites similar to a specified URL</li>
+        </ul>
+
+        <h3>Combining Operators for Power</h3>
+
+        <p>The real power of Google Dorking comes from <strong>combining multiple operators</strong>. For example:</p>
+
+        <pre><code>site:edu filetype:pdf cybersecurity</code></pre>
+
+        <p>This query finds all publicly accessible PDF files related to cybersecurity from educational institutions.
+        </p>
+
+        <h2>Risks and Legal Implications</h2>
+
+        <p>While <strong>Google Dorking</strong> itself is a legitimate search method, it can easily cross ethical or
+            legal lines when used irresponsibly. Understanding these boundaries is crucial for anyone practicing or
+            teaching the technique.</p>
+
+        <h3>Why Google Dorking Can Be Risky</h3>
+
+        <p>Google Dorking can unintentionally expose sensitive data such as:</p>
+
+        <ul>
+            <li>Password files and login credentials</li>
+            <li>Database backups and configuration files</li>
+            <li>Admin panels or control dashboards</li>
+            <li>Private images, videos, or internal reports</li>
+        </ul>
+
+        <p>Even though this information is technically <em>publicly accessible</em>, using it without authorization can
+            constitute a <strong>breach of privacy</strong> or even a <strong>cybercrime</strong> under certain
+            jurisdictions.</p>
+
+        <p>Moreover, automated dorking (via scripts or bots) can trigger <strong>Google's anti-bot protection</strong>
+            or be flagged as reconnaissance by cybersecurity systems.</p>
+
+        <h3>Legal Boundaries and Responsible Use</h3>
+
+        <p>In countries such as the <strong>United States, United Kingdom, India, and the EU</strong>, laws like the
+            <strong>Computer Fraud and Abuse Act (CFAA)</strong> or <strong>GDPR</strong> clearly define the difference
+            between accessing public data and <strong>unauthorized intrusion</strong>.</p>
+
+        <div class="warning-box">
+            <h4>⚠️ Ethical Guidelines</h4>
+            <p>Ethical dorkers must follow these guidelines:</p>
+            <ol>
+                <li><strong>Never exploit or use data found through dorking</strong> for malicious gain.</li>
+                <li><strong>Always obtain written consent</strong> before performing security audits on a target system.
+                </li>
+                <li><strong>Avoid indexing or distributing sensitive data</strong> discovered during testing.</li>
+                <li><strong>Use sandbox environments</strong> to practice queries safely.</li>
+            </ol>
+        </div>
+
+        <p>Following these best practices ensures compliance with ethical hacking frameworks and avoids legal
+            consequences.</p>
+
+        <h2>Protecting Yourself Against Google Dorking</h2>
+
+        <img src="images/website-protection.png" alt="Website Protection Strategy Against Google Dorking"
+            class="article-image">
+        <p class="image-caption">Four-pillar strategy to protect your website from dorking attacks</p>
+
+        <p>If you own a website, you might unknowingly expose private files or directories to Google's index. Here's how
+            to protect your data from Google Dorking attacks.</p>
+
+        <h3>Securing Sensitive Data</h3>
+
+        <ul>
+            <li><strong>Encrypt confidential files</strong> before uploading them to servers.</li>
+            <li><strong>Disable directory listings</strong> on your web server (e.g., via <code>.htaccess</code>).</li>
+            <li><strong>Restrict indexing</strong> for folders that contain private or configuration files.</li>
+            <li><strong>Use HTTPS and authentication systems</strong> for all admin interfaces.</li>
+        </ul>
+
+        <h3>Implementing Robots.txt and Metadata Security</h3>
+
+        <p>The <strong>robots.txt</strong> file is your first line of defense against unwanted indexing. Example:</p>
+
+        <pre><code>User-agent: *
+Disallow: /admin/
+Disallow: /private/</code></pre>
+
+        <p>While this doesn't <em>guarantee</em> privacy (since it's public), it signals to legitimate search engines
+            not to index those pages. Combine this with <strong>meta noindex tags</strong> in sensitive HTML files for
+            stronger protection.</p>
+
+        <h3>Regular Security Audits and Monitoring</h3>
+
+        <p>Performing <strong>monthly Google searches</strong> for your own domain using dorks like:</p>
+
+        <pre><code>site:yourdomain.com filetype:pdf</code></pre>
+
+        <p>can reveal accidentally exposed documents. Additionally, using <strong>Google Search Console</strong> or
+            <strong>security scanners</strong> (like Qualys or Nessus) helps you identify and fix vulnerabilities before
+            they are indexed.</p>
+
+        <h2>Powerful Google Dorking Examples (Safe to Try)</h2>
+
+        <p>Let's look at a few <strong>completely legal and ethical examples</strong> of Google Dorking you can practice
+            for research and learning purposes.</p>
+
+        <h3>Finding Public PDFs and Educational Files</h3>
+
+        <pre><code>filetype:pdf site:.edu cybersecurity</code></pre>
+
+        <p>This query finds publicly accessible PDF files related to cybersecurity from educational institutions.</p>
+
+        <h3>Discovering Publicly Indexed Login Pages (Awareness Only)</h3>
+
+        <pre><code>intitle:"login" inurl:admin site:.org</code></pre>
+
+        <p>This helps security researchers understand how login pages are indexed. <strong>Never attempt to log
+                in</strong> — use this knowledge for awareness and security improvement.</p>
+
+        <h3>Searching for Open Directories and File Types</h3>
+
+        <pre><code>intitle:"index of" "parent directory" filetype:mp3</code></pre>
+
+        <p>A popular way to locate publicly available media or files. Again, the focus is on learning how Google indexes
+            content — not downloading or exploiting any data.</p>
+
+        <p>These examples show how Google Dorking can be a valuable <strong>educational tool</strong> when used
+            responsibly.</p>
+
+        <h2>Tools That Complement Google Dorking</h2>
+
+        <p>Google Dorking alone is powerful, but combining it with specialized tools can expand its potential for
+            research and cybersecurity.</p>
+
+        <h3>Exploit-DB, Shodan, and Censys</h3>
+
+        <ul>
+            <li><strong>Exploit-DB</strong> hosts thousands of security exploits and includes the <strong>Google Hacking
+                    Database (GHDB)</strong> — a repository of curated dorks categorized by vulnerability type.</li>
+            <li><strong>Shodan</strong> allows you to find internet-connected devices (IoT, webcams, routers) indexed by
+                metadata rather than web pages.</li>
+            <li><strong>Censys</strong> performs deep scans of the internet to uncover certificates, IP addresses, and
+                open ports.</li>
+        </ul>
+
+        <p>Together, these tools form a <strong>complete reconnaissance toolkit</strong> for ethical hackers and
+            cybersecurity professionals.</p>
+
+        <h3>Google Hacking Database (GHDB)</h3>
+
+        <p>Maintained by the Exploit-DB community, GHDB is a <strong>centralized collection of tested and verified
+                Google dorks</strong>. Each entry is categorized by purpose — e.g., "Sensitive Directories," "Files
+            Containing Passwords," or "Error Messages."</p>
+
+        <p>Visit <a href="https://www.exploit-db.com/google-hacking-database"
+                target="_blank">https://www.exploit-db.com/google-hacking-database</a> to explore thousands of safe
+            examples and contribute new ones to the community.</p>
+
+        <h2>Ethical Hacking vs. Malicious Hacking</h2>
+
+        <img src="images/ethical-vs-malicious.png" alt="Ethical vs Malicious Hacking Comparison" class="article-image">
+        <p class="image-caption">Understanding the critical difference between ethical and malicious hacking</p>
+
+        <p>It's important to draw a clear line between <strong>ethical</strong> and <strong>malicious</strong> hacking:
+        </p>
+
+        <table>
+            <tr>
+                <th>Aspect</th>
+                <th>Ethical Hacking</th>
+                <th>Malicious Hacking</th>
+            </tr>
+            <tr>
+                <td><strong>Purpose</strong></td>
+                <td>Improve security, test vulnerabilities</td>
+                <td>Steal or exploit data</td>
+            </tr>
+            <tr>
+                <td><strong>Authorization</strong></td>
+                <td>Requires consent and approval</td>
+                <td>Performed without permission</td>
+            </tr>
+            <tr>
+                <td><strong>Outcome</strong></td>
+                <td>Enhances safety</td>
+                <td>Causes damage or loss</td>
+            </tr>
+            <tr>
+                <td><strong>Legality</strong></td>
+                <td>Legal and regulated</td>
+                <td>Illegal and punishable</td>
+            </tr>
+        </table>
+
+        <p>By following the <strong>Code of Ethics</strong> defined by organizations like <strong>EC-Council</strong> or
+            <strong>(ISC)²</strong>, professionals ensure their work contributes positively to the cybersecurity
+            ecosystem.</p>
+
+        <h2>How to Learn Google Dorking Safely</h2>
+
+        <img src="images/learning-path.png" alt="Safe Learning Path for Google Dorking" class="article-image">
+        <p class="image-caption">A structured approach to learning Google Dorking ethically and safely</p>
+
+        <p>If you're inspired to explore Google Dorking, there are several legitimate ways to learn the skill.</p>
+
+        <h3>Online Courses and Certifications</h3>
+
+        <p>Enroll in ethical hacking and cybersecurity programs from reputable platforms like:</p>
+
+        <ul>
+            <li><strong>Coursera</strong> (Cybersecurity Fundamentals by IBM)</li>
+            <li><strong>Udemy</strong> (Ethical Hacking with Google Dorking)</li>
+            <li><strong>EC-Council's CEH Certification</strong> (Certified Ethical Hacker)</li>
+        </ul>
+
+        <p>These programs teach not only the mechanics of dorking but also <strong>cyber law, digital forensics, and
+                responsible disclosure</strong>.</p>
+
+        <h3>Practice Labs and Sandbox Environments</h3>
+
+        <p>To avoid any legal issues, use <strong>controlled environments</strong> like:</p>
+
+        <ul>
+            <li><strong>TryHackMe</strong></li>
+            <li><strong>Hack The Box</strong></li>
+            <li><strong>Metasploit Labs</strong></li>
+        </ul>
+
+        <p>These labs simulate real-world systems where you can safely practice advanced dorking and penetration testing
+            without violating laws.</p>
+
+        <h2>Future of Google Dorking</h2>
+
+        <p>As artificial intelligence (AI) and machine learning (ML) reshape search technology, <strong>Google Dorking
+                is also evolving</strong>.</p>
+
+        <p>Future versions of search engines may use <strong>contextual awareness and semantic indexing</strong>,
+            allowing dorking-style queries to reveal even more refined data.</p>
+
+        <p>Ethical hackers and OSINT researchers are already developing <strong>AI-driven dork generators</strong> that
+            automate query creation, categorize results, and detect exposed data more efficiently.</p>
+
+        <p>However, with great power comes great responsibility — the importance of <strong>digital ethics, privacy
+                laws, and cybersecurity awareness</strong> will only grow.</p>
+
+        <h2>FAQs About Google Dorking</h2>
+
+        <h3>1. Is Google Dorking illegal?</h3>
+        <p>No, Google Dorking itself is not illegal. It becomes illegal only when used to <strong>access private or
+                restricted data</strong> without permission.</p>
+
+        <h3>2. Can I use Google Dorking for cybersecurity research?</h3>
+        <p>Yes, cybersecurity experts use it to find <strong>vulnerabilities, leaks, and misconfigurations</strong>,
+            provided they have authorization.</p>
+
+        <h3>3. Does Google punish users for dorking?</h3>
+        <p>Not usually. However, excessive or automated queries can lead to <strong>temporary IP blocks</strong> or
+            captchas.</p>
+
+        <h3>4. How can I protect my site from Google Dorking?</h3>
+        <p>Use <strong>robots.txt</strong>, <strong>noindex meta tags</strong>, and regular <strong>security
+                audits</strong> to keep sensitive data from being indexed.</p>
+
+        <h3>5. What is the difference between OSINT and Google Dorking?</h3>
+        <p>OSINT (Open-Source Intelligence) is the broader process of collecting public data, while Google Dorking is a
+            <strong>specific technique</strong> used within OSINT.</p>
+
+        <h3>6. What are the best resources to learn Google Dorking?</h3>
+        <p>Start with <strong>Exploit-DB's GHDB</strong>, <strong>ethical hacking courses</strong>, and safe lab
+            environments like <strong>TryHackMe</strong>.</p>
+
+        <h2>Conclusion: Responsible Use of Search Intelligence</h2>
+
+        <p><strong>Google Dorking</strong> is more than a hacker's trick — it's a <strong>digital magnifying
+                glass</strong> that helps us understand how information is indexed, stored, and exposed online. When
+            used responsibly, it's an invaluable skill for <strong>cybersecurity experts, students, and
+                journalists</strong>.</p>
+
+        <p>The key lies in ethics: never exploit what you find, and always respect privacy. As the internet expands and
+            new technologies emerge, <strong>ethical search intelligence</strong> will play a central role in shaping a
+            safer, more transparent digital world.</p>
+
+        <div class="info-box">
+            <h4>📚 External Resource</h4>
+            <p>For a comprehensive list of tested dorks, visit the official <strong>Google Hacking Database
+                    (GHDB)</strong> at <a href="https://www.exploit-db.com/google-hacking-database"
+                    target="_blank">https://www.exploit-db.com/google-hacking-database</a>.</p>
+        </div>
+
+        <h2>Final Takeaway</h2>
+
+        <ul>
+            <li><strong>Google Dorking</strong> is powerful, legal when used ethically, and invaluable for research and
+                cybersecurity.</li>
+            <li>Protect yourself by <strong>securing your data</strong> and <strong>learning within ethical
+                    limits</strong>.</li>
+            <li>Stay informed, practice safely, and remember — knowledge is power only when used responsibly.</li>
+        </ul>
+
+        <div class="share-section" style="margin-top: 60px; padding-top: 40px; border-top: 1px solid #e2e8f0;">
+            <h3 style="margin-top: 0; margin-bottom: 20px;">Share this guide:</h3>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <a href="#" onclick="shareArticle('twitter'); return false;"
+                    style="background: #000000; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s;">𝕏</a>
+                <a href="#" onclick="shareArticle('linkedin'); return false;"
+                    style="background: #0077b5; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s;">in</a>
+                <a href="#" onclick="shareArticle('facebook'); return false;"
+                    style="background: #1877f2; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s;">f</a>
+                <a href="#" onclick="shareArticle('whatsapp'); return false;"
+                    style="background: #25d366; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                    </svg>
+                </a>
+                <a href="#" onclick="copyLink(); return false;"
+                    style="background: #64748b; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s;">🔗</a>
+            </div>
+        </div>
+
+        <script>
+            function shareArticle(platform) {
+                const url = encodeURIComponent(window.location.href);
+                const title = encodeURIComponent(document.title);
+                let shareUrl = '';
+
+                switch (platform) {
+                    case 'twitter':
+                        shareUrl = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+                        break;
+                    case 'linkedin':
+                        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+                        break;
+                    case 'facebook':
+                        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                        break;
+                    case 'whatsapp':
+                        shareUrl = `https://api.whatsapp.com/send?text=${title}%20${url}`;
+                        break;
+                }
+
+                if (shareUrl) window.open(shareUrl, '_blank');
+            }
+
+            function copyLink() {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Link copied to clipboard!');
+            }
+        </script>
+
+    </article>
+</body>
+
+</html>
