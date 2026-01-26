@@ -1740,15 +1740,22 @@
         // ===== GOOGLE SHEETS EMAIL INTEGRATION =====
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx9p3bxHkk-g2TKo_8nJbyrAg5ZR7Py9jgNJtZbGGYDYCN87HvjylYkzj91GUz5ayQFDg/exec'; // Fresh deployment from scratch
 
-        // Email Submission - Final Robust Version
+        // Email Submission - GeoJS & Strict Validation
         async function handleEmailSubmit(e) {
             e.preventDefault();
-            const email = document.getElementById('emailInput').value.trim();
+            const email = document.getElementById('emailInput').value.trim().toLowerCase();
 
-            // Validate email format
+            // 1. Format Validation (Regex)
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 alert('⚠️ Please enter a valid email address');
+                return;
+            }
+
+            // 2. Junk Logic Validation (Block common fakes)
+            const junkList = ['abc@gmail.com', 'test@gmail.com', 'test@test.com', 'admin@gmail.com', 'user@gmail.com'];
+            if (junkList.includes(email) || email.length < 6) {
+                alert('⚠️ Please enter a real email address');
                 return;
             }
 
@@ -1757,43 +1764,36 @@
             button.textContent = 'Subscribing...';
             button.disabled = true;
 
-            // Detect country (Chain of 3 APIs)
+            // Detect country using GeoJS (Reliable & CORS friendly)
             let country = 'Unknown';
             try {
-                // 1. Try ipapi.co
+                // Try GeoJS first (Very reliable)
                 try {
-                    const res = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(1500) });
-                    if (res.ok) { let d = await res.json(); country = d.country_name || d.country; }
+                    const res = await fetch('https://get.geojs.io/v1/ip/country.json', { signal: AbortSignal.timeout(2000) });
+                    if (res.ok) {
+                        let d = await res.json();
+                        country = d.name || d.country;
+                        console.log('✅ GeoJS Country:', country);
+                    }
                 } catch (e) { }
 
-                // 2. If failed, try api.country.is
+                // Fallback to ipapi.co
                 if (country === 'Unknown') {
-                    try {
-                        const res = await fetch('https://api.country.is', { signal: AbortSignal.timeout(1500) });
-                        if (res.ok) { let d = await res.json(); country = d.country; }
-                    } catch (e) { }
-                }
-
-                // 3. If failed, try ipwho.is
-                if (country === 'Unknown') {
-                    try {
-                        const res = await fetch('https://ipwho.is', { signal: AbortSignal.timeout(1500) });
-                        if (res.ok) { let d = await res.json(); country = d.country; }
-                    } catch (e) { }
+                    const res = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(2000) });
+                    if (res.ok) { let d = await res.json(); country = d.country_name; }
                 }
             } catch (e) { console.log('Country detection skipped'); }
 
             if (!country) country = 'Unknown';
 
             // Send to Google Sheets
-            // Use no-cors and text/plain to avoid Preflight/CORS errors
             try {
                 console.log('📧 Submitting:', { email, country });
 
                 await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
-                    headers: { 'Content-Type': 'text/plain' }, // Using text/plain avoids OPTIONS preflight
+                    headers: { 'Content-Type': 'text/plain' },
                     body: JSON.stringify({ email: email, country: country })
                 });
 
@@ -1801,7 +1801,7 @@
                 console.error('Submission error (ignored):', e);
             }
 
-            // ALWAYS SUCCESS - Visual Feedback
+            // Success
             showThankYouModal();
             document.getElementById('emailInput').value = '';
             button.textContent = originalText;
