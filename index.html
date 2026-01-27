@@ -50,7 +50,8 @@
     <meta property="og:title" content="VisualNotes — Handwritten Tech Notes | 100% Free" />
     <meta property="og:description" content="Learn Infrastructure, Cloud & Security visually. Completely free." />
     <meta property="og:url" content="https://visualnotes.tech" />
-    <meta property="og:image" content="https://visualnotes.tech/images/og-preview.png" />
+    <!-- Updated OG Image to a valid existing file -->
+    <meta property="og:image" content="https://visualnotes.tech/blog/images/dns-thumbnail.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
@@ -58,7 +59,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="VisualNotes — Free Tech Notes" />
     <meta name="twitter:description" content="100% free visual study guides" />
-    <meta name="twitter:image" content="https://visualnotes.tech/images/og-preview.png" />
+    <meta name="twitter:image" content="https://visualnotes.tech/blog/images/dns-thumbnail.png" />
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico">
@@ -711,6 +712,10 @@
             margin-top: 20px;
             padding-top: 20px;
             border-top: 1px solid #e2e8f0;
+            flex-wrap: wrap;
+            /* Allows buttons to wrap on small screens */
+            justify-content: center;
+            /* Centers buttons when wrapped */
         }
 
         .share-label {
