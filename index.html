@@ -87,8 +87,8 @@
         href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- PDF.js & Supabase -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <!-- PDF.js - Deferred loading (loads only when needed) -->
+    <!-- Removed from head, will load dynamically when user opens PDF -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <!-- Schema - Educational Organization -->
@@ -1419,7 +1419,7 @@
             <!-- Google Dorking Article -->
             <div class="guide-card">
                 <div class="guide-image">
-                    <img src="blog/images/google-dorking-header.png" alt="Google Dorking Guide"
+                    <img src="blog/images/google-dorking-header.png" alt="Google Dorking Guide" loading="lazy"
                         style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="guide-content">
@@ -1437,7 +1437,7 @@
             <!-- DNS Article -->
             <div class="guide-card">
                 <div class="guide-image">
-                    <img src="blog/images/dns-thumbnail.png" alt="DNS Guide"
+                    <img src="blog/images/dns-thumbnail.png" alt="DNS Guide" loading="lazy"
                         style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="guide-content">
@@ -1454,7 +1454,7 @@
 
             <div class="guide-card">
                 <div class="guide-image">
-                    <img src="blog/images/osint-thumbnail.png" alt="OSINT Tools"
+                    <img src="blog/images/osint-thumbnail.png" alt="OSINT Tools" loading="lazy"
                         style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="guide-content">
@@ -1471,7 +1471,7 @@
 
             <div class="guide-card">
                 <div class="guide-image">
-                    <img src="blog/images/cloud-thumbnail.png" alt="Cloud Comparison"
+                    <img src="blog/images/cloud-thumbnail.png" alt="Cloud Comparison" loading="lazy"
                         style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="guide-content">
@@ -2196,6 +2196,22 @@
         let zoom = 1.0;
         let currentPage = 1;
 
+        // Load PDF.js dynamically (only when needed)
+        let pdfJsLoaded = false;
+        async function loadPdfJs() {
+            if (pdfJsLoaded) return;
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+                script.onload = () => {
+                    pdfJsLoaded = true;
+                    resolve();
+                };
+                script.onerror = reject;
+                document.head.appendChild(script);
+            });
+        }
+
         async function openPdf(guideId) {
             const guide = guides.find(g => g.id === guideId);
             if (!guide) return;
@@ -2203,9 +2219,13 @@
             document.getElementById('pdfModal').classList.add('active');
             document.getElementById('pdfTitle').textContent = guide.title;
             const view = document.getElementById('pdfPages');
-            view.innerHTML = '<div style="color:white; text-align:center; padding:50px;">Loading...</div>';
+            view.innerHTML = '<div style="color:white; text-align:center; padding:50px;">Loading PDF library...</div>';
 
             try {
+                // Load PDF.js if not already loaded
+                await loadPdfJs();
+
+                view.innerHTML = '<div style="color:white; text-align:center; padding:50px;">Loading document...</div>';
                 const loadingTask = pdfjsLib.getDocument(guide.pdfUrl);
                 pdfDoc = await loadingTask.promise;
                 zoom = 1.0;
