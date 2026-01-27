@@ -27,36 +27,50 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 
-    <!-- SEO Strategy 2026: Title & Meta -->
-    <title>VisualNotes | Visual Engineering Study Platform (2026 Updated)</title>
-    <meta name="description"
-        content="Free visual study guides for Infrastructure, Cloud, Security & OSINT. Hand-drawn diagrams + expert articles. Join 1000+ engineers. Subscribe for weekly updates!">
-    <link rel="canonical" href="https://visualnotes.tech/">
+    <!-- Enhanced SEO Title -->
+    <title>VisualNotes — Handwritten Tech Notes for Infrastructure, Cloud & Security | 100% Free</title>
 
-    <!-- Open Graph (Facebook, LinkedIn) -->
-    <meta property="og:title" content="VisualNotes | Visual Engineering Study Platform">
-    <meta property="og:description"
-        content="Discover the ultimate visual study guides for Infrastructure, Cloud, Security & OSINT. Hand-drawn diagrams that make complex systems click.">
-    <meta property="og:image" content="https://visualnotes.tech/og-image.jpg">
-    <meta property="og:url" content="https://visualnotes.tech/">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="VisualNotes">
-    <meta property="article:modified_time" content="2026-01-26T18:48:00+05:30">
+    <!-- Meta Description -->
+    <meta name="description"
+        content="Visual engineering study platform with handwritten-style notes on Infrastructure, Cloud Computing, Cybersecurity, and OSINT. Learn complex tech in minutes. 100% free study guides." />
+
+    <!-- Keywords -->
+    <meta name="keywords"
+        content="handwritten tech notes, visual learning, infrastructure notes, cloud computing guides, cybersecurity tutorials, OSINT tools, Google dorking, free tech education" />
+
+    <!-- Author -->
+    <meta name="author" content="Abhiney Sharma" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://visualnotes.tech/" />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="VisualNotes" />
+    <meta property="og:title" content="VisualNotes — Handwritten Tech Notes | 100% Free" />
+    <meta property="og:description" content="Learn Infrastructure, Cloud & Security visually. Completely free." />
+    <meta property="og:url" content="https://visualnotes.tech" />
+    <meta property="og:image" content="https://visualnotes.tech/images/og-preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="VisualNotes | Visual Engineering Study Platform">
-    <meta name="twitter:description"
-        content="Hand-drawn diagrams that make complex systems click. Infrastructure, Cloud, Security & OSINT.">
-    <meta name="twitter:image" content="https://visualnotes.tech/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="VisualNotes — Free Tech Notes" />
+    <meta name="twitter:description" content="100% free visual study guides" />
+    <meta name="twitter:image" content="https://visualnotes.tech/images/og-preview.png" />
 
     <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Search Console - REPLACE WITH YOUR CODE -->
+    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" />
+    <meta name="msvalidate.01" content="FF16EAE5614B7E219AABDF3874D518AD" />
+
+
+
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,18 +83,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <!-- Schema Markup (JSON-LD) for AEO -->
+    <!-- Schema - Educational Organization -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": "EducationalOrganization",
       "name": "VisualNotes",
       "url": "https://visualnotes.tech",
-      "logo": "https://visualnotes.tech/logo.png",
-      "description": "Visual engineering study platform for Infrastructure, Cloud, Security, and OSINT.",
-      "sameAs": [
-        "https://twitter.com/visualnotes",
-        "https://linkedin.com/company/visualnotes"
+      "description": "100% free visual study guides",
+      "founder": {"@type": "Person", "name": "Abhiney Sharma"},
+      "priceRange": "Free"
+    }
+    </script>
+
+    <!-- Schema - FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is VisualNotes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VisualNotes is a visual engineering study platform with hand-drawn notes on Infrastructure, Cloud, Security, and OSINT. 100% free."
+          }
+        }
       ]
     }
     </script>
@@ -154,14 +183,14 @@
         crossorigin="anonymous"></script>
 
     <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MHPEMGRWXH"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         // Anonymize IP (GDPR requirement)
-        gtag('config', 'G-XXXXXXXXXX', {
+        gtag('config', 'G-MHPEMGRWXH', {
             'anonymize_ip': true,
             'cookie_flags': 'SameSite=None;Secure'
         });
@@ -914,6 +943,273 @@
 
             .guides-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <style>
+        /* ============================================ */
+        /* MOBILE PDF VIEWER FIX */
+        /* ============================================ */
+        @media (max-width: 768px) {
+            .pdf-viewer-controls {
+                display: flex;
+                flex-direction: column;
+                padding: 10px;
+                background: rgba(0, 0, 0, 0.9);
+            }
+
+            .pdf-close-btn,
+            button[onclick*="close" i] {
+                width: 100% !important;
+                padding: 15px !important;
+                font-size: 18px !important;
+                background: #ff4444 !important;
+                color: white !important;
+                border: none !important;
+                font-weight: bold !important;
+                margin-bottom: 10px !important;
+                order: -1 !important;
+            }
+        }
+
+        /* ============================================ */
+        /* FIRST-TIME VISITOR POPUP */
+        /* ============================================ */
+
+        /* Popup Overlay */
+        .vn-popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999999;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        /* Popup Container */
+        .vn-popup-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 90%;
+            z-index: 1000000;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        /* Popup Header */
+        .vn-popup-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px 12px 0 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .vn-popup-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .vn-popup-header h2 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .vn-popup-header p {
+            margin: 8px 0 0 0;
+            font-size: 14px;
+            opacity: 0.95;
+        }
+
+        /* Close Button */
+        .vn-popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 24px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            line-height: 1;
+        }
+
+        .vn-popup-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        /* Popup Body */
+        .vn-popup-body {
+            padding: 30px 25px;
+        }
+
+        .vn-popup-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+        }
+
+        .vn-popup-benefits li {
+            padding: 10px 0;
+            font-size: 15px;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+
+        .vn-popup-benefits li:before {
+            content: "✓";
+            color: #667eea;
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 12px;
+        }
+
+        /* Popup Form */
+        .vn-popup-form {
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+        }
+
+        .vn-popup-input {
+            padding: 14px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border 0.3s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .vn-popup-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .vn-popup-submit {
+            padding: 14px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .vn-popup-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .vn-popup-submit:active {
+            transform: translateY(0);
+        }
+
+        /* No Thanks Link */
+        .vn-popup-skip {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .vn-popup-skip a {
+            color: #999;
+            font-size: 13px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .vn-popup-skip a:hover {
+            color: #667eea;
+            text-decoration: underline;
+        }
+
+        /* Success Message */
+        .vn-popup-success {
+            display: none;
+            text-align: center;
+            padding: 40px 25px;
+        }
+
+        .vn-popup-success-icon {
+            font-size: 64px;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+
+        .vn-popup-success h3 {
+            color: #4CAF50;
+            margin: 0 0 10px 0;
+            font-size: 24px;
+        }
+
+        .vn-popup-success p {
+            color: #666;
+            margin: 0;
+            font-size: 15px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -40%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            .vn-popup-container {
+                width: 95%;
+                max-width: none;
+            }
+
+            .vn-popup-header {
+                padding: 20px;
+            }
+
+            .vn-popup-header h2 {
+                font-size: 20px;
+            }
+
+            .vn-popup-body {
+                padding: 25px 20px;
+            }
+
+            .vn-popup-benefits li {
+                font-size: 14px;
             }
         }
     </style>
@@ -1991,6 +2287,149 @@
                 document.getElementById('cookie-consent').style.display = 'block';
             }
         }
+    </script>
+    <!-- First-Time Visitor Popup -->
+    <div id="vn-popup-overlay" class="vn-popup-overlay">
+        <div class="vn-popup-container">
+            <!-- Popup Header -->
+            <div class="vn-popup-header">
+                <button class="vn-popup-close" onclick="closeSubscribePopup()">×</button>
+                <div class="vn-popup-icon">📚</div>
+                <h2>Get Free Visual Study Guides!</h2>
+                <p>Join 5,000+ engineers learning visually</p>
+            </div>
+
+            <!-- Popup Body -->
+            <div class="vn-popup-body">
+                <div id="vn-popup-form-container">
+                    <ul class="vn-popup-benefits">
+                        <li>New study guides delivered weekly</li>
+                        <li>Exclusive tips & tricks</li>
+                        <li>Early access to new content</li>
+                        <li>100% free, unsubscribe anytime</li>
+                    </ul>
+
+                    <form class="vn-popup-form" onsubmit="submitPopupForm(event)">
+                        <input type="email" class="vn-popup-input" placeholder="Enter your email address" required
+                            id="vn-popup-email">
+                        <button type="submit" class="vn-popup-submit">
+                            Get Free Study Guides →
+                        </button>
+                    </form>
+
+                    <div class="vn-popup-skip">
+                        <a onclick="closeSubscribePopup()">No thanks, maybe later</a>
+                    </div>
+                </div>
+
+                <!-- Success Message (Hidden by default) -->
+                <div id="vn-popup-success" class="vn-popup-success">
+                    <div class="vn-popup-success-icon">✓</div>
+                    <h3>You're All Set!</h3>
+                    <p>Check your email for a welcome message with exclusive resources.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+            // First-Time Visitor Popup Script
+            (function () {
+                // Check if user has already seen the popup
+                const POPUP_COOKIE = 'vn_popup_shown';
+                const POPUP_DELAY = 3000; // 3 seconds delay
+
+                function hasSeenPopup() {
+                    return localStorage.getItem(POPUP_COOKIE) === 'true';
+                }
+
+                function markPopupSeen() {
+                    localStorage.setItem(POPUP_COOKIE, 'true');
+                }
+
+                function showPopup() {
+                    const overlay = document.getElementById('vn-popup-overlay');
+                    if (overlay) {
+                        overlay.style.display = 'block';
+                        document.body.style.overflow = 'hidden'; // Prevent scrolling
+                    }
+                }
+
+                function hidePopup() {
+                    const overlay = document.getElementById('vn-popup-overlay');
+                    if (overlay) {
+                        overlay.style.display = 'none';
+                        document.body.style.overflow = ''; // Restore scrolling
+                    }
+                }
+
+                // Close popup function (global)
+                window.closeSubscribePopup = function () {
+                    hidePopup();
+                    markPopupSeen();
+                };
+
+                // Submit popup form
+                window.submitPopupForm = function (event) {
+                    event.preventDefault();
+
+                    const email = document.getElementById('vn-popup-email').value;
+                    const formContainer = document.getElementById('vn-popup-form-container');
+                    const successContainer = document.getElementById('vn-popup-success');
+
+                    // Here you would normally send the email to your backend
+                    // For now, we'll just show success message
+
+                    // TODO: Replace with your actual form submission
+                    // Example: fetch('/api/subscribe', { method: 'POST', body: JSON.stringify({email}) })
+
+                    // Show success message
+                    formContainer.style.display = 'none';
+                    successContainer.style.display = 'block';
+
+                    // Track subscription in analytics (if you have GA setup)
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'subscribe', {
+                            'event_category': 'popup',
+                            'event_label': 'first_time_visitor'
+                        });
+                    }
+
+                    // Close popup after 3 seconds
+                    setTimeout(function () {
+                        closeSubscribePopup();
+                        // Reset form for next time
+                        setTimeout(function () {
+                            formContainer.style.display = 'block';
+                            successContainer.style.display = 'none';
+                            document.getElementById('vn-popup-email').value = '';
+                        }, 500);
+                    }, 3000);
+                };
+
+                // Close popup when clicking outside
+                document.addEventListener('click', function (event) {
+                    const overlay = document.getElementById('vn-popup-overlay');
+                    if (event.target === overlay) {
+                        closeSubscribePopup();
+                    }
+                });
+
+                // Close popup with Escape key
+                document.addEventListener('keydown', function (event) {
+                    if (event.key === 'Escape') {
+                        const overlay = document.getElementById('vn-popup-overlay');
+                        if (overlay && overlay.style.display === 'block') {
+                            closeSubscribePopup();
+                        }
+                    }
+                });
+
+                // Show popup after delay (only for first-time visitors)
+                if (!hasSeenPopup()) {
+                    setTimeout(showPopup, POPUP_DELAY);
+                }
+            })();
     </script>
 </body>
 
