@@ -2181,9 +2181,14 @@
             const finalScale = responsiveScale * zoom;
 
             // High Resolution Rendering logic
-            // Use device pixel ratio or default to 2.0 for clear text
+            // OPTIMIZED: Reduce scaling on mobile to prevent crashes/lag
+            const isMobile = window.innerWidth < 768;
             const pixelRatio = window.devicePixelRatio || 1;
-            const renderScale = finalScale * Math.max(pixelRatio, 2.0); // Force at least 2x quality
+
+            // Limit mobile to 1.5x quality, Desktop stays sharp at 2.0x+
+            const qualityMultiplier = isMobile ? Math.min(pixelRatio, 1.5) : Math.max(pixelRatio, 2.0);
+
+            const renderScale = finalScale * qualityMultiplier;
 
             // Viewport for layout size (CSS pixels)
             const viewport = page.getViewport({ scale: finalScale });
@@ -2439,9 +2444,19 @@
                         console.error('Popup submission error:', e);
                     }
 
-                    // Show success message
-                    formContainer.style.display = 'none';
-                    successContainer.style.display = 'block';
+                    // SUCCESS ACTION:
+                    // 1. Close the popup
+                    closeSubscribePopup();
+
+                    // 2. Show the shared Thank You modal (matches homepage behavior)
+                    showThankYouModal();
+
+                    // 3. Reset form silently
+                    setTimeout(function () {
+                        emailInput.value = '';
+                        submitBtn.innerText = originalBtnText;
+                        submitBtn.disabled = false;
+                    }, 500);
 
                     // Track subscription
                     if (typeof gtag !== 'undefined') {
@@ -2450,19 +2465,6 @@
                             'event_label': 'first_time_visitor'
                         });
                     }
-
-                    // Close popup after 3 seconds
-                    setTimeout(function () {
-                        closeSubscribePopup();
-                        // Reset form for next time
-                        setTimeout(function () {
-                            formContainer.style.display = 'block';
-                            successContainer.style.display = 'none';
-                            emailInput.value = '';
-                            submitBtn.innerText = originalBtnText;
-                            submitBtn.disabled = false;
-                        }, 500);
-                    }, 3000);
                 };
 
                 // Close popup when clicking outside
