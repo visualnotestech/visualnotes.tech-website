@@ -108,8 +108,10 @@
 </head>
 
 <body>
-    <!-- Import shared data -->
-    <script src="../js/data.js"></script>
+    <!-- Import shared data (Cache bust with timestamp) -->
+    <script>
+        document.write('<script src="../js/data.js?v=' + Date.now() + '"><\/script>');
+    </script>
 
     <div class="container">
         <h1>📢 Newsletter Broadcast</h1>
@@ -171,7 +173,7 @@
         let savedUrl = localStorage.getItem('vn_script_url');
         // Default to the user's deployed URL if not in local storage yet
         if (!savedUrl) {
-            savedUrl = "https://script.google.com/macros/s/AKfycbwsoYqh63aI10Jm9VjkrpcbYvsOZaZyZGXov5IT6GvVLPLCChWYMtm1DGj_bP4Z0_wSCw/exec";
+            savedUrl = "https://script.google.com/macros/s/AKfycbz793qMfYqrJUMneoTizuM_yncCb09FR2oTEDbYHp341L_kodsgqkGVxHdvr7Di6g2Ogw/exec";
         }
         document.getElementById('scriptUrl').value = savedUrl;
 
