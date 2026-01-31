@@ -118,6 +118,12 @@
             ⚠️ <strong>Strictly Private:</strong> Do not share this URL or your Admin Key.
         </div>
 
+        <!-- AUTO-FILL BUTTON -->
+        <button onclick="autoFillLatest()"
+            style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); margin-bottom: 25px;">
+            ✨ Auto-Fill from Latest Content
+        </button>
+
         <!-- Script URL Input (One-time setup per session) -->
         <div class="form-group">
             <label>Google Script URL (Web App URL)</label>
@@ -138,7 +144,7 @@
 
         <div class="form-group">
             <label>Description (Body)</label>
-            <textarea id="desc" rows="4" placeholder="Brief summary of the new content..." required></textarea>
+            <textarea id="desc" rows="6" placeholder="Brief summary of the new content..." required></textarea>
         </div>
 
         <div class="form-group">
@@ -305,47 +311,54 @@
         // Set PDF Worker
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-        async function generateThumbnail() {
-            const fileInput = document.getElementById('pdfInput');
-            if (!fileInput.files[0]) {
-                alert("Please select a PDF file first.");
+        async function autoFillLatest() {
+            // Get latest items (Assuming new items are PREPENDED to the array in data.js)
+            const lastGuide = guides[0];
+            const lastVisual = visualNotes[0];
+
+            if (!lastGuide && !lastVisual) {
+                alert("No content found in data.js");
                 return;
             }
 
-            const file = fileInput.files[0];
-            const fileReader = new FileReader();
+            // Construct Title
+            const titleField = document.getElementById('title');
+            titleField.value = `New Content: ${lastGuide ? lastGuide.title : ''} & ${lastVisual ? lastVisual.title : ''} 🚀`;
 
-            fileReader.onload = async function () {
-                const typedarray = new Uint8Array(this.result);
-                try {
-                    const pdf = await pdfjsLib.getDocument(typedarray).promise;
-                    const page = await pdf.getPage(1);
+            // Construct Description
+            const descField = document.getElementById('desc');
+            let descText = "Hey techies! 👋\n\nWe just dropped new resources:\n\n";
 
-                    const viewport = page.getViewport({ scale: 1.5 }); // 1.5x scale for good quality thumbnail
-                    const canvas = document.getElementById('thumbCanvas');
-                    const context = canvas.getContext('2d');
+            if (lastGuide) {
+                descText += `1. ${lastGuide.title} (Guide)\n${lastGuide.category} guide available now.\n\n`;
+            }
+            if (lastVisual) {
+                descText += `2. ${lastVisual.title} (Visual Note)\n${lastVisual.description}\n\n`;
+            }
+            descText += "Check them out now! 👇";
+            descField.value = descText;
 
-                    canvas.height = viewport.height;
-                    canvas.width = viewport.width;
+            // Construct Primary Link (Guide Priority)
+            const urlField = document.getElementById('url');
+            if (lastGuide) {
+                urlField.value = `https://visualnotes.tech/#${lastGuide.id}`;
+            } else if (lastVisual) {
+                urlField.value = `https://visualnotes.tech/#visual-${lastVisual.id}`;
+            }
 
-                    await page.render({
-                        canvasContext: context,
-                        viewport: viewport
-                    }).promise;
+            // Construct Secondary Link (Visual Priority)
+            const secUrlField = document.getElementById('secondaryUrl');
+            const secLabelField = document.getElementById('secondaryLabel');
 
-                    // Download
-                    const link = document.createElement('a');
-                    link.download = file.name.replace('.pdf', '-thumbnail.png');
-                    link.href = canvas.toDataURL();
-                    link.click();
-
-                } catch (error) {
-                    alert("Error generating thumbnail: " + error.message);
-                }
-            };
-            fileReader.readAsArrayBuffer(file);
+            if (lastGuide && lastVisual) {
+                // If we have both, Primary is Guide, Secondary is Visual
+                secUrlField.value = `https://visualnotes.tech/#visual-${lastVisual.id}`;
+                secLabelField.value = `View ${lastVisual.title}`;
+            } else {
+                secUrlField.value = '';
+                secLabelField.value = '';
+            }
         }
-
     </script>
 </body>
 
