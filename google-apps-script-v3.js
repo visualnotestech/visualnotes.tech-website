@@ -8,6 +8,7 @@
  */
 
 // ===== CONFIGURATION =====
+const SPREADSHEET_ID = '1Jh6JtvL8X6UO6RHgoIcis--pqfvy8CGlNlaT54_JWQw'; // Your subscriber spreadsheet
 const ADMIN_EMAIL = 'visualnotes.tech@gmail.com';
 const WEBSITE_URL = 'https://visualnotes.tech';
 const INSTAGRAM_URL = 'https://www.instagram.com/visualnotes.tech/';
@@ -61,7 +62,7 @@ function doPost(e) {
   // 2. EXISTING SUBSCRIPTION LOGIC (Untouched Core Logic)
   // ---------------------------------------------------------
   try {
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    const sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getActiveSheet();
     let email;
 
     // Parse incoming data (re-using parsed data if available)
@@ -251,7 +252,7 @@ function isValidEmail(email) {
 }
 
 function notifyAdmin(subscriberEmail, timestamp, country) {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  const sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getActiveSheet();
   const adjustedTotal = sheet.getLastRow();
   sendAdminEmail(subscriberEmail, timestamp, adjustedTotal, country);
 }
@@ -390,7 +391,7 @@ function sendEnhancedWelcomeEmail(email) {
 
 // ===== NEWSLETTER FUNCTION (V3 - Multiple Links) =====
 function sendNewContentNotification(contentTitle, contentType, contentURL, contentDescription, secondaryUrl, secondaryLabel) {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  const sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getActiveSheet();
   const data = sheet.getDataRange().getValues();
   const subscribers = [];
 
