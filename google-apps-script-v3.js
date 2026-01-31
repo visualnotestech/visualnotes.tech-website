@@ -68,7 +68,7 @@ function doPost(e) {
     // Parse incoming data (re-using parsed data if available)
     if (requestData && requestData.email) {
       email = requestData.email;
-    } else if (e.parameter.email) {
+    } else if (e.parameter && e.parameter.email) {
       email = e.parameter.email;
     }
 
