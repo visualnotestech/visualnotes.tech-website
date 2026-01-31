@@ -325,11 +325,11 @@
 
             // Construct Title
             const titleField = document.getElementById('title');
-            titleField.value = `New Content: ${lastGuide ? lastGuide.title : ''} & ${lastVisual ? lastVisual.title : ''} 🚀`;
+            titleField.value = `New Content: ${lastGuide ? lastGuide.title : ''} & ${lastVisual ? lastVisual.title : ''}`;
 
             // Construct Description
             const descField = document.getElementById('desc');
-            let descText = "Hey techies! 👋\n\nWe just dropped new resources:\n\n";
+            let descText = "Hey techies!\n\nWe just dropped new resources:\n\n";
 
             if (lastGuide) {
                 descText += `1. ${lastGuide.title} (Guide)\n${lastGuide.category} guide available now.\n\n`;
@@ -337,7 +337,7 @@
             if (lastVisual) {
                 descText += `2. ${lastVisual.title} (Visual Note)\n${lastVisual.description}\n\n`;
             }
-            descText += "Check them out now! 👇";
+            descText += "Check them out now!";
             descField.value = descText;
 
             // Construct Primary Link (Guide Priority)

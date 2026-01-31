@@ -188,6 +188,11 @@
     </script>
 
     <style>
+        /* Ensure structured data is never visible */
+        script[type="application/ld+json"] {
+            display: none !important;
+        }
+
         :root {
             /* Warm Academic Theme - Friendly & Approachable EdTech */
             --primary: #FF6B6B;
@@ -980,6 +985,22 @@
             font-weight: 600;
             color: #475569;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Mobile Fix: Zoom Controls */
+        @media (max-width: 768px) {
+            .zoom-controls {
+                left: 50%;
+                transform: translateX(-50%);
+                top: auto;
+                bottom: 20px;
+                right: auto;
+                background: rgba(255, 255, 255, 0.9);
+                padding: 5px 15px;
+                border-radius: 30px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                width: max-content;
+            }
         }
 
         .lightbox-actions {
