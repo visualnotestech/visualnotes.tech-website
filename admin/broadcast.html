@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisualNotes Admin | Newsletter Broadcast</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B6B;
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f8fafc;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: var(--card);
+            padding: 40px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            background: #334155;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            color: white;
+            font-family: inherit;
+            box-sizing: border-box;
+            /* Important for padding */
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        #status {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            min-height: 1.2em;
+        }
+
+        .warning {
+            background: #451a03;
+            color: #fbbf24;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+</head>
+
+<body>
+    <!-- Import shared data -->
+    <script src="../js/data.js"></script>
+
+    <div class="container">
+        <h1>📢 Newsletter Broadcast</h1>
+
+        <div class="warning">
+            ⚠️ <strong>Strictly Private:</strong> Do not share this URL or your Admin Key.
+        </div>
+
+        <!-- Script URL Input (One-time setup per session) -->
+        <div class="form-group">
+            <label>Google Script URL (Web App URL)</label>
+            <input type="url" id="scriptUrl" placeholder="https://script.google.com/macros/s/..." required>
+        </div>
+
+        <div class="form-group">
+            <label>Admin Key</label>
+            <input type="password" id="adminKey" placeholder="Enter your secret key" required>
+        </div>
+
+        <hr style="border-color: #334155; margin: 25px 0;">
+
+        <div class="form-group">
+            <label>Email Title (Subject)</label>
+            <input type="text" id="title" placeholder="e.g., New Guide: AWS vs Azure" required>
+        </div>
+
+        <div class="form-group">
+            <label>Description (Body)</label>
+            <textarea id="desc" rows="4" placeholder="Brief summary of the new content..." required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Link URL (CTA)</label>
+            <input type="url" id="url" placeholder="https://visualnotes.tech/blog/..." required>
+        </div>
+
+        <button onclick="sendBroadcast()" id="sendBtn">🚀 Send to All Subscribers</button>
+        <div id="status"></div>
+    </div>
+
+    <script>
+        // Pre-fill script URL if saved previously (optional convenience)
+        let savedUrl = localStorage.getItem('vn_script_url');
+        // Default to the user's deployed URL if not in local storage yet
+        if (!savedUrl) {
+            savedUrl = "https://script.google.com/macros/s/AKfycbwsoYqh63aI10Jm9VjkrpcbYvsOZaZyZGXov5IT6GvVLPLCChWYMtm1DGj_bP4Z0_wSCw/exec";
+        }
+        document.getElementById('scriptUrl').value = savedUrl;
+
+        const savedKey = localStorage.getItem('vn_admin_key');
+        if (savedKey) document.getElementById('adminKey').value = savedKey;
+
+        async function sendBroadcast() {
+            const scriptUrl = document.getElementById('scriptUrl').value;
+            const adminKey = document.getElementById('adminKey').value;
+            const title = document.getElementById('title').value;
+            const desc = document.getElementById('desc').value;
+            const url = document.getElementById('url').value;
+            const status = document.getElementById('status');
+            const btn = document.getElementById('sendBtn');
+
+            if (!scriptUrl || !adminKey || !title || !desc || !url) {
+                status.innerHTML = '<span style="color: #ff6b6b">Please fill in all fields</span>';
+                return;
+            }
+
+            // Save creds for next time
+            localStorage.setItem('vn_script_url', scriptUrl);
+            localStorage.setItem('vn_admin_key', adminKey);
+
+            btn.disabled = true;
+            btn.innerText = "Sending...";
+            status.innerText = "";
+
+            try {
+                await fetch(scriptUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: JSON.stringify({
+                        action: 'broadcast',
+                        adminKey: adminKey,
+                        title: title,
+                        description: desc,
+                        url: url
+                    })
+                });
+
+                status.innerHTML = '<span style="color: #4ade80">✅ Broadcast queued! Checks logs if emails don\'t arrive.</span>';
+                document.getElementById('title').value = '';
+                document.getElementById('desc').value = '';
+                document.getElementById('url').value = '';
+
+            } catch (error) {
+                console.error(error);
+                status.innerHTML = '<span style="color: #ff6b6b">❌ Network Error: ' + error.message + '</span>';
+            }
+
+            btn.disabled = false;
+            btn.innerText = "🚀 Send to All Subscribers";
+        }
+
+        // ===== CONTENT SYNC & THUMBNAIL TOOLS =====
+        async function syncContent() {
+            const scriptUrl = document.getElementById('scriptUrl').value;
+            const adminKey = document.getElementById('adminKey').value;
+            const status = document.getElementById('status');
+
+            if (!scriptUrl || !adminKey) {
+                status.innerHTML = '<span style="color: #ff6b6b">Please enter Script URL and Admin Key first</span>';
+                return;
+            }
+
+            const syncBtn = document.getElementById('syncBtn');
+            syncBtn.disabled = true;
+            syncBtn.innerText = "Syncing...";
+
+            // Prepare Data from imported data.js
+            // We take the top 2 items for "Latest"
+            const latestVisuals = visualNotes.slice(0, 2).map(v => ({
+                title: v.title,
+                url: `https://visualnotes.tech/#visual-${v.id}`,
+                description: v.description
+            }));
+
+            const latestGuides = guides.slice(0, 3).map(g => ({
+                title: g.title,
+                category: g.category
+            }));
+
+            try {
+                await fetch(scriptUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: JSON.stringify({
+                        action: 'update_content',
+                        adminKey: adminKey,
+                        latestArticles: latestVisuals,
+                        latestGuides: latestGuides
+                    })
+                });
+                status.innerHTML = '<span style="color: #4ade80">✅ Content Synced to Welcome Email!</span>';
+            } catch (error) {
+                status.innerHTML = '<span style="color: #ff6b6b">❌ Sync Failed: ' + error.message + '</span>';
+            }
+            syncBtn.disabled = false;
+            syncBtn.innerText = "🔄 Sync Local Content to Welcome Email";
+        }
+    </script>
+
+    <hr style="border-color: #334155; margin: 25px 0;">
+
+    <!-- Automation Tools Section -->
+    <div style="background: #0f172a; padding: 20px; border-radius: 10px; border: 1px solid #334155;">
+        <h2 style="color: #4ade80; margin-top: 0; font-size: 1.2rem;">⚡ Automation Tools</h2>
+
+        <button id="syncBtn" onclick="syncContent()" style="background: #0ea5e9; margin-bottom: 15px;">
+            🔄 Sync Local Content to Welcome Email
+        </button>
+        <p style="font-size: 0.8rem; color: #94a3b8; margin: 0 0 15px 0;">
+            Updates the "Latest Articles" and "Popular Guides" in the Welcome Email based on your local
+            <code>data.js</code> file.
+        </p>
+
+        <h3 style="color: #fbbf24; font-size: 1rem; margin-top: 20px;">🖼️ Thumbnail Generator</h3>
+        <input type="file" id="pdfInput" accept="application/pdf" style="background: var(--bg);">
+        <button onclick="generateThumbnail()" style="background: #fbbf24; color: #451a03;">Generat & Download
+            PNG</button>
+        <canvas id="thumbCanvas" style="display: none;"></canvas>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        // Set PDF Worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        async function generateThumbnail() {
+            const fileInput = document.getElementById('pdfInput');
+            if (!fileInput.files[0]) {
+                alert("Please select a PDF file first.");
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const fileReader = new FileReader();
+
+            fileReader.onload = async function () {
+                const typedarray = new Uint8Array(this.result);
+                try {
+                    const pdf = await pdfjsLib.getDocument(typedarray).promise;
+                    const page = await pdf.getPage(1);
+
+                    const viewport = page.getViewport({ scale: 1.5 }); // 1.5x scale for good quality thumbnail
+                    const canvas = document.getElementById('thumbCanvas');
+                    const context = canvas.getContext('2d');
+
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+
+                    await page.render({
+                        canvasContext: context,
+                        viewport: viewport
+                    }).promise;
+
+                    // Download
+                    const link = document.createElement('a');
+                    link.download = file.name.replace('.pdf', '-thumbnail.png');
+                    link.href = canvas.toDataURL();
+                    link.click();
+
+                } catch (error) {
+                    alert("Error generating thumbnail: " + error.message);
+                }
+            };
+            fileReader.readAsArrayBuffer(file);
+        }
+
+    </script>
+</body>
+
+</html>
