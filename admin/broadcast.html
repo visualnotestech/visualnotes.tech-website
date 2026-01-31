@@ -142,8 +142,18 @@
         </div>
 
         <div class="form-group">
-            <label>Link URL (CTA)</label>
+            <label>Link URL (Primary CTA)</label>
             <input type="url" id="url" placeholder="https://visualnotes.tech/blog/..." required>
+        </div>
+
+        <!-- V3: Secondary CTA -->
+        <div class="form-group" style="border-top: 1px solid #334155; padding-top: 20px;">
+            <label style="color: #94a3b8; margin-bottom: 10px; display: block;">Secondary Link (Optional)</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <input type="url" id="secondaryUrl" placeholder="URL (e.g. Visual Link)" style="font-size: 0.9em;">
+                <input type="text" id="secondaryLabel" placeholder="Button Text (e.g. View Visual)"
+                    style="font-size: 0.9em;">
+            </div>
         </div>
 
         <button onclick="sendBroadcast()" id="sendBtn">🚀 Send to All Subscribers</button>
@@ -168,11 +178,15 @@
             const title = document.getElementById('title').value;
             const desc = document.getElementById('desc').value;
             const url = document.getElementById('url').value;
+            // V3: Get secondary inputs
+            const secondaryUrl = document.getElementById('secondaryUrl') ? document.getElementById('secondaryUrl').value : '';
+            const secondaryLabel = document.getElementById('secondaryLabel') ? document.getElementById('secondaryLabel').value : '';
+
             const status = document.getElementById('status');
             const btn = document.getElementById('sendBtn');
 
             if (!scriptUrl || !adminKey || !title || !desc || !url) {
-                status.innerHTML = '<span style="color: #ff6b6b">Please fill in all fields</span>';
+                status.innerHTML = '<span style="color: #ff6b6b">Please fill in all required fields</span>';
                 return;
             }
 
@@ -194,14 +208,18 @@
                         adminKey: adminKey,
                         title: title,
                         description: desc,
-                        url: url
+                        url: url,
+                        secondaryUrl: secondaryUrl, // V3
+                        secondaryLabel: secondaryLabel // V3
                     })
                 });
-
-                status.innerHTML = '<span style="color: #4ade80">✅ Broadcast queued! Checks logs if emails don\'t arrive.</span>';
+                status.innerHTML = '<span style="color: #4ade80">✅ Broadcast queued! Check logs.</span>';
+                // Clear fields but keep keys
                 document.getElementById('title').value = '';
                 document.getElementById('desc').value = '';
                 document.getElementById('url').value = '';
+                if (document.getElementById('secondaryUrl')) document.getElementById('secondaryUrl').value = '';
+                if (document.getElementById('secondaryLabel')) document.getElementById('secondaryLabel').value = '';
 
             } catch (error) {
                 console.error(error);

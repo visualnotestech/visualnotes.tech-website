@@ -9,8 +9,8 @@ Follow these steps to activate your new newsletter notification system.
 3.  **Backup (Optional)**: If you have existing code, copy it to a notepad just in case.
 4.  **Replace Code**:
     *   Delete all the code in the script editor (`Code.gs`).
-    *   Open `google-apps-script-v2.js` from your project folder.
-    *   **CRITICAL**: This file now contains YOUR original logic + the new features.
+    *   Open `google-apps-script-v3.js` from your project folder.
+    *   **CRITICAL**: This file now contains YOUR original logic + V3 features (Multiple Buttons).
     *   Copy **ALL** the text and paste it into the Google Script editor.
 5.  **Set Your Admin Password**:
     *   In the Google Script editor, look for `function setup()`.
