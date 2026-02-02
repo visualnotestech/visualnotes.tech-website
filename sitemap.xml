@@ -8,9 +8,19 @@
     <!-- Homepage -->
     <url>
         <loc>https://visualnotes.tech/</loc>
-        <lastmod>2026-01-27</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://visualnotes.tech/visuals/images/ospf-operations.jpg</image:loc>
+            <image:title>OSPF Operations Visual Guide</image:title>
+            <image:caption>Visual guide to OSPF neighbor discovery and LSDB synchronization.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://visualnotes.tech/visuals/images/ipsec-vpn-cheat-sheet.jpg</image:loc>
+            <image:title>IPsec VPN Cheat Sheet</image:title>
+            <image:caption>Technical cheat sheet for IPsec VPN phases and protocols.</image:caption>
+        </image:image>
     </url>
     
     <!-- Blog Articles -->

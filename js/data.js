@@ -6,6 +6,22 @@
 // ===== VISUAL NOTES DATA =====
 const visualNotes = [
     {
+        id: "ospf-operations",
+        title: "OSPF Operations: Choosing the Best Routes",
+        description: "Visual guide to OSPF: Neighbor Discovery, LSA Exchange, LSDB synchronization, SPF Algorithm (Dijkstra's), and DR/BDR roles.",
+        image: "visuals/images/ospf-operations.jpg",
+        tags: ["Networking", "Infrastructure", "Routing", "OSPF"],
+        dateAdded: "2026-02-02"
+    },
+    {
+        id: "ipsec-vpn",
+        title: "IPsec VPN: The 5-Minute Technical Cheat Sheet",
+        description: "Master IPsec VPNs in minutes. Visual breakdown of Core Concepts (IKE, ESP, AH), Phases 1 & 2 handshake, and Tunnel vs Transport modes.",
+        image: "visuals/images/ipsec-vpn-cheat-sheet.jpg",
+        tags: ["Networking", "Security", "VPN", "Infrastructure"],
+        dateAdded: "2026-02-02"
+    },
+    {
         id: "load-balancer-types",
         title: "Load Balancer Types: Quick Guide",
         description: "Visual comparison of Layer 4 vs Layer 7 load balancers, Hardware vs Software, and Global Load Balancing.",
