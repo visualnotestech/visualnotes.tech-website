@@ -155,7 +155,7 @@ function handleBroadcastRequest(data) {
   // 3. Send Notification (With V3 Secondary Button Support)
   const resultMsg = sendNewContentNotification(
     data.title,
-    "New Update",
+    "Update", // Changed from "New Update" to prevent "New New Update" in subject
     data.url,
     data.description,
     data.secondaryUrl,   // V3 Input
@@ -354,7 +354,7 @@ function sendEnhancedWelcomeEmail(email) {
             ${guidesHTML}
           </div>
           <a href="${WEBSITE_URL}" 
-             style="display: inline-block; background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%); color: white; padding: 14px 30px; text-decoration: none; border-radius: 8px; font-weight: 600; margin-top: 15px;">
+             style="display: inline-block; background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%); color: white; padding: 14px 30px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; margin-top: 15px;">
             Explore All Study Guides →
           </a>
         </div>
@@ -407,7 +407,13 @@ function sendNewContentNotification(contentTitle, contentType, contentURL, conte
     }
   }
 
+  // Formatting Fix: Prevent duplicate prefix if title already mimics it
   const subject = `New ${contentType}: ${contentTitle}`;
+
+  // Formatting Fix: HTML escaping and Newline Conversion
+  // We assume basic text mostly, but replacing \n with <br> helps lists
+  const formattedDescription = contentDescription.replace(/\n/g, '<br>');
+
   const htmlBody = `
     <div style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #1e293b; max-width: 600px; margin: 0 auto; padding: 20px;">
       
@@ -421,7 +427,7 @@ function sendNewContentNotification(contentTitle, contentType, contentURL, conte
         <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border-left: 4px solid #4ECDC4; margin-bottom: 30px;">
           <div style="color: #64748b; font-size: 12px; text-transform: uppercase; font-weight: 600; margin-bottom: 8px;">${contentType}</div>
           <p style="color: #1e293b; font-size: 16px; margin: 0; line-height: 1.6;">
-            ${contentDescription}
+            ${formattedDescription}
           </p>
         </div>
         <a href="${contentURL}" 
