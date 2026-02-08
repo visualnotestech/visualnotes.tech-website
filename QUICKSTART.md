@@ -35,7 +35,7 @@
 ## 📝 Before You Deploy - Checklist
 
 ### Essential:
-- [ ] Update email in footer (hello@visualnotes.tech)
+- [ ] Update email in footer (visualnotes.tech@gmail.com)
 - [ ] Add your actual PDF URLs in `guidesData` array
 - [ ] Test email submission locally
 - [ ] Check all links work
@@ -188,7 +188,7 @@ Once you have traffic:
 ## 🤝 Get Help
 
 Stuck? Need help?
-- 📧 Email: hello@visualnotes.tech
+- 📧 Email: visualnotes.tech@gmail.com
 - 💬 Open GitHub issue
 - 🐦 Twitter: @visualnotes
 

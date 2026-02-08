@@ -52,6 +52,13 @@
         <priority>0.9</priority>
     </url>
     
+    <url>
+        <loc>https://visualnotes.tech/blog/microsegmentation-crawl-walk-run-zero-trust.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
     <!-- Static Pages -->
     <url>
         <loc>https://visualnotes.tech/about.html</loc>

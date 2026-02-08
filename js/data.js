@@ -60,7 +60,23 @@ const visualNotes = [
         image: "visuals/images/http-vs-https.jpg",
         tags: ["Security", "Web Development", "Networking"],
         dateAdded: "2026-01-27"
-    }
+    },
+    {
+        id: "network-rack",
+        title: "Network Rack Explained",
+        description: "Visual breakdown of a standard network rack: Router, Firewall, Switch, Patch Panel, UPS, and PDU.",
+        image: "visuals/images/network-rack-components.jpg",
+        tags: ["Networking", "Infrastructure", "Hardware"],
+        dateAdded: "2026-02-08"
+    },
+    {
+        id: "memory-subsystem",
+        title: "Memory Subsystem: Dell PowerEdge",
+        description: "Detailed look at server memory architecture, DIMM slots, channels, and population rules.",
+        image: "visuals/images/memory-subsystem-architecture.jpg",
+        tags: ["Server", "Hardware", "Infrastructure"],
+        dateAdded: "2026-02-08"
+    },
     // Add more visual notes here as you create them
 ];
 

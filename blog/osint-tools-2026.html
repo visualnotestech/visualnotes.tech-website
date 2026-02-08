@@ -7,7 +7,9 @@
     <title>Top 7 OSINT Tools in 2026: A Security Researcher's Privacy Kit</title>
     <meta name="description"
         content="The best open-source intelligence tools for 2026. From social media recon to domain analysis, here's what security researchers actually use.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Top 7 OSINT Tools in 2026: Security Researcher's Kit">
@@ -67,11 +69,44 @@
             z-index: 100;
         }
 
+        /* Branding Styles matching Homepage */
+        :root {
+            --primary: #FF6B6B;
+            --text-dark: #2D3436;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+
         .logo {
-            font-size: 1.5rem;
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+            color: var(--primary);
             font-weight: 700;
-            color: #6366f1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             text-decoration: none;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-tagline {
+            font-family: 'Caveat', cursive;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-top: -8px;
+            margin-left: 36px;
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-color: var(--primary);
         }
 
         article {
@@ -199,7 +234,14 @@
 
 <body>
     <nav>
-        <a href="../index.html" class="logo">📚 VisualNotes</a>
+        <div class="nav-container">
+            <a href="../index.html" style="text-decoration: none;">
+                <div class="logo-wrapper">
+                    <div class="logo">📚 VisualNotes</div>
+                    <div class="logo-tagline">Learn visually. Think Clearly.</div>
+                </div>
+            </a>
+        </div>
     </nav>
 
     <article>
