@@ -128,6 +128,15 @@ const guides = [
         thumbnail: "guides/thumbnails/snmp-fundamentals-guide.png"
     },
     {
+        id: "ntp-study-notes",
+        title: "NTP Study Notes",
+        category: "Infrastructure",
+        pages: "15 Pages",
+        description: "Handwritten study notes on Network Time Protocol (NTP), covering strata, synchronization, and configuration.",
+        pdfUrl: "guides/networking/ntp-study-notes.pdf",
+        thumbnail: "guides/thumbnails/ntp-study-notes.png"
+    },
+    {
         id: "stp",
         title: "Spanning Tree (STP)",
         category: "Infrastructure",
