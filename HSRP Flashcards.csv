@@ -1,0 +1,55 @@
+Question,Answer
+What is the primary objective of the Hot Standby Router Protocol (HSRP)?,To provide network redundancy for IP networks by ensuring transparent recovery from first-hop failures.
+How do routers participating in HSRP appear to hosts on a local area network?,They appear as a single virtual router sharing a single IP and MAC address.
+What is the limitation of using Proxy ARP for router redundancy if a router fails?,The host continues sending packets to the failed router's MAC address until the ARP entry times out or the host reboots.
+Why is running dynamic routing protocols like RIP on every host often impractical?,"It involves high administrative and processing overhead, security issues, and lack of protocol support on all platforms."
+What is the main drawback of using RIP for host-level router discovery?,It is slow to adapt to changes in the network topology.
+"In ICMP Router Discovery Protocol (IRDP), how does a host detect that its configured router is unavailable?",The host stops receiving periodic hello multicast messages from the router.
+Why is the default IRDP configuration unsuitable for rapid first-hop failure detection?,"The default advertisement rate is only every 7 to 10 minutes, with a 30-minute lifetime."
+What is the limitation of DHCP regarding router redundancy?,DHCP provides a default gateway but lacks a mechanism to switch to an alternative if that gateway fails.
+"In an HSRP group, what is the role of the 'Active' router?",It is responsible for forwarding packets sent by hosts to the virtual router.
+What happens to the 'Standby' router if the 'Active' router fails?,The Standby router assumes the packet-forwarding duties of the Active router.
+How does HSRP minimize network traffic after the election process is complete?,Only the Active and Standby routers send periodic HSRP messages.
+What defines an HSRP 'standby group'?,A set of routers working together to present the illusion of a single virtual router to LAN hosts.
+"On most media types, what is the standard format for an HSRP virtual MAC address?","$0000.0c07.ac**$, where $**$ represents the HSRP group number in hex."
+Under what hardware condition would a router use its burned-in MAC address instead of the HSRP MAC while Active?,"When the Ethernet controller only recognizes a single MAC address (e.g., Cisco 2500/4500 Lance controllers)."
+What does the HSRP 'preemption' feature allow a higher priority router to do?,It allows the higher priority router to immediately take over the Active role from a lower priority router.
+How is HSRP priority determined when comparing two routers?,"By the configured priority value first, and then by the highest IP address as a tie-breaker."
+What message does a router send when it preempts a lower priority Active router?,A coup message.
+What is the purpose of the 'preempt delay' feature in HSRP?,To allow the router time to populate its routing table before assuming the Active role.
+"In Cisco IOS 12.0(9) and later, when does the HSRP preempt delay timer begin?",It begins as soon as preemption is first attempted.
+What HSRP feature allows the priority of a group to change based on the status of a router interface?,Interface tracking.
+"By default, by how much is the HSRP priority reduced when a tracked interface goes down?",10
+How does HSRP handle priority reduction when multiple tracked interfaces are down?,The priority is reduced by the cumulative sum of the decrement values for all down interfaces.
+"If a router has a priority of 110 and two tracked interfaces (default decrement) go down, what is its new priority?",90
+The 'use burned-in address' (use-bia) feature was primarily introduced to solve issues in which environment?,Token Ring interfaces using functional addresses in a multiple-ring source-routed bridging environment.
+What is a major disadvantage for hosts when 'use-bia' is configured in HSRP?,"The virtual IP address moves to a different MAC address during failover, which some host ARP implementations cannot handle."
+Which router service specifically breaks when the HSRP 'use-bia' command is configured?,Proxy ARP.
+What does the 'Multiple HSRP' (MHSRP) feature enable in a network?,Redundancy and load-sharing by allowing routers to be Active for one group and Standby for another.
+For what purpose would an administrator use the 'standby mac-address' command?,To specify a virtual MAC address for protocols like APPN that use MAC addresses for first-hop identification.
+What does the 'debug standby terse' command display?,"HSRP errors, events, and packets, excluding hello and advertisement packets."
+How can HSRP debug output be filtered to a specific group and interface?,By using the 'debug condition standby <interface> <group>' command.
+"In enhanced HSRP debugging, what do the lowercase letter codes (e.g., a/, b/, c/) represent?",Events of the HSRP finite state machine as documented in RFC 2281.
+What is the function of the HSRP 'authentication' string?,It is a shared clear-text key in HSRP packets that prevents low-priority routers from learning standby values from high-priority routers.
+What is the 'IP Redundancy' feature in HSRP designed to provide for client applications?,A mechanism to implement stateful failover by providing HSRP state information to the application.
+Which application is a common implementation of HSRP IP Redundancy?,Mobile IP Home Agents.
+What is the significance of the HSRP MIB 'ciscoMgmt 106'?,It is the MIB module used to manage HSRP.
+Why is it necessary for HSRP group numbers to be unique across all sub-interfaces on the same main interface?,"Because sub-interfaces share a single SNMP interface index, making non-unique group numbers indistinguishable in the MIB."
+"In an MPLS VPN environment, what does HSRP track to ensure PE-to-Provider connectivity redundancy?",The interfaces connecting the Provider Edge (PE) routers to the rest of the provider network.
+Why are ICMP redirects typically disabled by default on HSRP-enabled interfaces?,To prevent hosts from being redirected away from the HSRP virtual IP address to a physical IP that might fail.
+How can a network utilize both HSRP and ICMP redirects safely?,By running multiple HSRP groups so that a redirect can point a host to another router's virtual HSRP IP instead of its physical IP.
+What is the result of a lower priority Active router receiving a 'coup' message?,The router transitions to the speak state and sends a resign message.
+"If no decrement value is specified in an HSRP interface tracking command, what value is used?",10
+What happens if a router starts up with a down interface in Cisco IOS versions prior to 12.1 regarding HSRP tracking?,HSRP interface tracking incorrectly regards the down interface as being up.
+To which interface does the 'use-bia' command apply if configured on a sub-interface in Cisco IOS versions before 12.0(6.2)?,It is applied to the main interface and all of its sub-interfaces.
+Which command allows HSRP 'use-bia' to be restricted to a single sub-interface in modern IOS?,standby use-bia scope interface.
+Which HSRP state indicates a router is sending and receiving hello messages and contesting for the Active/Standby roles?,Speak state.
+What is the HSRP 'Listen' state?,The state where a router knows the virtual IP address but is neither the Active nor Standby router.
+What protocol does HSRP use to exchange status messages between group members?,UDP (implied as it exchanges status messages to monitor peers).
+How does HSRP ensure 'transparent' recovery for hosts?,By maintaining a consistent IP and MAC address regardless of which physical router is currently forwarding traffic.
+What is the HSRP group number range?,0 to 255.
+"In HSRP debugging, what does 'SB1' typically represent in the output?",It refers to the HSRP instance (Standby group 1).
+What command is used to check if an HSRP virtual IP is in the correct VRF ARP table?,show ip arp vrf <vrf-name>.
+What is the default HSRP group number if none is specified in the configuration?,Group 0.
+Which feature allows HSRP to be used alongside DECnet and XNS on the same router?,Use Burned-In Address (use-bia).
+"In HSRP, what is a 'gratuitous ARP'?",A message sent by a newly Active router to update the ARP caches of hosts with its MAC address.
