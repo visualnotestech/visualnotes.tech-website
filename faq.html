@@ -8,7 +8,9 @@
     <meta name="description"
         content="Common questions about VisualNotes visual study guides for Infrastructure, Cloud, Security, and OSINT. Learn how visual notes can help you master technical concepts faster.">
     <link rel="canonical" href="https://visualnotes.tech/faq.html">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <!-- FAQPage Schema for Rich Snippets -->
     <script type="application/ld+json">
@@ -112,11 +114,32 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #6366f1;
+        .logo-wrapper {
+            display: flex;
+            flex-direction: column;
             text-decoration: none;
+        }
+
+        .logo {
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+            color: #FF6B6B;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .logo-tagline {
+            font-family: 'Caveat', cursive;
+            font-size: 1.1rem;
+            color: #2D3436;
+            margin-top: -8px;
+            margin-left: 36px;
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-color: #FF6B6B;
         }
 
         .container {
@@ -255,7 +278,10 @@
 
 <body>
     <nav>
-        <a href="index.html" class="logo">📚 VisualNotes</a>
+        <a href="index.html" class="logo-wrapper">
+            <div class="logo">📚 VisualNotes</div>
+            <div class="logo-tagline">Learn visually. Think Clearly.</div>
+        </a>
     </nav>
 
     <div class="container">
