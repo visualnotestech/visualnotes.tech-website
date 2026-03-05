@@ -21,6 +21,21 @@
             <image:title>IPsec VPN Cheat Sheet</image:title>
             <image:caption>Technical cheat sheet for IPsec VPN phases and protocols.</image:caption>
         </image:image>
+        <image:image>
+            <image:loc>https://visualnotes.tech/visuals/images/ospf-timer-lab.jpg</image:loc>
+            <image:title>OSPF Timer Lab: Hello, Dead &amp; Adjacency Rules</image:title>
+            <image:caption>Visual breakdown of OSPF Hello &amp; Dead intervals, timer verification, and troubleshooting adjacency rules.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://visualnotes.tech/visuals/images/wifi-7-vs-ethernet.jpg</image:loc>
+            <image:title>Wi-Fi 7 vs Ethernet</image:title>
+            <image:caption>Is wireless finally replacing wired? A visual comparison of Flexible Access Layer vs Deterministic Backbone.</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://visualnotes.tech/visuals/images/top-5-network-exploits.jpg</image:loc>
+            <image:title>Top 5 Network Exploits Still Misconfigured in 2026</image:title>
+            <image:caption>Deep dive into VLAN Hopping, ARP/DHCP Spoofing, IP Spoofing, Control Plane Abuse, and Management Plane Exposure.</image:caption>
+        </image:image>
     </url>
     
     <!-- Blog Articles -->

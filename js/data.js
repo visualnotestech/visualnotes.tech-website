@@ -6,6 +6,30 @@
 // ===== VISUAL NOTES DATA =====
 const visualNotes = [
     {
+        id: "ospf-timer-lab",
+        title: "OSPF Timer Lab: Hello, Dead & Adjacency Rules",
+        description: "Visual breakdown of OSPF Hello & Dead intervals, timer verification, and troubleshooting adjacency rules.",
+        image: "visuals/images/ospf-timer-lab.jpg",
+        tags: ["Networking", "Infrastructure", "Routing", "OSPF"],
+        dateAdded: "2026-03-05"
+    },
+    {
+        id: "wifi-7-vs-ethernet",
+        title: "Wi-Fi 7 vs Ethernet",
+        description: "Is wireless finally replacing wired? A visual comparison of Flexible Access Layer vs Deterministic Backbone.",
+        image: "visuals/images/wifi-7-vs-ethernet.jpg",
+        tags: ["Networking", "Wi-Fi", "Infrastructure"],
+        dateAdded: "2026-03-05"
+    },
+    {
+        id: "top-5-network-exploits",
+        title: "Top 5 Network Exploits Still Misconfigured in 2026",
+        description: "Deep dive into VLAN Hopping, ARP/DHCP Spoofing, IP Spoofing, Control Plane Abuse, and Management Plane Exposure.",
+        image: "visuals/images/top-5-network-exploits.jpg",
+        tags: ["Security", "Networking", "Infrastructure"],
+        dateAdded: "2026-03-05"
+    },
+    {
         id: "ospf-operations",
         title: "OSPF Operations: Choosing the Best Routes",
         description: "Visual guide to OSPF: Neighbor Discovery, LSA Exchange, LSDB synchronization, SPF Algorithm (Dijkstra's), and DR/BDR roles.",
