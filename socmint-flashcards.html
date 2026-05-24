@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Advanced SOCMINT Flashcards: Master Social Network Analysis &amp; Attribution | VisualNotes.tech</title>
+
+    <!-- Meta Description & SEO Tags -->
+    <meta name="description"
+        content="Test your knowledge on Social Media Intelligence (SOCMINT) with 60+ interactive study flashcards. Master Degree Centrality, community detection, stylometry, and influence operations.">
+    <meta name="keywords"
+        content="SOCMINT flashcards, social network analysis flashcards, OSINT practice, stylometry flashcards, threat intelligence study, Louvain method, digital influence detection">
+    <meta name="author" content="Abhiney Sharma">
+    <link rel="canonical" href="https://visualnotes.tech/socmint-flashcards.html" />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="VisualNotes.tech" />
+    <meta property="og:title" content="Interactive SOCMINT Study Flashcards | VisualNotes" />
+    <meta property="og:description"
+        content="Master Social Network Analysis and attribution methodologies with our free 60+ interactive practice flashcards." />
+    <meta property="og:url" content="https://visualnotes.tech/socmint-flashcards.html" />
+    <meta property="og:image" content="https://visualnotes.tech/blog/images/socmint-hero-sketchnote.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SOCMINT Flashcards — Master Network Analysis &amp; Attribution" />
+    <meta name="twitter:description" content="Interactive SOCMINT and OSINT practice flashcards for security analysts." />
+    <meta name="twitter:image" content="https://visualnotes.tech/blog/images/socmint-hero-sketchnote.png" />
+
+    <!-- JSON-LD FAQ & Educational Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Advanced SOCMINT Flashcards: Master Social Network Analysis & Attribution",
+      "description": "Interactive flashcards testing knowledge on Social Media Intelligence concepts including centrality metrics, attribution styles, and influence playbooks.",
+      "publisher": {
+        "@type": "EducationalOrganization",
+        "name": "VisualNotes",
+        "url": "https://visualnotes.tech"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the primary definition of Advanced Social Media Intelligence (SOCMINT)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The combination of traditional investigative techniques with sophisticated analytical methodologies to extract actionable intelligence from social platforms."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "In Social Network Analysis (SNA), what is measured by 'Degree Centrality'?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The number of direct connections an account has, identifying popular actors."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which centrality measure identifies 'information brokers' who control the flow of data between different groups?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Betweenness Centrality."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Re-using existing font CDNs to match the brand -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <style>
+        /* Scoped styles with a visually outstanding dark cyber theme */
+        :root {
+            --primary: #FF6B6B;
+            --accent: #00c8a0;
+            --accent-dark: #0d9488;
+            --text-dark: #0f172a;
+            --text-light: #94a3b8;
+            --bg-dark: #0b0f19;
+            --bg-card: #131a26;
+            --border-color: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Minimal Header to avoid global nav layout conflicts */
+        header {
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(19, 26, 38, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 10;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+        }
+
+        .logo {
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-tagline {
+            font-family: 'Caveat', cursive;
+            font-size: 1.1rem;
+            color: #ffffff;
+            margin-top: -8px;
+            margin-left: 36px;
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-color: var(--primary);
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.2s;
+        }
+
+        .back-btn:hover {
+            color: var(--accent);
+        }
+
+        /* Main Content Area */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .category-label {
+            background: rgba(0, 200, 160, 0.12);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Share Tech Mono', monospace;
+            border: 1px solid rgba(0, 200, 160, 0.3);
+        }
+
+        /* Flashcard Container Setup */
+        .flashcard-container {
+            width: 100%;
+            height: 400px;
+            max-height: 50vh;
+            perspective: 2000px;
+            margin-bottom: 30px;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            cursor: pointer;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            border-radius: 24px;
+        }
+
+        .flashcard:hover {
+            box-shadow: 0 20px 50px rgba(0, 200, 160, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .flashcard.is-flipped:hover {
+            transform: rotateY(180deg) translateY(-5px);
+        }
+
+        .flashcard.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        /* Shared Card Faces */
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            text-align: center;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        /* Front Face (Question) */
+        .card-front {
+            color: #ffffff;
+            border-top: 6px solid var(--accent);
+        }
+
+        .card-front::before {
+            content: 'QUESTION';
+            position: absolute;
+            top: 24px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        /* Back Face (Answer) */
+        .card-back {
+            background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%);
+            color: white;
+            transform: rotateY(180deg);
+            border: none;
+        }
+
+        .card-back::before {
+            content: 'ANSWER';
+            position: absolute;
+            top: 24px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .card-content {
+            font-size: clamp(1.2rem, 4vw, 1.7rem);
+            font-weight: 600;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        /* Bottom Controls */
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 400px;
+            background: var(--bg-card);
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-control {
+            background: none;
+            border: none;
+            color: #f8fafc;
+            cursor: pointer;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+
+        .btn-control:hover {
+            background: var(--border-color);
+            color: var(--accent);
+        }
+
+        .btn-control:disabled {
+            color: #475569;
+            cursor: not-allowed;
+            background: none;
+        }
+
+        .progress-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .progress-text span {
+            color: var(--accent);
+        }
+
+        .hint {
+            margin-top: 24px;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Responsive Mobile Adjustments */
+        @media (max-width: 480px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            .flashcard-container {
+                height: 350px;
+            }
+
+            .card-content {
+                font-size: 1.2rem;
+            }
+
+            .card-face {
+                padding: 30px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="/" class="logo-wrapper">
+            <div class="logo">📚 VisualNotes</div>
+            <div class="logo-tagline">Learn visually. Think Clearly.</div>
+        </a>
+        <a href="/" class="back-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <path d="M12 19l-7-7 7-7"></path>
+            </svg>
+            Back to Home
+        </a>
+    </header>
+
+    <main>
+        <div class="category-label">SOCMINT Training</div>
+
+        <div class="flashcard-container" id="flashcardContainer">
+            <div class="flashcard" id="activeCard">
+                <div class="card-face card-front">
+                    <div class="card-content" id="cardQuestion">Loading...</div>
+                </div>
+                <div class="card-face card-back">
+                    <div class="card-content" id="cardAnswer">Loading...</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <!-- Previous Button -->
+            <button class="btn-control" id="prevBtn" aria-label="Previous Card">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 18l-6-6 6-6" />
+                </svg>
+            </button>
+
+            <!-- Progress Tracker -->
+            <div class="progress-text" id="progressText">
+                <span id="currentIndex">1</span> / <span id="totalCards">0</span>
+            </div>
+
+            <!-- Next Button -->
+            <button class="btn-control" id="nextBtn" aria-label="Next Card">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18l6-6-6-6" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="hint">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+            </svg>
+            Tap card to reveal answer
+        </div>
+    </main>
+
+    <!-- Source Data Script Loading -->
+    <script src="js/socmint-flashcards-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let currentIndex = 0;
+
+            const card = document.getElementById('activeCard');
+            const container = document.getElementById('flashcardContainer');
+            const questionEl = document.getElementById('cardQuestion');
+            const answerEl = document.getElementById('cardAnswer');
+            const currentIdxEl = document.getElementById('currentIndex');
+            const totalCardsEl = document.getElementById('totalCards');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            function initialize() {
+                if (typeof flashcardData === 'undefined' || flashcardData.length === 0) {
+                    questionEl.innerText = "No Flashcards Found!";
+                    answerEl.innerText = "Please update js/socmint-flashcards-data.js with your data rows.";
+                    return;
+                }
+
+                totalCardsEl.innerText = flashcardData.length;
+                updateCardView();
+                bindEvents();
+            }
+
+            function bindEvents() {
+                // Card Flip
+                container.addEventListener('click', () => {
+                    card.classList.toggle('is-flipped');
+                });
+
+                // Next/Prev Buttons
+                prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Avoid triggering card flip
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        updateCardView();
+                    }
+                });
+
+                nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (currentIndex < flashcardData.length - 1) {
+                        currentIndex++;
+                        updateCardView();
+                    }
+                });
+
+                // Keyboard Accessibility for Desktop
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight' || e.key === ' ') {
+                        if (currentIndex < flashcardData.length - 1) {
+                            currentIndex++;
+                            updateCardView();
+                        }
+                    } else if (e.key === 'ArrowLeft') {
+                        if (currentIndex > 0) {
+                            currentIndex--;
+                            updateCardView();
+                        }
+                    } else if (e.key === 'Enter' || e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+                        card.classList.toggle('is-flipped');
+                    }
+                });
+            }
+
+            function updateCardView() {
+                if (card.classList.contains('is-flipped')) {
+                    card.classList.remove('is-flipped');
+                    setTimeout(() => fillCardContent(), 300);
+                } else {
+                    fillCardContent();
+                }
+            }
+
+            function fillCardContent() {
+                const currentData = flashcardData[currentIndex];
+                questionEl.innerText = currentData.question;
+                answerEl.innerText = currentData.answer;
+                currentIdxEl.innerText = currentIndex + 1;
+
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === flashcardData.length - 1;
+            }
+
+            initialize();
+        });
+    </script>
+
+</body>
+
+</html>
