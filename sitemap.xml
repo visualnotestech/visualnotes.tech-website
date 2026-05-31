@@ -133,6 +133,13 @@
     </url>
 
     <url>
+        <loc>https://www.visualnotes.tech/privacy.html</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
         <loc>https://www.visualnotes.tech/terms.html</loc>
         <lastmod>2026-01-26</lastmod>
         <changefreq>yearly</changefreq>
