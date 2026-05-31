@@ -7,32 +7,32 @@
     
     <!-- Homepage -->
     <url>
-        <loc>https://visualnotes.tech/</loc>
+        <loc>https://www.visualnotes.tech/</loc>
         <lastmod>2026-02-02</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
         <image:image>
-            <image:loc>https://visualnotes.tech/visuals/images/ospf-operations.jpg</image:loc>
+            <image:loc>https://www.visualnotes.tech/visuals/images/ospf-operations.jpg</image:loc>
             <image:title>OSPF Operations Visual Guide</image:title>
             <image:caption>Visual guide to OSPF neighbor discovery and LSDB synchronization.</image:caption>
         </image:image>
         <image:image>
-            <image:loc>https://visualnotes.tech/visuals/images/ipsec-vpn-cheat-sheet.jpg</image:loc>
+            <image:loc>https://www.visualnotes.tech/visuals/images/ipsec-vpn-cheat-sheet.jpg</image:loc>
             <image:title>IPsec VPN Cheat Sheet</image:title>
             <image:caption>Technical cheat sheet for IPsec VPN phases and protocols.</image:caption>
         </image:image>
         <image:image>
-            <image:loc>https://visualnotes.tech/visuals/images/ospf-timer-lab.jpg</image:loc>
+            <image:loc>https://www.visualnotes.tech/visuals/images/ospf-timer-lab.jpg</image:loc>
             <image:title>OSPF Timer Lab: Hello, Dead &amp; Adjacency Rules</image:title>
             <image:caption>Visual breakdown of OSPF Hello &amp; Dead intervals, timer verification, and troubleshooting adjacency rules.</image:caption>
         </image:image>
         <image:image>
-            <image:loc>https://visualnotes.tech/visuals/images/wifi-7-vs-ethernet.jpg</image:loc>
+            <image:loc>https://www.visualnotes.tech/visuals/images/wifi-7-vs-ethernet.jpg</image:loc>
             <image:title>Wi-Fi 7 vs Ethernet</image:title>
             <image:caption>Is wireless finally replacing wired? A visual comparison of Flexible Access Layer vs Deterministic Backbone.</image:caption>
         </image:image>
         <image:image>
-            <image:loc>https://visualnotes.tech/visuals/images/top-5-network-exploits.jpg</image:loc>
+            <image:loc>https://www.visualnotes.tech/visuals/images/top-5-network-exploits.jpg</image:loc>
             <image:title>Top 5 Network Exploits Still Misconfigured in 2026</image:title>
             <image:caption>Deep dive into VLAN Hopping, ARP/DHCP Spoofing, IP Spoofing, Control Plane Abuse, and Management Plane Exposure.</image:caption>
         </image:image>
@@ -40,71 +40,85 @@
     
     <!-- Blog Articles -->
     <url>
-        <loc>https://visualnotes.tech/blog/top-5-network-exploits-misconfigured-2026.html</loc>
+        <loc>https://www.visualnotes.tech/blog/top-5-network-exploits-misconfigured-2026.html</loc>
         <lastmod>2026-03-03</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     
     <url>
-        <loc>https://visualnotes.tech/blog/google-dorking-guide.html</loc>
+        <loc>https://www.visualnotes.tech/blog/google-dorking-guide.html</loc>
         <lastmod>2026-01-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     
     <url>
-        <loc>https://visualnotes.tech/blog/how-dns-works.html</loc>
+        <loc>https://www.visualnotes.tech/blog/how-dns-works.html</loc>
         <lastmod>2026-01-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
-        <loc>https://visualnotes.tech/blog/osint-tools-2026.html</loc>
+        <loc>https://www.visualnotes.tech/blog/osint-tools-2026.html</loc>
         <lastmod>2026-01-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
-        <loc>https://visualnotes.tech/blog/cloud-comparison.html</loc>
+        <loc>https://www.visualnotes.tech/blog/cloud-comparison.html</loc>
         <lastmod>2026-01-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     
     <url>
-        <loc>https://visualnotes.tech/blog/microsegmentation-crawl-walk-run-zero-trust.html</loc>
+        <loc>https://www.visualnotes.tech/blog/microsegmentation-crawl-walk-run-zero-trust.html</loc>
         <lastmod>2026-02-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     
     <url>
-        <loc>https://visualnotes.tech/blog/advanced-socmint-social-network-analysis-influence-operations.html</loc>
+        <loc>https://www.visualnotes.tech/blog/advanced-socmint-social-network-analysis-influence-operations.html</loc>
         <lastmod>2026-05-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://www.visualnotes.tech/blog/osint-case-viper-ghost.html</loc>
+        <lastmod>2026-05-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://www.visualnotes.tech/blog/osint-case-lazarus-dream-job.html</loc>
+        <lastmod>2026-05-31</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     
     <!-- Static Pages -->
     <url>
-        <loc>https://visualnotes.tech/about.html</loc>
+        <loc>https://www.visualnotes.tech/about.html</loc>
         <lastmod>2026-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://visualnotes.tech/faq.html</loc>
+        <loc>https://www.visualnotes.tech/faq.html</loc>
         <lastmod>2026-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 
     <url>
-        <loc>https://visualnotes.tech/write-for-us.html</loc>
+        <loc>https://www.visualnotes.tech/write-for-us.html</loc>
         <lastmod>2026-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
@@ -112,14 +126,14 @@
     
     <!-- Legal Pages -->
     <url>
-        <loc>https://visualnotes.tech/privacy-policy.html</loc>
+        <loc>https://www.visualnotes.tech/privacy-policy.html</loc>
         <lastmod>2026-01-26</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
 
     <url>
-        <loc>https://visualnotes.tech/terms.html</loc>
+        <loc>https://www.visualnotes.tech/terms.html</loc>
         <lastmod>2026-01-26</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
@@ -127,25 +141,25 @@
     
     <!-- Study Guides & Flashcards -->
     <url>
-        <loc>https://visualnotes.tech/hsrp-flashcards.html</loc>
+        <loc>https://www.visualnotes.tech/hsrp-flashcards.html</loc>
         <lastmod>2026-02-22</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://visualnotes.tech/subnetting-flashcards.html</loc>
+        <loc>https://www.visualnotes.tech/subnetting-flashcards.html</loc>
         <lastmod>2026-03-19</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://visualnotes.tech/socmint-flashcards.html</loc>
+        <loc>https://www.visualnotes.tech/socmint-flashcards.html</loc>
         <lastmod>2026-05-24</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://visualnotes.tech/guides/networking/ntp-study-notes.pdf</loc>
+        <loc>https://www.visualnotes.tech/guides/networking/ntp-study-notes.pdf</loc>
         <lastmod>2026-02-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
