@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenOSINT Deep Dive: AI-Powered OSINT Framework for Security Researchers | VisualNotes</title>
+    
+    <!-- Core SEO -->
+    <meta name="description" content="OpenOSINT is an AI orchestration framework that chains 16 OSINT tools automatically — from email pivots to username enumeration to PDF reports. A practitioner's breakdown of how it works, how to install it, and when to use local vs cloud inference.">
+    <meta name="author" content="Abhiney Sharma">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://www.visualnotes.tech/blog/openosint-ai-osint-framework-deep-dive.html">
+    
+    <!-- Open Graph (LinkedIn / Facebook) -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.visualnotes.tech/blog/openosint-ai-osint-framework-deep-dive.html">
+    <meta property="og:title" content="OpenOSINT Deep Dive: AI-Powered OSINT Framework for Security Researchers">
+    <meta property="og:description" content="OpenOSINT is an AI orchestration framework that chains 16 OSINT tools automatically — from email pivots to username enumeration to PDF reports. A practitioner's breakdown.">
+    <meta property="og:image" content="https://www.visualnotes.tech/blog/images/openosint-deep-dive-hero.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="627">
+    <meta property="og:image:alt" content="A terminal and workflow diagram showing OpenOSINT's AI tool chaining — email pivot to username enumeration to PDF report generation.">
+    
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="OpenOSINT Deep Dive: AI-Powered OSINT Framework for Security Researchers">
+    <meta name="twitter:description" content="OpenOSINT chains 16 OSINT tools via an AI agent. Practitioner breakdown: install guide, pivot workflow, local vs cloud trade-off.">
+    <meta name="twitter:image" content="https://www.visualnotes.tech/blog/images/openosint-deep-dive-hero.png">
+    
+    <!-- Tabler Icons CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+    
+    <!-- Article Schema (AEO/GEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Beyond the Search Bar: A Practitioner's Look at OpenOSINT",
+      "description": "OpenOSINT is an AI orchestration framework that chains 16 OSINT tools automatically. A practitioner's breakdown of tool chaining, installation, pivot workflows, and local vs cloud inference.",
+      "author": {
+        "@type": "Person",
+        "name": "Abhiney Sharma",
+        "url": "https://www.linkedin.com/in/abhineysharma/",
+        "sameAs": ["https://www.linkedin.com/in/abhineysharma/"]
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VisualNotes",
+        "url": "https://www.visualnotes.tech",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.visualnotes.tech/logo.png"
+        }
+      },
+      "datePublished": "2026-06-06",
+      "dateModified": "2026-06-06",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.visualnotes.tech/blog/openosint-ai-osint-framework-deep-dive.html"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://www.visualnotes.tech/blog/images/openosint-deep-dive-hero.png",
+        "width": 1200,
+        "height": 627
+      },
+      "keywords": ["OpenOSINT", "OSINT framework", "AI OSINT", "tool chaining", "Sherlock", "holehe", "OSINT automation", "security research", "VisualNotes"],
+      "articleSection": "OSINT Tooling",
+      "inLanguage": "en"
+    }
+    </script>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap');
+
+      :root {
+        --color-text-primary: #1a1a1a;
+        --color-text-secondary: #4a5568;
+        --color-border-secondary: #e2e8f0;
+        --color-border-tertiary: #edf2f7;
+        --color-background-primary: #ffffff;
+        --color-background-secondary: #f7fafc;
+        --bg-page: #fcfcfc;
+
+        --color-disclaimer-bg: #FAEEDA;
+        --color-disclaimer-text: #633806;
+        --color-disclaimer-border: #EF9F27;
+
+        --color-preferred-bg: #E1F5EE;
+        --color-preferred-border: #5DCAA5;
+        --color-preferred-title: #0F6E56;
+        --color-preferred-text: #085041;
+
+        --color-pill-bg: #E1F5EE;
+        --color-pill-text: #0F6E56;
+      }
+
+      body.dark-mode {
+        --color-text-primary: #f1f5f9;
+        --color-text-secondary: #94a3b8;
+        --color-border-secondary: #1e293b;
+        --color-border-tertiary: #2d3748;
+        --color-background-primary: #0e131f;
+        --color-background-secondary: #1e293b;
+        --bg-page: #080b11;
+
+        --color-disclaimer-bg: #221a0f;
+        --color-disclaimer-text: #fbd38d;
+        --color-disclaimer-border: #dd6b20;
+
+        --color-preferred-bg: #0d251e;
+        --color-preferred-border: #1d9e75;
+        --color-preferred-title: #5dcaa5;
+        --color-preferred-text: #a3e2cd;
+
+        --color-pill-bg: #0d251e;
+        --color-pill-text: #5dcaa5;
+      }
+
+      body {
+        background: var(--bg-page);
+        color: var(--color-text-primary);
+        margin: 0;
+        padding: 40px 20px;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+
+      .vn-article {
+        font-family: 'Lora', Georgia, serif;
+        color: var(--color-text-primary);
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 0;
+        line-height: 1.8;
+      }
+
+      .vn-header {
+        border-bottom: 2px solid var(--color-border-secondary);
+        padding-bottom: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .vn-brand-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+        padding: 10px 0;
+        border-bottom: 0.5px solid var(--color-border-tertiary);
+      }
+
+      .vn-logo {
+        font-family: 'Syne', sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+        color: var(--color-text-primary);
+        text-decoration: none;
+        letter-spacing: -0.3px;
+      }
+
+      .vn-logo span {
+        color: #1D9E75;
+      }
+
+      .vn-meta-links {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .vn-meta-links a {
+        font-family: 'Syne', sans-serif;
+        font-size: 12px;
+        color: var(--color-text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+      }
+
+      .vn-meta-links a:hover {
+        color: #1D9E75;
+      }
+
+      .vn-category-pill {
+        font-family: 'Syne', sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        color: var(--color-pill-text);
+        background: var(--color-pill-bg);
+        padding: 4px 10px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-bottom: 1rem;
+      }
+
+      .vn-title {
+        font-family: 'Syne', sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1.25;
+        letter-spacing: -0.5px;
+        color: var(--color-text-primary);
+        margin: 0 0 1rem 0;
+      }
+
+      .vn-byline {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 1.25rem;
+      }
+
+      .vn-avatar {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: var(--color-pill-bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Syne', sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        color: var(--color-pill-text);
+        flex-shrink: 0;
+      }
+
+      .vn-byline-text {
+        font-family: 'Syne', sans-serif;
+        font-size: 13px;
+      }
+
+      .vn-byline-name {
+        font-weight: 600;
+        color: var(--color-text-primary);
+      }
+
+      .vn-byline-name a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .vn-byline-name a:hover { color: #1D9E75; }
+
+      .vn-byline-date {
+        color: var(--color-text-secondary);
+        font-size: 12px;
+        margin-top: 2px;
+      }
+
+      .vn-disclaimer {
+        background: var(--color-disclaimer-bg);
+        border-left: 3px solid var(--color-disclaimer-border);
+        padding: 14px 18px;
+        border-radius: 0 6px 6px 0;
+        margin: 1.5rem 0;
+        font-family: 'Syne', sans-serif;
+        font-size: 13px;
+        color: var(--color-disclaimer-text);
+        line-height: 1.6;
+      }
+
+      .vn-disclaimer strong {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 4px;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+
+      .vn-body p {
+        margin: 0 0 1.4rem 0;
+        font-size: 16px;
+        color: var(--color-text-primary);
+      }
+
+      .vn-body h2 {
+        font-family: 'Syne', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+        margin: 2.5rem 0 1rem 0;
+        color: var(--color-text-primary);
+        padding-bottom: 8px;
+        border-bottom: 0.5px solid var(--color-border-tertiary);
+      }
+
+      .vn-body h3 {
+        font-family: 'Syne', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 1.8rem 0 0.7rem 0;
+        color: var(--color-text-primary);
+      }
+
+      .vn-code-block {
+        background: var(--color-background-secondary);
+        border: 0.5px solid var(--color-border-tertiary);
+        border-radius: 6px;
+        padding: 16px 18px;
+        margin: 1rem 0 1.5rem 0;
+        overflow-x: auto;
+      }
+
+      .vn-code-block code {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 12.5px;
+        line-height: 1.7;
+        color: var(--color-text-primary);
+        white-space: pre;
+        display: block;
+      }
+
+      .vn-step-label {
+        font-family: 'Syne', sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        color: #0F6E56;
+        margin-bottom: 4px;
+        display: block;
+      }
+
+      .vn-workflow {
+        border: 0.5px solid var(--color-border-tertiary);
+        border-radius: 8px;
+        overflow: hidden;
+        margin: 1.5rem 0;
+      }
+
+      .vn-workflow-row {
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        border-bottom: 0.5px solid var(--color-border-tertiary);
+      }
+      .vn-workflow-row:last-child { border-bottom: none; }
+
+      .vn-workflow-step {
+        background: var(--color-pill-bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Syne', sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--color-pill-text);
+        letter-spacing: 0.4px;
+        padding: 14px 8px;
+        text-align: center;
+      }
+
+      .vn-workflow-desc {
+        padding: 12px 16px;
+        font-family: 'Syne', sans-serif;
+        font-size: 13px;
+        line-height: 1.6;
+        color: var(--color-text-primary);
+      }
+
+      .vn-workflow-desc em {
+        font-style: normal;
+        font-size: 11px;
+        color: var(--color-text-secondary);
+        display: block;
+        margin-top: 3px;
+      }
+
+      .vn-tool-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin: 1.2rem 0;
+      }
+
+      .vn-tool-card {
+        background: var(--color-background-secondary);
+        border: 0.5px solid var(--color-border-tertiary);
+        border-radius: 6px;
+        padding: 12px 14px;
+      }
+
+      .vn-tool-card .tool-name {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 12px;
+        font-weight: 500;
+        color: #1D9E75;
+        margin-bottom: 3px;
+      }
+
+      .vn-tool-card .tool-desc {
+        font-family: 'Syne', sans-serif;
+        font-size: 12px;
+        color: var(--color-text-secondary);
+        line-height: 1.5;
+      }
+
+      .vn-compare {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin: 1.2rem 0;
+      }
+
+      .vn-compare-card {
+        border: 0.5px solid var(--color-border-tertiary);
+        border-radius: 8px;
+        padding: 16px;
+        background: var(--color-background-primary);
+      }
+
+      .vn-compare-card h4 {
+        font-family: 'Syne', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        margin: 0 0 8px 0;
+        color: var(--color-text-primary);
+      }
+
+      .vn-compare-card p {
+        font-family: 'Syne', sans-serif;
+        font-size: 13px;
+        color: var(--color-text-secondary);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .vn-compare-card.preferred {
+        border-color: var(--color-preferred-border);
+        background: var(--color-preferred-bg);
+      }
+
+      .vn-compare-card.preferred h4 { color: var(--color-preferred-title); }
+      .vn-compare-card.preferred p { color: var(--color-preferred-text); }
+
+      .vn-related {
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
+        border-top: 0.5px solid var(--color-border-tertiary);
+      }
+
+      .vn-related-label {
+        font-family: 'Syne', sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        color: var(--color-text-secondary);
+        margin-bottom: 12px;
+      }
+
+      .vn-related-links {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .vn-related-link {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 12px 14px;
+        border: 0.5px solid var(--color-border-tertiary);
+        border-radius: 6px;
+        text-decoration: none;
+        background: var(--color-background-primary);
+        transition: all 0.2s ease;
+      }
+
+      .vn-related-link:hover {
+        border-color: #5DCAA5;
+        background: var(--color-preferred-bg);
+      }
+
+      .vn-related-link .rl-icon {
+        font-size: 16px;
+        color: #1D9E75;
+        margin-top: 1px;
+        flex-shrink: 0;
+      }
+
+      .vn-related-link .rl-title {
+        font-family: 'Syne', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--color-text-primary);
+        line-height: 1.4;
+      }
+
+      .vn-related-link .rl-url {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px;
+        color: var(--color-text-secondary);
+        margin-top: 2px;
+      }
+
+      .vn-footer {
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
+        border-top: 2px solid var(--color-border-secondary);
+        font-family: 'Syne', sans-serif;
+        font-size: 12px;
+        color: var(--color-text-secondary);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .vn-footer a {
+        color: #1D9E75;
+        text-decoration: none;
+      }
+
+      /* ── THEME TOGGLE BUTTON ── */
+      #theme-toggle {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        z-index: 10000;
+        background: var(--color-background-primary);
+        border: 1px solid var(--color-border-secondary);
+        color: var(--color-text-primary);
+        font-family: 'Syne', sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        padding: 8px 16px;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      #theme-toggle:hover {
+        background: var(--color-pill-bg);
+        border-color: #5DCAA5;
+        color: var(--color-pill-text);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(29, 158, 117, 0.15);
+      }
+
+      /* ── RESPONSIVE MEDIA QUERIES ── */
+      @media (max-width: 640px) {
+        body {
+          padding: 20px 15px;
+        }
+        .vn-tool-grid {
+          grid-template-columns: 1fr;
+        }
+        .vn-compare {
+          grid-template-columns: 1fr;
+        }
+        .vn-brand-bar {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+        .vn-meta-links {
+          flex-wrap: wrap;
+          gap: 10px 14px;
+        }
+        .vn-footer {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+      }
+    </style>
+</head>
+<body>
+
+  <!-- Floating Theme Toggle Button -->
+  <button id="theme-toggle" onclick="document.body.classList.toggle('dark-mode');this.innerHTML=document.body.classList.contains('dark-mode')?'☀ LIGHT MODE':'🌙 DARK MODE'">
+    🌙 DARK MODE
+  </button>
+
+  <div class="vn-article">
+    <div class="vn-header">
+      <div class="vn-brand-bar">
+        <a href="../index.html" class="vn-logo">Visual<span>Notes</span>.tech</a>
+        <div class="vn-meta-links">
+          <a href="osint-case-lazarus-dream-job.html">Lazarus: Dream Job</a>
+          <a href="osint-case-viper-ghost.html">Op. Viper-Ghost</a>
+          <a href="advanced-socmint-social-network-analysis-influence-operations.html">SOCMINT</a>
+        </div>
+      </div>
+
+      <span class="vn-category-pill">OSINT Tooling · Deep Dive</span>
+      <h1 class="vn-title">Beyond the Search Bar:<br>A Practitioner's Look at OpenOSINT</h1>
+
+      <div class="vn-byline">
+        <div class="vn-avatar">AS</div>
+        <div class="vn-byline-text">
+          <div class="vn-byline-name"><a href="https://www.linkedin.com/in/abhineysharma/" target="_blank">Abhiney Sharma</a> &mdash; OSINT Certified Cyber Criminologist</div>
+          <div class="vn-byline-date">visualnotes.tech &nbsp;·&nbsp; June 2026 &nbsp;·&nbsp; 8 min read</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vn-disclaimer">
+      <strong>⚠ Legal notice</strong>
+      OpenOSINT is for legal, authorized security research only. You are solely responsible for compliance with applicable laws. Always obtain written authorization before investigating any target. The tool's authors accept no liability for misuse.
+    </div>
+
+    <div class="vn-body">
+      <p>If you have been doing OSINT for more than a few months, you already know the rhythm. Pull up a breach lookup tab. Open a separate terminal for Sherlock. Copy a username, paste it into yet another browser window, grab those results, paste them into a doc. Repeat until your clipboard history becomes a crime scene.</p>
+
+      <p>I have been in that loop. Eighteen-plus years in network and security work, and the single biggest friction point in OSINT has never been a lack of data — it is the sheer mechanical overhead of coordinating a dozen tools that have no idea the others exist. OpenOSINT is the most credible attempt I have seen to solve that problem at the workflow level rather than the tool level.</p>
+
+      <h2>What OpenOSINT actually is</h2>
+
+      <p>The one-sentence version: it is an AI agent that drives OSINT tooling the same way you would, except it does not lose focus, does not forget to pivot, and does not need coffee.</p>
+
+      <p>More precisely, it is an orchestration layer that sits between a Large Language Model — either a local Llama 3.2 via Ollama, or a cloud model like Claude 3.5 via API — and a suite of 16 purpose-built OSINT binaries. When you give it a target, the model decides which tool to run first, reads the real output from your system, reasons about what it found, and decides what to run next. That last part is the piece that matters most.</p>
+
+      <p>This is what practitioners call tool chaining. If the model discovers a GitHub username while investigating an email address, it does not stop and ask you what to do. It pivots — automatically triggering a username sweep across 300-plus platforms — because it recognized that the username was a pivot point worth following. That is not a scripted rule; the model is making that call dynamically based on what it found.</p>
+
+      <h2>Installation (macOS M1)</h2>
+
+      <p>The setup has two distinct parts: the Python framework and the AI model. Neither is complicated, but they have to be done in the right order.</p>
+
+      <h3>Step 1 — Package manager and languages</h3>
+      <div class="vn-code-block"><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install python git</code></div>
+
+      <h3>Step 2 — The AI model (Ollama)</h3>
+      <p>Download the Ollama app from <strong>ollama.com</strong>, launch it, then pull the recommended model:</p>
+      <div class="vn-code-block"><code>ollama run llama3.2</code></div>
+
+      <h3>Step 3 — Clone and isolate the framework</h3>
+      <div class="vn-code-block"><code>git clone https://github.com/OpenOSINT/OpenOSINT.git
+cd OpenOSINT
+python3 -m venv venv
+source venv/bin/activate</code></div>
+
+      <h3>Step 4 — Install dependencies and OSINT binaries</h3>
+      <div class="vn-code-block"><code>pip install ollama fastapi uvicorn requests python-dotenv pydantic rich \
+  aiohttp beautifulsoup4 pandas fpdf openai dnspython prompt_toolkit \
+  anthropic google-generativeai pyyaml holehe reportlab sherlock-project sublist3r</code></div>
+
+      <h3>Step 5 — Configure and launch</h3>
+      <p>Create a <code>.env</code> file and add your API keys (Serper for Google search integration is the main one). Then launch:</p>
+      <div class="vn-code-block"><code>python -m openosint.cli --provider ollama</code></div>
+
+      <h2>Three ways to interact with it</h2>
+
+      <p>OpenOSINT exposes three interfaces depending on how you work:</p>
+
+      <div class="vn-workflow">
+        <div class="vn-workflow-row">
+          <div class="vn-workflow-step">Terminal REPL</div>
+          <div class="vn-workflow-desc">Command-line chat session for live investigations. Low overhead, fast feedback loop.<em>Best for: active target work, quick pivots</em></div>
+        </div>
+        <div class="vn-workflow-row">
+          <div class="vn-workflow-step">Web UI</div>
+          <div class="vn-workflow-desc">Browser-based interface with tool cards and streaming output. <code>openosint web</code> to launch.<em>Best for: sharing results with a team, easier reading of structured output</em></div>
+        </div>
+        <div class="vn-workflow-row">
+          <div class="vn-workflow-step">MCP Server</div>
+          <div class="vn-workflow-desc">Integrates directly into Claude Desktop via Model Context Protocol. The AI uses all 16 tools natively from within Claude's interface.<em>Best for: power users already in the Claude ecosystem</em></div>
+        </div>
+      </div>
+
+      <h2>The 16 tools under the hood</h2>
+
+      <p>This is where most reviews stop at a list of names. I want to be more specific about what each category actually gives you during an investigation.</p>
+
+      <div class="vn-tool-grid">
+        <div class="vn-tool-card">
+          <div class="tool-name">holehe</div>
+          <div class="tool-desc">Checks whether an email is registered across hundreds of services. Your first move on most targets.</div>
+        </div>
+        <div class="vn-tool-card">
+          <div class="tool-name">sherlock</div>
+          <div class="tool-desc">Username enumeration across 300+ platforms. Highly effective after a holehe pivot surfaces a handle.</div>
+        </div>
+        <div class="vn-tool-card">
+          <div class="tool-name">sublist3r</div>
+          <div class="tool-desc">Subdomain enumeration. Maps out the full surface area of an organization's web infrastructure.</div>
+        </div>
+        <div class="vn-tool-card">
+          <div class="tool-name">python-whois</div>
+          <div class="tool-desc">Domain registration and ownership lookups. Useful for attribution when pivoting from infrastructure.</div>
+        </div>
+        <div class="vn-tool-card">
+          <div class="tool-name">dnspython</div>
+          <div class="tool-desc">Full DNS record analysis: A, MX, TXT, NS. Useful for mail infrastructure and hosting attribution.</div>
+        </div>
+        <div class="vn-tool-card">
+          <div class="tool-name">Shodan / Censys</div>
+          <div class="tool-desc">Internet-wide scanning databases. Show open ports, services, and banners on any IP target.</div>
+        </div>
+        <div class="vn-tool-card">
+          <div class="tool-name">VirusTotal</div>
+          <div class="tool-desc">Multi-engine reputation checks for IPs, domains, and hashes. Good for quick badness assessment.</div>
+        </div>
+        <div class="vn-tool-card">
+          <div class="tool-name">AbuseIPDB</div>
+          <div class="tool-desc">Community-reported abuse history for IP addresses. Cross-reference with Shodan for context.</div>
+        </div>
+        <div class="vn-tool-card">
+          <div class="tool-name">HaveIBeenPwned</div>
+          <div class="tool-desc">Breach history for email targets. Knowing which breach events apply shapes the rest of the investigation.</div>
+        </div>
+        <div class="vn-tool-card">
+          <div class="tool-name">psbdmp.ws</div>
+          <div class="tool-desc">Pastebin dump search. Surfaces leaked credentials, code, or configuration data tied to your target.</div>
+        </div>
+      </div>
+
+      <h2>A real pivot workflow: email to digital profile</h2>
+
+      <p>The documentation example is a good one, so I want to walk through it with practitioner commentary rather than just listing steps.</p>
+
+      <p>You start with one input: <code>target@example.com</code>. You type one prompt: <em>"Investigate this email and build a digital profile."</em></p>
+
+      <div class="vn-workflow">
+        <div class="vn-workflow-row">
+          <div class="vn-workflow-step">Action 1</div>
+          <div class="vn-workflow-desc">Runs <code>search_email</code> via holehe. Returns: registered on Spotify and GitHub.<em>The GitHub registration is the key finding here — it implies a public username.</em></div>
+        </div>
+        <div class="vn-workflow-row">
+          <div class="vn-workflow-step">Action 2</div>
+          <div class="vn-workflow-desc">Model recognizes the GitHub username <code>TargetUser99</code> as a pivot point. Automatically triggers <code>search_username</code> via Sherlock across 300+ platforms.<em>This pivot is the part you used to do manually. The model is making that call unprompted.</em></div>
+        </div>
+        <div class="vn-workflow-row">
+          <div class="vn-workflow-step">Action 3</div>
+          <div class="vn-workflow-desc">Surfaces a linked Twitter account. Runs <code>search_breach</code> to check for credential exposure associated with the email.<em>Cross-referencing social presence with breach data is standard methodology — the model is following it correctly.</em></div>
+        </div>
+        <div class="vn-workflow-row">
+          <div class="vn-workflow-step">Output</div>
+          <div class="vn-workflow-desc">Compiles all findings into a structured PDF report with source attribution.<em>The report is the deliverable you would otherwise spend an hour writing by hand.</em></div>
+        </div>
+      </div>
+
+      <p>The critical difference between this and a script is that a script follows a fixed path. The model follows the evidence. If Sherlock returned nothing, it would not generate an empty report — it would reason about what that absence means and try a different angle. That flexibility is what makes agentic frameworks meaningfully different from automation.</p>
+
+      <h2>Local vs. cloud inference: the real trade-off</h2>
+
+      <p>This is the decision that matters most operationally, and it is not primarily a quality question — it is a data exposure question.</p>
+
+      <div class="vn-compare">
+        <div class="vn-compare-card preferred">
+          <h4>Local inference (Ollama + Llama 3.2)</h4>
+          <p>Everything runs on your machine. Target identifiers, query logic, tool outputs — none of it leaves your system. For sensitive investigations, authorized red team work, or any situation where operational security matters, this is the only rational choice. The reasoning quality is lower than cloud models, but it is good enough for most structured workflows.</p>
+        </div>
+        <div class="vn-compare-card">
+          <h4>Cloud inference (Claude / OpenAI API)</h4>
+          <p>Noticeably better at complex multi-hop reasoning and synthesizing ambiguous findings into coherent assessments. The trade-off is that your queries and tool outputs are transmitted to the provider. Acceptable for benign research with non-sensitive targets. Requires paid API access and a clear understanding of the provider's data handling policy.</p>
+        </div>
+      </div>
+
+      <h2>Where this fits in the broader picture</h2>
+
+      <p>OSINT has always had a tooling problem and a workflow problem. The tooling problem is largely solved — we have good individual tools for almost every pivot type. The workflow problem is what OpenOSINT is actually attacking. By moving the orchestration burden to the model, you shift your cognitive load from "which tool do I run next" to "is the model following the right thread." That is a meaningful improvement in how you spend your attention during an investigation.</p>
+
+      <p>It is not magic. The model can make wrong pivots, miss obvious connections, or generate a tidy-looking report from incomplete data. Your job as the analyst does not disappear — it shifts upstream toward framing better queries and downstream toward critically evaluating what the model concluded and why. If you approach it as a tool that handles mechanics so you can focus on analysis, it delivers on that promise.</p>
+
+      <p>If you have explored related methodology, the pivot patterns here map closely to what I covered in the Viper-Ghost case file and the Lazarus Dream Job analysis linked below.</p>
+    </div>
+
+    <div class="vn-related">
+      <div class="vn-related-label">Related reads on visualnotes.tech</div>
+      <div class="vn-related-links">
+        <a href="osint-case-viper-ghost.html" class="vn-related-link">
+          <i class="ti ti-file-search rl-icon" aria-hidden="true"></i>
+          <div>
+            <div class="rl-title">OSINT Case File: Operation Viper-Ghost — infrastructure attribution and identity pivot methodology</div>
+            <div class="rl-url">visualnotes.tech/blog/osint-case-viper-ghost.html</div>
+          </div>
+        </a>
+        <a href="osint-case-lazarus-dream-job.html" class="vn-related-link">
+          <i class="ti ti-file-search rl-icon" aria-hidden="true"></i>
+          <div>
+            <div class="rl-title">OSINT Case File: Lazarus Dream Job — tracking a nation-state social engineering campaign</div>
+            <div class="rl-url">visualnotes.tech/blog/osint-case-lazarus-dream-job.html</div>
+          </div>
+        </a>
+        <a href="advanced-socmint-social-network-analysis-influence-operations.html" class="vn-related-link">
+          <i class="ti ti-network rl-icon" aria-hidden="true"></i>
+          <div>
+            <div class="rl-title">Advanced SOCMINT: Social network analysis and influence operation mapping</div>
+            <div class="rl-url">visualnotes.tech/blog/advanced-socmint-social-network-analysis-influence-operations.html</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="vn-footer">
+      <span>© 2026 <a href="../index.html">visualnotes.tech</a></span>
+      <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank">Abhiney Sharma on LinkedIn →</a>
+    </div>
+  </div>
+
+</body>
+</html>
