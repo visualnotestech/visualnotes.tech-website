@@ -3,503 +3,579 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#365FF0">
     <title>Microsegmentation Done Right: A Practical, Phased Approach for Zero Trust Security</title>
-    <meta name="description"
-        content="Learn how to implement microsegmentation using a phased Crawl-Walk-Run approach. This guide explains architectural intent, enforcement strategy, and execution.">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
-    <!-- Open Graph -->
-    <meta property="og:title"
-        content="Microsegmentation Done Right: A Practical, Phased Approach for Zero Trust Security">
-    <meta property="og:description"
-        content="Learn how to implement microsegmentation using a phased Crawl-Walk-Run approach. This guide explains architectural intent, enforcement strategy, and execution.">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://visualnotes.tech/blog/microsegmentation-crawl-walk-run-zero-trust.html">
-    <meta property="og:image" content="https://visualnotes.tech/blog/images/microsegmentation-architecture-cover.png">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://visualnotes.tech/blog/microsegmentation-crawl-walk-run-zero-trust.html">
-
-    <!-- Additional SEO -->
+    <meta name="description" content="Learn how to implement microsegmentation using a phased Crawl-Walk-Run approach. This guide explains architectural intent, enforcement strategy, and execution.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="author" content="VisualNotes">
-
-    <!-- Article Schema -->
+    <link rel="canonical" href="https://www.visualnotes.tech/blog/microsegmentation-crawl-walk-run-zero-trust.html">
+    <meta property="og:title" content="Microsegmentation Done Right: A Practical, Phased Approach for Zero Trust Security">
+    <meta property="og:description" content="Learn how to implement microsegmentation using a phased Crawl-Walk-Run approach. This guide explains architectural intent, enforcement strategy, and execution.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.visualnotes.tech/blog/microsegmentation-crawl-walk-run-zero-trust.html">
+    <meta property="og:image" content="https://www.visualnotes.tech/blog/images/microsegmentation-architecture-cover.png">
+    <link rel="icon" href="../favicon.ico">
+    <link rel="icon" sizes="32x32" type="image/png" href="../favicon-32x32.png">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+    <link rel="stylesheet" href="article.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MHPEMGRWXH"></script>
+    <script>
+window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-MHPEMGRWXH', {
+            'anonymize_ip': true,
+            'cookie_flags': 'SameSite=None;Secure'
+        });
+</script>
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Microsegmentation Done Right: A Practical, Phased Approach for Zero Trust Security",
-      "description": "Learn how to implement microsegmentation using a phased Crawl-Walk-Run approach. This guide explains architectural intent, enforcement strategy, and real-world execution for Zero Trust environments.",
-      "author": {
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Microsegmentation Done Right: A Practical, Phased Approach for Zero Trust Security",
+    "description": "Learn how to implement microsegmentation using a phased Crawl-Walk-Run approach. This guide explains architectural intent, enforcement strategy, and real-world execution for Zero Trust environments.",
+    "author": {
+        "@type": "Person",
+        "name": "Abhiney Sharma",
+        "url": "https://www.linkedin.com/in/abhineysharma/"
+    },
+    "publisher": {
         "@type": "Organization",
-        "name": "VisualNotes"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "VisualNotes"
-      },
-      "datePublished": "2026-02-08",
-      "dateModified": "2026-02-08",
-      "image": "https://visualnotes.tech/blog/images/microsegmentation-architecture-cover.png"
-    }
-    </script>
-
-    <!-- FAQ Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is microsegmentation in Zero Trust security?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Microsegmentation is a security approach that restricts communication between workloads using identity-based policies rather than network boundaries. In Zero Trust architectures, microsegmentation ensures that all access is explicitly allowed, reducing lateral movement and limiting breach impact."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Why do most microsegmentation projects fail?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Most microsegmentation projects fail due to premature enforcement, reliance on IP-based rules, insufficient traffic visibility, and poor coordination between security architects and platform engineers."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the Crawl-Walk-Run approach to microsegmentation?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The Crawl-Walk-Run approach is a phased deployment model where Crawl focuses on traffic visibility, Walk focuses on policy modeling and validation, and Run enforces least-privilege communication at scale."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How does microsegmentation prevent lateral movement?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Microsegmentation prevents lateral movement by denying east-west traffic by default and allowing only explicitly defined communication paths. This containment limits an attacker’s ability to move beyond an initial compromise."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is microsegmentation suitable for cloud and Kubernetes environments?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Identity-based microsegmentation works across cloud, on-prem, and Kubernetes environments because policies are tied to workload identity and labels rather than IP addresses, allowing consistent enforcement despite workload mobility."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the difference between microsegmentation and network segmentation?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Network segmentation relies on infrastructure constructs like VLANs and subnets, while microsegmentation enforces policy at the workload level using identity-based rules, offering greater granularity and flexibility."
-          }
+        "name": "VisualNotes",
+        "url": "https://www.visualnotes.tech",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.visualnotes.tech/logo.png"
         }
-      ]
-    }
-    </script>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.7;
-            color: #1e293b;
-            background: #f8fafc;
-        }
-
-        nav {
-            background: white;
-            padding: 20px 40px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #6366f1;
-            text-decoration: none;
-        }
-
-        article {
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 60px;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #0f172a;
-            line-height: 1.2;
-        }
-
-        .meta {
-            color: #64748b;
-            font-size: 0.95rem;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            margin: 40px 0 20px;
-            color: #334155;
-        }
-
-        h3 {
-            font-size: 1.4rem;
-            margin: 30px 0 15px;
-            color: #475569;
-        }
-
-        p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-
-        strong {
-            color: #0f172a;
-            font-weight: 600;
-        }
-
-        .highlight {
-            background: #dbeafe;
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
-
-        ul,
-        ol {
-            margin: 20px 0 20px 40px;
-        }
-
-        li {
-            margin-bottom: 12px;
-            font-size: 1.05rem;
-        }
-
-        code {
-            background: #f1f5f9;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.95em;
-            color: #be123c;
-        }
-
-        /* Branding Styles matching Homepage */
-        :root {
-            --primary: #FF6B6B;
-            --text-dark: #2D3436;
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Caveat', cursive;
-            font-size: 1.8rem;
-            color: var(--primary);
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-        }
-
-        .logo-wrapper {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-tagline {
-            font-family: 'Caveat', cursive;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            margin-top: -8px;
-            margin-left: 36px;
-            font-weight: 700;
-            text-decoration: underline;
-            text-decoration-color: var(--primary);
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin: 30px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .pro-tip {
-            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 12px;
-            margin: 30px 0;
-        }
-
-        .pro-tip h4 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: white;
-        }
-    </style>
+    },
+    "datePublished": "2026-02-08",
+    "dateModified": "2026-02-08",
+    "image": "https://www.visualnotes.tech/blog/images/microsegmentation-architecture-cover.png"
+}
+</script>
 </head>
 
 <body>
-    <nav>
-        <div class="nav-container">
-            <a href="../index.html" style="text-decoration: none;">
-                <div class="logo-wrapper">
-                    <div class="logo">📚 VisualNotes</div>
-                    <div class="logo-tagline">Learn visually. Think Clearly.</div>
+    <script>(function(){if(localStorage.getItem('darkMode')==='true'){document.body.classList.add('dark-mode');}})();</script>
+    <!-- ============================================ -->
+    <!-- STICKY NAVIGATION HEADER                     -->
+    <!-- ============================================ -->
+    <header class="vn-header" id="vnHeader">
+        <nav class="vn-nav">
+            <div class="vn-logo-wrap">
+                <a href="../index.html" class="vn-logo">VisualNotes</a>
+                <span class="vn-logo-tagline">Learn visually. Think Clearly.</span>
+            </div>
+            <div class="vn-nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../guides/index.html">Guides</a>
+                <a href="index.html">Blog</a>
+                <a href="../about.html">About</a>
+                <a href="../faq.html">FAQ</a>
+                <a href="#subscribe" class="vn-btn-subscribe">Subscribe</a>
+            </div>
+            <button class="vn-hamburger" id="vnHamburger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="vn-mobile-nav" id="vnMobileNav">
+        <a href="../index.html" onclick="closeMobileNav()">Home</a>
+        <a href="../guides/index.html" onclick="closeMobileNav()">Guides</a>
+        <a href="index.html" onclick="closeMobileNav()">Blog</a>
+        <a href="../about.html" onclick="closeMobileNav()">About</a>
+        <a href="../faq.html" onclick="closeMobileNav()">FAQ</a>
+        <a href="#subscribe" class="vn-btn-subscribe" onclick="closeMobileNav()">Subscribe</a>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- MAIN 3-COLUMN READER GRID                    -->
+    <!-- ============================================ -->
+    <div class="vn-layout-wrapper">
+        <!-- Left Sidebar: Table of Contents -->
+        <aside class="vn-left-sidebar">
+            <div class="toc-title">On this page</div>
+            <ul class="toc-list">
+                <li><a href="#intro" class="toc-link">Introduction</a></li>
+                <li><a href="#fail-reasons" class="toc-link">Why Projects Fail</a></li>
+                <li><a href="#phase-crawl" class="toc-link">Phase 1: Crawl</a></li>
+                <li><a href="#phase-walk" class="toc-link">Phase 2: Walk</a></li>
+                <li><a href="#phase-run" class="toc-link">Phase 3: Run</a></li>
+                <li><a href="#architect-vs-engineer" class="toc-link">Security vs Platform</a></li>
+                <li><a href="#faqs" class="toc-link">FAQs</a></li>
+                <li><a href="#conclusion" class="toc-link">Conclusion</a></li>
+            </ul>
+        </aside>
+
+        <!-- Center Column: Main Content -->
+        <main class="vn-main-content">
+            <article class="vn-article vn-reveal">
+                <!-- Article Header -->
+                <div class="vn-article-header">
+                    <span class="vn-category-pill">Security · Zero Trust</span>
+                    <h1 class="vn-title">Microsegmentation Done Right: A Practical, Phased Approach for Zero Trust Security</h1>
+                    <div class="vn-byline">
+                        <div class="vn-avatar">AS</div>
+                        <div class="vn-byline-text">
+                            <div class="vn-byline-name">
+                                <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank">Abhiney Sharma</a>
+                            </div>
+                            <div class="vn-byline-date">February 2026 &nbsp;·&nbsp; 10 min read</div>
+                        </div>
+                    </div>
                 </div>
-            </a>
-        </div>
-    </nav>
 
-    <article>
-        <h1>Microsegmentation Done Right: A Practical, Phased Approach for Zero Trust Security</h1>
+                <!-- Hero Image or Visual Placeholder -->
+                <img src="images/microsegmentation-architecture-cover.png" class="article-image" alt="Microsegmentation Done Right: A Practical, Phased Approach for Zero Trust Security">
 
-        <div class="meta">
-            Published February 8, 2026 • 10 min read • Security
-        </div>
+                <!-- Disclaimer block if available -->
+                
 
-        <img src="images/microsegmentation-architecture-cover.png"
-            alt="Zero Trust Architecture Diagram showing segmented environments">
-
-        <h2>Introduction: Why Microsegmentation Still Matters</h2>
-
-        <p>Microsegmentation is no longer an emerging concept—it is a core control in modern Zero Trust architectures.
+                <!-- Article Body -->
+                <div class="vn-body">
+                    
+<h2 id="intro">Introduction: Why Microsegmentation Still Matters</h2><p>Microsegmentation is no longer an emerging concept—it is a core control in modern Zero Trust architectures.
             As organizations move toward hybrid cloud, Kubernetes, and highly distributed application models,
             traditional perimeter defenses and coarse network segmentation fail to contain breaches or prevent lateral
-            movement.</p>
-
-        <p>Yet many microsegmentation initiatives struggle to reach full enforcement. Projects stall after visibility,
-            policies become too complex to manage, or enforcement introduces operational risk.</p>
-
-        <p><strong>The difference between success and failure is not tooling—it is methodology.</strong></p>
-
-        <p>This article outlines a proven, phased microsegmentation approach that aligns security architecture with
-            platform execution, ensuring policies are both enforceable and resilient in production environments.</p>
-
-        <h2>Why Microsegmentation Projects Fail</h2>
-
-        <p>Before discussing implementation, it’s important to understand common failure patterns:</p>
-
-        <ul>
-            <li>Policies designed around IP addresses instead of workload identity</li>
-            <li>Enforcement attempted before traffic behavior is understood</li>
-            <li>Lack of phased rollout and rollback mechanisms</li>
-            <li>Poor alignment between security architects and engineering teams</li>
-        </ul>
-
-        <img src="images/microsegmentation-lateral-movement.png"
-            alt="Diagram showing lateral movement in a compromised network versus segmented environment">
-
-        <p>Microsegmentation is not a single configuration change. It is a controlled transition from implicit trust to
-            explicit, identity-based access.</p>
-
-        <h2>Phase 1: Crawl — Establish Visibility and Context</h2>
-
-        <p>The Crawl phase is focused entirely on observability. No traffic is blocked during this stage.</p>
-
-        <img src="images/microsegmentation-crawl-walk-run-steps.png"
-            alt="Crawl Walk Run microsegmentation phased deployment diagram">
-
-        <h3>Architectural Goals</h3>
-        <ul>
-            <li>Identify all east–west communication paths</li>
-            <li>Understand application dependencies</li>
-            <li>Expose undocumented or legacy flows</li>
-        </ul>
-
-        <h3>Operational Activities</h3>
-        <ul>
-            <li>Collect flow telemetry from hosts, VMs, and containers</li>
-            <li>Map workloads to applications, environments, and owners</li>
-            <li>Validate traffic patterns over time, not snapshots</li>
-        </ul>
-
-        <p>This phase creates the ground truth. Any policy designed without this data will eventually fail in
-            enforcement.</p>
-
-        <h2>Phase 2: Walk — Model and Validate Policy Intent</h2>
-
-        <p>The Walk phase translates architectural intent into enforceable policy logic without immediately introducing
-            risk.</p>
-
-        <h3>Policy Design Principles</h3>
-        <ul>
-            <li>Identity-based, not network-based</li>
-            <li>Explicit allow rules only</li>
-            <li>Environment and role separation by default</li>
-        </ul>
-
-        <img src="images/microsegmentation-policy-model.png"
-            alt="Diagram illustrating workload identity, labels, policy intent, and enforcement">
-
-        <h3>Key Outcomes</h3>
-        <ul>
-            <li>Policies are simulated against real traffic</li>
-            <li>Enforcement begins in limited or selective scope</li>
-            <li>Exceptions are justified, documented, or eliminated</li>
-        </ul>
-
-        <p>This phase is iterative. Policies evolve as understanding improves, ensuring enforcement aligns with real
-            application behavior.</p>
-
-        <h2>Phase 3: Run — Enforce Least Privilege at Scale</h2>
-
-        <p>The Run phase is where microsegmentation delivers its primary security value.</p>
-
-        <h3>At this stage:</h3>
-        <ul>
-            <li>Only explicitly allowed flows are permitted</li>
-            <li>Lateral movement paths are closed</li>
-            <li>Breach containment becomes automatic</li>
-        </ul>
-
-        <p>Because enforcement is based on workload identity and labels, policies remain consistent across cloud,
+            movement.</p><p>Yet many microsegmentation initiatives struggle to reach full enforcement. Projects stall after visibility,
+            policies become too complex to manage, or enforcement introduces operational risk.</p><p><strong>The difference between success and failure is not tooling—it is methodology.</strong></p><p>This article outlines a proven, phased microsegmentation approach that aligns security architecture with
+            platform execution, ensuring policies are both enforceable and resilient in production environments.</p><h2 id="fail-reasons">Why Microsegmentation Projects Fail</h2><p>Before discussing implementation, it’s important to understand common failure patterns:</p><ul>
+<li>Policies designed around IP addresses instead of workload identity</li>
+<li>Enforcement attempted before traffic behavior is understood</li>
+<li>Lack of phased rollout and rollback mechanisms</li>
+<li>Poor alignment between security architects and engineering teams</li>
+</ul><img alt="Diagram showing lateral movement in a compromised network versus segmented environment" src="images/microsegmentation-lateral-movement.png"><p>Microsegmentation is not a single configuration change. It is a controlled transition from implicit trust to
+            explicit, identity-based access.</p><h2 id="phase-crawl">Phase 1: Crawl — Establish Visibility and Context</h2><p>The Crawl phase is focused entirely on observability. No traffic is blocked during this stage.</p><img alt="Crawl Walk Run microsegmentation phased deployment diagram" src="images/microsegmentation-crawl-walk-run-steps.png"/><h3>Architectural Goals</h3><ul>
+<li>Identify all east–west communication paths</li>
+<li>Understand application dependencies</li>
+<li>Expose undocumented or legacy flows</li>
+</ul><h3>Operational Activities</h3><ul>
+<li>Collect flow telemetry from hosts, VMs, and containers</li>
+<li>Map workloads to applications, environments, and owners</li>
+<li>Validate traffic patterns over time, not snapshots</li>
+</ul><p>This phase creates the ground truth. Any policy designed without this data will eventually fail in
+            enforcement.</p><h2 id="phase-walk">Phase 2: Walk — Model and Validate Policy Intent</h2><p>The Walk phase translates architectural intent into enforceable policy logic without immediately introducing
+            risk.</p><h3>Policy Design Principles</h3><ul>
+<li>Identity-based, not network-based</li>
+<li>Explicit allow rules only</li>
+<li>Environment and role separation by default</li>
+</ul><img alt="Diagram illustrating workload identity, labels, policy intent, and enforcement" src="images/microsegmentation-policy-model.png"/><h3>Key Outcomes</h3><ul>
+<li>Policies are simulated against real traffic</li>
+<li>Enforcement begins in limited or selective scope</li>
+<li>Exceptions are justified, documented, or eliminated</li>
+</ul><p>This phase is iterative. Policies evolve as understanding improves, ensuring enforcement aligns with real
+            application behavior.</p><h2 id="phase-run">Phase 3: Run — Enforce Least Privilege at Scale</h2><p>The Run phase is where microsegmentation delivers its primary security value.</p><h3>At this stage:</h3><ul>
+<li>Only explicitly allowed flows are permitted</li>
+<li>Lateral movement paths are closed</li>
+<li>Breach containment becomes automatic</li>
+</ul><p>Because enforcement is based on workload identity and labels, policies remain consistent across cloud,
             on-prem, and containerized environments. Mature teams treat this phase as policy-as-code, with continuous
-            updates and validation.</p>
-
-        <h2>Bridging Security Architecture and Platform Engineering</h2>
-
-        <p>Microsegmentation succeeds when architectural intent and operational execution remain tightly aligned.</p>
-
-        <ul>
-            <li><strong>Security architects</strong> define trust boundaries, blast-radius reduction, and compliance
+            updates and validation.</p><h2 id="architect-vs-engineer">Bridging Security Architecture and Platform Engineering</h2><p>Microsegmentation succeeds when architectural intent and operational execution remain tightly aligned.</p><ul>
+<li><strong>Security architects</strong> define trust boundaries, blast-radius reduction, and compliance
                 requirements</li>
-            <li><strong>Platform engineers</strong> ensure policies are deployable, observable, and reversible</li>
-        </ul>
-
-        <p>A phased model allows both roles to operate independently while working toward the same outcome: enforceable
-            Zero Trust.</p>
-
-        <h2>Frequently Asked Questions (FAQ)</h2>
-
-        <h3>What is microsegmentation in Zero Trust security?</h3>
-        <p>Microsegmentation is a security approach that restricts communication between workloads using identity-based
+<li><strong>Platform engineers</strong> ensure policies are deployable, observable, and reversible</li>
+</ul><p>A phased model allows both roles to operate independently while working toward the same outcome: enforceable
+            Zero Trust.</p><h2 id="faqs">Frequently Asked Questions (FAQ)</h2><h3>What is microsegmentation in Zero Trust security?</h3><p>Microsegmentation is a security approach that restricts communication between workloads using identity-based
             policies instead of network boundaries. In a Zero Trust model, microsegmentation ensures that every workload
-            interaction is explicitly allowed, reducing lateral movement and limiting breach impact.</p>
-
-        <h3>Why do most microsegmentation projects fail?</h3>
-        <p>Most failures occur due to premature enforcement, reliance on IP-based rules, lack of traffic visibility, and
+            interaction is explicitly allowed, reducing lateral movement and limiting breach impact.</p><h3>Why do most microsegmentation projects fail?</h3><p>Most failures occur due to premature enforcement, reliance on IP-based rules, lack of traffic visibility, and
             poor alignment between security architecture and platform operations. Successful programs follow a phased
-            approach that prioritizes visibility and validation before enforcement.</p>
-
-        <h3>What is the Crawl-Walk-Run approach to microsegmentation?</h3>
-        <p>The Crawl-Walk-Run model is a phased deployment strategy:
+            approach that prioritizes visibility and validation before enforcement.</p><h3>What is the Crawl-Walk-Run approach to microsegmentation?</h3><p>The Crawl-Walk-Run model is a phased deployment strategy:
         <ul>
-            <li><strong>Crawl:</strong> Observe traffic and establish baseline visibility</li>
-            <li><strong>Walk:</strong> Model and validate policies with limited enforcement</li>
-            <li><strong>Run:</strong> Enforce least-privilege communication at scale</li>
-        </ul>
-        This approach reduces operational risk while improving policy accuracy.</p>
-
-        <h3>How does microsegmentation prevent lateral movement?</h3>
-        <p>Microsegmentation prevents lateral movement by denying all east–west traffic by default and allowing only
+<li><strong>Crawl:</strong> Observe traffic and establish baseline visibility</li>
+<li><strong>Walk:</strong> Model and validate policies with limited enforcement</li>
+<li><strong>Run:</strong> Enforce least-privilege communication at scale</li>
+</ul>
+        This approach reduces operational risk while improving policy accuracy.</p><h3>How does microsegmentation prevent lateral movement?</h3><p>Microsegmentation prevents lateral movement by denying all east–west traffic by default and allowing only
             explicitly defined communication paths. If one workload is compromised, enforced policies prevent the
-            attacker from accessing other systems.</p>
-
-        <h3>Is microsegmentation suitable for cloud and Kubernetes environments?</h3>
-        <p>Yes. Identity-based microsegmentation works across on-prem, cloud, and Kubernetes environments because it
+            attacker from accessing other systems.</p><h3>Is microsegmentation suitable for cloud and Kubernetes environments?</h3><p>Yes. Identity-based microsegmentation works across on-prem, cloud, and Kubernetes environments because it
             does not rely on static IP addresses. Policies remain consistent even when workloads scale, move, or
-            restart.</p>
-
-        <h3>What’s the difference between microsegmentation and network segmentation?</h3>
-        <p>Traditional network segmentation relies on VLANs, subnets, and firewalls. Microsegmentation operates at the
+            restart.</p><h3>What’s the difference between microsegmentation and network segmentation?</h3><p>Traditional network segmentation relies on VLANs, subnets, and firewalls. Microsegmentation operates at the
             workload level, using identity and labels to enforce policy, making it more granular, scalable, and
-            resilient to infrastructure changes.</p>
-
-        <h2>Conclusion</h2>
-
-        <p>Microsegmentation is not about blocking traffic—it is about controlling trust.</p>
-
-        <p>By adopting a Crawl-Walk-Run approach, organizations can move from visibility to enforcement without
-            disrupting production, while ensuring policies are durable, auditable, and scalable.</p>
-
-        <p>When implemented correctly, microsegmentation becomes a long-term security capability—not a stalled
+            resilient to infrastructure changes.</p><h2 id="conclusion">Conclusion</h2><p>Microsegmentation is not about blocking traffic—it is about controlling trust.</p><p>By adopting a Crawl-Walk-Run approach, organizations can move from visibility to enforcement without
+            disrupting production, while ensuring policies are durable, auditable, and scalable.</p><p>When implemented correctly, microsegmentation becomes a long-term security capability—not a stalled
             initiative.</p>
+</img>
+                </div>
+            </article>
+        </main>
 
-        <div class="share-section" style="margin-top: 60px; padding-top: 40px; border-top: 1px solid #e2e8f0;">
-            <h3 style="margin-top: 0; margin-bottom: 20px;">Share this guide:</h3>
-            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                <a href="#" onclick="shareArticle('twitter'); return false;"
-                    style="background: #000000; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s;">𝕏</a>
-                <a href="#" onclick="shareArticle('linkedin'); return false;"
-                    style="background: #0077b5; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s;">in</a>
-                <a href="#" onclick="shareArticle('facebook'); return false;"
-                    style="background: #1877f2; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s;">f</a>
-                <a href="#" onclick="shareArticle('whatsapp'); return false;"
-                    style="background: #25d366; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s;">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-                    </svg>
+        <!-- Right Sidebar: Author & Metadata -->
+        <aside class="vn-right-sidebar">
+            <!-- Author Profile Card -->
+            <div class="sidebar-card author-card">
+                <div class="author-avatar-large">AS</div>
+                <div class="author-name-large">Abhiney Sharma</div>
+                <div class="author-title-large">Infrastructure & Cloud Architect</div>
+                <p style="font-family: 'Inter', sans-serif; font-size: 11.5px; color: var(--vn-ink-secondary); line-height: 1.5; margin: 12px 0; text-align: left;">
+                    18+ years in network, security, and cloud architecture. Helping engineers learn visual systems.
+                </p>
+                <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank" class="author-linkedin-btn">
+                    Connect on LinkedIn
                 </a>
-                <a href="#" onclick="copyLink(); return false;"
-                    style="background: #64748b; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s;">🔗</a>
+            </div>
+
+            <!-- Share This Article Card -->
+            <div class="sidebar-card">
+                <div class="meta-label" style="text-align: center; margin-bottom: 8px;">Share this article</div>
+                <div class="share-buttons">
+                    <button onclick="shareArticle('twitter')" class="share-btn" title="Share on X / Twitter">𝕏</button>
+                    <button onclick="shareArticle('linkedin')" class="share-btn" title="Share on LinkedIn">in</button>
+                    <button onclick="copyLink()" class="share-btn" title="Copy Article Link">🔗</button>
+                </div>
+            </div>
+
+            <!-- Metadata Details Card -->
+            <div class="sidebar-card">
+                <div class="meta-item">
+                    <div class="meta-label">Category</div>
+                    <div class="meta-value">Security · Zero Trust</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Published</div>
+                    <div class="meta-value">February 2026</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Reading Time</div>
+                    <div class="meta-value">10 min read</div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- RELATED ARTICLES SECTION                     -->
+    <!-- ============================================ -->
+    <section class="vn-related-section vn-reveal">
+        <div class="vn-related-inner">
+            <div class="section-label">
+                <span class="section-label-badge general">📖 Read Next</span>
+                <div class="section-label-line"></div>
+            </div>
+            <div class="vn-related-grid">
+                                <a href="top-5-network-exploits-misconfigured-2026.html" class="vn-article-card" data-category="security">
+                    <div class="vn-article-thumb"><img src="images/top-5-network-exploits.png" alt="Top 5 Network Exploits Still Misconfigured in 2026" loading="lazy"></div>
+                    <div class="vn-article-body">
+                        <span class="guide-category">Security & Infrastructure</span>
+                        <h4 class="guide-title">Top 5 Network Exploits Still Misconfigured in 2026</h4>
+                        <div class="guide-footer">
+                            <span class="guide-meta">15 min read</span>
+                            <span class="btn-read">READ NOW</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="google-dorking-guide.html" class="vn-article-card" data-category="security">
+                    <div class="vn-article-thumb"><img src="images/google-dorking-header.png" alt="Google Dorking: The Complete Guide (2026)" loading="lazy"></div>
+                    <div class="vn-article-body">
+                        <span class="guide-category">Security & OSINT</span>
+                        <h4 class="guide-title">Google Dorking: The Complete Guide (2026)</h4>
+                        <div class="guide-footer">
+                            <span class="guide-meta">15 min read</span>
+                            <span class="btn-read">READ NOW</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="cloud-comparison.html" class="vn-article-card" data-category="cloud">
+                    <div class="vn-article-thumb"><img src="images/cloud-thumbnail.png" alt="AWS vs Azure vs GCP: Which to Learn First?" loading="lazy"></div>
+                    <div class="vn-article-body">
+                        <span class="guide-category">Cloud Computing</span>
+                        <h4 class="guide-title">AWS vs Azure vs GCP: Which to Learn First?</h4>
+                        <div class="guide-footer">
+                            <span class="guide-meta">12 min read</span>
+                            <span class="btn-read">READ NOW</span>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
+    </section>
 
-        <script>
-            function shareArticle(platform) {
-                const url = encodeURIComponent(window.location.href);
-                const title = encodeURIComponent(document.title);
-                let shareUrl = '';
+    <!-- ============================================ -->
+    <!-- NEWSLETTER CTA STRIP                         -->
+    <!-- ============================================ -->
+    <section class="vn-newsletter" id="subscribe">
+        <div class="vn-newsletter-inner">
+            <h2>Never Miss a New Guide</h2>
+            <p>Get visual notes and deep-dives delivered to your inbox. No spam, just learning.</p>
 
-                switch (platform) {
-                    case 'twitter':
-                        shareUrl = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
-                        break;
-                    case 'linkedin':
-                        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
-                        break;
-                    case 'facebook':
-                        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-                        break;
-                    case 'whatsapp':
-                        shareUrl = `https://api.whatsapp.com/send?text=${title}%20${url}`;
-                        break;
+            <ul class="vn-newsletter-benefits">
+                <li>New study guides delivered weekly</li>
+                <li>Exclusive tips & tricks</li>
+                <li>Early access to new content</li>
+                <li>100% free, unsubscribe anytime</li>
+            </ul>
+
+            <form class="email-form" onsubmit="handleEmailSubmit(event)">
+                <input type="email" id="emailInput" class="email-input" placeholder="your@email.com" required>
+                <button type="submit" class="btn-subscribe">Subscribe</button>
+            </form>
+            <p class="vn-newsletter-proof">Join 5,000+ engineers already learning visually</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FOOTER SITEMAP                               -->
+    <!-- ============================================ -->
+    <footer class="vn-footer">
+        <div class="vn-footer-grid">
+            <div class="vn-footer-brand">
+                <span class="vn-logo">VisualNotes</span>
+                <p>Visual, handwritten-style notes for Infrastructure, Cloud, Security & OSINT. Making complex tech concepts click.</p>
+                <div class="vn-footer-founder">
+                    Founder: <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank">Abhiney Sharma</a>
+                </div>
+                <div class="vn-footer-social">
+                    <a href="https://www.instagram.com/visualnotes.tech/" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://whatsapp.com/channel/0029Vb6z21DBqbr2xDU7Rc2P" target="_blank" rel="noopener" aria-label="Join WhatsApp channel">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="vn-footer-col">
+                <h4>Resources</h4>
+                <a href="../guides/index.html">Study Guides</a>
+                <a href="index.html">Blog Articles</a>
+                <a href="../guides/index.html">Visual Notes</a>
+                <a href="../hsrp-flashcards.html">Flashcards</a>
+            </div>
+            <div class="vn-footer-col">
+                <h4>Company</h4>
+                <a href="../about.html">About Us</a>
+                <a href="../write-for-us.html">Write for Us</a>
+                <a href="../faq.html">FAQ</a>
+                <a href="../privacy.html">Privacy Policy</a>
+                <a href="../terms.html">Terms of Service</a>
+            </div>
+            <div class="vn-footer-col">
+                <h4>Connect</h4>
+                <a href="https://www.instagram.com/visualnotes.tech/" target="_blank">Instagram</a>
+                <a href="https://whatsapp.com/channel/0029Vb6z21DBqbr2xDU7Rc2P" target="_blank">WhatsApp</a>
+                <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank">LinkedIn</a>
+                <a href="mailto:visualnotes.tech@gmail.com">Email Us</a>
+            </div>
+        </div>
+        <div class="vn-footer-bottom">
+            © 2026 VisualNotes. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Thank You Modal -->
+    <div id="thankYouModal" class="vn-thank-modal">
+        <div class="vn-thank-content">
+            <div style="font-size: 3.5rem; margin-bottom: 20px;">🎉</div>
+            <h2 style="color: var(--vn-accent); margin-bottom: 12px; font-size: 1.8rem;">Thank You for Subscribing!</h2>
+            <p style="color: var(--vn-ink-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px;">
+                Welcome to the VisualNotes community! We've sent a welcome email to your inbox with exclusive resources and tips.
+            </p>
+            <div style="background: var(--vn-bg); padding: 18px; border-radius: var(--vn-radius); margin-bottom: 24px; text-align: left;">
+                <p style="color: var(--vn-ink); font-weight: 600; margin-bottom: 8px;">🚀 What's Next?</p>
+                <p style="color: var(--vn-ink-secondary); font-size: 0.92rem; line-height: 1.5;">Check your email for your welcome message and start exploring our visual study guides!</p>
+            </div>
+            <button onclick="closeThankYouModal()" class="vn-btn-primary" style="width: 100%;">Start Exploring</button>
+        </div>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" style="display:none;">
+        <div>
+            <p>We use cookies to improve your experience. By continuing, you agree to our use of cookies.</p>
+            <button onclick="acceptCookies()">Accept</button>
+        </div>
+    </div>
+
+    <!-- Floating Theme Toggle Button -->
+    <button id="theme-toggle" onclick="toggleDarkMode()">
+        🌙 DARK MODE
+    </button>
+
+    <!-- ============================================ -->
+    <!-- INTERACTIVE SCRIPTS                          -->
+    <!-- ============================================ -->
+    <script>
+        // ===== HEADER SCROLL BEHAVIOR =====
+        const header = document.getElementById('vnHeader');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ===== MOBILE NAV =====
+        const hamburger = document.getElementById('vnHamburger');
+        const mobileNav = document.getElementById('vnMobileNav');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        function closeMobileNav() {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ===== SCROLL REVEAL =====
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
+            });
+        }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
 
-                if (shareUrl) window.open(shareUrl, '_blank');
+        document.querySelectorAll('.vn-reveal').forEach(el => revealObserver.observe(el));
+
+        // ===== SOCIAL SHARE HANDLERS =====
+        function shareArticle(platform) {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            let shareUrl = '';
+
+            switch (platform) {
+                case 'twitter':
+                    shareUrl = 'https://twitter.com/intent/tweet?text=' + title + '&url=' + url;
+                    break;
+                case 'linkedin':
+                    shareUrl = 'https://www.linkedin.com/sharing/share-offsite/?url=' + url;
+                    break;
             }
 
-            function copyLink() {
-                navigator.clipboard.writeText(window.location.href);
-                alert('Link copied to clipboard!');
-            }
-        </script>
+            if (shareUrl) window.open(shareUrl, '_blank');
+        }
 
-    </article>
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href);
+            alert('🔗 Link copied to clipboard!');
+        }
+
+        // ===== EMAIL SIGNUP FORM SUBMISSION =====
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyt3yXiow0mYGHwfLNcl_k1lH6s6DU51P8_i50DqqYZxcONrSTX_gQdtxFO4tOQ0sMMdA/exec';
+
+        async function handleEmailSubmit(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value.trim().toLowerCase();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) { alert('⚠️ Please enter a valid email address'); return; }
+            const junkList = ['abc@gmail.com', 'test@gmail.com', 'test@test.com', 'admin@gmail.com', 'user@gmail.com'];
+            if (junkList.includes(email) || email.length < 6) { alert('⚠️ Please enter a real email address'); return; }
+
+            const button = e.target.querySelector('button');
+            const originalText = button.textContent;
+            button.textContent = 'Subscribing...';
+            button.disabled = true;
+
+            try {
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST', mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: JSON.stringify({ email: email, country: 'detect-server-side' })
+                });
+            } catch (e) { console.error('Submission error (ignored):', e); }
+
+            showThankYouModal();
+            document.getElementById('emailInput').value = '';
+            button.textContent = originalText;
+            button.disabled = false;
+        }
+
+        function showThankYouModal() {
+            const modal = document.getElementById('thankYouModal');
+            if (modal) modal.style.display = 'flex';
+        }
+
+        function closeThankYouModal() {
+            const modal = document.getElementById('thankYouModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        window.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('thankYouModal')?.addEventListener('click', function (e) {
+                if (e.target === this) closeThankYouModal();
+            });
+        });
+
+        // ===== COOKIE CONSENT =====
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'true');
+            document.getElementById('cookie-consent').style.display = 'none';
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            if (!localStorage.getItem('cookieConsent')) {
+                document.getElementById('cookie-consent').style.display = 'block';
+            }
+        });
+
+        // ===== DARK MODE TOGGLE =====
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark ? 'true' : 'false');
+            updateThemeButtonText();
+        }
+
+        function updateThemeButtonText() {
+            const btn = document.getElementById('theme-toggle');
+            if (!btn) return;
+            const isDark = document.body.classList.contains('dark-mode');
+            btn.innerHTML = isDark ? '☀ LIGHT MODE' : '🌙 DARK MODE';
+        }
+
+        // Restore theme preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('darkMode');
+            if (savedTheme === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+            updateThemeButtonText();
+        });
+
+        // ===== SCROLL SPY FOR TABLE OF CONTENTS =====
+        window.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -60% 0px',
+                threshold: 0
+            };
+
+            const links = document.querySelectorAll('.toc-link');
+            const headings = Array.from(links).map(link => {
+                const id = link.getAttribute('href').substring(1);
+                return document.getElementById(id);
+            }).filter(h => h !== null);
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const activeId = entry.target.getAttribute('id');
+                        links.forEach(link => {
+                            if (link.getAttribute('href') === `#${activeId}`) {
+                                link.classList.add('active');
+                            } else {
+                                link.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            headings.forEach(heading => observer.observe(heading));
+        });
+    </script>
 </body>
 
 </html>

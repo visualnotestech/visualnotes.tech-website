@@ -3,518 +3,651 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#365FF0">
     <title>Top 7 OSINT Tools in 2026: A Security Researcher's Privacy Kit</title>
-    <meta name="description"
-        content="The best open-source intelligence tools for 2026. From social media recon to domain analysis, here's what security researchers actually use.">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Top 7 OSINT Tools in 2026: Security Researcher's Kit">
-    <meta property="og:description"
-        content="The best open-source intelligence tools for 2026. What security researchers actually use.">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://visualnotes.tech/blog/osint-tools-2026.html">
-    <meta property="og:image" content="https://visualnotes.tech/blog/images/dns-thumbnail.png">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://visualnotes.tech/blog/osint-tools-2026.html">
-
-    <!-- Additional SEO -->
+    <meta name="description" content="The best open-source intelligence tools for 2026. From social media recon to domain analysis, here's what security researchers actually use.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="author" content="VisualNotes">
-
-    <!-- Article Schema -->
+    <link rel="canonical" href="https://www.visualnotes.tech/blog/osint-tools-2026.html">
+    <meta property="og:title" content="Top 7 OSINT Tools in 2026: Security Researcher's Kit">
+    <meta property="og:description" content="The best open-source intelligence tools for 2026. What security researchers actually use.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.visualnotes.tech/blog/osint-tools-2026.html">
+    <meta property="og:image" content="https://www.visualnotes.tech/blog/images/dns-thumbnail.png">
+    <link rel="icon" href="../favicon.ico">
+    <link rel="icon" sizes="32x32" type="image/png" href="../favicon-32x32.png">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+    <link rel="stylesheet" href="article.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MHPEMGRWXH"></script>
+    <script>
+window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-MHPEMGRWXH', {
+            'anonymize_ip': true,
+            'cookie_flags': 'SameSite=None;Secure'
+        });
+</script>
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Top 7 OSINT Tools in 2026: A Security Researcher's Privacy Kit",
-      "description": "A comprehensive guide to the best OSINT tools for open-source intelligence gathering in 2026.",
-      "author": {
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Top 7 OSINT Tools in 2026: A Security Researcher's Privacy Kit",
+    "description": "A comprehensive guide to the best OSINT tools for open-source intelligence gathering in 2026.",
+    "author": {
+        "@type": "Person",
+        "name": "Abhiney Sharma",
+        "url": "https://www.linkedin.com/in/abhineysharma/"
+    },
+    "publisher": {
         "@type": "Organization",
-        "name": "VisualNotes"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "VisualNotes"
-      },
-      "datePublished": "2026-01-24",
-      "dateModified": "2026-01-24"
-    }
-    </script>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        "name": "VisualNotes",
+        "url": "https://www.visualnotes.tech",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.visualnotes.tech/logo.png"
         }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.7;
-            color: #1e293b;
-            background: #f8fafc;
-        }
-
-        nav {
-            background: white;
-            padding: 20px 40px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        /* Branding Styles matching Homepage */
-        :root {
-            --primary: #FF6B6B;
-            --text-dark: #2D3436;
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Caveat', cursive;
-            font-size: 1.8rem;
-            color: var(--primary);
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-        }
-
-        .logo-wrapper {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-tagline {
-            font-family: 'Caveat', cursive;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            margin-top: -8px;
-            margin-left: 36px;
-            font-weight: 700;
-            text-decoration: underline;
-            text-decoration-color: var(--primary);
-        }
-
-        article {
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 60px;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #0f172a;
-            line-height: 1.2;
-        }
-
-        .meta {
-            color: #64748b;
-            font-size: 0.95rem;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            margin: 40px 0 20px;
-            color: #334155;
-        }
-
-        h3 {
-            font-size: 1.4rem;
-            margin: 30px 0 15px;
-            color: #475569;
-        }
-
-        p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-
-        strong {
-            color: #0f172a;
-            font-weight: 600;
-        }
-
-        .highlight {
-            background: #fef3c7;
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
-
-        .tool-card {
-            background: #f8fafc;
-            border-left: 4px solid #f97316;
-            padding: 25px;
-            margin: 30px 0;
-            border-radius: 8px;
-        }
-
-        .tool-card h3 {
-            margin-top: 0;
-            color: #f97316;
-        }
-
-        .tool-card .badge {
-            display: inline-block;
-            background: #f97316;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-right: 10px;
-            margin-bottom: 10px;
-        }
-
-        .pro-tip {
-            background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 12px;
-            margin: 30px 0;
-        }
-
-        .pro-tip h4 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        ul,
-        ol {
-            margin: 20px 0 20px 40px;
-        }
-
-        li {
-            margin-bottom: 12px;
-            font-size: 1.05rem;
-        }
-
-        .warning-box {
-            background: #fef2f2;
-            border-left: 4px solid #ef4444;
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 8px;
-        }
-
-        .warning-box h4 {
-            color: #ef4444;
-            margin-bottom: 10px;
-        }
-
-        code {
-            background: #f1f5f9;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.95em;
-            color: #be123c;
-        }
-    </style>
+    },
+    "datePublished": "2026-01-24",
+    "dateModified": "2026-01-24"
+}
+</script>
 </head>
 
 <body>
-    <nav>
-        <div class="nav-container">
-            <a href="../index.html" style="text-decoration: none;">
-                <div class="logo-wrapper">
-                    <div class="logo">📚 VisualNotes</div>
-                    <div class="logo-tagline">Learn visually. Think Clearly.</div>
+    <script>(function(){if(localStorage.getItem('darkMode')==='true'){document.body.classList.add('dark-mode');}})();</script>
+    <!-- ============================================ -->
+    <!-- STICKY NAVIGATION HEADER                     -->
+    <!-- ============================================ -->
+    <header class="vn-header" id="vnHeader">
+        <nav class="vn-nav">
+            <div class="vn-logo-wrap">
+                <a href="../index.html" class="vn-logo">VisualNotes</a>
+                <span class="vn-logo-tagline">Learn visually. Think Clearly.</span>
+            </div>
+            <div class="vn-nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../guides/index.html">Guides</a>
+                <a href="index.html">Blog</a>
+                <a href="../about.html">About</a>
+                <a href="../faq.html">FAQ</a>
+                <a href="#subscribe" class="vn-btn-subscribe">Subscribe</a>
+            </div>
+            <button class="vn-hamburger" id="vnHamburger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="vn-mobile-nav" id="vnMobileNav">
+        <a href="../index.html" onclick="closeMobileNav()">Home</a>
+        <a href="../guides/index.html" onclick="closeMobileNav()">Guides</a>
+        <a href="index.html" onclick="closeMobileNav()">Blog</a>
+        <a href="../about.html" onclick="closeMobileNav()">About</a>
+        <a href="../faq.html" onclick="closeMobileNav()">FAQ</a>
+        <a href="#subscribe" class="vn-btn-subscribe" onclick="closeMobileNav()">Subscribe</a>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- MAIN 3-COLUMN READER GRID                    -->
+    <!-- ============================================ -->
+    <div class="vn-layout-wrapper">
+        <!-- Left Sidebar: Table of Contents -->
+        <aside class="vn-left-sidebar">
+            <div class="toc-title">On this page</div>
+            <ul class="toc-list">
+                <li><a href="#maltego" class="toc-link">1. Maltego</a></li>
+                <li><a href="#shodan" class="toc-link">2. Shodan</a></li>
+                <li><a href="#theharvester" class="toc-link">3. theHarvester</a></li>
+                <li><a href="#spiderfoot" class="toc-link">4. SpiderFoot</a></li>
+                <li><a href="#recon-ng" class="toc-link">5. Recon-ng</a></li>
+                <li><a href="#sherlock" class="toc-link">6. Sherlock</a></li>
+                <li><a href="#osint-framework" class="toc-link">7. OSINT Framework</a></li>
+                <li><a href="#ethics" class="toc-link">Ethical Usage</a></li>
+                <li><a href="#getting-started" class="toc-link">Getting Started</a></li>
+                <li><a href="#key-takeaways" class="toc-link">Key Takeaways</a></li>
+            </ul>
+        </aside>
+
+        <!-- Center Column: Main Content -->
+        <main class="vn-main-content">
+            <article class="vn-article vn-reveal">
+                <!-- Article Header -->
+                <div class="vn-article-header">
+                    <span class="vn-category-pill">OSINT · Tools & Techniques</span>
+                    <h1 class="vn-title">Top 7 OSINT Tools in 2026: A Security Researcher's Privacy Kit</h1>
+                    <div class="vn-byline">
+                        <div class="vn-avatar">AS</div>
+                        <div class="vn-byline-text">
+                            <div class="vn-byline-name">
+                                <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank">Abhiney Sharma</a>
+                            </div>
+                            <div class="vn-byline-date">January 2026 &nbsp;·&nbsp; 10 min read</div>
+                        </div>
+                    </div>
                 </div>
-            </a>
-        </div>
-    </nav>
 
-    <article>
-        <h1>Top 7 OSINT Tools in 2026: A Security Researcher's Privacy Kit</h1>
+                <!-- Hero Image or Visual Placeholder -->
+                <img src="images/osint-thumbnail.png" class="article-image" alt="Top 7 OSINT Tools in 2026: A Security Researcher's Privacy Kit">
 
-        <div class="meta">
-            Published January 24, 2026 • 10 min read • Security & OSINT
-        </div>
+                <!-- Disclaimer block if available -->
+                
 
-        <p>Here's something most people don't realize: <strong>most "hacking" isn't code</strong>. It's knowing where to
-            look.</p>
-
-        <p>Open-Source Intelligence (OSINT) is the art of finding publicly available information that most people
-            overlook. And in 2026, the tools have gotten <em>scary good</em>.</p>
-
-        <p>Whether you're a security researcher, journalist, or just privacy-conscious, these are the tools
-            professionals actually use. No fluff, no outdated lists—just what works right now.</p>
-
-        <div class="warning-box">
-            <h4>⚠️ Legal Disclaimer</h4>
-            <p>OSINT tools are legal when used for <strong>ethical purposes</strong> (security research, journalism,
+                <!-- Article Body -->
+                <div class="vn-body">
+                    
+<p>Here's something most people don't realize: <strong>most "hacking" isn't code</strong>. It's knowing where to
+            look.</p><p>Open-Source Intelligence (OSINT) is the art of finding publicly available information that most people
+            overlook. And in 2026, the tools have gotten <em>scary good</em>.</p><p>Whether you're a security researcher, journalist, or just privacy-conscious, these are the tools
+            professionals actually use. No fluff, no outdated lists—just what works right now.</p><div class="warning-box">
+<h4>⚠️ Legal Disclaimer</h4>
+<p>OSINT tools are legal when used for <strong>ethical purposes</strong> (security research, journalism,
                 background checks). Using them to stalk, harass, or commit crimes is illegal. Always respect privacy
                 laws and terms of service.</p>
-        </div>
-
-        <h2>1. Maltego – The Visual Investigation Powerhouse</h2>
-
-        <div class="tool-card">
-            <h3>🔗 Maltego</h3>
-            <div>
-                <span class="badge">Link Analysis</span>
-                <span class="badge">Visual Mapping</span>
-                <span class="badge">Freemium</span>
-            </div>
-            <p><strong>What it does:</strong> Connects the dots between people, companies, domains, and social media
+</div><h2 id="maltego">1. Maltego – The Visual Investigation Powerhouse</h2><div class="tool-card">
+<h3>🔗 Maltego</h3>
+<div>
+<span class="badge">Link Analysis</span>
+<span class="badge">Visual Mapping</span>
+<span class="badge">Freemium</span>
+</div>
+<p><strong>What it does:</strong> Connects the dots between people, companies, domains, and social media
                 accounts using visual graphs.</p>
-            <p><strong>Best for:</strong> Mapping relationships (e.g., "Who owns this domain?" → "What other domains do
+<p><strong>Best for:</strong> Mapping relationships (e.g., "Who owns this domain?" → "What other domains do
                 they own?" → "What social media accounts are linked?")</p>
-            <p><strong>Why it's #1:</strong> Nothing beats Maltego for <em>seeing</em> connections. It's like
+<p><strong>Why it's #1:</strong> Nothing beats Maltego for <em>seeing</em> connections. It's like
                 mind-mapping for investigators.</p>
-        </div>
-
-        <p><strong>Real-world use case:</strong> A journalist used Maltego to trace a fake news website back to a
-            network of 50+ similar sites, all owned by the same shell company.</p>
-
-        <p><strong>Downside:</strong> The free version (Community Edition) is limited. The paid version ($999/year) is
-            worth it if you're serious.</p>
-
-        <h2>2. Shodan – The Search Engine for Everything Connected</h2>
-
-        <div class="tool-card">
-            <h3>🌐 Shodan</h3>
-            <div>
-                <span class="badge">IoT Search</span>
-                <span class="badge">Vulnerability Scanning</span>
-                <span class="badge">Paid</span>
-            </div>
-            <p><strong>What it does:</strong> Searches for internet-connected devices (webcams, routers, servers,
+</div><p><strong>Real-world use case:</strong> A journalist used Maltego to trace a fake news website back to a
+            network of 50+ similar sites, all owned by the same shell company.</p><p><strong>Downside:</strong> The free version (Community Edition) is limited. The paid version ($999/year) is
+            worth it if you're serious.</p><h2 id="shodan">2. Shodan – The Search Engine for Everything Connected</h2><div class="tool-card">
+<h3>🌐 Shodan</h3>
+<div>
+<span class="badge">IoT Search</span>
+<span class="badge">Vulnerability Scanning</span>
+<span class="badge">Paid</span>
+</div>
+<p><strong>What it does:</strong> Searches for internet-connected devices (webcams, routers, servers,
                 industrial systems).</p>
-            <p><strong>Best for:</strong> Finding exposed databases, misconfigured servers, or vulnerable IoT devices.
+<p><strong>Best for:</strong> Finding exposed databases, misconfigured servers, or vulnerable IoT devices.
             </p>
-            <p><strong>Why it's powerful:</strong> Google searches websites. Shodan searches <em>everything else</em>.
+<p><strong>Why it's powerful:</strong> Google searches websites. Shodan searches <em>everything else</em>.
             </p>
-        </div>
-
-        <p><strong>Example search:</strong> <code>port:3389 country:US</code> finds all Windows Remote Desktop servers
-            in the U.S. (many with default passwords).</p>
-
-        <p><strong>Ethical note:</strong> Just because something is <em>findable</em> doesn't mean you should access it.
-            Shodan is for <strong>research</strong>, not exploitation.</p>
-
-        <h2>3. theHarvester – Email & Subdomain Hunter</h2>
-
-        <div class="tool-card">
-            <h3>📧 theHarvester</h3>
-            <div>
-                <span class="badge">Email Discovery</span>
-                <span class="badge">Subdomain Enum</span>
-                <span class="badge">Free & Open Source</span>
-            </div>
-            <p><strong>What it does:</strong> Scrapes search engines, LinkedIn, and other sources to find email
+</div><p><strong>Example search:</strong> <code>port:3389 country:US</code> finds all Windows Remote Desktop servers
+            in the U.S. (many with default passwords).</p><p><strong>Ethical note:</strong> Just because something is <em>findable</em> doesn't mean you should access it.
+            Shodan is for <strong>research</strong>, not exploitation.</p><h2 id="theharvester">3. theHarvester – Email &amp; Subdomain Hunter</h2><div class="tool-card">
+<h3>📧 theHarvester</h3>
+<div>
+<span class="badge">Email Discovery</span>
+<span class="badge">Subdomain Enum</span>
+<span class="badge">Free &amp; Open Source</span>
+</div>
+<p><strong>What it does:</strong> Scrapes search engines, LinkedIn, and other sources to find email
                 addresses, subdomains, and employee names for a target domain.</p>
-            <p><strong>Best for:</strong> Reconnaissance before a penetration test or phishing awareness training.</p>
-            <p><strong>Why it's essential:</strong> Email addresses are the gateway to social engineering attacks.
+<p><strong>Best for:</strong> Reconnaissance before a penetration test or phishing awareness training.</p>
+<p><strong>Why it's essential:</strong> Email addresses are the gateway to social engineering attacks.
                 Knowing what's exposed helps you defend.</p>
-        </div>
-
-        <p><strong>Command example:</strong> <code>theHarvester -d example.com -b google</code></p>
-
-        <p>This finds all publicly indexed emails and subdomains for <code>example.com</code>.</p>
-
-        <h2>4. SpiderFoot – The All-in-One Automation Beast</h2>
-
-        <div class="tool-card">
-            <h3>🕷️ SpiderFoot</h3>
-            <div>
-                <span class="badge">Automation</span>
-                <span class="badge">100+ Data Sources</span>
-                <span class="badge">Free & Paid</span>
-            </div>
-            <p><strong>What it does:</strong> Automates OSINT by querying 100+ data sources (WHOIS, DNS, social media,
+</div><p><strong>Command example:</strong> <code>theHarvester -d example.com -b google</code></p><p>This finds all publicly indexed emails and subdomains for <code>example.com</code>.</p><h2 id="spiderfoot">4. SpiderFoot – The All-in-One Automation Beast</h2><div class="tool-card">
+<h3>🕷️ SpiderFoot</h3>
+<div>
+<span class="badge">Automation</span>
+<span class="badge">100+ Data Sources</span>
+<span class="badge">Free &amp; Paid</span>
+</div>
+<p><strong>What it does:</strong> Automates OSINT by querying 100+ data sources (WHOIS, DNS, social media,
                 breach databases) and correlating results.</p>
-            <p><strong>Best for:</strong> Lazy investigators (in a good way). Set it and forget it.</p>
-            <p><strong>Why it's underrated:</strong> Most people manually check 5-10 sources. SpiderFoot checks
+<p><strong>Best for:</strong> Lazy investigators (in a good way). Set it and forget it.</p>
+<p><strong>Why it's underrated:</strong> Most people manually check 5-10 sources. SpiderFoot checks
                 <em>everything</em> and highlights what matters.
             </p>
-        </div>
-
-        <p><strong>Pro tip:</strong> Run SpiderFoot on your <em>own</em> domain first. You'll be shocked at what's
-            publicly exposed.</p>
-
-        <h2>5. Recon-ng – The Modular Framework for Pros</h2>
-
-        <div class="tool-card">
-            <h3>⚙️ Recon-ng</h3>
-            <div>
-                <span class="badge">Modular</span>
-                <span class="badge">Command-Line</span>
-                <span class="badge">Free & Open Source</span>
-            </div>
-            <p><strong>What it does:</strong> A framework (like Metasploit, but for OSINT) with modules for DNS, WHOIS,
+</div><p><strong>Pro tip:</strong> Run SpiderFoot on your <em>own</em> domain first. You'll be shocked at what's
+            publicly exposed.</p><h2 id="recon-ng">5. Recon-ng – The Modular Framework for Pros</h2><div class="tool-card">
+<h3>⚙️ Recon-ng</h3>
+<div>
+<span class="badge">Modular</span>
+<span class="badge">Command-Line</span>
+<span class="badge">Free &amp; Open Source</span>
+</div>
+<p><strong>What it does:</strong> A framework (like Metasploit, but for OSINT) with modules for DNS, WHOIS,
                 social media, and more.</p>
-            <p><strong>Best for:</strong> Advanced users who want full control and customization.</p>
-            <p><strong>Why it's powerful:</strong> You can chain modules together (e.g., "Find all subdomains → Check
+<p><strong>Best for:</strong> Advanced users who want full control and customization.</p>
+<p><strong>Why it's powerful:</strong> You can chain modules together (e.g., "Find all subdomains → Check
                 for open ports → Identify technologies").</p>
-        </div>
-
-        <p><strong>Learning curve:</strong> Steeper than GUI tools, but worth it if you're technical.</p>
-
-        <h2>6. Sherlock – Find Usernames Across 300+ Sites</h2>
-
-        <div class="tool-card">
-            <h3>🔍 Sherlock</h3>
-            <div>
-                <span class="badge">Username Search</span>
-                <span class="badge">Social Media</span>
-                <span class="badge">Free & Open Source</span>
-            </div>
-            <p><strong>What it does:</strong> Searches for a username across 300+ social media platforms and websites.
+</div><p><strong>Learning curve:</strong> Steeper than GUI tools, but worth it if you're technical.</p><h2 id="sherlock">6. Sherlock – Find Usernames Across 300+ Sites</h2><div class="tool-card">
+<h3>🔍 Sherlock</h3>
+<div>
+<span class="badge">Username Search</span>
+<span class="badge">Social Media</span>
+<span class="badge">Free &amp; Open Source</span>
+</div>
+<p><strong>What it does:</strong> Searches for a username across 300+ social media platforms and websites.
             </p>
-            <p><strong>Best for:</strong> Finding someone's digital footprint or checking if your username is taken.</p>
-            <p><strong>Why it's useful:</strong> People reuse usernames. One username can lead to Twitter, GitHub,
+<p><strong>Best for:</strong> Finding someone's digital footprint or checking if your username is taken.</p>
+<p><strong>Why it's useful:</strong> People reuse usernames. One username can lead to Twitter, GitHub,
                 Reddit, and more.</p>
-        </div>
-
-        <p><strong>Command example:</strong> <code>python3 sherlock username123</code></p>
-
-        <p>This checks if <code>username123</code> exists on Instagram, TikTok, LinkedIn, etc.</p>
-
-        <h2>7. OSINT Framework – The Ultimate Resource Directory</h2>
-
-        <div class="tool-card">
-            <h3>📚 OSINT Framework</h3>
-            <div>
-                <span class="badge">Resource Hub</span>
-                <span class="badge">Free</span>
-                <span class="badge">Web-Based</span>
-            </div>
-            <p><strong>What it does:</strong> A categorized directory of <strong>every OSINT tool and resource</strong>
+</div><p><strong>Command example:</strong> <code>python3 sherlock username123</code></p><p>This checks if <code>username123</code> exists on Instagram, TikTok, LinkedIn, etc.</p><h2 id="osint-framework">7. OSINT Framework – The Ultimate Resource Directory</h2><div class="tool-card">
+<h3>📚 OSINT Framework</h3>
+<div>
+<span class="badge">Resource Hub</span>
+<span class="badge">Free</span>
+<span class="badge">Web-Based</span>
+</div>
+<p><strong>What it does:</strong> A categorized directory of <strong>every OSINT tool and resource</strong>
                 (500+ links).</p>
-            <p><strong>Best for:</strong> Finding the right tool for a specific task (e.g., "How do I search Russian
+<p><strong>Best for:</strong> Finding the right tool for a specific task (e.g., "How do I search Russian
                 social media?").</p>
-            <p><strong>Why it's essential:</strong> You can't remember every tool. This is your cheat sheet.</p>
-        </div>
-
-        <p><strong>Access it here:</strong> <code>osintframework.com</code></p>
-
-        <div class="pro-tip">
-            <h4>🎯 Bonus Tool: Have I Been Pwned</h4>
-            <p>Not strictly OSINT, but <strong>haveibeenpwned.com</strong> lets you check if an email address was in a
+<p><strong>Why it's essential:</strong> You can't remember every tool. This is your cheat sheet.</p>
+</div><p><strong>Access it here:</strong> <code>osintframework.com</code></p><div class="pro-tip">
+<h4>🎯 Bonus Tool: Have I Been Pwned</h4>
+<p>Not strictly OSINT, but <strong>haveibeenpwned.com</strong> lets you check if an email address was in a
                 data breach. Essential for security research and personal privacy checks.</p>
-        </div>
-
-        <h2>How to Use OSINT Tools Ethically</h2>
-
-        <p>With great power comes great responsibility. Here's the golden rule:</p>
-
-        <p><strong>If you wouldn't want it done to you, don't do it to others.</strong></p>
-
-        <p>Ethical OSINT use cases:</p>
-        <ul>
-            <li>✅ Security research (finding vulnerabilities to report)</li>
-            <li>✅ Journalism (verifying sources, investigating corruption)</li>
-            <li>✅ Background checks (hiring, due diligence)</li>
-            <li>✅ Personal privacy audits (what's exposed about <em>you</em>?)</li>
-        </ul>
-
-        <p>Unethical use cases:</p>
-        <ul>
-            <li>❌ Stalking or harassment</li>
-            <li>❌ Doxxing (publishing private info to harm someone)</li>
-            <li>❌ Corporate espionage</li>
-            <li>❌ Accessing systems without permission</li>
-        </ul>
-
-        <h2>Getting Started with OSINT</h2>
-
-        <p>If you're new to OSINT, here's a simple first project:</p>
-
-        <ol>
-            <li><strong>Pick a target</strong> (your own domain or a public figure)</li>
-            <li><strong>Run theHarvester</strong> to find emails and subdomains</li>
-            <li><strong>Use Sherlock</strong> to find social media accounts</li>
-            <li><strong>Map connections in Maltego</strong> (free version)</li>
-        </ol>
-
-        <p>You'll be amazed at how much is publicly available.</p>
-
-        <h2>Key Takeaways</h2>
-
-        <ul>
-            <li><strong>Maltego</strong> – Best for visual link analysis</li>
-            <li><strong>Shodan</strong> – Search engine for IoT and servers</li>
-            <li><strong>theHarvester</strong> – Email and subdomain discovery</li>
-            <li><strong>SpiderFoot</strong> – Automated OSINT aggregation</li>
-            <li><strong>Recon-ng</strong> – Modular framework for advanced users</li>
-            <li><strong>Sherlock</strong> – Username search across 300+ platforms</li>
-            <li><strong>OSINT Framework</strong> – Directory of 500+ tools</li>
-        </ul>
-
-        <p>OSINT isn't about "hacking." It's about <strong>knowing where to look</strong>. And in 2026, the tools make
+</div><h2 id="ethics">How to Use OSINT Tools Ethically</h2><p>With great power comes great responsibility. Here's the golden rule:</p><p><strong>If you wouldn't want it done to you, don't do it to others.</strong></p><p>Ethical OSINT use cases:</p><ul>
+<li>✅ Security research (finding vulnerabilities to report)</li>
+<li>✅ Journalism (verifying sources, investigating corruption)</li>
+<li>✅ Background checks (hiring, due diligence)</li>
+<li>✅ Personal privacy audits (what's exposed about <em>you</em>?)</li>
+</ul><p>Unethical use cases:</p><ul>
+<li>❌ Stalking or harassment</li>
+<li>❌ Doxxing (publishing private info to harm someone)</li>
+<li>❌ Corporate espionage</li>
+<li>❌ Accessing systems without permission</li>
+</ul><h2 id="getting-started">Getting Started with OSINT</h2><p>If you're new to OSINT, here's a simple first project:</p><ol>
+<li><strong>Pick a target</strong> (your own domain or a public figure)</li>
+<li><strong>Run theHarvester</strong> to find emails and subdomains</li>
+<li><strong>Use Sherlock</strong> to find social media accounts</li>
+<li><strong>Map connections in Maltego</strong> (free version)</li>
+</ol><p>You'll be amazed at how much is publicly available.</p><h2 id="key-takeaways">Key Takeaways</h2><ul>
+<li><strong>Maltego</strong> – Best for visual link analysis</li>
+<li><strong>Shodan</strong> – Search engine for IoT and servers</li>
+<li><strong>theHarvester</strong> – Email and subdomain discovery</li>
+<li><strong>SpiderFoot</strong> – Automated OSINT aggregation</li>
+<li><strong>Recon-ng</strong> – Modular framework for advanced users</li>
+<li><strong>Sherlock</strong> – Username search across 300+ platforms</li>
+<li><strong>OSINT Framework</strong> – Directory of 500+ tools</li>
+</ul><p>OSINT isn't about "hacking." It's about <strong>knowing where to look</strong>. And in 2026, the tools make
             it easier than ever.</p>
-        <div class="share-section" style="margin-top: 60px; padding-top: 40px; border-top: 1px solid #e2e8f0;">
-            <h3 style="margin-top: 0; margin-bottom: 20px;">Share this guide:</h3>
-            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                <a href="#" onclick="shareArticle('twitter'); return false;"
-                    style="background: #000000; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s;">𝕏</a>
-                <a href="#" onclick="shareArticle('linkedin'); return false;"
-                    style="background: #0077b5; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s;">in</a>
-                <a href="#" onclick="shareArticle('facebook'); return false;"
-                    style="background: #1877f2; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s;">f</a>
-                <a href="#" onclick="shareArticle('whatsapp'); return false;"
-                    style="background: #25d366; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s;">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-                    </svg>
+
+                </div>
+            </article>
+        </main>
+
+        <!-- Right Sidebar: Author & Metadata -->
+        <aside class="vn-right-sidebar">
+            <!-- Author Profile Card -->
+            <div class="sidebar-card author-card">
+                <div class="author-avatar-large">AS</div>
+                <div class="author-name-large">Abhiney Sharma</div>
+                <div class="author-title-large">OSINT Certified Cyber Criminologist</div>
+                <p style="font-family: 'Inter', sans-serif; font-size: 11.5px; color: var(--vn-ink-secondary); line-height: 1.5; margin: 12px 0; text-align: left;">
+                    18+ years in network and security work. Specialized in digital attribution and OSINT methodology.
+                </p>
+                <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank" class="author-linkedin-btn">
+                    Connect on LinkedIn
                 </a>
-                <a href="#" onclick="copyLink(); return false;"
-                    style="background: #64748b; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s;">🔗</a>
+            </div>
+
+            <!-- Share This Article Card -->
+            <div class="sidebar-card">
+                <div class="meta-label" style="text-align: center; margin-bottom: 8px;">Share this article</div>
+                <div class="share-buttons">
+                    <button onclick="shareArticle('twitter')" class="share-btn" title="Share on X / Twitter">𝕏</button>
+                    <button onclick="shareArticle('linkedin')" class="share-btn" title="Share on LinkedIn">in</button>
+                    <button onclick="copyLink()" class="share-btn" title="Copy Article Link">🔗</button>
+                </div>
+            </div>
+
+            <!-- Metadata Details Card -->
+            <div class="sidebar-card">
+                <div class="meta-item">
+                    <div class="meta-label">Category</div>
+                    <div class="meta-value">OSINT · Tools & Techniques</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Published</div>
+                    <div class="meta-value">January 2026</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Reading Time</div>
+                    <div class="meta-value">10 min read</div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- RELATED ARTICLES SECTION                     -->
+    <!-- ============================================ -->
+    <section class="vn-related-section vn-reveal">
+        <div class="vn-related-inner">
+            <div class="section-label">
+                <span class="section-label-badge general">📖 Read Next</span>
+                <div class="section-label-line"></div>
+            </div>
+            <div class="vn-related-grid">
+                                <a href="openosint-ai-osint-framework-deep-dive.html" class="vn-article-card" data-category="osint">
+                    <div class="vn-article-thumb"><img src="images/openosint-deep-dive-hero.png" alt="Beyond the Search Bar: A Practitioner's Look at OpenOSINT" loading="lazy"></div>
+                    <div class="vn-article-body">
+                        <span class="guide-category">OSINT · Tooling</span>
+                        <h4 class="guide-title">Beyond the Search Bar: A Practitioner's Look at OpenOSINT</h4>
+                        <div class="guide-footer">
+                            <span class="guide-meta">8 min read</span>
+                            <span class="btn-read">READ NOW</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="osint-case-viper-ghost.html" class="vn-article-card" data-category="osint">
+                    <div class="vn-article-thumb">
+                        <img src="images/viper-ghost-thumbnail.png" alt="Operation VIPER-GHOST Sketchnote" loading="lazy">
+                    </div>
+                    <div class="vn-article-body">
+                        <span class="guide-category">OSINT · Investigation</span>
+                        <h4 class="guide-title">OSINT Case File: Operation VIPER-GHOST</h4>
+                        <div class="guide-footer">
+                            <span class="guide-meta">20 min read</span>
+                            <span class="btn-read">READ NOW</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="google-dorking-guide.html" class="vn-article-card" data-category="security">
+                    <div class="vn-article-thumb"><img src="images/google-dorking-header.png" alt="Google Dorking: The Complete Guide (2026)" loading="lazy"></div>
+                    <div class="vn-article-body">
+                        <span class="guide-category">Security & OSINT</span>
+                        <h4 class="guide-title">Google Dorking: The Complete Guide (2026)</h4>
+                        <div class="guide-footer">
+                            <span class="guide-meta">15 min read</span>
+                            <span class="btn-read">READ NOW</span>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
+    </section>
 
-        <script>
-            function shareArticle(platform) {
-                const url = encodeURIComponent(window.location.href);
-                const title = encodeURIComponent(document.title);
-                let shareUrl = '';
+    <!-- ============================================ -->
+    <!-- NEWSLETTER CTA STRIP                         -->
+    <!-- ============================================ -->
+    <section class="vn-newsletter" id="subscribe">
+        <div class="vn-newsletter-inner">
+            <h2>Never Miss a New Guide</h2>
+            <p>Get visual notes and deep-dives delivered to your inbox. No spam, just learning.</p>
 
-                switch (platform) {
-                    case 'twitter':
-                        shareUrl = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
-                        break;
-                    case 'linkedin':
-                        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
-                        break;
-                    case 'facebook':
-                        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-                        break;
-                    case 'whatsapp':
-                        shareUrl = `https://api.whatsapp.com/send?text=${title}%20${url}`;
-                        break;
+            <ul class="vn-newsletter-benefits">
+                <li>New study guides delivered weekly</li>
+                <li>Exclusive tips & tricks</li>
+                <li>Early access to new content</li>
+                <li>100% free, unsubscribe anytime</li>
+            </ul>
+
+            <form class="email-form" onsubmit="handleEmailSubmit(event)">
+                <input type="email" id="emailInput" class="email-input" placeholder="your@email.com" required>
+                <button type="submit" class="btn-subscribe">Subscribe</button>
+            </form>
+            <p class="vn-newsletter-proof">Join 5,000+ engineers already learning visually</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FOOTER SITEMAP                               -->
+    <!-- ============================================ -->
+    <footer class="vn-footer">
+        <div class="vn-footer-grid">
+            <div class="vn-footer-brand">
+                <span class="vn-logo">VisualNotes</span>
+                <p>Visual, handwritten-style notes for Infrastructure, Cloud, Security & OSINT. Making complex tech concepts click.</p>
+                <div class="vn-footer-founder">
+                    Founder: <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank">Abhiney Sharma</a>
+                </div>
+                <div class="vn-footer-social">
+                    <a href="https://www.instagram.com/visualnotes.tech/" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://whatsapp.com/channel/0029Vb6z21DBqbr2xDU7Rc2P" target="_blank" rel="noopener" aria-label="Join WhatsApp channel">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="vn-footer-col">
+                <h4>Resources</h4>
+                <a href="../guides/index.html">Study Guides</a>
+                <a href="index.html">Blog Articles</a>
+                <a href="../guides/index.html">Visual Notes</a>
+                <a href="../hsrp-flashcards.html">Flashcards</a>
+            </div>
+            <div class="vn-footer-col">
+                <h4>Company</h4>
+                <a href="../about.html">About Us</a>
+                <a href="../write-for-us.html">Write for Us</a>
+                <a href="../faq.html">FAQ</a>
+                <a href="../privacy.html">Privacy Policy</a>
+                <a href="../terms.html">Terms of Service</a>
+            </div>
+            <div class="vn-footer-col">
+                <h4>Connect</h4>
+                <a href="https://www.instagram.com/visualnotes.tech/" target="_blank">Instagram</a>
+                <a href="https://whatsapp.com/channel/0029Vb6z21DBqbr2xDU7Rc2P" target="_blank">WhatsApp</a>
+                <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank">LinkedIn</a>
+                <a href="mailto:visualnotes.tech@gmail.com">Email Us</a>
+            </div>
+        </div>
+        <div class="vn-footer-bottom">
+            © 2026 VisualNotes. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Thank You Modal -->
+    <div id="thankYouModal" class="vn-thank-modal">
+        <div class="vn-thank-content">
+            <div style="font-size: 3.5rem; margin-bottom: 20px;">🎉</div>
+            <h2 style="color: var(--vn-accent); margin-bottom: 12px; font-size: 1.8rem;">Thank You for Subscribing!</h2>
+            <p style="color: var(--vn-ink-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px;">
+                Welcome to the VisualNotes community! We've sent a welcome email to your inbox with exclusive resources and tips.
+            </p>
+            <div style="background: var(--vn-bg); padding: 18px; border-radius: var(--vn-radius); margin-bottom: 24px; text-align: left;">
+                <p style="color: var(--vn-ink); font-weight: 600; margin-bottom: 8px;">🚀 What's Next?</p>
+                <p style="color: var(--vn-ink-secondary); font-size: 0.92rem; line-height: 1.5;">Check your email for your welcome message and start exploring our visual study guides!</p>
+            </div>
+            <button onclick="closeThankYouModal()" class="vn-btn-primary" style="width: 100%;">Start Exploring</button>
+        </div>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" style="display:none;">
+        <div>
+            <p>We use cookies to improve your experience. By continuing, you agree to our use of cookies.</p>
+            <button onclick="acceptCookies()">Accept</button>
+        </div>
+    </div>
+
+    <!-- Floating Theme Toggle Button -->
+    <button id="theme-toggle" onclick="toggleDarkMode()">
+        🌙 DARK MODE
+    </button>
+
+    <!-- ============================================ -->
+    <!-- INTERACTIVE SCRIPTS                          -->
+    <!-- ============================================ -->
+    <script>
+        // ===== HEADER SCROLL BEHAVIOR =====
+        const header = document.getElementById('vnHeader');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ===== MOBILE NAV =====
+        const hamburger = document.getElementById('vnHamburger');
+        const mobileNav = document.getElementById('vnMobileNav');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        function closeMobileNav() {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ===== SCROLL REVEAL =====
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
+            });
+        }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
 
-                if (shareUrl) window.open(shareUrl, '_blank');
+        document.querySelectorAll('.vn-reveal').forEach(el => revealObserver.observe(el));
+
+        // ===== SOCIAL SHARE HANDLERS =====
+        function shareArticle(platform) {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            let shareUrl = '';
+
+            switch (platform) {
+                case 'twitter':
+                    shareUrl = 'https://twitter.com/intent/tweet?text=' + title + '&url=' + url;
+                    break;
+                case 'linkedin':
+                    shareUrl = 'https://www.linkedin.com/sharing/share-offsite/?url=' + url;
+                    break;
             }
 
-            function copyLink() {
-                navigator.clipboard.writeText(window.location.href);
-                alert('Link copied to clipboard!');
+            if (shareUrl) window.open(shareUrl, '_blank');
+        }
+
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href);
+            alert('🔗 Link copied to clipboard!');
+        }
+
+        // ===== EMAIL SIGNUP FORM SUBMISSION =====
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyt3yXiow0mYGHwfLNcl_k1lH6s6DU51P8_i50DqqYZxcONrSTX_gQdtxFO4tOQ0sMMdA/exec';
+
+        async function handleEmailSubmit(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value.trim().toLowerCase();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) { alert('⚠️ Please enter a valid email address'); return; }
+            const junkList = ['abc@gmail.com', 'test@gmail.com', 'test@test.com', 'admin@gmail.com', 'user@gmail.com'];
+            if (junkList.includes(email) || email.length < 6) { alert('⚠️ Please enter a real email address'); return; }
+
+            const button = e.target.querySelector('button');
+            const originalText = button.textContent;
+            button.textContent = 'Subscribing...';
+            button.disabled = true;
+
+            try {
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST', mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: JSON.stringify({ email: email, country: 'detect-server-side' })
+                });
+            } catch (e) { console.error('Submission error (ignored):', e); }
+
+            showThankYouModal();
+            document.getElementById('emailInput').value = '';
+            button.textContent = originalText;
+            button.disabled = false;
+        }
+
+        function showThankYouModal() {
+            const modal = document.getElementById('thankYouModal');
+            if (modal) modal.style.display = 'flex';
+        }
+
+        function closeThankYouModal() {
+            const modal = document.getElementById('thankYouModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        window.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('thankYouModal')?.addEventListener('click', function (e) {
+                if (e.target === this) closeThankYouModal();
+            });
+        });
+
+        // ===== COOKIE CONSENT =====
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'true');
+            document.getElementById('cookie-consent').style.display = 'none';
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            if (!localStorage.getItem('cookieConsent')) {
+                document.getElementById('cookie-consent').style.display = 'block';
             }
-        </script>
-    </article>
+        });
+
+        // ===== DARK MODE TOGGLE =====
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark ? 'true' : 'false');
+            updateThemeButtonText();
+        }
+
+        function updateThemeButtonText() {
+            const btn = document.getElementById('theme-toggle');
+            if (!btn) return;
+            const isDark = document.body.classList.contains('dark-mode');
+            btn.innerHTML = isDark ? '☀ LIGHT MODE' : '🌙 DARK MODE';
+        }
+
+        // Restore theme preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('darkMode');
+            if (savedTheme === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+            updateThemeButtonText();
+        });
+
+        // ===== SCROLL SPY FOR TABLE OF CONTENTS =====
+        window.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -60% 0px',
+                threshold: 0
+            };
+
+            const links = document.querySelectorAll('.toc-link');
+            const headings = Array.from(links).map(link => {
+                const id = link.getAttribute('href').substring(1);
+                return document.getElementById(id);
+            }).filter(h => h !== null);
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const activeId = entry.target.getAttribute('id');
+                        links.forEach(link => {
+                            if (link.getAttribute('href') === `#${activeId}`) {
+                                link.classList.add('active');
+                            } else {
+                                link.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            headings.forEach(heading => observer.observe(heading));
+        });
+    </script>
 </body>
 
 </html>
