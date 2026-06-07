@@ -17,11 +17,11 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
     <!-- Theme Color for Mobile Browsers -->
-    <meta name="theme-color" content="#FF6B6B">
+    <meta name="theme-color" content="#365FF0">
 
     <!-- Core Web Vitals: Preload Critical Resources -->
     <link rel="preload"
-        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Share+Tech+Mono&family=Inter:wght@300;400;500;600;700;800&display=swap"
         as="style">
     <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
@@ -103,9 +103,6 @@
     }
     </script>
 
-
-
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -121,7 +118,7 @@
           "@type": "ListItem",
           "position": 2,
           "name": "Study Guides",
-          "item": "https://www.visualnotes.tech/#guides"
+          "item": "https://www.visualnotes.tech/guides/"
         },
         {
           "@type": "ListItem",
@@ -188,506 +185,371 @@
         });
     </script>
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Share+Tech+Mono&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+    <!-- Central Design System Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
     <style>
         /* Ensure structured data is never visible */
         script[type="application/ld+json"] {
             display: none !important;
         }
 
-        :root {
-            /* Warm Academic Theme - Friendly & Approachable EdTech */
-            --primary: #FF6B6B;
-            /* Coral Red - Energetic, engaging */
-            --primary-dark: #E85555;
-            /* Darker coral for hover states */
-            --secondary: #4ECDC4;
-            /* Turquoise - Fresh, modern */
-            --secondary-dark: #3DBDB4;
-            /* Darker turquoise */
-            --accent: #FFE66D;
-            /* Warm Yellow - Optimistic */
-            --accent-dark: #FFD93D;
-            /* Darker yellow */
-            --text-dark: #2D3436;
-            /* Charcoal - Warmer than black */
-            --text-light: #636E72;
-            /* Medium gray */
-            --bg-light: #FFF9F0;
-            /* Warm Cream - Softer than white */
-            --bg-white: #FFFFFF;
-            /* Pure white for cards */
+        /* ============================================ */
+        /* DESIGN SYSTEM — Editorial Paper Theme        */
+        /* ============================================ */
+        /* ============================================ */
+        /* SECTION 2 — HERO                             */
+        /* ============================================ */
+        .vn-hero {
+            padding: 160px 40px 100px;
+            background: var(--vn-bg);
+            text-align: center;
+            position: relative;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* 4.2 CSS Media Queries (Maintain Existing Styles) */
-
-        /* Mobile First Approach - Base styles for mobile */
-        @media screen and (max-width: 767px) {
-
-            /* Ensure touch targets are at least 44px */
-            button,
-            a,
-            input,
-            select {
-                min-height: 44px;
-                min-width: 44px;
-            }
-
-            /* Stack elements on mobile */
-            .row,
-            .flex-container {
-                flex-direction: column !important;
-            }
-
-            /* Full width containers on mobile */
-            .container {
-                width: 100% !important;
-                padding-left: 15px !important;
-                padding-right: 15px !important;
-            }
-
-            /* Responsive images */
-            img {
-                max-width: 100% !important;
-                height: auto !important;
-            }
-
-            /* Fix for Guide Thumbnails */
-            .guide-image img {
-                height: 100% !important;
-                object-fit: cover !important;
-            }
-
-            /* Prevent horizontal scroll */
-            body {
-                overflow-x: hidden !important;
-            }
-        }
-
-        /* Tablet (768px - 1024px) */
-        @media screen and (min-width: 768px) and (max-width: 1024px) {
-            .container {
-                width: 90% !important;
-                max-width: 960px !important;
-            }
-        }
-
-        /* Desktop (1025px and above) */
-        @media screen and (min-width: 1025px) {
-            .container {
-                max-width: 1200px !important;
-            }
-        }
-
-        /* High DPI Displays (Retina) */
-        @media (-webkit-min-device-pixel-ratio: 2),
-        (min-resolution: 192dpi) {
-
-            /* Optimize images for retina displays */
-            img {
-                image-rendering: -webkit-optimize-contrast;
-            }
-        }
-
-        /* 4.3 Device-Specific Optimization */
-        /* iOS Specific */
-        @supports (-webkit-touch-callout: none) {
-
-            /* iOS Safari specific styles */
-            input,
-            textarea,
-            select {
-                -webkit-appearance: none;
-                border-radius: 0;
-            }
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            overflow-x: hidden;
-            background: #fff;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .nav-container {
-            max-width: 1400px;
+        .vn-hero-inner {
+            max-width: 860px;
             margin: 0 auto;
-            padding: 20px 40px;
+        }
+
+        .vn-hero-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--vn-accent-subtle);
+            color: var(--vn-accent);
+            padding: 6px 18px;
+            border-radius: var(--vn-radius-pill);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 28px;
+            text-transform: uppercase;
+        }
+
+        .vn-hero h1 {
+            font-size: clamp(2.6rem, 6vw, 4.2rem);
+            font-weight: 800;
+            color: var(--vn-ink);
+            line-height: 1.12;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+        }
+
+        .vn-hero h1 .vn-highlight {
+            color: var(--vn-accent);
+            font-family: 'Caveat', cursive;
+            font-size: 1.15em;
+            letter-spacing: 0;
+        }
+
+        .vn-hero-subtitle {
+            font-size: clamp(1.05rem, 2vw, 1.3rem);
+            color: var(--vn-ink-secondary);
+            margin-bottom: 16px;
+            font-weight: 400;
+            line-height: 1.6;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .vn-hero-tagline {
+            font-family: 'Caveat', cursive;
+            font-size: 1.3rem;
+            color: var(--vn-ink-tertiary);
+            margin-bottom: 40px;
+        }
+
+        .vn-hero-pills {
             display: flex;
-            justify-content: space-between;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .vn-pill {
+            background: var(--vn-bg-white);
+            border: 1px solid var(--vn-border);
+            padding: 10px 22px;
+            border-radius: var(--vn-radius-pill);
+            color: var(--vn-ink);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.25s;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .vn-pill:hover {
+            border-color: var(--vn-accent);
+            color: var(--vn-accent);
+            background: var(--vn-accent-subtle);
+            transform: translateY(-2px);
+        }
+
+        .vn-hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
             align-items: center;
         }
 
-        .logo {
-            font-family: 'Caveat', cursive;
-            font-size: 1.8rem;
-            color: var(--primary);
+        .vn-btn-primary {
+            background: var(--vn-accent);
+            color: white;
+            padding: 16px 36px;
+            border-radius: var(--vn-radius-pill);
+            text-decoration: none;
             font-weight: 700;
-            display: flex;
+            font-size: 1.05rem;
+            transition: var(--vn-transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .vn-btn-primary:hover {
+            background: var(--vn-accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .vn-btn-ghost {
+            background: transparent;
+            color: var(--vn-accent);
+            padding: 16px 36px;
+            border-radius: var(--vn-radius-pill);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: 2px solid var(--vn-accent);
+            transition: var(--vn-transition);
+            display: inline-flex;
             align-items: center;
             gap: 8px;
         }
 
-        .logo-wrapper {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-tagline {
-            font-family: 'Caveat', cursive;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            margin-top: -8px;
-            margin-left: 36px;
-            /* Align with text */
-            font-weight: 700;
-            text-decoration: underline;
-            text-decoration-color: var(--primary);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .btn-cta {
-            background: var(--primary);
+        .vn-btn-ghost:hover {
+            background: var(--vn-accent);
             color: white;
-            padding: 12px 28px;
-            border-radius: 50px;
-            text-decoration: none;
+            transform: translateY(-1px);
+        }
+
+        /* ============================================ */
+        /* SECTION 3 — STATS BAR                        */
+        /* ============================================ */
+        .vn-stats {
+            background: var(--vn-bg-white);
+            border-top: 1px solid var(--vn-border);
+            border-bottom: 1px solid var(--vn-border);
+            padding: 48px 40px;
+        }
+
+        .vn-stats-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .vn-stat {
+            text-align: center;
+            flex: 1;
+        }
+
+        .vn-stat + .vn-stat {
+            border-left: 1px solid var(--vn-border);
+        }
+
+        .vn-stat-value {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--vn-accent);
+            line-height: 1;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+
+        .vn-stat-label {
+            font-family: var(--vn-font-display);
+            font-size: 0.85rem;
+            color: var(--vn-ink-tertiary);
             font-weight: 600;
-            transition: all 0.3s;
-            position: relative;
-            /* Fix for flickering */
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Extend hit area to prevent flickering on hover */
-        .btn-cta::after {
-            content: '';
-            position: absolute;
-            top: -5px;
-            bottom: -10px;
-            left: -5px;
-            right: -5px;
-            background: transparent;
+        /* ============================================ */
+        /* SECTION 4 — CATEGORY DISCOVERY               */
+        /* ============================================ */
+        .vn-categories {
+            background: var(--vn-bg);
+            padding: var(--vn-space-2xl) 40px;
         }
 
-        .btn-cta:hover {
-            background: var(--primary-dark);
+        .vn-section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .vn-section-header h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--vn-ink);
+            letter-spacing: -0.5px;
+        }
+
+        .vn-section-header p {
+            font-size: 1.1rem;
+            color: var(--vn-ink-secondary);
+            line-height: 1.6;
+        }
+
+        .vn-cat-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .vn-cat-card {
+            background: var(--vn-bg-white);
+            border: 1px solid var(--vn-border);
+            border-radius: var(--vn-radius);
+            padding: 32px 28px;
+            text-align: center;
+            transition: var(--vn-transition);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .vn-cat-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+            border-color: var(--vn-accent);
         }
 
-        /* Hero Section - Full Screen */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            position: relative;
-            overflow: hidden;
+        .vn-cat-icon {
+            font-size: 2.8rem;
+            margin-bottom: 16px;
+            display: block;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 800;
-            color: white;
-            line-height: 1.1;
-            margin-bottom: 30px;
-            letter-spacing: -2px;
-        }
-
-        .hero h1 .highlight {
-            background: linear-gradient(120deg, #fbbf24, #f59e0b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-family: 'Caveat', cursive;
-        }
-
-        .hero p {
-            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 20px;
-            font-weight: 300;
-        }
-
-        .hero .tagline {
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            color: rgba(255, 255, 255, 0.8);
-            font-weight: 600;
-            margin-bottom: 50px;
-        }
-
-        .category-pills {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 50px;
-        }
-
-        .pill {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            padding: 10px 24px;
-            border-radius: 50px;
-            color: white;
-            font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .btn-primary {
-            background: white;
-            color: var(--primary);
-            padding: 18px 40px;
-            border-radius: 50px;
-            text-decoration: none;
+        .vn-cat-name {
+            font-size: 1.2rem;
             font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            margin-bottom: 12px;
+            color: var(--vn-ink);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        .vn-cat-topics {
+            font-size: 0.85rem;
+            color: var(--vn-ink-tertiary);
+            line-height: 1.6;
+            margin-bottom: 16px;
         }
 
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            padding: 18px 40px;
-            border-radius: 50px;
-            text-decoration: none;
+        .vn-cat-count {
+            font-size: 0.8rem;
             font-weight: 600;
-            font-size: 1.1rem;
-            border: 2px solid white;
-            transition: all 0.3s;
+            color: var(--vn-accent);
+            margin-bottom: 16px;
         }
 
-        .btn-secondary:hover {
-            background: white;
-            color: var(--primary);
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
+        .vn-cat-link {
             font-size: 0.9rem;
-            display: flex;
-            flex-direction: column;
+            font-weight: 600;
+            color: var(--vn-accent);
+            display: inline-flex;
             align-items: center;
-            gap: 10px;
-            opacity: 0.7;
-            animation: bounce 2s infinite;
+            gap: 4px;
         }
 
-        @keyframes bounce {
-
-            0%,
-            100% {
-                transform: translateX(-50%) translateY(0);
-            }
-
-            50% {
-                transform: translateX(-50%) translateY(10px);
-            }
+        /* ============================================ */
+        /* SECTION 5 — STUDY GUIDES                     */
+        /* ============================================ */
+        .vn-guides {
+            padding: var(--vn-space-2xl) 40px;
+            background: var(--vn-bg-white);
         }
 
-        /* Stats Section */
-        .stats {
-            background: var(--bg-light);
-            padding: 100px 40px;
-        }
-
-        .stats-container {
+        .vn-guides-grid {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 40px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .stat-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .stat-value {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            font-weight: 500;
-        }
-
-        /* Guides Section */
-        .guides {
-            padding: 120px 40px;
-            background: white;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 80px;
-        }
-
-        .section-header h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: var(--text-dark);
-        }
-
-        .section-header p {
-            font-size: 1.3rem;
-            color: var(--text-light);
-        }
-
-        .guides-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
         }
 
         .guide-card {
-            background: white;
-            border-radius: 24px;
+            background: var(--vn-bg-white);
+            border-radius: var(--vn-radius);
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s;
+            border: 1px solid var(--vn-border);
+            transition: var(--vn-transition);
             cursor: pointer;
         }
 
         .guide-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+            transform: translateY(-2px);
+            border-color: var(--vn-accent);
         }
 
         .guide-image {
             height: 200px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--vn-accent), #3BA89A);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 4rem;
+            overflow: hidden;
+            position: relative;
         }
 
         .guide-content {
-            padding: 30px;
+            padding: 28px;
         }
 
         .guide-category {
             display: inline-block;
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--primary);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            background: var(--vn-accent-subtle);
+            color: var(--vn-accent);
+            padding: 5px 14px;
+            border-radius: var(--vn-radius-pill);
+            font-size: 0.8rem;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .guide-title {
-            font-size: 1.6rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--text-dark);
+            margin-bottom: 12px;
+            color: var(--vn-ink);
+            line-height: 1.3;
         }
 
         .guide-desc {
-            color: var(--text-light);
+            color: var(--vn-ink-secondary);
             line-height: 1.6;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
         }
 
         .guide-footer {
@@ -697,96 +559,369 @@
         }
 
         .guide-meta {
-            font-size: 0.9rem;
-            color: var(--text-light);
+            font-size: 0.85rem;
+            color: var(--vn-ink-tertiary);
+            font-weight: 500;
         }
 
         .btn-read {
-            background: var(--primary);
+            background: var(--vn-accent);
             color: white;
-            padding: 12px 28px;
-            border-radius: 50px;
+            padding: 10px 24px;
+            border-radius: var(--vn-radius-pill);
             border: none;
             font-weight: 600;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.25s;
+            text-decoration: none;
         }
 
         .btn-read:hover {
-            background: var(--primary-dark);
-            transform: scale(1.05);
+            background: var(--vn-accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(42, 125, 111, 0.25);
         }
 
-        /* Social Share Buttons */
+        /* Share Buttons */
         .share-buttons {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             align-items: center;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #e2e8f0;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--vn-border);
             flex-wrap: wrap;
-            /* Allows buttons to wrap on small screens */
             justify-content: center;
-            /* Centers buttons when wrapped */
         }
 
         .share-label {
-            font-size: 0.85rem;
-            color: var(--text-light);
+            font-size: 0.8rem;
+            color: var(--vn-ink-tertiary);
             font-weight: 600;
         }
 
         .share-icon {
-            width: 36px;
-            height: 36px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.25s;
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
 
         .share-icon:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
         }
 
-        /* Optimized Visual Notes Grid */
+        .share-twitter { background: #1DA1F2; color: white; }
+        .share-linkedin { background: #0A66C2; color: white; }
+        .share-facebook { background: #1877F2; color: white; }
+        .share-whatsapp { background: #25D366; color: white; }
+        .share-instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white;
+        }
+        .share-copy { background: #64748b; color: white; }
+        .share-copy:hover { background: #475569; }
+
+        /* ============================================ */
+        /* SECTION 6 — FLASHCARDS                       */
+        /* ============================================ */
+        .vn-flashcards {
+            background: var(--vn-bg);
+            padding: var(--vn-space-2xl) 40px;
+        }
+
+        .vn-flash-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .vn-flash-card {
+            background: var(--vn-bg-white);
+            border: 1px solid var(--vn-border);
+            border-radius: var(--vn-radius);
+            padding: 28px 24px;
+            transition: all 0.25s;
+        }
+
+        .vn-flash-card:hover {
+            border-color: var(--vn-accent);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+
+        .vn-flash-category {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .vn-flash-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--vn-accent-subtle);
+            color: var(--vn-accent);
+            padding: 10px 16px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .vn-flash-link:hover {
+            background: var(--vn-accent);
+            color: white;
+        }
+
+        .vn-flash-soon {
+            color: var(--vn-ink-tertiary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 10px 0;
+        }
+
+        .vn-badge-new {
+            display: inline-block;
+            background: var(--vn-coral);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: var(--vn-radius-pill);
+            margin-left: 8px;
+        }
+
+        /* ============================================ */
+        /* SECTION 7 — LATEST ARTICLES                  */
+        /* ============================================ */
+        .vn-articles {
+            padding: var(--vn-space-2xl) 40px;
+            background: var(--vn-bg-white);
+        }
+
+        .vn-filter-pills {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .vn-filter-pill {
+            padding: 8px 20px;
+            border-radius: var(--vn-radius-pill);
+            border: 1px solid var(--vn-border);
+            background: var(--vn-bg);
+            color: var(--vn-ink-secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .vn-filter-pill:hover {
+            border-color: var(--vn-accent);
+            color: var(--vn-accent);
+        }
+
+        .vn-filter-pill.active {
+            background: var(--vn-accent);
+            color: white;
+            border-color: var(--vn-accent);
+        }
+
+        /* Featured Article */
+        .vn-featured-article {
+            max-width: 1200px;
+            margin: 0 auto 48px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            background: var(--vn-bg-white);
+            border: 1px solid var(--vn-border);
+            border-radius: var(--vn-radius);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .vn-featured-article:hover {
+            box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+            border-color: var(--vn-accent);
+        }
+
+        .vn-featured-img {
+            background: linear-gradient(135deg, var(--vn-accent), #3BA89A);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            overflow: hidden;
+        }
+
+        .vn-featured-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .vn-featured-body {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .vn-featured-body .guide-category {
+            align-self: flex-start;
+        }
+
+        .vn-featured-body .guide-title {
+            font-size: 1.6rem;
+        }
+
+        /* Articles Grid */
+        .vn-articles-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .vn-article-card {
+            background: var(--vn-bg-white);
+            border: 1px solid var(--vn-border);
+            border-radius: var(--vn-radius);
+            overflow: hidden;
+            transition: var(--vn-transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .vn-article-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--vn-accent);
+        }
+
+        .vn-article-thumb {
+            height: 200px;
+            background: linear-gradient(135deg, var(--vn-accent), #3BA89A);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .vn-article-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .vn-article-card:hover .vn-article-thumb img {
+            transform: scale(1.04);
+        }
+
+        .vn-article-body {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .vn-article-body .guide-title {
+            font-size: 1.15rem;
+            flex: 1;
+        }
+
+        .vn-article-body .guide-desc {
+            font-size: 0.9rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .vn-view-all {
+            text-align: center;
+            margin-top: 48px;
+        }
+
+        .vn-btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 36px;
+            border: 2px solid var(--vn-accent);
+            color: var(--vn-accent);
+            border-radius: var(--vn-radius-pill);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.25s;
+        }
+
+        .vn-btn-outline:hover {
+            background: var(--vn-accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ============================================ */
+        /* SECTION 8 — VISUAL NOTES GALLERY             */
+        /* ============================================ */
+        .vn-visuals {
+            padding: var(--vn-space-2xl) 40px;
+            background: var(--vn-bg);
+        }
+
         .visual-notes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            padding: 20px 0;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .visual-note-card {
-            background: white;
-            border-radius: 16px;
+            background: var(--vn-bg-white);
+            border-radius: var(--vn-radius);
             overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease;
+            border: 1px solid var(--vn-border);
+            transition: var(--vn-transition);
             cursor: pointer;
-            border: 1px solid #e2e8f0;
             display: flex;
             flex-direction: column;
         }
 
         .visual-note-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            border-color: #cbd5e1;
+            transform: translateY(-2px);
+            border-color: var(--vn-accent);
         }
 
-        /* Image Container with Aspect Ratio */
         .visual-note-image-wrapper {
             position: relative;
             width: 100%;
             padding-top: 75%;
-            /* 4:3 Aspect Ratio */
             overflow: hidden;
             background: #f1f5f9;
         }
@@ -798,21 +933,20 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.4s ease;
         }
 
         .visual-note-card:hover .visual-note-thumb {
-            transform: scale(1.05);
+            transform: scale(1.04);
         }
 
-        /* Hover Overlay */
         .visual-note-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(26, 26, 26, 0.35);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -827,62 +961,38 @@
         .visual-note-expand {
             color: white;
             font-weight: 600;
-            padding: 8px 16px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
+            padding: 8px 18px;
+            background: rgba(255, 255, 255, 0.18);
+            border-radius: var(--vn-radius-pill);
             backdrop-filter: blur(4px);
-            transform: translateY(10px);
-            transition: transform 0.3s ease;
-        }
-
-        .visual-note-card:hover .visual-note-expand {
-            transform: translateY(0);
+            font-size: 0.9rem;
         }
 
         .visual-note-content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .visual-note-title {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
-
-        .visual-note-desc {
-            font-size: 15px;
-            color: var(--text-light);
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .visual-note-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 15px;
-            border-top: 1px solid #e2e8f0;
+            padding: 18px;
         }
 
         .visual-note-tags {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
+            margin-bottom: 8px;
         }
 
         .visual-tag {
-            padding: 4px 12px;
-            background: #f1f5f9;
-            color: #64748b;
-            border-radius: 12px;
-            font-size: 12px;
+            padding: 3px 10px;
+            background: var(--vn-accent-subtle);
+            color: var(--vn-accent);
+            border-radius: var(--vn-radius-pill);
+            font-size: 0.72rem;
             font-weight: 600;
+        }
+
+        .visual-note-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--vn-ink);
+            line-height: 1.35;
         }
 
         /* Lightbox Modal */
@@ -893,7 +1003,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(26, 26, 26, 0.92);
             z-index: 10000;
             padding: 20px;
             overflow-y: auto;
@@ -909,27 +1019,20 @@
             position: relative;
             max-width: 1200px;
             width: 100%;
-            background: white;
-            border-radius: 20px;
+            background: var(--vn-bg-white);
+            border-radius: var(--vn-radius-lg);
             overflow: hidden;
-            animation: modalSlideIn 0.3s ease-out;
+            animation: vnSlideUp 0.3s ease-out;
         }
 
-        @keyframes modalSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes vnSlideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .lightbox-header {
             padding: 20px 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--vn-accent);
             color: white;
             display: flex;
             justify-content: space-between;
@@ -937,7 +1040,7 @@
         }
 
         .lightbox-title {
-            font-size: 24px;
+            font-size: 1.3rem;
             font-weight: 700;
             margin: 0;
         }
@@ -950,7 +1053,7 @@
             height: 40px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 24px;
+            font-size: 1.3rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -964,7 +1067,7 @@
 
         .lightbox-image-container {
             padding: 30px;
-            background: #f8fafc;
+            background: #f8f8f6;
             text-align: center;
             overflow: auto;
             max-height: 70vh;
@@ -974,8 +1077,8 @@
         .lightbox-image {
             max-width: 100%;
             height: auto;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s ease;
             cursor: zoom-in;
         }
@@ -984,81 +1087,58 @@
             cursor: zoom-out;
         }
 
-        /* Zoom Controls */
         .zoom-controls {
             position: absolute;
             top: 20px;
             right: 20px;
             display: flex;
-            gap: 10px;
+            gap: 8px;
             z-index: 10;
         }
 
         .zoom-btn {
             background: rgba(255, 255, 255, 0.95);
-            border: 2px solid #e2e8f0;
-            color: #475569;
-            width: 44px;
-            height: 44px;
+            border: 1px solid var(--vn-border);
+            color: var(--vn-ink-secondary);
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 20px;
+            font-size: 1.1rem;
             font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .zoom-btn:hover {
-            background: white;
             transform: scale(1.1);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-        }
-
-        .zoom-btn:active {
-            transform: scale(0.95);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .zoom-level {
             background: rgba(255, 255, 255, 0.95);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
+            padding: 8px 14px;
+            border-radius: var(--vn-radius-pill);
+            font-size: 0.85rem;
             font-weight: 600;
-            color: #475569;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Mobile Fix: Zoom Controls */
-        @media (max-width: 768px) {
-            .zoom-controls {
-                left: 50%;
-                transform: translateX(-50%);
-                top: auto;
-                bottom: 20px;
-                right: auto;
-                background: rgba(255, 255, 255, 0.9);
-                padding: 5px 15px;
-                border-radius: 30px;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-                width: max-content;
-            }
+            color: var(--vn-ink-secondary);
         }
 
         .lightbox-actions {
-            padding: 20px 30px;
+            padding: 18px 30px;
             display: flex;
-            gap: 15px;
+            gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
-            background: white;
+            background: var(--vn-bg-white);
+            border-top: 1px solid var(--vn-border);
         }
 
         .lightbox-btn {
-            padding: 12px 24px;
-            border-radius: 50px;
+            padding: 10px 22px;
+            border-radius: var(--vn-radius-pill);
             border: none;
             font-weight: 600;
             cursor: pointer;
@@ -1066,160 +1146,112 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-        }
-
-        .lightbox-btn-download {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .lightbox-btn-download:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            gap: 6px;
+            font-size: 0.9rem;
         }
 
         .lightbox-btn-share {
-            background: #f1f5f9;
-            color: #64748b;
+            background: var(--vn-bg);
+            color: var(--vn-ink-secondary);
+            border: 1px solid var(--vn-border);
         }
 
         .lightbox-btn-share:hover {
-            background: #e2e8f0;
+            border-color: var(--vn-accent);
+            color: var(--vn-accent);
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .visual-note-image {
-                height: 250px;
-            }
-
-            .visual-note-title {
-                font-size: 18px;
-            }
-
-            .visual-note-desc {
-                font-size: 14px;
-            }
-
-            .lightbox-content {
-                margin: 20px;
-            }
-
-            .lightbox-title {
-                font-size: 18px;
-            }
-
-            .lightbox-image-container {
-                padding: 15px;
-            }
-
-            .lightbox-actions {
-                flex-direction: column;
-            }
-
-            .lightbox-btn {
-                width: 100%;
-                justify-content: center;
-            }
+        /* ============================================ */
+        /* SECTION 9 — TESTIMONIALS                     */
+        /* ============================================ */
+        .vn-testimonials {
+            background: var(--vn-bg-white);
+            padding: var(--vn-space-2xl) 40px;
         }
 
-        .share-twitter {
-            background: #1DA1F2;
-            color: white;
-        }
-
-        .share-linkedin {
-            background: #0A66C2;
-            color: white;
-        }
-
-        .share-facebook {
-            background: #1877F2;
-            color: white;
-        }
-
-        .share-whatsapp {
-            background: #25D366;
-            color: white;
-        }
-
-        .share-instagram {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: white;
-        }
-
-        .share-copy {
-            background: #64748b;
-            color: white;
-        }
-
-        .share-copy:hover {
-            background: #475569;
-        }
-
-        /* Email Section */
-        .email-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            padding: 100px 40px;
-            text-align: center;
-        }
-
-        .email-content {
-            max-width: 700px;
+        .vn-testimonials-grid {
+            max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
         }
 
-        .email-content h2 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            color: white;
-            margin-bottom: 20px;
-            font-weight: 800;
+        .vn-testimonial-card {
+            background: var(--vn-bg-white);
+            padding: 32px;
+            border-radius: var(--vn-radius);
+            border: 1px solid var(--vn-border);
+            position: relative;
+            transition: all 0.25s;
         }
 
-        .email-content p {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 40px;
+        .vn-testimonial-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
         }
 
-        .email-form {
+        .vn-quote-mark {
+            font-size: 3.5rem;
+            color: var(--vn-accent);
+            opacity: 0.15;
+            font-family: Georgia, serif;
+            line-height: 1;
+            position: absolute;
+            top: 20px;
+            left: 24px;
+        }
+
+        .vn-testimonial-text {
+            color: var(--vn-ink);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .vn-testimonial-author {
             display: flex;
-            gap: 15px;
-            max-width: 500px;
-            margin: 0 auto;
+            align-items: center;
+            gap: 14px;
         }
 
-        .email-input {
-            flex: 1;
-            padding: 18px 24px;
-            border-radius: 50px;
-            border: none;
-            font-size: 1rem;
-            outline: none;
-        }
-
-        .btn-subscribe {
-            background: white;
-            color: var(--primary);
-            padding: 18px 40px;
-            border-radius: 50px;
-            border: 3px solid white;
+        .vn-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-size: 0.95rem;
+            flex-shrink: 0;
         }
 
-        .btn-subscribe:hover {
-            transform: scale(1.05);
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        .vn-author-name {
+            font-weight: 700;
+            color: var(--vn-ink);
+            font-size: 0.95rem;
         }
 
-        /* PDF Modal */
+        .vn-author-role {
+            color: var(--vn-ink-tertiary);
+            font-size: 0.85rem;
+        }
+
+        .vn-stars {
+            color: #E8A838;
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        /* ============================================ */
+        /* SECTION 10 — NEWSLETTER                      */
+        /* ============================================ */
+
+        /* ============================================ */
+        /* PDF MODAL (preserved)                        */
+        /* ============================================ */
         .pdf-modal {
             display: none;
             position: fixed;
@@ -1233,16 +1265,14 @@
             justify-content: center;
         }
 
-        .pdf-modal.active {
-            display: flex;
-        }
+        .pdf-modal.active { display: flex; }
 
         .pdf-container {
             width: 95%;
             max-width: 1200px;
             height: 90vh;
             background: #2a2a2a;
-            border-radius: 20px;
+            border-radius: var(--vn-radius-lg);
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -1257,26 +1287,6 @@
             align-items: center;
             gap: 10px;
             flex-wrap: wrap;
-            /* Allow wrapping on very small screens */
-        }
-
-        @media (max-width: 480px) {
-            .pdf-toolbar {
-                padding: 10px;
-            }
-
-            .pdf-title {
-                font-size: 0.9rem;
-                max-width: 120px;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-
-            .pdf-btn {
-                padding: 8px 12px;
-                font-size: 0.85rem;
-            }
         }
 
         .pdf-controls {
@@ -1296,9 +1306,7 @@
             font-weight: 500;
         }
 
-        .pdf-btn:hover {
-            background: #4a4a4a;
-        }
+        .pdf-btn:hover { background: #4a4a4a; }
 
         .pdf-viewport {
             flex: 1;
@@ -1315,88 +1323,35 @@
             border-radius: 8px;
         }
 
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-            }
-
-            .email-form {
-                flex-direction: column;
-            }
-
-            .guides-grid {
-                grid-template-columns: 1fr;
-            }
+        /* ============================================ */
+        /* THANK YOU MODAL                              */
+        /* ============================================ */
+        .vn-thank-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 26, 26, 0.7);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
         }
-    </style>
-    <style>
-        /* ============================================ */
-        /* MOBILE PDF VIEWER FIX */
-        /* ============================================ */
-        /* ============================================ */
-        /* MOBILE PDF VIEWER FIX */
-        /* ============================================ */
-        @media (max-width: 768px) {
-            .pdf-controls {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 8px;
-                padding: 15px 10px;
-                background: rgba(0, 0, 0, 0.95);
-            }
 
-            /* Stack controls for better visibility */
-            .pdf-btn {
-                padding: 12px 18px !important;
-                /* Larger touch target */
-                font-size: 16px !important;
-                /* Larger text/icon */
-                flex: 1 1 auto;
-                min-width: 60px;
-                min-height: 44px;
-                /* Minimum touch target size */
-                margin: 4px !important;
-                /* Spacing */
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            /* Page Info on its own line */
-            #pageInfo {
-                order: -1;
-                flex: 0 0 100%;
-                text-align: center;
-                margin-bottom: 10px;
-                color: #fff;
-                font-weight: 500;
-            }
-
-            #zoomLevel {
-                display: none;
-                /* Hide zoom % on mobile to save space */
-            }
-
-            /* Close button full width at bottom */
-            button[onclick*="closePdfViewer"] {
-                flex: 0 0 100%;
-                margin-top: 10px !important;
-                background: #ff4444 !important;
-                padding: 12px !important;
-                order: 10;
-            }
+        .vn-thank-content {
+            background: white;
+            padding: 48px 40px;
+            border-radius: var(--vn-radius-lg);
+            max-width: 480px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            animation: vnSlideUp 0.4s ease-out;
         }
 
         /* ============================================ */
-        /* FIRST-TIME VISITOR POPUP */
+        /* POPUP (preserved, restyled)                  */
         /* ============================================ */
-
-        /* Popup Overlay */
         .vn-popup-overlay {
             display: none;
             position: fixed;
@@ -1404,103 +1359,97 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(26, 26, 26, 0.6);
             z-index: 999999;
-            animation: fadeIn 0.3s ease-in;
+            animation: vnFadeIn 0.3s ease-in;
         }
 
-        /* Popup Container */
+        @keyframes vnFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         .vn-popup-container {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            max-width: 500px;
+            border-radius: var(--vn-radius);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+            max-width: 460px;
             width: 90%;
             z-index: 1000000;
-            animation: slideUp 0.4s ease-out;
+            animation: vnSlideUp 0.4s ease-out;
+            overflow: hidden;
         }
 
-        /* Popup Header */
         .vn-popup-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--vn-accent);
             color: white;
-            padding: 25px;
-            border-radius: 12px 12px 0 0;
+            padding: 28px;
             text-align: center;
             position: relative;
         }
 
-        .vn-popup-icon {
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
+        .vn-popup-icon { font-size: 2.8rem; margin-bottom: 8px; }
 
         .vn-popup-header h2 {
             margin: 0;
-            font-size: 24px;
+            font-size: 1.4rem;
             font-weight: 700;
         }
 
         .vn-popup-header p {
-            margin: 8px 0 0 0;
-            font-size: 14px;
-            opacity: 0.95;
+            margin: 6px 0 0 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
         }
 
-        /* Close Button */
         .vn-popup-close {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 14px;
+            right: 14px;
             background: rgba(255, 255, 255, 0.2);
             border: none;
             color: white;
-            font-size: 24px;
+            font-size: 1.3rem;
             width: 32px;
             height: 32px;
             border-radius: 50%;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
             line-height: 1;
         }
 
         .vn-popup-close:hover {
             background: rgba(255, 255, 255, 0.3);
-            transform: rotate(90deg);
         }
 
-        /* Popup Body */
-        .vn-popup-body {
-            padding: 30px 25px;
-        }
+        .vn-popup-body { padding: 28px; }
 
         .vn-popup-benefits {
             list-style: none;
             padding: 0;
-            margin: 0 0 25px 0;
+            margin: 0 0 24px 0;
         }
 
         .vn-popup-benefits li {
-            padding: 10px 0;
-            font-size: 15px;
-            color: #333;
+            padding: 8px 0;
+            font-size: 0.92rem;
+            color: var(--vn-ink);
             display: flex;
             align-items: center;
         }
 
         .vn-popup-benefits li:before {
             content: "✓";
-            color: #667eea;
+            color: var(--vn-accent);
             font-weight: bold;
-            font-size: 18px;
+            font-size: 1.1rem;
             margin-right: 12px;
         }
 
-        /* Popup Form */
         .vn-popup-form {
             display: flex;
             gap: 10px;
@@ -1509,357 +1458,495 @@
 
         .vn-popup-input {
             padding: 14px 18px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid var(--vn-border);
             border-radius: 8px;
-            font-size: 15px;
-            transition: border 0.3s;
+            font-size: 0.95rem;
+            transition: border 0.2s;
             width: 100%;
             box-sizing: border-box;
+            font-family: inherit;
         }
 
         .vn-popup-input:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: var(--vn-accent);
         }
 
         .vn-popup-submit {
             padding: 14px 24px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--vn-accent);
             color: white;
             border: none;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.2s;
+            font-family: inherit;
         }
 
         .vn-popup-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            background: var(--vn-accent-hover);
+            transform: translateY(-1px);
         }
 
-        .vn-popup-submit:active {
-            transform: translateY(0);
-        }
-
-        /* No Thanks Link */
-        .vn-popup-skip {
-            text-align: center;
-            margin-top: 15px;
-        }
+        .vn-popup-skip { text-align: center; margin-top: 14px; }
 
         .vn-popup-skip a {
-            color: #999;
-            font-size: 13px;
+            color: var(--vn-ink-tertiary);
+            font-size: 0.82rem;
             text-decoration: none;
             cursor: pointer;
         }
 
         .vn-popup-skip a:hover {
-            color: #667eea;
+            color: var(--vn-accent);
             text-decoration: underline;
         }
 
-        /* Success Message */
         .vn-popup-success {
             display: none;
             text-align: center;
             padding: 40px 25px;
         }
 
-        .vn-popup-success-icon {
-            font-size: 64px;
-            color: #4CAF50;
-            margin-bottom: 15px;
+        /* ============================================ */
+        /* RESPONSIVE BREAKPOINTS                       */
+        /* ============================================ */
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+            .vn-cat-grid { grid-template-columns: repeat(2, 1fr); }
+            .vn-articles-grid { grid-template-columns: repeat(2, 1fr); }
+            .vn-testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .vn-footer-grid { grid-template-columns: repeat(2, 1fr); gap: 36px; }
+            .vn-featured-article { grid-template-columns: 1fr; }
+            .vn-featured-img { min-height: 250px; }
         }
 
-        .vn-popup-success h3 {
-            color: #4CAF50;
-            margin: 0 0 10px 0;
-            font-size: 24px;
+        @media (max-width: 768px) {
+            .vn-nav-links { display: none; }
+            .vn-hamburger { display: flex; }
+            .vn-nav { padding: 0 20px; height: 64px; }
+
+            .vn-hero { padding: 120px 20px 72px; }
+            .vn-hero h1 { font-size: clamp(2rem, 7vw, 2.8rem); letter-spacing: -1px; }
+            .vn-hero-cta { flex-direction: column; gap: 12px; }
+            .vn-hero-cta a { width: 100%; text-align: center; justify-content: center; }
+
+            .vn-stats-inner { flex-wrap: wrap; gap: 20px; }
+            .vn-stat + .vn-stat { border-left: none; }
+            .vn-stat { flex: 0 0 calc(50% - 12px); }
+            .vn-stat-value { font-size: 1.8rem; }
+
+            .vn-cat-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+            .vn-categories,
+            .vn-guides,
+            .vn-flashcards,
+            .vn-articles,
+            .vn-visuals,
+            .vn-testimonials,
+            .vn-newsletter,
+            .vn-community,
+            .vn-faq { padding: 72px 20px; }
+
+            .vn-guides-grid { grid-template-columns: 1fr; }
+            .vn-articles-grid { grid-template-columns: 1fr; }
+            .vn-testimonials-grid { grid-template-columns: 1fr; }
+            .vn-community-grid { grid-template-columns: 1fr; }
+
+            .vn-footer-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+            .vn-footer-social { justify-content: center; }
+            .vn-footer { padding: 48px 20px 24px; }
+
+            .email-form { flex-direction: column; }
+
+            .vn-filter-pills { gap: 8px; }
+            .vn-filter-pill { padding: 6px 16px; font-size: 0.82rem; }
+
+            .lightbox-actions { flex-direction: column; }
+            .lightbox-btn { width: 100%; justify-content: center; }
+
+            .zoom-controls {
+                left: 50%;
+                transform: translateX(-50%);
+                top: auto;
+                bottom: 16px;
+                right: auto;
+                background: rgba(255,255,255,0.9);
+                padding: 4px 12px;
+                border-radius: var(--vn-radius-pill);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                width: max-content;
+            }
+
+            .pdf-toolbar { padding: 10px; }
+            .pdf-btn { padding: 8px 12px; font-size: 0.85rem; }
+
+            .vn-popup-container { width: 95%; }
         }
 
-        .vn-popup-success p {
-            color: #666;
-            margin: 0;
-            font-size: 15px;
+        @media (max-width: 480px) {
+            .vn-cat-grid { grid-template-columns: 1fr; }
+            .vn-hero-pills { gap: 8px; }
+            .vn-pill { padding: 8px 16px; font-size: 0.82rem; }
+            .vn-stat { flex: 0 0 100%; }
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
+        /* Touch targets */
+        @media screen and (max-width: 767px) {
+            button, a, input, select {
+                min-height: 44px;
             }
 
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translate(-50%, -40%);
+            img {
+                max-width: 100% !important;
+                height: auto !important;
             }
 
-            to {
-                opacity: 1;
-                transform: translate(-50%, -50%);
+            .guide-image img {
+                height: 100% !important;
+                object-fit: cover !important;
+            }
+
+            body {
+                overflow-x: hidden !important;
             }
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 600px) {
-            .vn-popup-container {
-                width: 95%;
-                max-width: none;
+        /* Retina */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            img { image-rendering: -webkit-optimize-contrast; }
+        }
+
+        /* iOS */
+        @supports (-webkit-touch-callout: none) {
+            input, textarea, select {
+                -webkit-appearance: none;
+                border-radius: 0;
+            }
+        }
+
+        /* Scroll reveal animation */
+        .vn-reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .vn-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile PDF controls */
+        @media (max-width: 768px) {
+            .pdf-controls {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
             }
 
-            .vn-popup-header {
-                padding: 20px;
+            .pdf-btn {
+                flex: 1 1 auto;
+                min-width: 60px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
-            .vn-popup-header h2 {
-                font-size: 20px;
+            #pageInfo {
+                order: -1;
+                flex: 0 0 100%;
+                text-align: center;
+                margin-bottom: 8px;
+                color: #fff;
+                font-weight: 500;
             }
 
-            .vn-popup-body {
-                padding: 25px 20px;
-            }
+            #zoomLevel { display: none; }
 
-            .vn-popup-benefits li {
-                font-size: 14px;
+            button[onclick*="closePdfViewer"] {
+                flex: 0 0 100%;
+                margin-top: 8px !important;
+                background: #ef4444 !important;
+                order: 10;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo-wrapper">
-                <div class="logo">📚 VisualNotes</div>
-                <div class="logo-tagline">Learn visually. Think Clearly.</div>
+    <script>(function(){if(localStorage.getItem('darkMode')==='true'){document.body.classList.add('dark-mode');}})();</script>
+    <!-- ============================================ -->
+    <!-- SECTION 1 — STICKY HEADER                    -->
+    <!-- ============================================ -->
+    <header class="vn-header" id="vnHeader">
+        <nav class="vn-nav">
+            <div class="vn-logo-wrap">
+                <a href="/" class="vn-logo">VisualNotes</a>
+                <span class="vn-logo-tagline">Learn visually. Think Clearly.</span>
             </div>
-            <div class="nav-links">
-                <a href="#guides">Guides</a>
-                <a href="#subscribe">Subscribe</a>
-                <a href="#guides" class="btn-cta">Explore Guides</a>
+            <div class="vn-nav-links">
+                <a href="guides/index.html">Guides</a>
+                <a href="#articles">Blog</a>
+                <a href="about.html">About</a>
+                <a href="faq.html">FAQ</a>
+                <a href="#subscribe" class="vn-btn-subscribe">Subscribe</a>
             </div>
-        </div>
-    </nav>
+            <button class="vn-hamburger" id="vnHamburger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
+    <!-- Mobile Nav Overlay -->
+    <div class="vn-mobile-nav" id="vnMobileNav">
+        <a href="guides/index.html" onclick="closeMobileNav()">Guides</a>
+        <a href="#articles" onclick="closeMobileNav()">Blog</a>
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+        <a href="#subscribe" class="vn-btn-subscribe" onclick="closeMobileNav()">Subscribe</a>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECTION 2 — HERO                             -->
+    <!-- ============================================ -->
+    <section class="vn-hero">
+        <div class="vn-hero-inner vn-reveal" style="max-width: 850px; margin: 0 auto; width: 100%;">
+            <div class="vn-hero-kicker">✍️ Handwritten Notes for Cloud, Networking & OSINT</div>
             <h1>
                 Understand complex tech in minutes<br>
-                <span class="highlight">— not months.</span>
+                <span class="vn-highlight">— not months.</span>
             </h1>
-            <p>
+            <p class="vn-hero-subtitle">
                 Visual, handwritten-style notes that make Infrastructure, Cloud, Security & OSINT finally click.
             </p>
-            <p class="tagline">
+            <p class="vn-hero-tagline">
                 One page. One system. Zero confusion.
             </p>
 
-            <div class="category-pills">
-                <span class="pill">🌐 Infrastructure</span>
-                <span class="pill">☁️ Cloud</span>
-                <span class="pill">🔒 Security</span>
-                <span class="pill">🔍 OSINT</span>
+            <div class="vn-hero-pills">
+                <a href="#cat-infra" class="vn-pill">🌐 Infrastructure</a>
+                <a href="#cat-cloud" class="vn-pill">☁️ Cloud</a>
+                <a href="#cat-security" class="vn-pill">🔒 Security</a>
+                <a href="#cat-osint" class="vn-pill">🔍 OSINT</a>
             </div>
 
-            <div class="hero-cta">
-                <a href="#guides" class="btn-primary">Explore Guides</a>
-                <a href="#subscribe" class="btn-secondary">Get Updates</a>
-            </div>
-        </div>
-
-        <div class="scroll-indicator">
-            <span>Scroll to explore</span>
-            <span>↓</span>
-        </div>
-    </section>
-
-
-
-
-    <!-- NEW: Interactive Features Banner -->
-    <section class="interactive-banner"
-        style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary-dark) 100%); padding: 60px 20px; text-align: center; color: white;">
-        <div class="container" style="max-width: 900px; margin: 0 auto;">
-            <span
-                style="background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); padding: 5px 15px; border-radius: 20px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; display: inline-block;">New
-                Feature</span>
-            <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 15px;">Interactive
-                Flashcards Learning</h2>
-            <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 30px; line-height: 1.6;">Test your knowledge in
-                specialized tech categories using our tactile, 3D flip flashcards.</p>
-
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: left; margin-bottom: 20px;">
-
-                <!-- Networking Category -->
-                <div
-                    style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 25px 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.2);">
-                    <div
-                        style="font-weight: 800; font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                        <span>🌐</span> Networking
-                    </div>
-                    <a href="hsrp-flashcards.html"
-                        style="display: flex; justify-content: space-between; align-items: center; background: white; color: var(--primary); padding: 12px 16px; border-radius: 12px; margin-bottom: 12px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                        HSRP Practice <span>→</span>
-                    </a>
-                    <a href="subnetting-flashcards.html"
-                        style="display: flex; justify-content: space-between; align-items: center; background: white; color: var(--primary); padding: 12px 16px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                        Subnetting Practice <span>→</span>
-                    </a>
-                </div>
-
-                <!-- Security Category -->
-                <div
-                    style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); padding: 25px 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
-                    <div
-                        style="font-weight: 800; font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; opacity: 0.8;">
-                        <span>🔒</span> Security
-                    </div>
-                    <div style="color: rgba(255,255,255,0.5); font-size: 0.9rem; font-weight: 600; padding: 12px 0;">
-                        Flashcards coming soon...
-                    </div>
-                </div>
-
-                <!-- OSINT Category -->
-                <div
-                    style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 25px 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.2);">
-                    <div
-                        style="font-weight: 800; font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                        <span>🔍</span> OSINT
-                    </div>
-                    <a href="socmint-flashcards.html"
-                        style="display: flex; justify-content: space-between; align-items: center; background: white; color: var(--primary); padding: 12px 16px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                        SOCMINT Practice <span>→</span>
-                    </a>
-                </div>
-
-                <!-- Cloud Category -->
-                <div
-                    style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); padding: 25px 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
-                    <div
-                        style="font-weight: 800; font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; opacity: 0.8;">
-                        <span>☁️</span> Cloud
-                    </div>
-                    <div style="color: rgba(255,255,255,0.5); font-size: 0.9rem; font-weight: 600; padding: 12px 0;">
-                        Flashcards coming soon...
-                    </div>
-                </div>
-
+            <div class="vn-hero-cta">
+                <a href="guides/index.html" class="vn-btn-primary">Explore Guides</a>
+                <a href="#articles" class="vn-btn-ghost">Read Articles →</a>
             </div>
         </div>
     </section>
 
-    <!-- Guides Section -->
-    <section class="guides" id="guides">
-        <div class="section-header">
+    <!-- ============================================ -->
+    <!-- SECTION 3 — STATS BAR                        -->
+    <!-- ============================================ -->
+    <section class="vn-stats vn-reveal">
+        <div class="vn-stats-inner">
+            <div class="vn-stat">
+                <div class="vn-stat-value" data-count="7">7+</div>
+                <div class="vn-stat-label">Study Guides</div>
+            </div>
+            <div class="vn-stat">
+                <div class="vn-stat-value" data-count="10">10+</div>
+                <div class="vn-stat-label">Deep Articles</div>
+            </div>
+            <div class="vn-stat">
+                <div class="vn-stat-value" data-count="5000">5K+</div>
+                <div class="vn-stat-label">Readers</div>
+            </div>
+            <div class="vn-stat">
+                <div class="vn-stat-value" data-count="12">12+</div>
+                <div class="vn-stat-label">Visual Notes</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 4 — CATEGORY DISCOVERY               -->
+    <!-- ============================================ -->
+    <section class="vn-categories vn-reveal" id="topics">
+        <div class="vn-section-header">
+            <h2>Browse by Topic</h2>
+            <p>Find visual notes and guides organized by what you need to learn</p>
+        </div>
+
+        <div class="vn-cat-grid">
+            <a href="guides/index.html?filter=infrastructure" class="vn-cat-card" id="cat-infra">
+                <span class="vn-cat-icon">🌐</span>
+                <div class="vn-cat-name">Infrastructure</div>
+                <div class="vn-cat-topics">DNS, VLAN, STP, SNMP, Netflow, NTP, SD-WAN</div>
+                <div class="vn-cat-count">6 Guides · 4 Visual Notes</div>
+                <div class="vn-cat-link">Explore →</div>
+            </a>
+            <a href="guides/index.html?filter=infrastructure" class="vn-cat-card" id="cat-cloud">
+                <span class="vn-cat-icon">☁️</span>
+                <div class="vn-cat-name">Cloud</div>
+                <div class="vn-cat-topics">AWS, Azure, GCP, Cloud Comparisons</div>
+                <div class="vn-cat-count">1 Article · 2 Visual Notes</div>
+                <div class="vn-cat-link">Explore →</div>
+            </a>
+            <a href="#articles" class="vn-cat-card" id="cat-security">
+                <span class="vn-cat-icon">🔒</span>
+                <div class="vn-cat-name">Security</div>
+                <div class="vn-cat-topics">Dorking, Microsegmentation, Zero Trust, Network Exploits</div>
+                <div class="vn-cat-count">5 Articles · 3 Visual Notes</div>
+                <div class="vn-cat-link">Explore →</div>
+            </a>
+            <a href="#articles" class="vn-cat-card" id="cat-osint">
+                <span class="vn-cat-icon">🔍</span>
+                <div class="vn-cat-name">OSINT</div>
+                <div class="vn-cat-topics">Tools, Cases, SOCMINT, Frameworks, OpenOSINT</div>
+                <div class="vn-cat-count">6 Articles · 1 Visual Note</div>
+                <div class="vn-cat-link">Explore →</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 5 — STUDY GUIDES                     -->
+    <!-- ============================================ -->
+    <section class="vn-guides" id="guides">
+        <div class="vn-section-header">
             <h2>Visual Study Guides</h2>
             <p>Handwritten notes that transform complex systems into clear mental pictures</p>
         </div>
 
-        <div class="guides-grid" id="guidesContainer">
-            <!-- Dynamic content -->
+        <div class="vn-guides-grid" id="guidesContainer">
+            <!-- Dynamic content from data.js -->
         </div>
     </section>
 
-    <!-- Blog Section -->
-    <section class="guides-section" style="background: white;">
-        <div class="section-header">
-            <h2>📝 Latest Articles</h2>
+    <!-- ============================================ -->
+    <!-- SECTION 6 — INTERACTIVE FLASHCARDS           -->
+    <!-- ============================================ -->
+    <section class="vn-flashcards vn-reveal">
+        <div class="vn-section-header">
+            <h2>Interactive Learning <span class="vn-badge-new">NEW</span></h2>
+            <p>Test your knowledge with tactile, 3D flip flashcards</p>
+        </div>
+
+        <div class="vn-flash-grid">
+            <div class="vn-flash-card">
+                <div class="vn-flash-category"><span>🌐</span> Networking</div>
+                <a href="hsrp-flashcards.html" class="vn-flash-link">HSRP Practice <span>→</span></a>
+                <a href="subnetting-flashcards.html" class="vn-flash-link">Subnetting Practice <span>→</span></a>
+            </div>
+            <div class="vn-flash-card">
+                <div class="vn-flash-category"><span>🔍</span> OSINT</div>
+                <a href="socmint-flashcards.html" class="vn-flash-link">SOCMINT Practice <span>→</span></a>
+            </div>
+            <div class="vn-flash-card">
+                <div class="vn-flash-category" style="opacity:0.5;"><span>🔒</span> Security</div>
+                <div class="vn-flash-soon">Flashcards coming soon...</div>
+            </div>
+            <div class="vn-flash-card">
+                <div class="vn-flash-category" style="opacity:0.5;"><span>☁️</span> Cloud</div>
+                <div class="vn-flash-soon">Flashcards coming soon...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 7 — LATEST ARTICLES                  -->
+    <!-- ============================================ -->
+    <section class="vn-articles" id="articles">
+        <div class="vn-section-header">
+            <h2>Latest Articles</h2>
             <p>In-depth guides on infrastructure, cloud, security, and OSINT</p>
         </div>
 
-        <div class="guides-grid">
-            <!-- OpenOSINT Deep Dive — NEW -->
-            <div class="guide-card" style="position:relative;">
-                <div class="guide-image">
-                    <img src="blog/images/openosint-deep-dive-hero.png" alt="OpenOSINT Deep Dive: AI-Powered OSINT Framework for Security Researchers" loading="lazy"
-                        style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <span style="position:absolute;top:12px;right:12px;background:#00c8a0;color:#fff;font-size:0.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:50px;">NEW</span>
-                <div class="guide-content">
-                    <span class="guide-category" style="background:rgba(0,200,160,0.12);color:#008f70;">OSINT Tooling Series</span>
-                    <h3 class="guide-title">Beyond the Search Bar: A Practitioner's Look at OpenOSINT</h3>
-                    <p class="guide-desc">An in-depth practitioner review of OpenOSINT, an AI agent framework that orchestrates 16 OSINT tools. Learn how automated tool pivoting shifts focus from mechanics to critical reasoning.</p>
-                    <div class="guide-footer">
-                        <span class="guide-meta">8 min read</span>
-                        <a href="blog/openosint-ai-osint-framework-deep-dive.html" class="btn-read" style="background:linear-gradient(135deg,#0f6e56,#1d9e75);">READ NOW</a>
-                    </div>
+        <!-- Category Filter Pills -->
+        <div class="vn-filter-pills">
+            <button class="vn-filter-pill active" data-filter="all">All</button>
+            <button class="vn-filter-pill" data-filter="infrastructure">Infrastructure</button>
+            <button class="vn-filter-pill" data-filter="cloud">Cloud</button>
+            <button class="vn-filter-pill" data-filter="security">Security</button>
+            <button class="vn-filter-pill" data-filter="osint">OSINT</button>
+        </div>
+
+        <!-- Featured Article -->
+        <a href="blog/openosint-ai-osint-framework-deep-dive.html" class="vn-featured-article" data-category="osint" style="text-decoration:none; color:inherit;">
+            <div class="vn-featured-img">
+                <img src="blog/images/openosint-deep-dive-hero.png" alt="OpenOSINT Deep Dive: AI-Powered OSINT Framework for Security Researchers" loading="lazy">
+            </div>
+            <div class="vn-featured-body">
+                <span class="guide-category" style="background:var(--vn-accent-subtle);color:var(--vn-accent);">OSINT Tooling Series</span>
+                <span class="vn-badge-new" style="margin-left:0; margin-bottom:12px; align-self:flex-start;">NEW</span>
+                <h3 class="guide-title">Beyond the Search Bar: A Practitioner's Look at OpenOSINT</h3>
+                <p class="guide-desc">An in-depth practitioner review of OpenOSINT, an AI agent framework that orchestrates 16 OSINT tools. Learn how automated tool pivoting shifts focus from mechanics to critical reasoning.</p>
+                <div class="guide-footer">
+                    <span class="guide-meta">8 min read</span>
+                    <span class="btn-read">READ NOW</span>
                 </div>
             </div>
+        </a>
 
-            <!-- OSINT Case File: Lazarus Dream Job (Horizon-Lure) -->
-            <div class="guide-card" style="position:relative;">
-                <div class="guide-image" style="background: linear-gradient(135deg, #0d9488 0%, #00c8a0 100%); flex-direction: column; gap: 6px;">
-                    <span style="font-size:2.8rem;">🕵️</span>
-                    <span style="font-family:monospace; font-size:0.65rem; letter-spacing:2px; color:rgba(255,255,255,0.7); text-transform:uppercase;">Case File · EP 02</span>
+        <!-- Articles Grid -->
+        <div class="vn-articles-grid" id="articlesGrid">
+            <!-- Lazarus Dream Job -->
+            <div class="vn-article-card" data-category="osint">
+                <div class="vn-article-thumb">
+                    <img src="blog/images/horizon-lure-thumbnail.png" alt="Operation Horizon-Lure Sketchnote" loading="lazy">
                 </div>
-                <div class="guide-content">
-                    <span class="guide-category" style="background:rgba(0,200,160,0.12);color:#008f70;">OSINT Training Series</span>
+                <div class="vn-article-body">
+                    <span class="guide-category">OSINT Training Series</span>
                     <h3 class="guide-title">Operation Horizon-Lure: Case File</h3>
                     <p class="guide-desc">A highly targeted simulated LinkedIn recruitment campaign meets inbound spearfishing. Audit profile metadata, trace synthetic avatars, footprint lookalike domains, and perform Git commit log forensics.</p>
                     <div class="guide-footer">
                         <span class="guide-meta">18 min read</span>
-                        <a href="blog/osint-case-lazarus-dream-job.html" class="btn-read" style="background:linear-gradient(135deg,#0d9488,#00c8a0);">READ NOW</a>
+                        <a href="blog/osint-case-lazarus-dream-job.html" class="btn-read">READ NOW</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Mastering SOCMINT -->
-            <div class="guide-card" style="position:relative;">
-                <div class="guide-image">
-                    <img src="blog/images/socmint-hero-sketchnote.png" alt="Mastering SOCMINT Advanced Social Network Analysis" loading="lazy"
-                        style="width: 100%; height: 100%; object-fit: cover;">
+            <!-- SOCMINT -->
+            <div class="vn-article-card" data-category="osint">
+                <div class="vn-article-thumb">
+                    <img src="blog/images/socmint-hero-sketchnote.png" alt="Mastering SOCMINT Advanced Social Network Analysis" loading="lazy">
                 </div>
-                <div class="guide-content">
-                    <span class="guide-category" style="background:rgba(0,200,160,0.12);color:#008f70;">OSINT &amp; SOCMINT Series</span>
+                <div class="vn-article-body">
+                    <span class="guide-category">OSINT &amp; SOCMINT Series</span>
                     <h3 class="guide-title">Mastering SOCMINT: Advanced Social Network Analysis</h3>
                     <p class="guide-desc">Turn social media connections and structures into actionable intelligence. Map complex relationships, trace attribution lexical signals, and audit influence flows.</p>
                     <div class="guide-footer">
                         <span class="guide-meta">12 min read</span>
-                        <a href="blog/advanced-socmint-social-network-analysis-influence-operations.html" class="btn-read" style="background:linear-gradient(135deg,#0d9488,#00c8a0);">READ NOW</a>
+                        <a href="blog/advanced-socmint-social-network-analysis-influence-operations.html" class="btn-read">READ NOW</a>
                     </div>
                 </div>
             </div>
 
-            <!-- OSINT Case File: VIPER-GHOST -->
-            <div class="guide-card">
-                <div class="guide-image" style="background: linear-gradient(135deg, #0d9488 0%, #00c8a0 100%); flex-direction: column; gap: 6px;">
-                    <span style="font-size:2.8rem;">🕵️</span>
-                    <span style="font-family:monospace; font-size:0.65rem; letter-spacing:2px; color:rgba(255,255,255,0.7); text-transform:uppercase;">Case File · EP 01</span>
+            <!-- Viper Ghost -->
+            <div class="vn-article-card" data-category="osint">
+                <div class="vn-article-thumb">
+                    <img src="blog/images/viper-ghost-thumbnail.png" alt="Operation VIPER-GHOST Sketchnote" loading="lazy">
                 </div>
-                <div class="guide-content">
-                    <span class="guide-category" style="background:rgba(0,200,160,0.12);color:#008f70;">OSINT Training Series</span>
+                <div class="vn-article-body">
+                    <span class="guide-category">OSINT Training Series</span>
                     <h3 class="guide-title">Operation VIPER-GHOST: Case File</h3>
                     <p class="guide-desc">A dual-thread training investigation — brand impersonation meets suspicious remote hire. Map infrastructure, expose a fabricated identity, and avoid 8 analyst traps.</p>
                     <div class="guide-footer">
                         <span class="guide-meta">20 min read</span>
-                        <a href="blog/osint-case-viper-ghost.html" class="btn-read" style="background:linear-gradient(135deg,#0d9488,#00c8a0);">READ NOW</a>
+                        <a href="blog/osint-case-viper-ghost.html" class="btn-read">READ NOW</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Top 5 Network Exploits Article -->
-            <div class="guide-card">
-                <div class="guide-image">
-                    <img src="blog/images/top-5-network-exploits.png" alt="Network Exploits Guide" loading="lazy"
-                        style="width: 100%; height: 100%; object-fit: cover;">
+            <!-- Top 5 Network Exploits -->
+            <div class="vn-article-card" data-category="security">
+                <div class="vn-article-thumb">
+                    <img src="blog/images/top-5-network-exploits.png" alt="Network Exploits Guide" loading="lazy">
                 </div>
-                <div class="guide-content">
+                <div class="vn-article-body">
                     <span class="guide-category">Security & Infrastructure</span>
                     <h3 class="guide-title">Top 5 Network Exploits Still Misconfigured in 2026</h3>
-                    <p class="guide-desc">Discover the 5 legacy network vulnerabilities that still plague modern
-                        infrastructures in 2026. Detailed attack mechanics and architectural defenses.</p>
+                    <p class="guide-desc">Discover the 5 legacy network vulnerabilities that still plague modern infrastructures in 2026. Detailed attack mechanics and architectural defenses.</p>
                     <div class="guide-footer">
                         <span class="guide-meta">15 min read</span>
                         <a href="blog/top-5-network-exploits-misconfigured-2026.html" class="btn-read">READ NOW</a>
@@ -1867,33 +1954,31 @@
                 </div>
             </div>
 
-            <!-- Microsegmentation Article -->
-            <div class="guide-card">
-                <div class="guide-image">
-                    <img src="blog/images/microsegmentation-architecture-cover.png" alt="Microsegmentation Guide"
-                        loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+            <!-- Microsegmentation -->
+            <div class="vn-article-card" data-category="security">
+                <div class="vn-article-thumb">
+                    <img src="blog/images/microsegmentation-architecture-cover.png" alt="Microsegmentation Guide" loading="lazy">
                 </div>
-                <div class="guide-content">
+                <div class="vn-article-body">
                     <span class="guide-category">Security</span>
                     <h3 class="guide-title">Microsegmentation Done Right</h3>
-                    <p class="guide-desc">A practical, phased Crawl-Walk-Run approach to implementing Zero Trust
-                        security.</p>
+                    <p class="guide-desc">A practical, phased Crawl-Walk-Run approach to implementing Zero Trust security.</p>
                     <div class="guide-footer">
                         <span class="guide-meta">10 min read</span>
                         <a href="blog/microsegmentation-crawl-walk-run-zero-trust.html" class="btn-read">READ NOW</a>
                     </div>
                 </div>
-            </div> <!-- Google Dorking Article -->
-            <div class="guide-card">
-                <div class="guide-image">
-                    <img src="blog/images/google-dorking-header.png" alt="Google Dorking Guide" loading="lazy"
-                        style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+
+            <!-- Google Dorking -->
+            <div class="vn-article-card" data-category="security">
+                <div class="vn-article-thumb">
+                    <img src="blog/images/google-dorking-header.png" alt="Google Dorking Guide" loading="lazy">
                 </div>
-                <div class="guide-content">
+                <div class="vn-article-body">
                     <span class="guide-category">Security & OSINT</span>
                     <h3 class="guide-title">Google Dorking: The Complete Guide</h3>
-                    <p class="guide-desc">Master advanced search operators, ethical hacking techniques, and learn how to
-                        protect your website from dorking attacks.</p>
+                    <p class="guide-desc">Master advanced search operators, ethical hacking techniques, and learn how to protect your website from dorking attacks.</p>
                     <div class="guide-footer">
                         <span class="guide-meta">15 min read</span>
                         <a href="blog/google-dorking-guide.html" class="btn-read">READ NOW</a>
@@ -1901,17 +1986,15 @@
                 </div>
             </div>
 
-            <!-- DNS Article -->
-            <div class="guide-card">
-                <div class="guide-image">
-                    <img src="blog/images/dns-thumbnail.png" alt="DNS Guide" loading="lazy"
-                        style="width: 100%; height: 100%; object-fit: cover;">
+            <!-- DNS -->
+            <div class="vn-article-card" data-category="infrastructure">
+                <div class="vn-article-thumb">
+                    <img src="blog/images/dns-thumbnail.png" alt="DNS Guide" loading="lazy">
                 </div>
-                <div class="guide-content">
+                <div class="vn-article-body">
                     <span class="guide-category">Infrastructure</span>
                     <h3 class="guide-title">How DNS Actually Works</h3>
-                    <p class="guide-desc">Stop memorizing DNS records. Learn how DNS actually works with visual diagrams
-                        and real-world examples.</p>
+                    <p class="guide-desc">Stop memorizing DNS records. Learn how DNS actually works with visual diagrams and real-world examples.</p>
                     <div class="guide-footer">
                         <span class="guide-meta">8 min read</span>
                         <a href="blog/how-dns-works.html" class="btn-read">READ NOW</a>
@@ -1919,16 +2002,15 @@
                 </div>
             </div>
 
-            <div class="guide-card">
-                <div class="guide-image">
-                    <img src="blog/images/osint-thumbnail.png" alt="OSINT Tools" loading="lazy"
-                        style="width: 100%; height: 100%; object-fit: cover;">
+            <!-- OSINT Tools -->
+            <div class="vn-article-card" data-category="osint">
+                <div class="vn-article-thumb">
+                    <img src="blog/images/osint-thumbnail.png" alt="OSINT Tools" loading="lazy">
                 </div>
-                <div class="guide-content">
+                <div class="vn-article-body">
                     <span class="guide-category">Security & OSINT</span>
                     <h3 class="guide-title">Top 7 OSINT Tools in 2026</h3>
-                    <p class="guide-desc">The best open-source intelligence tools for 2026. What security researchers
-                        actually use.</p>
+                    <p class="guide-desc">The best open-source intelligence tools for 2026. What security researchers actually use.</p>
                     <div class="guide-footer">
                         <span class="guide-meta">10 min read</span>
                         <a href="blog/osint-tools-2026.html" class="btn-read">READ NOW</a>
@@ -1936,16 +2018,15 @@
                 </div>
             </div>
 
-            <div class="guide-card">
-                <div class="guide-image">
-                    <img src="blog/images/cloud-thumbnail.png" alt="Cloud Comparison" loading="lazy"
-                        style="width: 100%; height: 100%; object-fit: cover;">
+            <!-- Cloud Comparison -->
+            <div class="vn-article-card" data-category="cloud">
+                <div class="vn-article-thumb">
+                    <img src="blog/images/cloud-thumbnail.png" alt="Cloud Comparison" loading="lazy">
                 </div>
-                <div class="guide-content">
+                <div class="vn-article-body">
                     <span class="guide-category">Cloud Computing</span>
                     <h3 class="guide-title">AWS vs Azure vs GCP</h3>
-                    <p class="guide-desc">Forget market share charts. Here's which cloud you should learn first based on
-                        your career goals.</p>
+                    <p class="guide-desc">Forget market share charts. Here's which cloud you should learn first based on your career goals.</p>
                     <div class="guide-footer">
                         <span class="guide-meta">12 min read</span>
                         <a href="blog/cloud-comparison.html" class="btn-read">READ NOW</a>
@@ -1954,232 +2035,210 @@
             </div>
         </div>
 
-        <div style="text-align: center; margin-top: 40px;">
-            <a href="blog/index.html"
-                style="display: inline-block; padding: 15px 40px; background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: transform 0.2s;">
-                View All Articles →
-            </a>
+        <div class="vn-view-all">
+            <a href="blog/index.html" class="vn-btn-outline">View All Articles →</a>
         </div>
     </section>
 
-    <!-- Quick Visual Notes Section -->
-    <section style="padding: 100px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <div style="text-align: center; margin-bottom: 60px;">
-                <h2 style="margin-bottom: 20px;">
-                    <span
-                        style="font-family: 'Caveat', cursive; font-size: 4rem; color: #FF6B6B; font-weight: 700;">Quick
-                        Visual Notes</span>
+    <!-- ============================================ -->
+    <!-- SECTION 8 — VISUAL NOTES GALLERY             -->
+    <!-- ============================================ -->
+    <section class="vn-visuals vn-reveal">
+        <div class="vn-section-header">
+            <h2>Quick Visual Notes</h2>
+            <p>Complex concepts explained visually. Save, share, and learn faster.</p>
+        </div>
 
-                </h2>
-                <p style="font-size: 20px; color: rgba(255,255,255,0.9); max-width: 700px; margin: 0 auto;">
-                    Complex concepts explained visually. Save, share, and learn faster.
-                </p>
-            </div>
-
-            <div id="visualNotesContainer" class="visual-notes-masonry">
-                <!-- Visual notes will be dynamically inserted here -->
-            </div>
+        <div id="visualNotesContainer" class="visual-notes-grid">
+            <!-- Dynamic content from data.js -->
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section style="background: #f8fafc; padding: 100px 20px;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <div class="section-header">
-                <h2>Trusted by Engineers</h2>
-                <p>Helping thousands of developers and architects visualize complex systems.</p>
+    <!-- ============================================ -->
+    <!-- SECTION 9 — TESTIMONIALS                     -->
+    <!-- ============================================ -->
+    <section class="vn-testimonials vn-reveal">
+        <div class="vn-section-header">
+            <h2>Trusted by Engineers</h2>
+            <p>Helping thousands of developers and architects visualize complex systems.</p>
+        </div>
+
+        <div class="vn-testimonials-grid">
+            <div class="vn-testimonial-card">
+                <div class="vn-quote-mark">"</div>
+                <p class="vn-testimonial-text">I've been working with BGP and OSPF for 10 years, and I still reference these visual guides. The handwritten diagrams make complex routing logic immediately click in a way that dry vendor documentation never does.</p>
+                <div class="vn-testimonial-author">
+                    <div class="vn-avatar" style="background:#EEF2FF; color:#365FF0;">RM</div>
+                    <div>
+                        <div class="vn-author-name">Rohit Mehta</div>
+                        <div class="vn-author-role">Senior Network Engineer</div>
+                        <div class="vn-stars">★★★★★</div>
+                    </div>
+                </div>
             </div>
 
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px;">
-
-                <!-- Review 1 -->
-                <div
-                    style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0;">
-                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                        <div
-                            style="width: 48px; height: 48px; background: #e0e7ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #4f46e5; font-weight: 700; font-size: 1.2rem; margin-right: 15px;">
-                            RM</div>
-                        <div>
-                            <div style="font-weight: 700; color: #1e293b;">Rohit Mehta</div>
-                            <div style="color: #64748b; font-size: 0.9rem;">Senior Network Engineer</div>
-                        </div>
+            <div class="vn-testimonial-card">
+                <div class="vn-quote-mark">"</div>
+                <p class="vn-testimonial-text">The Cloud & Infrastructure notes are gold. Usually, I have to draw these diagrams myself to explain concepts to clients. Now I just share VisualNotes. The 'DNS Administration' guide is a masterpiece of clarity.</p>
+                <div class="vn-testimonial-author">
+                    <div class="vn-avatar" style="background:#FFEFEB; color:#FE6331;">SR</div>
+                    <div>
+                        <div class="vn-author-name">Shilpa Rao</div>
+                        <div class="vn-author-role">Cloud Solutions Architect</div>
+                        <div class="vn-stars">★★★★★</div>
                     </div>
-                    <p style="color: #334155; line-height: 1.6;">"I've been working with BGP and OSPF for 10 years, and
-                        I still reference these visual guides. The handwritten diagrams make complex routing logic
-                        immediately click in a way that dry vendor documentation never does."</p>
-                    <div style="color: #f59e0b; margin-top: 15px;">★★★★★</div>
                 </div>
+            </div>
 
-                <!-- Review 2 -->
-                <div
-                    style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0;">
-                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                        <div
-                            style="width: 48px; height: 48px; background: #dcfce7; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #15803d; font-weight: 700; font-size: 1.2rem; margin-right: 15px;">
-                            SR</div>
-                        <div>
-                            <div style="font-weight: 700; color: #1e293b;">Shilpa Rao</div>
-                            <div style="color: #64748b; font-size: 0.9rem;">Cloud Solutions Architect</div>
-                        </div>
+            <div class="vn-testimonial-card">
+                <div class="vn-quote-mark">"</div>
+                <p class="vn-testimonial-text">Finally, study material that doesn't put me to sleep. The visual approach to Inter-VLAN routing saved me during my certification prep. It's concise, accurate, and actually fun to read.</p>
+                <div class="vn-testimonial-author">
+                    <div class="vn-avatar" style="background:#FDF0FF; color:#D856DE;">AS</div>
+                    <div>
+                        <div class="vn-author-name">Anushka Sharma</div>
+                        <div class="vn-author-role">DevOps Engineer</div>
+                        <div class="vn-stars">★★★★★</div>
                     </div>
-                    <p style="color: #334155; line-height: 1.6;">"The Cloud & Infrastructure notes are gold. Usually, I
-                        have to draw these diagrams myself to explain concepts to clients. Now I just share VisualNotes.
-                        The 'DNS Administration' guide is a masterpiece of clarity."</p>
-                    <div style="color: #f59e0b; margin-top: 15px;">★★★★★</div>
                 </div>
-
-                <!-- Review 3 -->
-                <div
-                    style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0;">
-                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                        <div
-                            style="width: 48px; height: 48px; background: #fae8ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #a21caf; font-weight: 700; font-size: 1.2rem; margin-right: 15px;">
-                            AS</div>
-                        <div>
-                            <div style="font-weight: 700; color: #1e293b;">Anushka Sharma</div>
-                            <div style="color: #64748b; font-size: 0.9rem;">DevOps Engineer</div>
-                        </div>
-                    </div>
-                    <p style="color: #334155; line-height: 1.6;">"Finally, study material that doesn't put me to sleep.
-                        The visual approach to Inter-VLAN routing saved me during my certification prep. It's concise,
-                        accurate, and actually fun to read."</p>
-                    <div style="color: #f59e0b; margin-top: 15px;">★★★★★</div>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Email Section -->
-    <section class="email-section" id="subscribe">
-        <div class="email-content">
+    <!-- ============================================ -->
+    <!-- SECTION 10 — NEWSLETTER                      -->
+    <!-- ============================================ -->
+    <section class="vn-newsletter" id="subscribe">
+        <div class="vn-newsletter-inner">
             <h2>Never Miss a New Guide</h2>
             <p>Get visual notes delivered to your inbox. No spam, just learning.</p>
+
+            <ul class="vn-newsletter-benefits">
+                <li>New study guides delivered weekly</li>
+                <li>Exclusive tips & tricks</li>
+                <li>Early access to new content</li>
+                <li>100% free, unsubscribe anytime</li>
+            </ul>
+
             <form class="email-form" onsubmit="handleEmailSubmit(event)">
                 <input type="email" id="emailInput" class="email-input" placeholder="your@email.com" required>
                 <button type="submit" class="btn-subscribe">Subscribe</button>
             </form>
+            <p class="vn-newsletter-proof">Join 5,000+ engineers already learning visually</p>
         </div>
     </section>
 
-    <!-- Join Community Section -->
-    <section style="background: #f8fafc; padding: 60px 40px; text-align: center; border-top: 1px solid #e2e8f0;">
-        <div style="max-width: 600px; margin: 0 auto;">
-            <h2 style="font-size: 2rem; color: #1e293b; margin-bottom: 30px;">Join Our Community</h2>
-            <p style="color: #64748b; margin-bottom: 40px; font-size: 1.1rem;">
-                Get daily visual notes, updates, and career tips directly on your favorite apps.
-            </p>
-            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                <a href="https://whatsapp.com/channel/0029Vb6z21DBqbr2xDU7Rc2P" target="_blank"
-                    style="display: flex; align-items: center; gap: 10px; background: #25D366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: transform 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-                    </svg> Join WhatsApp Channel
+    <!-- ============================================ -->
+    <!-- SECTION 11 — COMMUNITY                       -->
+    <!-- ============================================ -->
+    <section class="vn-community vn-reveal">
+        <div class="vn-section-header">
+            <h2>Join Our Community</h2>
+            <p>Get daily visual notes, updates, and career tips directly on your favorite apps.</p>
+        </div>
+
+        <div class="vn-community-grid">
+            <div class="vn-community-card">
+                <div class="vn-community-icon">💬</div>
+                <div class="vn-community-name">WhatsApp Channel</div>
+                <div class="vn-community-desc">Join 2K+ members for daily updates</div>
+                <a href="https://whatsapp.com/channel/0029Vb6z21DBqbr2xDU7Rc2P" target="_blank" class="vn-btn-wa">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    Join WhatsApp
                 </a>
-                <a href="https://www.instagram.com/visualnotes.tech/" target="_blank"
-                    style="display: flex; align-items: center; gap: 10px; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: transform 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                    </svg> Follow on Instagram
+            </div>
+            <div class="vn-community-card">
+                <div class="vn-community-icon">📸</div>
+                <div class="vn-community-name">Instagram</div>
+                <div class="vn-community-desc">Follow for daily visual content</div>
+                <a href="https://www.instagram.com/visualnotes.tech/" target="_blank" class="vn-btn-ig">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    Follow on Instagram
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section style="background: white; padding: 100px 40px;">
-        <div style="max-width: 900px; margin: 0 auto;">
-            <div class="section-header">
-                <h2>❓ Frequently Asked Questions</h2>
-                <p>Everything you need to know about VisualNotes</p>
+    <!-- ============================================ -->
+    <!-- SECTION 12 — FAQ ACCORDION                   -->
+    <!-- ============================================ -->
+    <section class="vn-faq vn-reveal" id="faq">
+        <div class="vn-section-header">
+            <h2>Frequently Asked Questions</h2>
+            <p>Everything you need to know about VisualNotes</p>
+        </div>
+
+        <div class="vn-faq-list">
+            <div class="vn-faq-item">
+                <button class="vn-faq-question">
+                    <span>What is VisualNotes?</span>
+                    <span class="vn-faq-chevron">▼</span>
+                </button>
+                <div class="vn-faq-answer">
+                    <div class="vn-faq-answer-inner">VisualNotes is a visual engineering study platform that provides hand-drawn, easy-to-understand notes on Infrastructure, Cloud, Security, and OSINT topics. Our visual approach helps engineers and students grasp complex technical concepts quickly without spending months on traditional learning methods.</div>
+                </div>
             </div>
-
-            <div style="margin-top: 50px;">
-                <!-- FAQ Item 1 -->
-                <div
-                    style="margin-bottom: 30px; padding: 25px; background: #FFF9F0; border-radius: 12px; border-left: 4px solid #FF6B6B;">
-                    <h3 style="color: #2D3436; margin-bottom: 15px; font-size: 1.3rem;">What is VisualNotes?</h3>
-                    <p style="color: #636E72; line-height: 1.7;">VisualNotes is a visual engineering study platform that
-                        provides hand-drawn, easy-to-understand notes on Infrastructure, Cloud, Security, and OSINT
-                        topics. Our visual approach helps engineers and students grasp complex technical concepts
-                        quickly without spending months on traditional learning methods.</p>
+            <div class="vn-faq-item">
+                <button class="vn-faq-question">
+                    <span>Are the study guides really free?</span>
+                    <span class="vn-faq-chevron">▼</span>
+                </button>
+                <div class="vn-faq-answer">
+                    <div class="vn-faq-answer-inner">Yes! All our visual study guides and blog articles are completely free. We believe in making quality technical education accessible to everyone. You can download PDFs, view them online, and share them with your peers at no cost.</div>
                 </div>
-
-                <!-- FAQ Item 2 -->
-                <div
-                    style="margin-bottom: 30px; padding: 25px; background: #FFF9F0; border-radius: 12px; border-left: 4px solid #4ECDC4;">
-                    <h3 style="color: #2D3436; margin-bottom: 15px; font-size: 1.3rem;">Are the study guides really
-                        free?</h3>
-                    <p style="color: #636E72; line-height: 1.7;">Yes! All our visual study guides and blog articles are
-                        completely free. We believe in making quality technical education accessible to everyone. You
-                        can download PDFs, view them online, and share them with your peers at no cost.</p>
+            </div>
+            <div class="vn-faq-item">
+                <button class="vn-faq-question">
+                    <span>How do I access the PDF study guides?</span>
+                    <span class="vn-faq-chevron">▼</span>
+                </button>
+                <div class="vn-faq-answer">
+                    <div class="vn-faq-answer-inner">Simply click on any study guide card and the PDF will open directly in your browser. You can view it online, zoom in/out, and download it for offline access. Our guides work on all devices including desktop, tablet, and mobile.</div>
                 </div>
-
-                <!-- FAQ Item 3 -->
-                <div
-                    style="margin-bottom: 30px; padding: 25px; background: #FFF9F0; border-radius: 12px; border-left: 4px solid #FFE66D;">
-                    <h3 style="color: #2D3436; margin-bottom: 15px; font-size: 1.3rem;">How do I access the PDF study
-                        guides?</h3>
-                    <p style="color: #636E72; line-height: 1.7;">Simply click on any study guide card and the PDF will
-                        open directly in your browser. You can view it online, zoom in/out, and download it for offline
-                        access. Our guides work on all devices including desktop, tablet, and mobile.</p>
+            </div>
+            <div class="vn-faq-item">
+                <button class="vn-faq-question">
+                    <span>What topics do you cover?</span>
+                    <span class="vn-faq-chevron">▼</span>
+                </button>
+                <div class="vn-faq-answer">
+                    <div class="vn-faq-answer-inner">We cover four main areas: <strong>Infrastructure</strong> (DNS, Inter-VLAN Routing, Netflow, SNMP, STP), <strong>Cloud Computing</strong> (AWS, Azure, GCP comparisons), <strong>Security</strong> (Google Dorking, ethical hacking), and <strong>OSINT</strong> (intelligence gathering tools and techniques). We regularly add new content based on community requests.</div>
                 </div>
-
-                <!-- FAQ Item 4 -->
-                <div
-                    style="margin-bottom: 30px; padding: 25px; background: #FFF9F0; border-radius: 12px; border-left: 4px solid #FF6B6B;">
-                    <h3 style="color: #2D3436; margin-bottom: 15px; font-size: 1.3rem;">What topics do you cover?</h3>
-                    <p style="color: #636E72; line-height: 1.7;">We cover four main areas:
-                        <strong>Infrastructure</strong> (DNS, Inter-VLAN Routing, Netflow, SNMP, STP), <strong>Cloud
-                            Computing</strong> (AWS, Azure, GCP comparisons), <strong>Security</strong> (Google Dorking,
-                        ethical hacking), and <strong>OSINT</strong> (intelligence gathering tools and techniques). We
-                        regularly add new content based on community requests.
-                    </p>
+            </div>
+            <div class="vn-faq-item">
+                <button class="vn-faq-question">
+                    <span>How often do you publish new content?</span>
+                    <span class="vn-faq-chevron">▼</span>
+                </button>
+                <div class="vn-faq-answer">
+                    <div class="vn-faq-answer-inner">We publish new study guides and blog articles regularly. Subscribe to our newsletter to get instant notifications when we release new content. You'll also receive exclusive tips and early access to upcoming guides.</div>
                 </div>
-
-                <!-- FAQ Item 5 -->
-                <div
-                    style="margin-bottom: 30px; padding: 25px; background: #FFF9F0; border-radius: 12px; border-left: 4px solid #4ECDC4;">
-                    <h3 style="color: #2D3436; margin-bottom: 15px; font-size: 1.3rem;">How often do you publish new
-                        content?</h3>
-                    <p style="color: #636E72; line-height: 1.7;">We publish new study guides and blog articles
-                        regularly. Subscribe to our newsletter to get instant notifications when we release new content.
-                        You'll also receive exclusive tips and early access to upcoming guides.</p>
+            </div>
+            <div class="vn-faq-item">
+                <button class="vn-faq-question">
+                    <span>Can I use these notes for my certification exam?</span>
+                    <span class="vn-faq-chevron">▼</span>
+                </button>
+                <div class="vn-faq-answer">
+                    <div class="vn-faq-answer-inner">Absolutely! Our visual notes are perfect for certification preparation. They complement official study materials by providing clear, visual explanations of complex topics. Many students use our guides for CCNA, AWS certifications, and security certifications.</div>
                 </div>
-
-                <!-- FAQ Item 6 -->
-                <div
-                    style="margin-bottom: 30px; padding: 25px; background: #FFF9F0; border-radius: 12px; border-left: 4px solid #FFE66D;">
-                    <h3 style="color: #2D3436; margin-bottom: 15px; font-size: 1.3rem;">Can I use these notes for my
-                        certification exam?</h3>
-                    <p style="color: #636E72; line-height: 1.7;">Absolutely! Our visual notes are perfect for
-                        certification preparation. They complement official study materials by providing clear, visual
-                        explanations of complex topics. Many students use our guides for CCNA, AWS certifications, and
-                        security certifications.</p>
+            </div>
+            <div class="vn-faq-item">
+                <button class="vn-faq-question">
+                    <span>Do you offer personalized learning or tutoring?</span>
+                    <span class="vn-faq-chevron">▼</span>
+                </button>
+                <div class="vn-faq-answer">
+                    <div class="vn-faq-answer-inner">Currently, we focus on providing high-quality free resources. However, you can join our WhatsApp channel and Instagram community to ask questions, share insights, and connect with other learners. We're always happy to help!</div>
                 </div>
-
-                <!-- FAQ Item 7 -->
-                <div
-                    style="margin-bottom: 30px; padding: 25px; background: #FFF9F0; border-radius: 12px; border-left: 4px solid #FF6B6B;">
-                    <h3 style="color: #2D3436; margin-bottom: 15px; font-size: 1.3rem;">Do you offer personalized
-                        learning or tutoring?</h3>
-                    <p style="color: #636E72; line-height: 1.7;">Currently, we focus on providing high-quality free
-                        resources. However, you can join our WhatsApp channel and Instagram community to ask questions,
-                        share insights, and connect with other learners. We're always happy to help!</p>
-                </div>
-
-                <!-- FAQ Item 8 -->
-                <div
-                    style="margin-bottom: 30px; padding: 25px; background: #FFF9F0; border-radius: 12px; border-left: 4px solid #4ECDC4;">
-                    <h3 style="color: #2D3436; margin-bottom: 15px; font-size: 1.3rem;">How can I request a specific
-                        topic?</h3>
-                    <p style="color: #636E72; line-height: 1.7;">We love hearing from our community! Contact us via
-                        email at visualnotes.tech@gmail.com or message us on Instagram or WhatsApp. We prioritize topics
-                        based on community demand and create guides that help the most people.</p>
+            </div>
+            <div class="vn-faq-item">
+                <button class="vn-faq-question">
+                    <span>How can I request a specific topic?</span>
+                    <span class="vn-faq-chevron">▼</span>
+                </button>
+                <div class="vn-faq-answer">
+                    <div class="vn-faq-answer-inner">We love hearing from our community! Contact us via email at visualnotes.tech@gmail.com or message us on Instagram or WhatsApp. We prioritize topics based on community demand and create guides that help the most people.</div>
                 </div>
             </div>
         </div>
@@ -2322,101 +2381,60 @@
     }
     </script>
 
-    <!-- Thank You Modal -->
-    <div id="thankYouModal"
-        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 10000; align-items: center; justify-content: center;">
-        <div
-            style="background: white; padding: 50px 40px; border-radius: 20px; max-width: 500px; text-align: center; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); animation: modalSlideIn 0.4s ease-out;">
-            <div style="font-size: 4rem; margin-bottom: 20px;">🎉</div>
-            <h2 style="color: var(--primary); margin-bottom: 15px; font-size: 2rem;">Thank You for Subscribing!</h2>
-            <p style="color: var(--text-light); font-size: 1.1rem; line-height: 1.6; margin-bottom: 25px;">
-                Welcome to the VisualNotes community! We've sent a welcome email to your inbox with exclusive resources
-                and tips.
-            </p>
-            <div style="background: var(--bg-light); padding: 20px; border-radius: 12px; margin-bottom: 25px;">
-                <p style="color: var(--text-dark); font-weight: 600; margin-bottom: 10px;">🚀 What's Next?</p>
-                <p style="color: var(--text-light); font-size: 0.95rem;">Check your email for your welcome message and
-                    start exploring our visual study guides!</p>
+    <!-- ============================================ -->
+    <!-- SECTION 13 — FOOTER                          -->
+    <!-- ============================================ -->
+    <footer class="vn-footer">
+        <div class="vn-footer-grid">
+            <div class="vn-footer-brand">
+                <span class="vn-logo">VisualNotes</span>
+                <p>Visual, handwritten-style notes for Infrastructure, Cloud, Security & OSINT. Making complex tech concepts click.</p>
+                <div class="vn-footer-founder">
+                    Founder: <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank">Abhiney Sharma</a>
+                </div>
+                <div class="vn-footer-social">
+                    <a href="https://www.instagram.com/visualnotes.tech/" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://whatsapp.com/channel/0029Vb6z21DBqbr2xDU7Rc2P" target="_blank" rel="noopener" aria-label="Join WhatsApp channel">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                </div>
             </div>
-            <button onclick="closeThankYouModal()"
-                style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; padding: 15px 40px; border: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);"
-                onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                Awesome! Let's Go →
-            </button>
+            <div class="vn-footer-col">
+                <h4>Resources</h4>
+                <a href="guides/index.html">Study Guides</a>
+                <a href="#articles">Blog Articles</a>
+                <a href="guides/index.html">Visual Notes</a>
+                <a href="hsrp-flashcards.html">Flashcards</a>
+            </div>
+            <div class="vn-footer-col">
+                <h4>Company</h4>
+                <a href="about.html">About Us</a>
+                <a href="write-for-us.html">Write for Us</a>
+                <a href="faq.html">FAQ</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+            </div>
+            <div class="vn-footer-col">
+                <h4>Connect</h4>
+                <a href="https://www.instagram.com/visualnotes.tech/" target="_blank">Instagram</a>
+                <a href="https://whatsapp.com/channel/0029Vb6z21DBqbr2xDU7Rc2P" target="_blank">WhatsApp</a>
+                <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank">LinkedIn</a>
+                <a href="mailto:visualnotes.tech@gmail.com">Email Us</a>
+            </div>
         </div>
-    </div>
-
-    <style>
-        @keyframes modalSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
-
-    <!-- Footer -->
-    <footer style="background: #0f172a; color: white; padding: 60px 40px 30px; text-align: center;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <div style="margin-bottom: 30px;">
-                <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 15px;">📚 VisualNotes</div>
-                <p style="color: #94a3b8; max-width: 600px; margin: 0 auto;">
-                    Visual, handwritten-style notes for Infrastructure, Cloud, Security & OSINT
-                </p>
-            </div>
-
-            <div style="margin-top: 20px; font-size: 0.95rem; color: #475569;">
-                Founder: <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank"
-                    style="color: var(--primary); text-decoration: none; font-weight: 600;">Abhiney Sharma</a>
-            </div>
-
-            <!-- Social Media Icons -->
-            <div style="display: flex; gap: 20px; justify-content: center; margin: 30px 0;">
-                <a href="https://www.instagram.com/visualnotes.tech/" target="_blank" rel="noopener"
-                    aria-label="Follow us on Instagram"
-                    style="color: #E1306C; transition: transform 0.2s; display: inline-block;"
-                    onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                        viewBox="0 0 16 16">
-                        <path
-                            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
-                    </svg>
-                </a>
-                <a href="https://whatsapp.com/channel/0029Vb6z21DBqbr2xDU7Rc2P" target="_blank" rel="noopener"
-                    aria-label="Join WhatsApp channel"
-                    style="color: #25D366; transition: transform 0.2s; display: inline-block;"
-                    onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                        viewBox="0 0 16 16">
-                        <path
-                            d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
-                    </svg>
-                </a>
-            </div>
-
-            <div style="display: flex; gap: 30px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap;">
-                <a href="about.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;">About Us</a>
-                <a href="faq.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;">FAQ</a>
-                <a href="write-for-us.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;">Write
-                    for Us</a>
-                <a href="privacy.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;">Privacy
-                    Policy</a>
-                <a href="terms.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;">Terms of
-                    Service</a>
-                <a href="mailto:visualnotes.tech@gmail.com"
-                    style="color: #94a3b8; text-decoration: none; transition: color 0.3s;">Contact</a>
-            </div>
-
-            <div style="border-top: 1px solid #334155; padding-top: 20px; color: #64748b; font-size: 0.9rem;">
-                © 2026 VisualNotes. All rights reserved.
-            </div>
+        <div class="vn-footer-bottom">
+            © 2026 VisualNotes. All rights reserved.
         </div>
     </footer>
+
+    <!-- ============================================ -->
+    <!-- MODALS (preserved from original)             -->
+    <!-- ============================================ -->
 
     <!-- Visual Notes Lightbox Modal -->
     <div id="visualLightbox" class="lightbox-modal">
@@ -2424,8 +2442,7 @@
             <div class="lightbox-header">
                 <div>
                     <h3 class="lightbox-title" id="lightboxTitle">Visual Note Title</h3>
-                    <p id="lightboxDesc" style="margin: 5px 0 0 0; font-size: 0.9rem; opacity: 0.9; font-weight: 300;">
-                    </p>
+                    <p id="lightboxDesc" style="margin: 5px 0 0 0; font-size: 0.9rem; opacity: 0.9; font-weight: 300;"></p>
                 </div>
                 <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">×</button>
             </div>
@@ -2438,15 +2455,9 @@
                 <img id="lightboxImage" class="lightbox-image" alt="" onclick="visualToggleZoom()" />
             </div>
             <div class="lightbox-actions">
-                <button class="lightbox-btn lightbox-btn-share" onclick="shareVisual('twitter')">
-                    𝕏 Share on Twitter
-                </button>
-                <button class="lightbox-btn lightbox-btn-share" onclick="shareVisual('linkedin')">
-                    in Share on LinkedIn
-                </button>
-                <button class="lightbox-btn lightbox-btn-share" onclick="copyVisualLink()">
-                    🔗 Copy Link
-                </button>
+                <button class="lightbox-btn lightbox-btn-share" onclick="shareVisual('twitter')">𝕏 Share on Twitter</button>
+                <button class="lightbox-btn lightbox-btn-share" onclick="shareVisual('linkedin')">in Share on LinkedIn</button>
+                <button class="lightbox-btn lightbox-btn-share" onclick="copyVisualLink()">🔗 Copy Link</button>
             </div>
         </div>
     </div>
@@ -2472,55 +2483,188 @@
         </div>
     </div>
 
+    <!-- Thank You Modal -->
+    <div id="thankYouModal" class="vn-thank-modal">
+        <div class="vn-thank-content">
+            <div style="font-size: 3.5rem; margin-bottom: 20px;">🎉</div>
+            <h2 style="color: var(--vn-accent); margin-bottom: 12px; font-size: 1.8rem;">Thank You for Subscribing!</h2>
+            <p style="color: var(--vn-ink-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px;">
+                Welcome to the VisualNotes community! We've sent a welcome email to your inbox with exclusive resources and tips.
+            </p>
+            <div style="background: var(--vn-bg); padding: 18px; border-radius: var(--vn-radius); margin-bottom: 24px;">
+                <p style="color: var(--vn-ink); font-weight: 600; margin-bottom: 8px;">🚀 What's Next?</p>
+                <p style="color: var(--vn-ink-secondary); font-size: 0.92rem;">Check your email for your welcome message and start exploring our visual study guides!</p>
+            </div>
+            <button onclick="closeThankYouModal()" class="vn-btn-primary" style="width: 100%;">Start Exploring</button>
+        </div>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" style="display:none;">
+        <div>
+            <p>We use cookies to improve your experience. By continuing, you agree to our use of cookies.</p>
+            <button onclick="acceptCookies()">Accept</button>
+        </div>
+    </div>
+
+    <!-- Floating Theme Toggle Button -->
+    <button id="theme-toggle" onclick="toggleDarkMode()">
+        🌙 DARK MODE
+    </button>
+
+    <!-- First-Time Visitor Popup -->
+    <div id="vn-popup-overlay" class="vn-popup-overlay">
+        <div class="vn-popup-container">
+            <div class="vn-popup-header">
+                <button class="vn-popup-close" onclick="closeSubscribePopup()">×</button>
+                <div class="vn-popup-icon">📚</div>
+                <h2>Get Free Visual Study Guides!</h2>
+                <p>Join 5,000+ engineers learning visually</p>
+            </div>
+            <div class="vn-popup-body">
+                <div id="vn-popup-form-container">
+                    <ul class="vn-popup-benefits">
+                        <li>New study guides delivered weekly</li>
+                        <li>Exclusive tips & tricks</li>
+                        <li>Early access to new content</li>
+                        <li>100% free, unsubscribe anytime</li>
+                    </ul>
+                    <form class="vn-popup-form" onsubmit="submitPopupForm(event)">
+                        <input type="email" class="vn-popup-input" placeholder="Enter your email address" required id="vn-popup-email">
+                        <button type="submit" class="vn-popup-submit">Get Free Study Guides →</button>
+                    </form>
+                    <div class="vn-popup-skip">
+                        <a onclick="closeSubscribePopup()">No thanks, maybe later</a>
+                    </div>
+                </div>
+                <div id="vn-popup-success" class="vn-popup-success">
+                    <div style="font-size:3.5rem; color:var(--vn-accent); margin-bottom:12px;">✓</div>
+                    <h3 style="color:var(--vn-accent); margin:0 0 8px 0; font-size:1.4rem;">You're All Set!</h3>
+                    <p style="color:var(--vn-ink-secondary); margin:0; font-size:0.95rem;">Check your email for a welcome message with exclusive resources.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- JAVASCRIPT                                   -->
+    <!-- ============================================ -->
     <script src="js/data.js"></script>
     <script>
-        // Current visual for lightbox
+        // ===== HEADER SCROLL BEHAVIOR =====
+        const header = document.getElementById('vnHeader');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ===== MOBILE NAV =====
+        const hamburger = document.getElementById('vnHamburger');
+        const mobileNav = document.getElementById('vnMobileNav');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        function closeMobileNav() {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ===== SCROLL REVEAL =====
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.vn-reveal').forEach(el => revealObserver.observe(el));
+
+        // ===== FAQ ACCORDION =====
+        document.querySelectorAll('.vn-faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const isActive = item.classList.contains('active');
+
+                // Close all
+                document.querySelectorAll('.vn-faq-item').forEach(i => i.classList.remove('active'));
+
+                // Open clicked if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // ===== ARTICLE CATEGORY FILTER =====
+        document.querySelectorAll('.vn-filter-pill').forEach(pill => {
+            pill.addEventListener('click', () => {
+                // Update active pill
+                document.querySelectorAll('.vn-filter-pill').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+
+                const filter = pill.dataset.filter;
+                const featured = document.querySelector('.vn-featured-article');
+                const cards = document.querySelectorAll('.vn-article-card');
+
+                if (filter === 'all') {
+                    if (featured) featured.style.display = '';
+                    cards.forEach(c => c.style.display = '');
+                } else {
+                    // Featured article
+                    if (featured) {
+                        featured.style.display = featured.dataset.category === filter ? '' : 'none';
+                    }
+
+                    // Article cards
+                    cards.forEach(card => {
+                        const cat = card.dataset.category;
+                        // Check if category matches or if the category text includes the filter
+                        const categoryText = card.querySelector('.guide-category')?.textContent?.toLowerCase() || '';
+                        const matches = cat === filter || categoryText.includes(filter);
+                        card.style.display = matches ? '' : 'none';
+                    });
+                }
+            });
+        });
+
+        // ===== VISUAL NOTES LOGIC =====
         let currentVisual = null;
         let visualZoom = 1.0;
         const MIN_ZOOM = 0.5;
         const MAX_ZOOM = 3.0;
         const ZOOM_STEP = 0.25;
 
-        // Zoom Functions for Visual Notes
         function visualZoomIn() {
-            if (visualZoom < MAX_ZOOM) {
-                visualZoom += ZOOM_STEP;
-                applyVisualZoom();
-            }
+            if (visualZoom < MAX_ZOOM) { visualZoom += ZOOM_STEP; applyVisualZoom(); }
         }
 
         function visualZoomOut() {
-            if (visualZoom > MIN_ZOOM) {
-                visualZoom -= ZOOM_STEP;
-                applyVisualZoom();
-            }
+            if (visualZoom > MIN_ZOOM) { visualZoom -= ZOOM_STEP; applyVisualZoom(); }
         }
 
         function visualToggleZoom() {
             const image = document.getElementById('lightboxImage');
-            if (visualZoom === 1.0) {
-                visualZoom = 2.0;
-                image.classList.add('zoomed');
-            } else {
-                visualZoom = 1.0;
-                image.classList.remove('zoomed');
-            }
+            if (visualZoom === 1.0) { visualZoom = 2.0; image.classList.add('zoomed'); }
+            else { visualZoom = 1.0; image.classList.remove('zoomed'); }
             applyVisualZoom();
         }
 
         function applyVisualZoom() {
             const image = document.getElementById('lightboxImage');
             const zoomLevel = document.getElementById('visualZoomLevel');
-
             image.style.transform = `scale(${visualZoom})`;
             zoomLevel.textContent = `${Math.round(visualZoom * 100)}%`;
-
-            // Update cursor
-            if (visualZoom > 1.0) {
-                image.classList.add('zoomed');
-            } else {
-                image.classList.remove('zoomed');
-            }
+            if (visualZoom > 1.0) { image.classList.add('zoomed'); }
+            else { image.classList.remove('zoomed'); }
         }
 
         // Touch gesture support for pinch-to-zoom
@@ -2533,44 +2677,33 @@
             return Math.sqrt(dx * dx + dy * dy);
         }
 
-        // Add touch event listeners when lightbox opens
         function initTouchZoom() {
             const image = document.getElementById('lightboxImage');
-
             image.addEventListener('touchstart', (e) => {
-                if (e.touches.length === 2) {
-                    e.preventDefault();
-                    touchStartDistance = getTouchDistance(e.touches);
-                    touchStartZoom = visualZoom;
-                }
+                if (e.touches.length === 2) { e.preventDefault(); touchStartDistance = getTouchDistance(e.touches); touchStartZoom = visualZoom; }
             });
-
             image.addEventListener('touchmove', (e) => {
                 if (e.touches.length === 2) {
                     e.preventDefault();
                     const currentDistance = getTouchDistance(e.touches);
-                    const scale = currentDistance / touchStartDistance;
-                    visualZoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, touchStartZoom * scale));
-                    applyVisualZoom(); // Fixed function name
+                    visualZoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, touchStartZoom * (currentDistance / touchStartDistance)));
+                    applyVisualZoom();
                 }
             });
         }
 
-        // ===== VISUAL NOTES LOGIC (Optimized Grid + Lightbox) =====
-
         function renderVisualNotes() {
-            const container = document.querySelector('.visual-notes-masonry');
+            const container = document.getElementById('visualNotesContainer');
             if (!container) return;
-
-            // Change class to grid for new CSS
             container.className = 'visual-notes-grid';
             container.innerHTML = '';
 
             visualNotes.forEach(note => {
                 const card = document.createElement('div');
                 card.className = 'visual-note-card';
+                const mainTag = (note.tags && note.tags[0]) ? note.tags[0].toLowerCase() : 'networking';
+                card.setAttribute('data-category', mainTag === 'networking' ? 'infrastructure' : mainTag);
                 card.onclick = () => openLightbox(note);
-
                 card.innerHTML = `
                     <div class="visual-note-image-wrapper">
                         <img src="${note.image}" alt="${note.title}" class="visual-note-thumb" loading="lazy">
@@ -2582,7 +2715,7 @@
                         <div class="visual-note-tags">
                             ${note.tags.slice(0, 2).map(tag => `<span class="visual-tag">${tag}</span>`).join('')}
                         </div>
-                        <h3 class="visual-note-title" style="font-size: 18px; margin: 10px 0;">${note.title}</h3>
+                        <h3 class="visual-note-title">${note.title}</h3>
                     </div>
                 `;
                 container.appendChild(card);
@@ -2590,10 +2723,8 @@
         }
 
         // ===== LIGHTBOX LOGIC =====
-
         function openLightbox(note) {
             currentVisual = note;
-
             const modal = document.getElementById('visualLightbox');
             const img = document.getElementById('lightboxImage');
             const title = document.getElementById('lightboxTitle');
@@ -2601,20 +2732,15 @@
 
             if (img) img.src = note.image;
             if (title) title.textContent = note.title;
-            // Use description if available, otherwise hide
             if (desc) desc.textContent = note.description || '';
 
-            // Reset Zoom using the Global variables/functions
             visualZoom = 1.0;
-            if (typeof applyVisualZoom === 'function') {
-                applyVisualZoom();
-            }
+            applyVisualZoom();
 
             if (modal) modal.classList.add('active');
             document.body.style.overflow = 'hidden';
 
-            // Initialize touch zoom if possible
-            if (img && typeof initTouchZoom === 'function' && !img.hasAttribute('data-zoom-init')) {
+            if (img && !img.hasAttribute('data-zoom-init')) {
                 initTouchZoom();
                 img.setAttribute('data-zoom-init', 'true');
             }
@@ -2627,44 +2753,36 @@
             currentVisual = null;
         }
 
-        // Copy Visual Link
         function copyVisualLink() {
             if (!currentVisual) return;
-
             const url = `${window.location.origin}${window.location.pathname}#visual-${currentVisual.id}`;
-            navigator.clipboard.writeText(url).then(() => {
-                alert('✅ Link copied!');
-            }).catch(() => {
-                // Fallback
-                const tempInput = document.createElement('input');
-                tempInput.value = url;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempInput);
-                alert('✅ Link copied!');
+            navigator.clipboard.writeText(url).then(() => alert('✅ Link copied!')).catch(() => {
+                const t = document.createElement('input'); t.value = url; document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t); alert('✅ Link copied!');
             });
         }
 
-        // Close lightbox on Escape key
+        function shareVisual(platform) {
+            if (!currentVisual) return;
+            const url = `${window.location.origin}${window.location.pathname}#visual-${currentVisual.id}`;
+            const text = `Check out this visual note: ${currentVisual.title}`;
+            if (platform === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+            else if (platform === 'linkedin') window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+        }
+
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && document.getElementById('visualLightbox').classList.contains('active')) {
-                closeLightbox();
-            }
+            if (e.key === 'Escape' && document.getElementById('visualLightbox').classList.contains('active')) closeLightbox();
         });
 
-        // Close lightbox on background click
         document.getElementById('visualLightbox')?.addEventListener('click', (e) => {
-            if (e.target.id === 'visualLightbox') {
-                closeLightbox();
-            }
+            if (e.target.id === 'visualLightbox') closeLightbox();
         });
-        // Render Guides
-        const container = document.getElementById('guidesContainer');
+
+        // ===== RENDER GUIDES =====
+        const guidesContainer = document.getElementById('guidesContainer');
         guides.forEach(guide => {
             const card = document.createElement('div');
             card.className = 'guide-card';
-
+            card.setAttribute('data-category', guide.category.toLowerCase());
             card.innerHTML = `
                 <div class="guide-image" style="background: #f1f5f9; overflow: hidden; position: relative;">
                     <img src="${guide.thumbnail}" alt="${guide.title}" loading="lazy"
@@ -2694,21 +2812,17 @@
                     </div>
                 </div>
             `;
-            container.appendChild(card);
+            guidesContainer.appendChild(card);
         });
 
-        // Render visual notes on page load
+        // Render visual notes
         renderVisualNotes();
-
-
 
         // ===== SOCIAL SHARE FUNCTIONS =====
         function shareToTwitter(title, guideId) {
             const guide = guides.find(g => g.id === guideId);
             const url = `${window.location.origin}${window.location.pathname}#${guideId}`;
-            const text = guide
-                ? `📚 ${title} - ${guide.description}\n\nFree visual study guide from VisualNotes`
-                : `Check out this free guide: ${title} from @visualnotes_tech`;
+            const text = guide ? `📚 ${title} - ${guide.description}\n\nFree visual study guide from VisualNotes` : `Check out this free guide: ${title} from @visualnotes_tech`;
             window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
         }
 
@@ -2725,145 +2839,87 @@
         function shareToWhatsApp(title, guideId) {
             const guide = guides.find(g => g.id === guideId);
             const url = `${window.location.origin}${window.location.pathname}#${guideId}`;
-            const text = guide
-                ? `📚 *${title}*\n\n${guide.description}\n\nFree visual study guide from VisualNotes`
-                : `Check out this guide: ${title}`;
+            const text = guide ? `📚 *${title}*\n\n${guide.description}\n\nFree visual study guide from VisualNotes` : `Check out this guide: ${title}`;
             window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text + '\n\n' + url)}`, '_blank');
         }
 
-        function copyGuideLink(guideId, title) {
-            const url = `${window.location.origin}${window.location.pathname}#${guideId}`;
-            navigator.clipboard.writeText(url).then(() => {
-                alert(`✅ Link copied! Share "${title}" with your network.`);
-            }).catch(() => {
-                // Fallback for older browsers
-                const tempInput = document.createElement('input');
-                tempInput.value = url;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempInput);
-                alert(`✅ Link copied! Share "${title}" with your network.`);
-            });
-        }
-
-        // Simplified copy function for top-level share buttons
         function copyLink(guideId) {
-            const guide = guides.find(g => g.id === guideId);
             const url = `${window.location.origin}${window.location.pathname}#${guideId}`;
-            const title = guide ? guide.title : 'this guide';
-            navigator.clipboard.writeText(url).then(() => {
-                alert(`✅ Link copied!`);
-            }).catch(() => {
-                const tempInput = document.createElement('input');
-                tempInput.value = url;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempInput);
-                alert(`✅ Link copied!`);
+            navigator.clipboard.writeText(url).then(() => alert('✅ Link copied!')).catch(() => {
+                const t = document.createElement('input'); t.value = url; document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t); alert('✅ Link copied!');
             });
         }
 
-        // ===== GOOGLE SHEETS EMAIL INTEGRATION =====
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyt3yXiow0mYGHwfLNcl_k1lH6s6DU51P8_i50DqqYZxcONrSTX_gQdtxFO4tOQ0sMMdA/exec'; // V3 Fixed & Deployed
+        // ===== EMAIL INTEGRATION =====
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyt3yXiow0mYGHwfLNcl_k1lH6s6DU51P8_i50DqqYZxcONrSTX_gQdtxFO4tOQ0sMMdA/exec';
 
-        // Email Submission - Server-Side Country Detection
         async function handleEmailSubmit(e) {
             e.preventDefault();
             const email = document.getElementById('emailInput').value.trim().toLowerCase();
-
-            // Email Validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('⚠️ Please enter a valid email address');
-                return;
-            }
-
-            // Block common fake emails
+            if (!emailRegex.test(email)) { alert('⚠️ Please enter a valid email address'); return; }
             const junkList = ['abc@gmail.com', 'test@gmail.com', 'test@test.com', 'admin@gmail.com', 'user@gmail.com'];
-            if (junkList.includes(email) || email.length < 6) {
-                alert('⚠️ Please enter a real email address');
-                return;
-            }
+            if (junkList.includes(email) || email.length < 6) { alert('⚠️ Please enter a real email address'); return; }
 
             const button = e.target.querySelector('button');
             const originalText = button.textContent;
             button.textContent = 'Subscribing...';
             button.disabled = true;
 
-            // Send to Google Sheets
-            // Country will be detected SERVER-SIDE by Apps Script
             try {
-                console.log('📧 Submitting email:', email);
-
                 await fetch(GOOGLE_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
+                    method: 'POST', mode: 'no-cors',
                     headers: { 'Content-Type': 'text/plain' },
-                    body: JSON.stringify({
-                        email: email,
-                        country: 'detect-server-side' // Signal to server to detect
-                    })
+                    body: JSON.stringify({ email: email, country: 'detect-server-side' })
                 });
+            } catch (e) { console.error('Submission error (ignored):', e); }
 
-            } catch (e) {
-                console.error('Submission error (ignored):', e);
-            }
-
-            // Success
             showThankYouModal();
             document.getElementById('emailInput').value = '';
             button.textContent = originalText;
             button.disabled = false;
         }
 
-        // Show Thank You Modal
         function showThankYouModal() {
             const modal = document.getElementById('thankYouModal');
             if (modal) modal.style.display = 'flex';
         }
 
-        // Close Thank You Modal
         function closeThankYouModal() {
             const modal = document.getElementById('thankYouModal');
             if (modal) modal.style.display = 'none';
         }
 
-        // Close modal when clicking outside
         window.addEventListener('DOMContentLoaded', function () {
             document.getElementById('thankYouModal')?.addEventListener('click', function (e) {
-                if (e.target === this) {
-                    closeThankYouModal();
-                }
+                if (e.target === this) closeThankYouModal();
             });
+
+            // Restore theme preference
+            const savedTheme = localStorage.getItem('darkMode');
+            if (savedTheme === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+            updateThemeButtonText();
         });
 
-
-        // PDF Logic
-        // Worker source is set dynamically in loadPdfJs()
-        // PDF Variables
+        // ===== PDF LOGIC =====
         let pdfDoc = null;
         let zoom = 1.0;
         let currentPage = 1;
         let pdfJsLoaded = false;
 
-        // Load PDF.js dynamically (only when needed)
         async function loadPdfJs() {
             if (pdfJsLoaded) return;
             return new Promise((resolve, reject) => {
                 const script = document.createElement('script');
                 script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
                 script.onload = () => {
-                    // Set worker source for PDF.js
                     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
                     pdfJsLoaded = true;
                     resolve();
                 };
-                script.onerror = (error) => {
-                    console.error('Failed to load PDF.js:', error);
-                    reject(error);
-                };
+                script.onerror = reject;
                 document.head.appendChild(script);
             });
         }
@@ -2871,177 +2927,87 @@
         async function openPdf(guideId) {
             const guide = guides.find(g => g.id === guideId);
             if (!guide) return;
-
             document.getElementById('pdfModal').classList.add('active');
             document.getElementById('pdfTitle').textContent = guide.title;
             const view = document.getElementById('pdfPages');
             view.innerHTML = '<div style="color:white; text-align:center; padding:50px;">Loading PDF library...</div>';
-
             try {
-                // Load PDF.js if not already loaded
                 await loadPdfJs();
-
                 view.innerHTML = '<div style="color:white; text-align:center; padding:50px;">Loading document...</div>';
-                const loadingTask = pdfjsLib.getDocument(guide.pdfUrl);
-                pdfDoc = await loadingTask.promise;
-                zoom = 1.0;
-                currentPage = 1;
+                pdfDoc = await pdfjsLib.getDocument(guide.pdfUrl).promise;
+                zoom = 1.0; currentPage = 1;
                 renderPage();
                 document.getElementById('zoomLevel').textContent = '100%';
             } catch (err) {
                 console.error(err);
-                view.innerHTML = '<div style="color:#ff6b6b; text-align:center;">Failed to load PDF.</div>';
+                view.innerHTML = '<div style="color:#ef4444; text-align:center;">Failed to load PDF.</div>';
             }
         }
 
         async function renderPage() {
             if (!pdfDoc) return;
-
             const container = document.getElementById('pdfPages');
             container.innerHTML = '';
-
             const page = await pdfDoc.getPage(currentPage);
-
-            // Responsive scale calculation
             const containerWidth = container.clientWidth || window.innerWidth;
             const originalViewport = page.getViewport({ scale: 1.0 });
-
-            // Calculate scale to fit width with some padding
             let responsiveScale = (containerWidth - 40) / originalViewport.width;
-
-            // Adjust zoom factor
             const finalScale = responsiveScale * zoom;
-
-            // High Resolution Rendering logic
-            // OPTIMIZED: Reduce scaling on mobile to prevent crashes/lag
             const isMobile = window.innerWidth < 768;
             const pixelRatio = window.devicePixelRatio || 1;
-
-            // Limit mobile to 1.5x quality, Desktop stays sharp at 2.0x+
             const qualityMultiplier = isMobile ? Math.min(pixelRatio, 1.5) : Math.max(pixelRatio, 2.0);
-
             const renderScale = finalScale * qualityMultiplier;
-
-            // Viewport for layout size (CSS pixels)
             const viewport = page.getViewport({ scale: finalScale });
-
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
-
-            // Set canvas dimensions based on high-res scale (Physical pixels)
             const renderViewport = page.getViewport({ scale: renderScale });
             canvas.height = renderViewport.height;
             canvas.width = renderViewport.width;
-
-            // CSS size matches the intuitive layout viewport (Logical pixels)
             canvas.style.width = `${viewport.width}px`;
             canvas.style.height = `${viewport.height}px`;
-
-            // Ensure canvas fits within container visually
             canvas.style.maxWidth = '100%';
             canvas.style.height = 'auto';
             canvas.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
-
-            // Improve text rendering quality
             ctx.imageSmoothingEnabled = true;
             ctx.imageSmoothingQuality = 'high';
-
             await page.render({ canvasContext: ctx, viewport: renderViewport }).promise;
             container.appendChild(canvas);
-
             updatePageInfo();
         }
 
-        // Add resize listener for responsiveness
         window.addEventListener('resize', () => {
-            if (pdfDoc) {
-                // Debounce resize
-                clearTimeout(window.resizeTimer);
-                window.resizeTimer = setTimeout(renderPage, 200);
-            }
+            if (pdfDoc) { clearTimeout(window.resizeTimer); window.resizeTimer = setTimeout(renderPage, 200); }
         });
 
         function updatePageInfo() {
             const pageInfo = document.getElementById('pageInfo');
-            if (pageInfo && pdfDoc) {
-                pageInfo.textContent = `Page ${currentPage} of ${pdfDoc.numPages}`;
-            }
+            if (pageInfo && pdfDoc) pageInfo.textContent = `Page ${currentPage} of ${pdfDoc.numPages}`;
         }
 
-        function prevPage() {
-            if (currentPage > 1) {
-                currentPage--;
-                renderPage();
-            }
-        }
+        function prevPage() { if (currentPage > 1) { currentPage--; renderPage(); } }
+        function nextPage() { if (pdfDoc && currentPage < pdfDoc.numPages) { currentPage++; renderPage(); } }
+        function closePdfViewer() { document.getElementById('pdfModal').classList.remove('active'); pdfDoc = null; currentPage = 1; }
+        function zoomIn() { if (zoom < 3) { zoom += 0.25; updateZoom(); } }
+        function zoomOut() { if (zoom > 0.5) { zoom -= 0.25; updateZoom(); } }
+        function updateZoom() { document.getElementById('zoomLevel').textContent = Math.round(zoom * 100) + '%'; if (pdfDoc) renderPage(); }
 
-        function nextPage() {
-            if (pdfDoc && currentPage < pdfDoc.numPages) {
-                currentPage++;
-                renderPage();
-            }
-        }
+        document.getElementById('pdfModal').addEventListener('click', (e) => { if (e.target.id === 'pdfModal') closePdfViewer(); });
 
-        function closePdfViewer() {
-            document.getElementById('pdfModal').classList.remove('active');
-            pdfDoc = null;
-            currentPage = 1;
-        }
-
-        function zoomIn() {
-            if (zoom < 3) {
-                zoom += 0.25;
-                updateZoom();
-            }
-        }
-
-        function zoomOut() {
-            if (zoom > 0.5) {
-                zoom -= 0.25;
-                updateZoom();
-            }
-        }
-
-        function updateZoom() {
-            document.getElementById('zoomLevel').textContent = Math.round(zoom * 100) + '%';
-            if (pdfDoc) renderPage();
-        }
-
-        // Close modal on outside click
-        document.getElementById('pdfModal').addEventListener('click', (e) => {
-            if (e.target.id === 'pdfModal') closePdfViewer();
-        });
-
-        // Smooth scroll
+        // ===== SMOOTH SCROLL =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
             });
         });
     </script>
-    <!-- Cookie Consent Banner (Required for EU users) -->
-    <div id="cookie-consent"
-        style="display:none; position:fixed; bottom:0; width:100%; background:#0f172a; color:#fff; padding:20px; z-index:9999; box-shadow: 0 -4px 10px rgba(0,0,0,0.1);">
-        <div
-            style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
-            <p style="margin: 0; font-size: 0.95rem;">We use cookies to improve your experience. By continuing, you
-                agree to our use of cookies.
-                <a href="privacy.html" style="color:#6366f1; text-decoration: underline;">Privacy Policy</a>
-            </p>
-            <button onclick="acceptCookies()"
-                style="background:#6366f1; color:#fff; border:none; padding:10px 25px; cursor:pointer; border-radius: 8px; font-weight: 600; transition: background 0.2s;">Accept</button>
-        </div>
-    </div>
 
     <script>
+        // ===== COOKIE CONSENT =====
         function acceptCookies() {
             localStorage.setItem('cookieConsent', 'true');
             document.getElementById('cookie-consent').style.display = 'none';
-            // initAnalytics(); // Call if you have a specific init function wrapping GA
         }
 
         window.onload = function () {
@@ -3049,207 +3015,113 @@
                 document.getElementById('cookie-consent').style.display = 'block';
             }
         }
+
+        // ===== DARK MODE TOGGLE =====
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark ? 'true' : 'false');
+            updateThemeButtonText();
+        }
+
+        function updateThemeButtonText() {
+            const btn = document.getElementById('theme-toggle');
+            if (!btn) return;
+            const isDark = document.body.classList.contains('dark-mode');
+            btn.innerHTML = isDark ? '☀ LIGHT MODE' : '🌙 DARK MODE';
+        }
     </script>
-    <!-- First-Time Visitor Popup -->
-    <div id="vn-popup-overlay" class="vn-popup-overlay">
-        <div class="vn-popup-container">
-            <!-- Popup Header -->
-            <div class="vn-popup-header">
-                <button class="vn-popup-close" onclick="closeSubscribePopup()">×</button>
-                <div class="vn-popup-icon">📚</div>
-                <h2>Get Free Visual Study Guides!</h2>
-                <p>Join 5,000+ engineers learning visually</p>
-            </div>
-
-            <!-- Popup Body -->
-            <div class="vn-popup-body">
-                <div id="vn-popup-form-container">
-                    <ul class="vn-popup-benefits">
-                        <li>New study guides delivered weekly</li>
-                        <li>Exclusive tips & tricks</li>
-                        <li>Early access to new content</li>
-                        <li>100% free, unsubscribe anytime</li>
-                    </ul>
-
-                    <form class="vn-popup-form" onsubmit="submitPopupForm(event)">
-                        <input type="email" class="vn-popup-input" placeholder="Enter your email address" required
-                            id="vn-popup-email">
-                        <button type="submit" class="vn-popup-submit">
-                            Get Free Study Guides →
-                        </button>
-                    </form>
-
-                    <div class="vn-popup-skip">
-                        <a onclick="closeSubscribePopup()">No thanks, maybe later</a>
-                    </div>
-                </div>
-
-                <!-- Success Message (Hidden by default) -->
-                <div id="vn-popup-success" class="vn-popup-success">
-                    <div class="vn-popup-success-icon">✓</div>
-                    <h3>You're All Set!</h3>
-                    <p>Check your email for a welcome message with exclusive resources.</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script>
-            // First-Time Visitor Popup Script
-            (function () {
-                // Check if user has already seen the popup
-                const POPUP_COOKIE = 'vn_popup_shown';
-                const POPUP_DELAY = 3000; // 3 seconds delay
+        // ===== FIRST-TIME VISITOR POPUP =====
+        (function () {
+            const POPUP_COOKIE = 'vn_popup_shown';
+            const POPUP_DELAY = 3000;
 
-                function hasSeenPopup() {
-                    return localStorage.getItem(POPUP_COOKIE) === 'true';
+            function hasSeenPopup() { return localStorage.getItem(POPUP_COOKIE) === 'true'; }
+            function markPopupSeen() { localStorage.setItem(POPUP_COOKIE, 'true'); }
+
+            function showPopup() {
+                const overlay = document.getElementById('vn-popup-overlay');
+                if (overlay) { overlay.style.display = 'block'; document.body.style.overflow = 'hidden'; }
+            }
+
+            function hidePopup() {
+                const overlay = document.getElementById('vn-popup-overlay');
+                if (overlay) { overlay.style.display = 'none'; document.body.style.overflow = ''; }
+            }
+
+            window.closeSubscribePopup = function () { hidePopup(); markPopupSeen(); };
+
+            window.submitPopupForm = async function (event) {
+                event.preventDefault();
+                const emailInput = document.getElementById('vn-popup-email');
+                const email = emailInput.value.trim().toLowerCase();
+                const submitBtn = event.target.querySelector('button');
+                const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwsoYqh63aI10Jm9VjkrpcbYvsOZaZyZGXov5IT6GvVLPLCChWYMtm1DGj_bP4Z0_wSCw/exec';
+
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) { alert('⚠️ Please enter a valid email address'); return; }
+                const junkList = ['abc@gmail.com', 'test@gmail.com', 'test@test.com', 'admin@gmail.com', 'user@gmail.com'];
+                if (junkList.includes(email) || email.length < 6) { alert('⚠️ Please enter a real email address'); return; }
+
+                const originalBtnText = submitBtn.innerText;
+                submitBtn.innerText = 'Joining...';
+                submitBtn.disabled = true;
+
+                try {
+                    await fetch(SCRIPT_URL, {
+                        method: 'POST', mode: 'no-cors',
+                        headers: { 'Content-Type': 'text/plain' },
+                        body: JSON.stringify({ email: email, country: 'detect-server-side', source: 'popup' })
+                    });
+                } catch (e) { console.error('Popup submission error:', e); }
+
+                closeSubscribePopup();
+                showThankYouModal();
+
+                setTimeout(function () {
+                    emailInput.value = '';
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.disabled = false;
+                }, 500);
+
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'subscribe', { 'event_category': 'popup', 'event_label': 'first_time_visitor' });
                 }
+            };
 
-                function markPopupSeen() {
-                    localStorage.setItem(POPUP_COOKIE, 'true');
-                }
+            document.addEventListener('click', function (event) {
+                const overlay = document.getElementById('vn-popup-overlay');
+                if (event.target === overlay) closeSubscribePopup();
+            });
 
-                function showPopup() {
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') {
                     const overlay = document.getElementById('vn-popup-overlay');
-                    if (overlay) {
-                        overlay.style.display = 'block';
-                        document.body.style.overflow = 'hidden'; // Prevent scrolling
-                    }
+                    if (overlay && overlay.style.display === 'block') closeSubscribePopup();
                 }
+            });
 
-                function hidePopup() {
-                    const overlay = document.getElementById('vn-popup-overlay');
-                    if (overlay) {
-                        overlay.style.display = 'none';
-                        document.body.style.overflow = ''; // Restore scrolling
-                    }
-                }
+            if (!hasSeenPopup()) setTimeout(showPopup, POPUP_DELAY);
+        })();
 
-                // Close popup function (global)
-                window.closeSubscribePopup = function () {
-                    hidePopup();
-                    markPopupSeen();
-                };
-
-                // Submit popup form
-                window.submitPopupForm = async function (event) {
-                    event.preventDefault();
-
-                    const emailInput = document.getElementById('vn-popup-email');
-                    const email = emailInput.value.trim().toLowerCase();
-                    const formContainer = document.getElementById('vn-popup-form-container');
-                    const successContainer = document.getElementById('vn-popup-success');
-                    const submitBtn = event.target.querySelector('button');
-                    // Use the same Google Script URL from the main script or redefine it here for safety
-                    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwsoYqh63aI10Jm9VjkrpcbYvsOZaZyZGXov5IT6GvVLPLCChWYMtm1DGj_bP4Z0_wSCw/exec';
-
-                    // Email Validation (Same as main form)
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailRegex.test(email)) {
-                        alert('⚠️ Please enter a valid email address');
-                        return;
-                    }
-                    // Block common fake emails
-                    const junkList = ['abc@gmail.com', 'test@gmail.com', 'test@test.com', 'admin@gmail.com', 'user@gmail.com'];
-                    if (junkList.includes(email) || email.length < 6) {
-                        alert('⚠️ Please enter a real email address');
-                        return;
-                    }
-
-                    // Loading State
-                    const originalBtnText = submitBtn.innerText;
-                    submitBtn.innerText = 'Joining...';
-                    submitBtn.disabled = true;
-
-                    try {
-                        await fetch(SCRIPT_URL, {
-                            method: 'POST',
-                            mode: 'no-cors',
-                            headers: { 'Content-Type': 'text/plain' },
-                            body: JSON.stringify({
-                                email: email,
-                                country: 'detect-server-side',
-                                source: 'popup'
-                            })
-                        });
-                    } catch (e) {
-                        console.error('Popup submission error:', e);
-                    }
-
-                    // SUCCESS ACTION:
-                    // 1. Close the popup
-                    closeSubscribePopup();
-
-                    // 2. Show the shared Thank You modal (matches homepage behavior)
-                    showThankYouModal();
-
-                    // 3. Reset form silently
-                    setTimeout(function () {
-                        emailInput.value = '';
-                        submitBtn.innerText = originalBtnText;
-                        submitBtn.disabled = false;
-                    }, 500);
-
-                    // Track subscription
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'subscribe', {
-                            'event_category': 'popup',
-                            'event_label': 'first_time_visitor'
-                        });
-                    }
-                };
-
-                // Close popup when clicking outside
-                document.addEventListener('click', function (event) {
-                    const overlay = document.getElementById('vn-popup-overlay');
-                    if (event.target === overlay) {
-                        closeSubscribePopup();
-                    }
-                });
-
-                // Close popup with Escape key
-                document.addEventListener('keydown', function (event) {
-                    if (event.key === 'Escape') {
-                        const overlay = document.getElementById('vn-popup-overlay');
-                        if (overlay && overlay.style.display === 'block') {
-                            closeSubscribePopup();
-                        }
-                    }
-                });
-
-                // Show popup after delay (only for first-time visitors)
-                if (!hasSeenPopup()) {
-                    setTimeout(showPopup, POPUP_DELAY);
-                }
-            })();
-
-        // ===== DEEP LINKING LOGIC =====
+        // ===== DEEP LINKING =====
         function handleDeepLink() {
-            const hash = window.location.hash.substring(1); // Remove '#'
+            const hash = window.location.hash.substring(1);
             if (!hash) return;
-
-            // Check if hash matches a visual note
             if (hash.startsWith('visual-')) {
                 const visualId = hash.replace('visual-', '');
                 const visual = visualNotes.find(v => v.id === visualId);
-                if (visual) {
-                    openLightbox(visual);
-                    return;
-                }
+                if (visual) { openLightbox(visual); return; }
             }
-
-            // Check if hash matches a guide (PDF)
             const guide = guides.find(g => g.id === hash);
-            if (guide) {
-                openPdf(guide.id);
-            }
+            if (guide) openPdf(guide.id);
         }
 
-        // Handle initial load and back/forward navigation
         window.addEventListener('load', handleDeepLink);
         window.addEventListener('hashchange', handleDeepLink);
     </script>
 </body>
 
 </html>
-```

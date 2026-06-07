@@ -2,15 +2,55 @@
 <html lang="en">
 
 <head>
+    <!-- Character Encoding -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Viewport for Mobile Responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+
+    <!-- IE Compatibility -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Theme Color for Mobile Browsers -->
+    <meta name="theme-color" content="#365FF0">
+
+    <!-- Title Tag -->
     <title>Frequently Asked Questions | VisualNotes</title>
+
+    <!-- Meta Description (Optimized for SEO) -->
     <meta name="description"
-        content="Common questions about VisualNotes visual study guides for Infrastructure, Cloud, Security, and OSINT. Learn how visual notes can help you master technical concepts faster.">
-    <link rel="canonical" href="https://visualnotes.tech/faq.html">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+        content="Common questions about VisualNotes visual study guides for Infrastructure, Cloud, Security, and OSINT. Learn how visual notes can help you master technical concepts faster." />
+
+    <meta name="author" content="Abhiney Sharma" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.visualnotes.tech/faq.html" />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="VisualNotes.tech" />
+    <meta property="og:title" content="Frequently Asked Questions | VisualNotes" />
+    <meta property="og:description"
+        content="Common questions about VisualNotes visual study guides for Infrastructure, Cloud, Security, and OSINT. Learn how visual notes can help you master technical concepts faster." />
+    <meta property="og:url" content="https://www.visualnotes.tech/faq.html" />
+    <meta property="og:image" content="https://www.visualnotes.tech/visuals/images/social-card.png" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MHPEMGRWXH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-MHPEMGRWXH', {
+            'anonymize_ip': true,
+            'cookie_flags': 'SameSite=None;Secure'
+        });
+    </script>
 
     <!-- FAQPage Schema for Rich Snippets -->
     <script type="application/ld+json">
@@ -55,7 +95,7 @@
           "name": "Who are these guides for?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "VisualNotes is perfect for students preparing for certifications, early-career engineers building foundational knowledge, solution architects needing quick references, career switchers entering tech, and anyone who learns better with visuals than dense documentation."
+            "text": "VisualNotes is perfect for students preparing for certifications, early-career engineers building foundational knowledge, solution architects needing references, career switchers entering tech, and anyone who learns better with visuals than dense documentation."
           }
         },
         {
@@ -94,396 +134,689 @@
     }
     </script>
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Share+Tech+Mono&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS Design System -->
+    <link rel="stylesheet" href="css/style.css">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.8;
-            color: #1e293b;
-            background: #f8fafc;
-        }
-
-        nav {
-            background: white;
-            padding: 20px 40px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .logo-wrapper {
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-        }
-
-        .logo {
-            font-family: 'Caveat', cursive;
-            font-size: 1.8rem;
-            color: #FF6B6B;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-        }
-
-        .logo-tagline {
-            font-family: 'Caveat', cursive;
-            font-size: 1.1rem;
-            color: #2D3436;
-            margin-top: -8px;
-            margin-left: 36px;
-            font-weight: 700;
-            text-decoration: underline;
-            text-decoration-color: #FF6B6B;
-        }
-
-        .container {
+        /* ==========================================================================
+           FAQ PAGE SPECIFIC STYLES
+           ========================================================================== */
+        
+        .vn-faq-page-wrapper {
             max-width: 900px;
-            margin: 60px auto;
-            padding: 60px;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin: 0 auto;
+            padding: 130px 40px 80px;
         }
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: #0f172a;
+        /* Hero section */
+        .vn-faq-hero {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
         }
 
-        .intro {
-            font-size: 1.2rem;
-            color: #64748b;
+        .vn-faq-kicker {
+            font-family: var(--vn-font-display);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--vn-accent);
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .vn-faq-title {
+            font-family: var(--vn-font-display);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: var(--vn-ink);
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 24px;
+        }
+
+        .vn-faq-lead {
+            font-size: 1.15rem;
+            color: var(--vn-ink-secondary);
+            line-height: 1.65;
+            margin-bottom: 30px;
+        }
+
+        .vn-faq-lead a {
+            color: var(--vn-accent);
+            text-decoration: none;
+        }
+
+        .vn-faq-lead a:hover {
+            text-decoration: underline;
+        }
+
+        /* Accordion custom overrides for FAQ page */
+        .vn-faq-page-section {
             margin-bottom: 50px;
         }
 
-        .faq-section {
-            margin-bottom: 40px;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            color: #334155;
-            margin-bottom: 30px;
+        .vn-faq-section-title {
+            font-family: var(--vn-font-display);
+            font-size: 1.6rem;
+            color: var(--vn-ink);
+            margin-bottom: 24px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #e2e8f0;
+            border-bottom: 1.5px solid var(--vn-border);
         }
 
-        .faq-item {
-            margin-bottom: 30px;
-            padding: 25px;
-            background: #f8fafc;
-            border-radius: 12px;
-            border-left: 4px solid #6366f1;
-            transition: all 0.3s;
+        .vn-faq-accordion {
+            margin: 20px 0 0 0;
         }
 
-        .faq-item:hover {
-            background: #f1f5f9;
-            transform: translateX(5px);
+        .vn-faq-list-bullets {
+            list-style: none;
+            margin: 15px 0 15px 12px;
+            padding: 0;
         }
 
-        .faq-question {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #0f172a;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
+        .vn-faq-list-bullets li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: var(--vn-ink-secondary);
+            line-height: 1.55;
         }
 
-        .faq-question::before {
-            content: 'Q:';
-            color: #6366f1;
-            font-weight: 700;
-            flex-shrink: 0;
+        .vn-faq-list-bullets li::before {
+            content: "•";
+            position: absolute;
+            left: 8px;
+            color: var(--vn-accent);
+            font-weight: 800;
         }
 
-        .faq-answer {
-            font-size: 1.05rem;
-            color: #475569;
-            line-height: 1.7;
-            padding-left: 30px;
-        }
-
-        .faq-answer strong {
-            color: #0f172a;
-        }
-
-        .cta-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+        /* FAQ page specific CTA card */
+        .vn-faq-cta-card {
+            background: var(--vn-bg-white);
+            border: 1px solid var(--vn-border);
+            border-radius: var(--vn-radius-lg);
             padding: 40px;
-            border-radius: 16px;
+            margin: 60px auto 40px auto;
             text-align: center;
-            margin: 50px 0;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.01);
         }
 
-        .cta-box h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-
-        .cta-box p {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-            opacity: 0.9;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: white;
-            color: #6366f1;
-            padding: 15px 40px;
-            border-radius: 50px;
-            text-decoration: none;
+        .vn-faq-cta-title {
+            font-family: var(--vn-font-display);
+            font-size: 1.75rem;
             font-weight: 700;
-            font-size: 1.1rem;
-            transition: transform 0.3s;
+            color: var(--vn-ink);
+            margin-bottom: 14px;
         }
 
-        .cta-button:hover {
-            transform: scale(1.05);
+        .vn-faq-cta-desc {
+            font-size: 1.05rem;
+            color: var(--vn-ink-secondary);
+            line-height: 1.6;
+            margin-bottom: 28px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .back-link {
-            display: inline-block;
+        /* Still have questions card */
+        .vn-faq-contact-card {
+            text-align: center;
+            background: var(--vn-bg-alt);
+            padding: 40px;
+            border-radius: var(--vn-radius-lg);
             margin-top: 40px;
-            color: #6366f1;
-            text-decoration: none;
-            font-weight: 600;
+            border: 1px solid var(--vn-border);
         }
 
-        .back-link:hover {
+        .vn-faq-contact-title {
+            font-family: var(--vn-font-display);
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--vn-ink);
+            font-weight: 700;
+        }
+
+        .vn-faq-contact-desc {
+            font-size: 1rem;
+            color: var(--vn-ink-secondary);
+            margin-bottom: 20px;
+        }
+
+        .vn-faq-email-btn {
+            font-family: var(--vn-font-display);
+            font-size: 1.2rem;
+            color: var(--vn-accent);
+            font-weight: 700;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .vn-faq-email-btn:hover {
+            color: var(--vn-accent-hover);
             text-decoration: underline;
         }
 
-        ul {
-            margin: 15px 0 15px 40px;
-        }
+        @media (max-width: 768px) {
+            .vn-faq-page-wrapper {
+                padding: 90px 16px 40px;
+            }
 
-        li {
-            margin-bottom: 8px;
-            color: #475569;
+            .vn-faq-cta-card, .vn-faq-contact-card {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <nav>
-        <a href="index.html" class="logo-wrapper">
-            <div class="logo">📚 VisualNotes</div>
-            <div class="logo-tagline">Learn visually. Think Clearly.</div>
-        </a>
-    </nav>
+    <script>(function(){if(localStorage.getItem('darkMode')==='true'){document.body.classList.add('dark-mode');}})();</script>
+    <!-- ============================================ -->
+    <!-- STICKY NAVIGATION HEADER                     -->
+    <!-- ============================================ -->
+    <header class="vn-header" id="vnHeader">
+        <nav class="vn-nav">
+            <div class="vn-logo-wrap">
+                <a href="index.html" class="vn-logo">VisualNotes</a>
+                <span class="vn-logo-tagline">Learn visually. Think Clearly.</span>
+            </div>
+            <div class="vn-nav-links">
+                <a href="index.html">Home</a>
+                <a href="guides/index.html">Guides</a>
+                <a href="blog/index.html">Blog</a>
+                <a href="about.html">About</a>
+                <a href="faq.html" class="active">FAQ</a>
+                <a href="#subscribe" class="vn-btn-subscribe">Subscribe</a>
+            </div>
+            <button class="vn-hamburger" id="vnHamburger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
 
-    <div class="container">
-        <h1>Frequently Asked Questions</h1>
-        <p class="intro">
-            Everything you need to know about VisualNotes visual study guides. Can't find what you're looking for? Email
-            us at <strong>visualnotes.tech@gmail.com</strong>
-        </p>
+    <!-- Mobile Nav Overlay -->
+    <div class="vn-mobile-nav" id="vnMobileNav">
+        <a href="index.html" onclick="closeMobileNav()">Home</a>
+        <a href="guides/index.html" onclick="closeMobileNav()">Guides</a>
+        <a href="blog/index.html" onclick="closeMobileNav()">Blog</a>
+        <a href="about.html" onclick="closeMobileNav()">About</a>
+        <a href="faq.html" class="active" onclick="closeMobileNav()">FAQ</a>
+        <a href="#subscribe" class="vn-btn-subscribe" onclick="closeMobileNav()">Subscribe</a>
+    </div>
 
-        <!-- General Questions -->
-        <div class="faq-section">
-            <h2 class="section-title">📌 General</h2>
+    <!-- ============================================ -->
+    <!-- FAQ CONTAINER                                -->
+    <!-- ============================================ -->
+    <div class="vn-faq-page-wrapper">
+        
+        <!-- FAQ Hero Section -->
+        <section class="vn-faq-hero vn-reveal">
+            <span class="vn-faq-kicker">Help Center</span>
+            <h1 class="vn-faq-title">Frequently Asked Questions</h1>
+            <p class="vn-faq-lead">
+                Everything you need to know about VisualNotes visual study guides. Can't find what you're looking for? Email us at <a href="mailto:visualnotes.tech@gmail.com"><strong>visualnotes.tech@gmail.com</strong></a>
+            </p>
+        </section>
 
-            <div class="faq-item">
-                <div class="faq-question">What is VisualNotes?</div>
-                <div class="faq-answer">
-                    VisualNotes is a platform that creates <strong>visual, handwritten-style study guides</strong> for
-                    engineering topics. We transform complex technical concepts in Infrastructure, Cloud, Security, and
-                    OSINT into easy-to-understand visual notes that help you learn faster.
+        <!-- Section 1: General -->
+        <section class="vn-faq-page-section vn-reveal">
+            <h2 class="vn-faq-section-title">📌 General</h2>
+            <div class="vn-faq-accordion">
+                <div class="vn-faq-item">
+                    <button class="vn-faq-question">
+                        <span>What is VisualNotes?</span>
+                        <span class="vn-faq-chevron">▼</span>
+                    </button>
+                    <div class="vn-faq-answer">
+                        <p>VisualNotes is a platform that creates <strong>visual, handwritten-style study guides</strong> for engineering topics. We transform complex technical concepts in Infrastructure, Cloud, Security, and OSINT into easy-to-understand visual notes that help you learn faster.</p>
+                    </div>
+                </div>
+
+                <div class="vn-faq-item">
+                    <button class="vn-faq-question">
+                        <span>Are VisualNotes guides free?</span>
+                        <span class="vn-faq-chevron">▼</span>
+                    </button>
+                    <div class="vn-faq-answer">
+                        <p><strong>Yes!</strong> All VisualNotes guides are <strong>100% free</strong> to access online. You can read them directly in your browser with our web-based PDF viewer. No subscription, no paywall, no hidden costs.</p>
+                    </div>
+                </div>
+
+                <div class="vn-faq-item">
+                    <button class="vn-faq-question">
+                        <span>What topics do you cover?</span>
+                        <span class="vn-faq-chevron">▼</span>
+                    </button>
+                    <div class="vn-faq-answer">
+                        <p>We cover four main areas:</p>
+                        <ul class="vn-faq-list-bullets">
+                            <li><strong>Infrastructure</strong> - DNS, TCP/IP, networking, load balancing, CDN</li>
+                            <li><strong>Cloud</strong> - AWS, Azure, GCP, serverless, cloud architecture</li>
+                            <li><strong>Security</strong> - Cybersecurity fundamentals, encryption, HTTPS, OAuth</li>
+                            <li><strong>OSINT</strong> - Open-source intelligence gathering techniques</li>
+                        </ul>
+                        <p>New guides are added regularly based on popular demand.</p>
+                    </div>
+                </div>
+
+                <div class="vn-faq-item">
+                    <button class="vn-faq-question">
+                        <span>Who creates the visual notes?</span>
+                        <span class="vn-faq-chevron">▼</span>
+                    </button>
+                    <div class="vn-faq-answer">
+                        <p>Our team of experienced engineers and technical educators craft each visual note. Every guide is researched, designed, and reviewed for accuracy before publication to ensure you're learning from reliable sources.</p>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="faq-item">
-                <div class="faq-question">Are VisualNotes guides free?</div>
-                <div class="faq-answer">
-                    <strong>Yes!</strong> All VisualNotes guides are <strong>100% free</strong> to access online. You
-                    can read them directly in your browser with our web-based PDF viewer. No subscription, no paywall,
-                    no hidden costs.
+        <!-- Section 2: Learning & Usage -->
+        <section class="vn-faq-page-section vn-reveal">
+            <h2 class="vn-faq-section-title">📚 Learning & Usage</h2>
+            <div class="vn-faq-accordion">
+                <div class="vn-faq-item">
+                    <button class="vn-faq-question">
+                        <span>How do visual notes help me learn faster?</span>
+                        <span class="vn-faq-chevron">▼</span>
+                    </button>
+                    <div class="vn-faq-answer">
+                        <p>Visual notes leverage <strong>dual coding theory</strong> - combining text with visuals helps your brain process and retain information better. Research shows visual learners retain <strong>65% of information</strong> versus 10-20% from text alone. Our handwritten style also makes complex topics feel more approachable and less intimidating.</p>
+                    </div>
+                </div>
+
+                <div class="vn-faq-item">
+                    <button class="vn-faq-question">
+                        <span>Who are these guides for?</span>
+                        <span class="vn-faq-chevron">▼</span>
+                    </button>
+                    <div class="vn-faq-answer">
+                        <p>VisualNotes is perfect for:</p>
+                        <ul class="vn-faq-list-bullets">
+                            <li><strong>Students</strong> preparing for certifications or exams</li>
+                            <li><strong>Early-career engineers</strong> building foundational knowledge</li>
+                            <li><strong>Solution architects</strong> needing quick references</li>
+                            <li><strong>Career switchers</strong> entering tech from other fields</li>
+                            <li><strong>Anyone</strong> who learns better with visuals than dense documentation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="vn-faq-item">
+                    <button class="vn-faq-question">
+                        <span>Can I use these guides for certification prep?</span>
+                        <span class="vn-faq-chevron">▼</span>
+                    </button>
+                    <div class="vn-faq-answer">
+                        <p><strong>Absolutely!</strong> Many users leverage our visual notes as <strong>supplementary study materials</strong> for AWS, Azure, CompTIA, CISSP, and other certifications. Our guides simplify complex concepts that often confuse beginners. However, we recommend using them alongside official certification materials for comprehensive preparation.</p>
+                    </div>
+                </div>
+
+                <div class="vn-faq-item">
+                    <button class="vn-faq-question">
+                        <span>Can I read the guides on mobile?</span>
+                        <span class="vn-faq-chevron">▼</span>
+                    </button>
+                    <div class="vn-faq-answer">
+                        <p><strong>Yes!</strong> Our platform is fully optimized for mobile devices. You can read, zoom, and navigate through all pages directly in your browser on any phone or tablet.</p>
+                    </div>
+                </div>
+
+                <div class="vn-faq-item">
+                    <button class="vn-faq-question">
+                        <span>Can I share these guides with my team or students?</span>
+                        <span class="vn-faq-chevron">▼</span>
+                    </button>
+                    <div class="vn-faq-answer">
+                        <p>You're welcome to <strong>share links</strong> to our guides with your team, students, or anyone who might benefit. Please share the website URL only. <strong>Downloading or redistributing our copyrighted materials is not permitted.</strong> All content must be accessed through our official website.</p>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="faq-item">
-                <div class="faq-question">What topics do you cover?</div>
-                <div class="faq-answer">
-                    We cover four main areas:
-                    <ul>
-                        <li><strong>Infrastructure</strong> - DNS, TCP/IP, networking, load balancing, CDN</li>
-                        <li><strong>Cloud</strong> - AWS, Azure, GCP, serverless, cloud architecture</li>
-                        <li><strong>Security</strong> - Cybersecurity fundamentals, encryption, HTTPS, OAuth</li>
-                        <li><strong>OSINT</strong> - Open-source intelligence gathering techniques</li>
-                    </ul>
-                    New guides are added regularly based on popular demand.
+        <!-- Section 3: Content & Updates -->
+        <section class="vn-faq-page-section vn-reveal">
+            <h2 class="vn-faq-section-title">📝 Content & Updates</h2>
+            <div class="vn-faq-accordion">
+                <div class="vn-faq-item">
+                    <button class="vn-faq-question">
+                        <span>How often do you add new guides?</span>
+                        <span class="vn-faq-chevron">▼</span>
+                    </button>
+                    <div class="vn-faq-answer">
+                        <p>We publish new visual study guides regularly, typically <strong>2-4 per month</strong>. Subscribe to our newsletter to get notified when new guides are released. You'll also get early access to guides in progress.</p>
+                    </div>
+                </div>
+
+                <div class="vn-faq-item">
+                    <button class="vn-faq-question">
+                        <span>Can I request a specific topic?</span>
+                        <span class="vn-faq-chevron">▼</span>
+                    </button>
+                    <div class="vn-faq-answer">
+                        <p><strong>Yes!</strong> We love hearing what topics you want to learn. Email your requests to <strong>visualnotes.tech@gmail.com</strong> with the subject "Topic Request". Popular requests are prioritized in our content roadmap.</p>
+                    </div>
+                </div>
+
+                <div class="vn-faq-item">
+                    <button class="vn-faq-question">
+                        <span>Do you update guides when technology changes?</span>
+                        <span class="vn-faq-chevron">▼</span>
+                    </button>
+                    <div class="vn-faq-answer">
+                        <p>Yes, we regularly review and update our guides to reflect current best practices and technology changes. Major updates are announced via our newsletter. Each guide includes a "Last Updated" date so you know how current the information is.</p>
+                    </div>
+                </div>
+
+                <div class="vn-faq-item">
+                    <button class="vn-faq-question">
+                        <span>What's the difference between VisualNotes and traditional study guides?</span>
+                        <span class="vn-faq-chevron">▼</span>
+                    </button>
+                    <div class="vn-faq-answer">
+                        <p>Traditional study guides are often text-heavy and intimidating. VisualNotes uses:</p>
+                        <ul class="vn-faq-list-bullets">
+                            <li><strong>Visual diagrams</strong> instead of walls of text</li>
+                            <li><strong>Handwritten style</strong> that feels approachable</li>
+                            <li><strong>Color coding</strong> to highlight key concepts</li>
+                            <li><strong>One page format</strong> for focused learning (one system per page)</li>
+                            <li><strong>Beginner-friendly language</strong> without unnecessary jargon</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="faq-item">
-                <div class="faq-question">Who creates the visual notes?</div>
-                <div class="faq-answer">
-                    Our team of experienced engineers and technical educators craft each visual note. Every guide is
-                    researched, designed, and reviewed for accuracy before publication to ensure you're learning from
-                    reliable sources.
+        <!-- Section 4: Technical Support -->
+        <section class="vn-faq-page-section vn-reveal">
+            <h2 class="vn-faq-section-title">🔧 Technical Support</h2>
+            <div class="vn-faq-accordion">
+                <div class="vn-faq-item">
+                    <button class="vn-faq-question">
+                        <span>Do I need to create an account?</span>
+                        <span class="vn-faq-chevron">▼</span>
+                    </button>
+                    <div class="vn-faq-answer">
+                        <p><strong>No account required!</strong> All guides are instantly accessible without signup. The only time we ask for your email is if you want to subscribe to our newsletter for updates (which is optional).</p>
+                    </div>
+                </div>
+
+                <div class="vn-faq-item">
+                    <button class="vn-faq-question">
+                        <span>Can I print the guides?</span>
+                        <span class="vn-faq-chevron">▼</span>
+                    </button>
+                    <div class="vn-faq-answer">
+                        <p>For copyright protection, downloading and printing are currently disabled. All guides are available to <strong>view online only</strong> through our web-based reader. This helps us protect our intellectual property while keeping all content free for educational use.</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Learning & Usage -->
-        <div class="faq-section">
-            <h2 class="section-title">📚 Learning & Usage</h2>
+        <!-- FAQ CTA Card -->
+        <section class="vn-faq-cta-card vn-reveal">
+            <h2 class="vn-faq-cta-title">Ready to Start Learning?</h2>
+            <p class="vn-faq-cta-desc">Explore our visual study guides and see how fast you can master complex tech concepts.</p>
+            <a href="guides/index.html" class="vn-btn-primary">Browse All Guides</a>
+        </section>
 
-            <div class="faq-item">
-                <div class="faq-question">How do visual notes help me learn faster?</div>
-                <div class="faq-answer">
-                    Visual notes leverage <strong>dual coding theory</strong> - combining text with visuals helps your
-                    brain process and retain information better. Research shows visual learners retain <strong>65% of
-                        information</strong> versus 10-20% from text alone. Our handwritten style also makes complex
-                    topics feel more approachable and less intimidating.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Who are these guides for?</div>
-                <div class="faq-answer">
-                    VisualNotes is perfect for:
-                    <ul>
-                        <li><strong>Students</strong> preparing for certifications or exams</li>
-                        <li><strong>Early-career engineers</strong> building foundational knowledge</li>
-                        <li><strong>Solution architects</strong> needing quick references</li>
-                        <li><strong>Career switchers</strong> entering tech from other fields</li>
-                        <li><strong>Anyone</strong> who learns better with visuals than dense documentation</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Can I use these guides for certification prep?</div>
-                <div class="faq-answer">
-                    <strong>Absolutely!</strong> Many users leverage our visual notes as <strong>supplementary study
-                        materials</strong> for AWS, Azure, CompTIA, CISSP, and other certifications. Our guides simplify
-                    complex concepts that often confuse beginners. However, we recommend using them alongside official
-                    certification materials for comprehensive preparation.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Can I read the guides on mobile?</div>
-                <div class="faq-answer">
-                    <strong>Yes!</strong> Our platform is fully optimized for mobile devices. You can read, zoom, and
-                    navigate through all pages directly in your browser on any phone or tablet.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Can I share these guides with my team or students?</div>
-                <div class="faq-answer">
-                    You're welcome to <strong>share links</strong> to our guides with your team, students, or anyone who
-                    might benefit. Please share the website URL only. <strong>Downloading or redistributing our
-                        copyrighted materials is not permitted.</strong> All content must be accessed through our
-                    official website.
-                </div>
-            </div>
-        </div>
-
-        <!-- Content & Updates -->
-        <div class="faq-section">
-            <h2 class="section-title">📝 Content & Updates</h2>
-
-            <div class="faq-item">
-                <div class="faq-question">How often do you add new guides?</div>
-                <div class="faq-answer">
-                    We publish new visual study guides regularly, typically <strong>2-4 per month</strong>. Subscribe to
-                    our newsletter to get notified when new guides are released. You'll also get early access to guides
-                    in progress.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Can I request a specific topic?</div>
-                <div class="faq-answer">
-                    <strong>Yes!</strong> We love hearing what topics you want to learn. Email your requests to
-                    <strong>visualnotes.tech@gmail.com</strong> with the subject "Topic Request". Popular requests are
-                    prioritized in our content roadmap.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Do you update guides when technology changes?</div>
-                <div class="faq-answer">
-                    Yes, we regularly review and update our guides to reflect current best practices and technology
-                    changes. Major updates are announced via our newsletter. Each guide includes a "Last Updated" date
-                    so you know how current the information is.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">What's the difference between VisualNotes and traditional study guides?</div>
-                <div class="faq-answer">
-                    Traditional study guides are often text-heavy and intimidating. VisualNotes uses:
-                    <ul>
-                        <li><strong>Visual diagrams</strong> instead of walls of text</li>
-                        <li><strong>Handwritten style</strong> that feels approachable</li>
-                        <li><strong>Color coding</strong> to highlight key concepts</li>
-                        <li><strong>One page format</strong> for focused learning (one system per page)</li>
-                        <li><strong>Beginner-friendly language</strong> without unnecessary jargon</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Technical Support -->
-        <div class="faq-section">
-            <h2 class="section-title">🔧 Technical Support</h2>
-
-            <div class="faq-item">
-                <div class="faq-question">Do I need to create an account?</div>
-                <div class="faq-answer">
-                    <strong>No account required!</strong> All guides are instantly accessible without signup. The only
-                    time we ask for your email is if you want to subscribe to our newsletter for updates (which is
-                    optional).
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Can I print the guides?</div>
-                <div class="faq-answer">
-                    For copyright protection, downloading and printing are currently disabled. All guides are available
-                    to <strong>view online only</strong> through our web-based reader. This helps us protect our
-                    intellectual property while keeping all content free for educational use.
-                </div>
-            </div>
-        </div>
-
-        <!-- CTA Box -->
-        <div class="cta-box">
-            <h2>Ready to Start Learning?</h2>
-            <p>Explore our visual study guides and see how fast you can master complex tech concepts.</p>
-            <a href="index.html#guides" class="cta-button">Browse All Guides</a>
-        </div>
-
-        <!-- Still Have Questions -->
-        <div style="text-align: center; padding: 40px; background: #f1f5f9; border-radius: 12px; margin-top: 40px;">
-            <h3 style="font-size: 1.5rem; margin-bottom: 15px; color: #0f172a;">Still have questions?</h3>
-            <p style="font-size: 1.1rem; color: #64748b; margin-bottom: 20px;">
+        <!-- Still Have Questions Contact Box -->
+        <section class="vn-faq-contact-card vn-reveal">
+            <h3 class="vn-faq-contact-title">Still have questions?</h3>
+            <p class="vn-faq-contact-desc">
                 We're here to help! Reach out and we'll get back to you within 24 hours.
             </p>
-            <a href="mailto:visualnotes.tech@gmail.com"
-                style="color: #6366f1; font-weight: 600; text-decoration: none; font-size: 1.2rem;">
+            <a href="mailto:visualnotes.tech@gmail.com" class="vn-faq-email-btn">
                 📧 visualnotes.tech@gmail.com
             </a>
-        </div>
+        </section>
 
-        <a href="index.html" class="back-link">← Back to Home</a>
     </div>
+
+    <!-- ============================================ -->
+    <!-- NEWSLETTER CTA STRIP                         -->
+    <!-- ============================================ -->
+    <section class="vn-newsletter" id="subscribe">
+        <div class="vn-newsletter-inner">
+            <h2>Never Miss a New Study Resource</h2>
+            <p>Get visual notes, networking cheat sheets, and deep-dives delivered to your inbox.</p>
+
+            <ul class="vn-newsletter-benefits">
+                <li>New visual guides delivered weekly</li>
+                <li>Exam preparation tips & flashcards</li>
+                <li>Early access to upcoming releases</li>
+                <li>100% free, unsubscribe anytime</li>
+            </ul>
+
+            <form class="email-form" onsubmit="handleEmailSubmit(event)">
+                <input type="email" id="emailInput" class="email-input" placeholder="your@email.com" required>
+                <button type="submit" class="btn-subscribe">Subscribe</button>
+            </form>
+            <p class="vn-newsletter-proof">Join 5,000+ engineers already learning visually</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SITE-WIDE FOOTER                             -->
+    <!-- ============================================ -->
+    <footer class="vn-footer">
+        <div class="vn-footer-grid">
+            <div class="vn-footer-brand">
+                <span class="vn-logo">VisualNotes</span>
+                <p>Visual, handwritten-style notes for Infrastructure, Cloud, Security & OSINT. Making complex tech concepts click.</p>
+                <div class="vn-footer-founder">
+                    Founder: <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank">Abhiney Sharma</a>
+                </div>
+                <div class="vn-footer-social">
+                    <a href="https://www.instagram.com/visualnotes.tech/" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://whatsapp.com/channel/0029Vb6z21DBqbr2xDU7Rc2P" target="_blank" rel="noopener" aria-label="Join WhatsApp channel">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="vn-footer-col">
+                <h4>Resources</h4>
+                <a href="guides/index.html">Study Guides</a>
+                <a href="blog/index.html">Blog Articles</a>
+                <a href="guides/index.html">Visual Notes</a>
+                <a href="hsrp-flashcards.html">Flashcards</a>
+            </div>
+            <div class="vn-footer-col">
+                <h4>Company</h4>
+                <a href="about.html">About Us</a>
+                <a href="write-for-us.html">Write for Us</a>
+                <a href="faq.html">FAQ</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+            </div>
+            <div class="vn-footer-col">
+                <h4>Connect</h4>
+                <a href="https://www.instagram.com/visualnotes.tech/" target="_blank">Instagram</a>
+                <a href="https://whatsapp.com/channel/0029Vb6z21DBqbr2xDU7Rc2P" target="_blank">WhatsApp</a>
+                <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank">LinkedIn</a>
+                <a href="mailto:visualnotes.tech@gmail.com">Email Us</a>
+            </div>
+        </div>
+        <div class="vn-footer-bottom">
+            © 2026 VisualNotes. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Thank You Modal -->
+    <div id="thankYouModal" class="vn-thank-modal">
+        <div class="vn-thank-content">
+            <div style="font-size: 3.5rem; margin-bottom: 20px;">🎉</div>
+            <h2 style="color: var(--vn-accent); margin-bottom: 12px; font-size: 1.8rem;">Thank You for Subscribing!</h2>
+            <p style="color: var(--vn-ink-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px;">
+                Welcome to the VisualNotes community! We've sent a welcome email to your inbox with exclusive resources and tips.
+            </p>
+            <div style="background: var(--vn-bg); padding: 18px; border-radius: var(--vn-radius); margin-bottom: 24px; text-align: left;">
+                <p style="color: var(--vn-ink); font-weight: 600; margin-bottom: 8px;">🚀 What's Next?</p>
+                <p style="color: var(--vn-ink-secondary); font-size: 0.92rem; line-height: 1.5;">Check your email for your welcome message and start exploring our visual study guides!</p>
+            </div>
+            <button onclick="closeThankYouModal()" class="vn-btn-primary" style="width: 100%;">Start Exploring</button>
+        </div>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" style="display:none;">
+        <div>
+            <p>We use cookies to improve your experience. By continuing, you agree to our use of cookies.</p>
+            <button onclick="acceptCookies()">Accept</button>
+        </div>
+    </div>
+
+    <!-- Floating Theme Toggle Button -->
+    <button id="theme-toggle" onclick="toggleDarkMode()">
+        🌙 DARK MODE
+    </button>
+
+    <!-- ============================================ -->
+    <!-- SCRIPTS                                      -->
+    <!-- ============================================ -->
+    <script>
+        // ===== HEADER SCROLL BEHAVIOR =====
+        const header = document.getElementById('vnHeader');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ===== MOBILE NAV =====
+        const hamburger = document.getElementById('vnHamburger');
+        const mobileNav = document.getElementById('vnMobileNav');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        function closeMobileNav() {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ===== SCROLL REVEAL =====
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.vn-reveal').forEach(el => revealObserver.observe(el));
+            
+            // Restore theme preference
+            const savedTheme = localStorage.getItem('darkMode');
+            if (savedTheme === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+            updateThemeButtonText();
+
+            // Cookie consent
+            if (!localStorage.getItem('cookieConsent')) {
+                document.getElementById('cookie-consent').style.display = 'block';
+            }
+        });
+
+        // ===== COOKIE CONSENT =====
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'true');
+            document.getElementById('cookie-consent').style.display = 'none';
+        }
+
+        // ===== DARK MODE TOGGLE =====
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark ? 'true' : 'false');
+            updateThemeButtonText();
+        }
+
+        function updateThemeButtonText() {
+            const btn = document.getElementById('theme-toggle');
+            if (!btn) return;
+            const isDark = document.body.classList.contains('dark-mode');
+            btn.innerHTML = isDark ? '☀ LIGHT MODE' : '🌙 DARK MODE';
+        }
+
+        // ===== NEWSLETTER FORM =====
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyt3yXiow0mYGHwfLNcl_k1lH6s6DU51P8_i50DqqYZxcONrSTX_gQdtxFO4tOQ0sMMdA/exec';
+
+        async function handleEmailSubmit(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value.trim().toLowerCase();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) { alert('⚠️ Please enter a valid email address'); return; }
+            
+            const button = e.target.querySelector('button');
+            const originalText = button.textContent;
+            button.textContent = 'Subscribing...';
+            button.disabled = true;
+
+            try {
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST', mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: JSON.stringify({ email: email, country: 'detect-server-side' })
+                });
+            } catch (err) { console.error('Submission error (ignored):', err); }
+
+            showThankYouModal();
+            document.getElementById('emailInput').value = '';
+            button.textContent = originalText;
+            button.disabled = false;
+        }
+
+        function showThankYouModal() {
+            const modal = document.getElementById('thankYouModal');
+            if (modal) modal.style.display = 'flex';
+        }
+
+        function closeThankYouModal() {
+            const modal = document.getElementById('thankYouModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        // ===== FAQ ACCORDION TOGGLE =====
+        document.querySelectorAll('.vn-faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const isActive = item.classList.contains('active');
+
+                // Close all in the same section
+                const section = btn.closest('.vn-faq-accordion');
+                if (section) {
+                    section.querySelectorAll('.vn-faq-item').forEach(i => i.classList.remove('active'));
+                }
+
+                // Open clicked if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
