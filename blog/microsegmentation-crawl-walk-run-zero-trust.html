@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +19,7 @@
     <meta property="og:description" content="Learn how to implement microsegmentation using a phased Crawl-Walk-Run approach. This guide explains architectural intent, enforcement strategy, and execution.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://www.visualnotes.tech/blog/microsegmentation-crawl-walk-run-zero-trust.html">
-    <meta property="og:image" content="https://www.visualnotes.tech/blog/images/microsegmentation-architecture-cover.png">
+    <meta property="og:image" content="https://www.visualnotes.tech/blog/images/microsegmentation-architecture-cover.webp">
     <link rel="icon" href="../favicon.ico">
     <link rel="icon" sizes="32x32" type="image/png" href="../favicon-32x32.png">
     <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -47,12 +51,12 @@ window.dataLayer = window.dataLayer || [];
         "url": "https://www.visualnotes.tech",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://www.visualnotes.tech/logo.png"
+            "url": "https://www.visualnotes.tech/logo.webp"
         }
     },
     "datePublished": "2026-02-08",
     "dateModified": "2026-02-08",
-    "image": "https://www.visualnotes.tech/blog/images/microsegmentation-architecture-cover.png"
+    "image": "https://www.visualnotes.tech/blog/images/microsegmentation-architecture-cover.webp"
 }
 </script>
 </head>
@@ -132,7 +136,7 @@ window.dataLayer = window.dataLayer || [];
                 </div>
 
                 <!-- Hero Image or Visual Placeholder -->
-                <img src="images/microsegmentation-architecture-cover.png" class="article-image" alt="Microsegmentation Done Right: A Practical, Phased Approach for Zero Trust Security">
+                <img src="images/microsegmentation-architecture-cover.webp" class="article-image" alt="Microsegmentation Done Right: A Practical, Phased Approach for Zero Trust Security">
 
                 <!-- Disclaimer block if available -->
                 
@@ -150,8 +154,8 @@ window.dataLayer = window.dataLayer || [];
 <li>Enforcement attempted before traffic behavior is understood</li>
 <li>Lack of phased rollout and rollback mechanisms</li>
 <li>Poor alignment between security architects and engineering teams</li>
-</ul><img alt="Diagram showing lateral movement in a compromised network versus segmented environment" src="images/microsegmentation-lateral-movement.png"><p>Microsegmentation is not a single configuration change. It is a controlled transition from implicit trust to
-            explicit, identity-based access.</p><h2 id="phase-crawl">Phase 1: Crawl — Establish Visibility and Context</h2><p>The Crawl phase is focused entirely on observability. No traffic is blocked during this stage.</p><img alt="Crawl Walk Run microsegmentation phased deployment diagram" src="images/microsegmentation-crawl-walk-run-steps.png"/><h3>Architectural Goals</h3><ul>
+</ul><img alt="Diagram showing lateral movement in a compromised network versus segmented environment" src="images/microsegmentation-lateral-movement.webp"><p>Microsegmentation is not a single configuration change. It is a controlled transition from implicit trust to
+            explicit, identity-based access.</p><h2 id="phase-crawl">Phase 1: Crawl — Establish Visibility and Context</h2><p>The Crawl phase is focused entirely on observability. No traffic is blocked during this stage.</p><img alt="Crawl Walk Run microsegmentation phased deployment diagram" src="images/microsegmentation-crawl-walk-run-steps.webp"/><h3>Architectural Goals</h3><ul>
 <li>Identify all east–west communication paths</li>
 <li>Understand application dependencies</li>
 <li>Expose undocumented or legacy flows</li>
@@ -165,7 +169,7 @@ window.dataLayer = window.dataLayer || [];
 <li>Identity-based, not network-based</li>
 <li>Explicit allow rules only</li>
 <li>Environment and role separation by default</li>
-</ul><img alt="Diagram illustrating workload identity, labels, policy intent, and enforcement" src="images/microsegmentation-policy-model.png"/><h3>Key Outcomes</h3><ul>
+</ul><img alt="Diagram illustrating workload identity, labels, policy intent, and enforcement" src="images/microsegmentation-policy-model.webp"/><h3>Key Outcomes</h3><ul>
 <li>Policies are simulated against real traffic</li>
 <li>Enforcement begins in limited or selective scope</li>
 <li>Exceptions are justified, documented, or eliminated</li>
@@ -259,7 +263,7 @@ window.dataLayer = window.dataLayer || [];
             </div>
             <div class="vn-related-grid">
                                 <a href="top-5-network-exploits-misconfigured-2026.html" class="vn-article-card" data-category="security">
-                    <div class="vn-article-thumb"><img src="images/top-5-network-exploits.png" alt="Top 5 Network Exploits Still Misconfigured in 2026" loading="lazy"></div>
+                    <div class="vn-article-thumb"><img src="images/top-5-network-exploits.webp" alt="Top 5 Network Exploits Still Misconfigured in 2026" loading="lazy"></div>
                     <div class="vn-article-body">
                         <span class="guide-category">Security & Infrastructure</span>
                         <h4 class="guide-title">Top 5 Network Exploits Still Misconfigured in 2026</h4>
@@ -270,7 +274,7 @@ window.dataLayer = window.dataLayer || [];
                     </div>
                 </a>
                 <a href="google-dorking-guide.html" class="vn-article-card" data-category="security">
-                    <div class="vn-article-thumb"><img src="images/google-dorking-header.png" alt="Google Dorking: The Complete Guide (2026)" loading="lazy"></div>
+                    <div class="vn-article-thumb"><img src="images/google-dorking-header.webp" alt="Google Dorking: The Complete Guide (2026)" loading="lazy"></div>
                     <div class="vn-article-body">
                         <span class="guide-category">Security & OSINT</span>
                         <h4 class="guide-title">Google Dorking: The Complete Guide (2026)</h4>
@@ -281,7 +285,7 @@ window.dataLayer = window.dataLayer || [];
                     </div>
                 </a>
                 <a href="cloud-comparison.html" class="vn-article-card" data-category="cloud">
-                    <div class="vn-article-thumb"><img src="images/cloud-thumbnail.png" alt="AWS vs Azure vs GCP: Which to Learn First?" loading="lazy"></div>
+                    <div class="vn-article-thumb"><img src="images/cloud-thumbnail.webp" alt="AWS vs Azure vs GCP: Which to Learn First?" loading="lazy"></div>
                     <div class="vn-article-body">
                         <span class="guide-category">Cloud Computing</span>
                         <h4 class="guide-title">AWS vs Azure vs GCP: Which to Learn First?</h4>
