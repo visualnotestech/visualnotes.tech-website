@@ -1227,7 +1227,7 @@ body.dark-mode .btn-subscribe:hover {
 .vn-hero {
     padding: 160px 40px 100px !important;
     background: radial-gradient(circle, rgba(244, 245, 249, 0.98) 25%, rgba(244, 245, 249, 0.82) 55%, rgba(244, 245, 249, 0.35) 100%), 
-                url('../visuals/images/hero_sketchnote_illustration.png') !important;
+                url('../visuals/images/hero_sketchnote_illustration.webp') !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
@@ -1243,7 +1243,7 @@ body.dark-mode .btn-subscribe:hover {
 
 body.dark-mode .vn-hero {
     background: radial-gradient(circle, rgba(17, 17, 20, 0.98) 25%, rgba(17, 17, 20, 0.85) 55%, rgba(17, 17, 20, 0.35) 100%), 
-                url('../visuals/images/hero_sketchnote_illustration.png') !important;
+                url('../visuals/images/hero_sketchnote_illustration.webp') !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
