@@ -67,9 +67,9 @@
     <meta name="twitter:image" content="https://www.visualnotes.tech/visuals/images/social-card.webp" />
 
     <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" href="/../../../../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/../../../../favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/../../../../apple-touch-icon.png">
 
     <!-- JSON-LD Schema (Organization) -->
     <script type="application/ld+json">
@@ -194,7 +194,7 @@
 
 
     <!-- Central Design System Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <style>
         /* Ensure structured data is never visible */
@@ -1690,14 +1690,14 @@
     <header class="vn-header" id="vnHeader">
         <nav class="vn-nav">
             <div class="vn-logo-wrap">
-                <a href="/" class="vn-logo">VisualNotes</a>
+                <a href="/../../../.." class="vn-logo">VisualNotes</a>
                 <span class="vn-logo-tagline">Learn visually. Think Clearly.</span>
             </div>
             <div class="vn-nav-links">
-                <a href="guides/index.html">Guides</a>
+                <a href="/guides">Guides</a>
                 <a href="#articles">Blog</a>
-                <a href="about.html">About</a>
-                <a href="faq.html">FAQ</a>
+                <a href="/about">About</a>
+                <a href="/faq">FAQ</a>
                 <a href="#subscribe" class="vn-btn-subscribe">Subscribe</a>
             </div>
             <button class="vn-hamburger" id="vnHamburger" aria-label="Toggle navigation">
@@ -1710,10 +1710,10 @@
 
     <!-- Mobile Nav Overlay -->
     <div class="vn-mobile-nav" id="vnMobileNav">
-        <a href="guides/index.html" onclick="closeMobileNav()">Guides</a>
+        <a href="/guides" onclick="closeMobileNav()">Guides</a>
         <a href="#articles" onclick="closeMobileNav()">Blog</a>
-        <a href="about.html">About</a>
-        <a href="faq.html">FAQ</a>
+        <a href="/about">About</a>
+        <a href="/faq">FAQ</a>
         <a href="#subscribe" class="vn-btn-subscribe" onclick="closeMobileNav()">Subscribe</a>
     </div>
 
@@ -1742,7 +1742,7 @@
             </div>
 
             <div class="vn-hero-cta">
-                <a href="guides/index.html" class="vn-btn-primary">Explore Guides</a>
+                <a href="/guides" class="vn-btn-primary">Explore Guides</a>
                 <a href="#articles" class="vn-btn-ghost">Read Articles →</a>
             </div>
         </div>
@@ -1782,14 +1782,14 @@
         </div>
 
         <div class="vn-cat-grid">
-            <a href="guides/index.html?filter=infrastructure" class="vn-cat-card" id="cat-infra">
+            <a href="/guides?filter=infrastructure" class="vn-cat-card" id="cat-infra">
                 <span class="vn-cat-icon">🌐</span>
                 <div class="vn-cat-name">Infrastructure</div>
                 <div class="vn-cat-topics">DNS, VLAN, STP, SNMP, Netflow, NTP, SD-WAN</div>
                 <div class="vn-cat-count">6 Guides · 4 Visual Notes</div>
                 <div class="vn-cat-link">Explore →</div>
             </a>
-            <a href="guides/index.html?filter=infrastructure" class="vn-cat-card" id="cat-cloud">
+            <a href="/guides?filter=infrastructure" class="vn-cat-card" id="cat-cloud">
                 <span class="vn-cat-icon">☁️</span>
                 <div class="vn-cat-name">Cloud</div>
                 <div class="vn-cat-topics">AWS, Azure, GCP, Cloud Comparisons</div>
@@ -1839,12 +1839,12 @@
         <div class="vn-flash-grid">
             <div class="vn-flash-card">
                 <div class="vn-flash-category"><span>🌐</span> Networking</div>
-                <a href="hsrp-flashcards.html" class="vn-flash-link">HSRP Practice <span>→</span></a>
-                <a href="subnetting-flashcards.html" class="vn-flash-link">Subnetting Practice <span>→</span></a>
+                <a href="/hsrp-flashcards" class="vn-flash-link">HSRP Practice <span>→</span></a>
+                <a href="/subnetting-flashcards" class="vn-flash-link">Subnetting Practice <span>→</span></a>
             </div>
             <div class="vn-flash-card">
                 <div class="vn-flash-category"><span>🔍</span> OSINT</div>
-                <a href="socmint-flashcards.html" class="vn-flash-link">SOCMINT Practice <span>→</span></a>
+                <a href="/socmint-flashcards" class="vn-flash-link">SOCMINT Practice <span>→</span></a>
             </div>
             <div class="vn-flash-card">
                 <div class="vn-flash-category" style="opacity:0.5;"><span>🔒</span> Security</div>
@@ -1876,7 +1876,7 @@
         </div>
 
         <!-- Featured Article -->
-        <a href="blog/openosint-ai-osint-framework-deep-dive.html" class="vn-featured-article" data-category="osint" style="text-decoration:none; color:inherit;">
+        <a href="/blog/openosint-ai-osint-framework-deep-dive" class="vn-featured-article" data-category="osint" style="text-decoration:none; color:inherit;">
             <div class="vn-featured-img">
                 <img src="blog/images/openosint-deep-dive-hero.webp" alt="OpenOSINT Deep Dive: AI-Powered OSINT Framework for Security Researchers" loading="lazy">
             </div>
@@ -1905,7 +1905,7 @@
                     <p class="guide-desc">A highly targeted simulated LinkedIn recruitment campaign meets inbound spearfishing. Audit profile metadata, trace synthetic avatars, footprint lookalike domains, and perform Git commit log forensics.</p>
                     <div class="guide-footer">
                         <span class="guide-meta">18 min read</span>
-                        <a href="blog/osint-case-lazarus-dream-job.html" class="btn-read">READ NOW</a>
+                        <a href="/blog/osint-case-lazarus-dream-job" class="btn-read">READ NOW</a>
                     </div>
                 </div>
             </div>
@@ -1921,7 +1921,7 @@
                     <p class="guide-desc">Turn social media connections and structures into actionable intelligence. Map complex relationships, trace attribution lexical signals, and audit influence flows.</p>
                     <div class="guide-footer">
                         <span class="guide-meta">12 min read</span>
-                        <a href="blog/advanced-socmint-social-network-analysis-influence-operations.html" class="btn-read">READ NOW</a>
+                        <a href="/blog/advanced-socmint-social-network-analysis-influence-operations" class="btn-read">READ NOW</a>
                     </div>
                 </div>
             </div>
@@ -1937,7 +1937,7 @@
                     <p class="guide-desc">A dual-thread training investigation — brand impersonation meets suspicious remote hire. Map infrastructure, expose a fabricated identity, and avoid 8 analyst traps.</p>
                     <div class="guide-footer">
                         <span class="guide-meta">20 min read</span>
-                        <a href="blog/osint-case-viper-ghost.html" class="btn-read">READ NOW</a>
+                        <a href="/blog/osint-case-viper-ghost" class="btn-read">READ NOW</a>
                     </div>
                 </div>
             </div>
@@ -1953,7 +1953,7 @@
                     <p class="guide-desc">Discover the 5 legacy network vulnerabilities that still plague modern infrastructures in 2026. Detailed attack mechanics and architectural defenses.</p>
                     <div class="guide-footer">
                         <span class="guide-meta">15 min read</span>
-                        <a href="blog/top-5-network-exploits-misconfigured-2026.html" class="btn-read">READ NOW</a>
+                        <a href="/blog/top-5-network-exploits-misconfigured-2026" class="btn-read">READ NOW</a>
                     </div>
                 </div>
             </div>
@@ -1969,7 +1969,7 @@
                     <p class="guide-desc">A practical, phased Crawl-Walk-Run approach to implementing Zero Trust security.</p>
                     <div class="guide-footer">
                         <span class="guide-meta">10 min read</span>
-                        <a href="blog/microsegmentation-crawl-walk-run-zero-trust.html" class="btn-read">READ NOW</a>
+                        <a href="/blog/microsegmentation-crawl-walk-run-zero-trust" class="btn-read">READ NOW</a>
                     </div>
                 </div>
             </div>
@@ -1985,7 +1985,7 @@
                     <p class="guide-desc">Master advanced search operators, ethical hacking techniques, and learn how to protect your website from dorking attacks.</p>
                     <div class="guide-footer">
                         <span class="guide-meta">15 min read</span>
-                        <a href="blog/google-dorking-guide.html" class="btn-read">READ NOW</a>
+                        <a href="/blog/google-dorking-guide" class="btn-read">READ NOW</a>
                     </div>
                 </div>
             </div>
@@ -2001,7 +2001,7 @@
                     <p class="guide-desc">Stop memorizing DNS records. Learn how DNS actually works with visual diagrams and real-world examples.</p>
                     <div class="guide-footer">
                         <span class="guide-meta">8 min read</span>
-                        <a href="blog/how-dns-works.html" class="btn-read">READ NOW</a>
+                        <a href="/blog/how-dns-works" class="btn-read">READ NOW</a>
                     </div>
                 </div>
             </div>
@@ -2017,7 +2017,7 @@
                     <p class="guide-desc">The best open-source intelligence tools for 2026. What security researchers actually use.</p>
                     <div class="guide-footer">
                         <span class="guide-meta">10 min read</span>
-                        <a href="blog/osint-tools-2026.html" class="btn-read">READ NOW</a>
+                        <a href="/blog/osint-tools-2026" class="btn-read">READ NOW</a>
                     </div>
                 </div>
             </div>
@@ -2033,14 +2033,14 @@
                     <p class="guide-desc">Forget market share charts. Here's which cloud you should learn first based on your career goals.</p>
                     <div class="guide-footer">
                         <span class="guide-meta">12 min read</span>
-                        <a href="blog/cloud-comparison.html" class="btn-read">READ NOW</a>
+                        <a href="/blog/cloud-comparison" class="btn-read">READ NOW</a>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="vn-view-all">
-            <a href="blog/index.html" class="vn-btn-outline">View All Articles →</a>
+            <a href="/blog" class="vn-btn-outline">View All Articles →</a>
         </div>
     </section>
 
@@ -2334,7 +2334,7 @@
           "position": 1,
           "item": {
             "@type": "BlogPosting",
-            "@id": "https://www.visualnotes.tech/blog/google-dorking-guide.html",
+            "@id": "https://www.visualnotes.tech/blog/google-dorking-guide",
             "headline": "Google Dorking: The Complete Guide",
             "description": "Master advanced search operators, ethical hacking techniques, and learn how to protect your website from dorking attacks.",
             "image": "https://www.visualnotes.tech/blog/images/google-dorking-header.webp",
@@ -2360,7 +2360,7 @@
           "position": 2,
           "item": {
             "@type": "BlogPosting",
-            "@id": "https://www.visualnotes.tech/blog/how-dns-works.html",
+            "@id": "https://www.visualnotes.tech/blog/how-dns-works",
             "headline": "How DNS Actually Works",
             "description": "Stop memorizing DNS records. Learn how DNS actually works with visual diagrams and real-world examples.",
             "image": "https://www.visualnotes.tech/blog/images/dns-thumbnail.webp",
@@ -2410,18 +2410,18 @@
             </div>
             <div class="vn-footer-col">
                 <h4>Resources</h4>
-                <a href="guides/index.html">Study Guides</a>
+                <a href="/guides">Study Guides</a>
                 <a href="#articles">Blog Articles</a>
-                <a href="guides/index.html">Visual Notes</a>
-                <a href="hsrp-flashcards.html">Flashcards</a>
+                <a href="/guides">Visual Notes</a>
+                <a href="/hsrp-flashcards">Flashcards</a>
             </div>
             <div class="vn-footer-col">
                 <h4>Company</h4>
-                <a href="about.html">About Us</a>
-                <a href="write-for-us.html">Write for Us</a>
-                <a href="faq.html">FAQ</a>
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
+                <a href="/about">About Us</a>
+                <a href="/write-for-us">Write for Us</a>
+                <a href="/faq">FAQ</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
             </div>
             <div class="vn-footer-col">
                 <h4>Connect</h4>

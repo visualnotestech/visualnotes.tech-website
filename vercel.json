@@ -1,4 +1,5 @@
 {
+  "cleanUrls": true,
   "headers": [
     {
       "source": "/(.*)",
@@ -45,9 +46,44 @@
   ],
   "redirects": [
     {
+      "source": "/index.html",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/index",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/index.html",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/index",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/guides/index.html",
+      "destination": "/guides",
+      "statusCode": 301
+    },
+    {
+      "source": "/guides/index",
+      "destination": "/guides",
+      "statusCode": 301
+    },
+    {
+      "source": "/(.*)\\.html",
+      "destination": "/$1",
+      "statusCode": 301
+    },
+    {
       "source": "/home",
       "destination": "/",
-      "permanent": true
+      "statusCode": 301
     }
   ],
   "rewrites": [
