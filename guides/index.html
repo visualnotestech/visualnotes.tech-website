@@ -1812,21 +1812,7 @@
         async function openPdf(guideId) {
             const guide = guides.find(g => g.id === guideId);
             if (!guide) return;
-            document.getElementById('pdfModal').classList.add('active');
-            document.getElementById('pdfTitle').textContent = guide.title;
-            const view = document.getElementById('pdfPages');
-            view.innerHTML = '<div style="color:white; text-align:center; padding:50px;">Loading PDF library...</div>';
-            try {
-                await loadPdfJs();
-                view.innerHTML = '<div style="color:white; text-align:center; padding:50px;">Loading document...</div>';
-                pdfDoc = await pdfjsLib.getDocument(resolvePath(guide.pdfUrl)).promise;
-                zoom = 1.0; currentPage = 1;
-                renderPage();
-                document.getElementById('zoomLevel').textContent = '100%';
-            } catch (err) {
-                console.error(err);
-                view.innerHTML = '<div style="color:#ef4444; text-align:center; padding:50px;">Failed to load PDF document.</div>';
-            }
+            window.open(resolvePath(guide.pdfUrl), '_blank');
         }
 
         async function renderPage() {
