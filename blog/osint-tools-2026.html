@@ -24,6 +24,15 @@
     <link rel="icon" sizes="32x32" type="image/png" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="stylesheet" href="/blog/article.css">
+    <noscript>
+        <style>
+            .vn-reveal {
+                opacity: 1 !important;
+                transform: none !important;
+                visibility: visible !important;
+            }
+        </style>
+    </noscript>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MHPEMGRWXH"></script>
     <script>
 window.dataLayer = window.dataLayer || [];
@@ -514,6 +523,13 @@ window.dataLayer = window.dataLayer || [];
         }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
 
         document.querySelectorAll('.vn-reveal').forEach(el => revealObserver.observe(el));
+
+        // Fallback for bots/renderers that do not trigger scroll/IntersectionObserver
+        setTimeout(() => {
+            document.querySelectorAll('.vn-reveal').forEach(el => {
+                el.classList.add('visible');
+            });
+        }, 1500);
 
         // ===== SOCIAL SHARE HANDLERS =====
         function shareArticle(platform) {
