@@ -399,6 +399,54 @@
             </div>
         </div>
 
+        <noscript>
+            <div class="noscript-flashcards" style="width: 100%; max-width: 600px; margin: 20px auto; padding: 20px; background: var(--vn-bg-white); border: 1px solid var(--vn-border); border-radius: 12px; text-align: left;">
+                <h2 style="font-family: var(--vn-font-display); color: var(--vn-accent); margin-bottom: 15px; font-size: 1.25rem;">HSRP Flashcards Study List</h2>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 15px; border-bottom: 1px dashed var(--vn-border); padding-bottom: 10px;">
+                        <strong>Q: What is the primary objective of the Hot Standby Router Protocol (HSRP)?</strong><br>
+                        <span style="color: var(--vn-ink-secondary);">A: To provide network redundancy for IP networks by ensuring transparent recovery from first-hop failures.</span>
+                    </li>
+                    <li style="margin-bottom: 15px; border-bottom: 1px dashed var(--vn-border); padding-bottom: 10px;">
+                        <strong>Q: How do routers participating in HSRP appear to hosts on a local area network?</strong><br>
+                        <span style="color: var(--vn-ink-secondary);">A: They appear as a single virtual router sharing a single IP and MAC address.</span>
+                    </li>
+                    <li style="margin-bottom: 15px; border-bottom: 1px dashed var(--vn-border); padding-bottom: 10px;">
+                        <strong>Q: What is the limitation of using Proxy ARP for router redundancy if a router fails?</strong><br>
+                        <span style="color: var(--vn-ink-secondary);">A: The host continues sending packets to the failed router's MAC address until the ARP entry times out or the host reboots.</span>
+                    </li>
+                    <li style="margin-bottom: 15px; border-bottom: 1px dashed var(--vn-border); padding-bottom: 10px;">
+                        <strong>Q: Why is running dynamic routing protocols like RIP on every host often impractical?</strong><br>
+                        <span style="color: var(--vn-ink-secondary);">A: It involves high administrative and processing overhead, security issues, and lack of protocol support on all platforms.</span>
+                    </li>
+                    <li style="margin-bottom: 15px; border-bottom: 1px dashed var(--vn-border); padding-bottom: 10px;">
+                        <strong>Q: What is the main drawback of using RIP for host-level router discovery?</strong><br>
+                        <span style="color: var(--vn-ink-secondary);">A: It is slow to adapt to changes in the network topology.</span>
+                    </li>
+                    <li style="margin-bottom: 15px; border-bottom: 1px dashed var(--vn-border); padding-bottom: 10px;">
+                        <strong>Q: In ICMP Router Discovery Protocol (IRDP), how does a host detect that its configured router is unavailable?</strong><br>
+                        <span style="color: var(--vn-ink-secondary);">A: The host stops receiving periodic hello multicast messages from the router.</span>
+                    </li>
+                    <li style="margin-bottom: 15px; border-bottom: 1px dashed var(--vn-border); padding-bottom: 10px;">
+                        <strong>Q: Why is the default IRDP configuration unsuitable for rapid first-hop failure detection?</strong><br>
+                        <span style="color: var(--vn-ink-secondary);">A: The default advertisement rate is only every 7 to 10 minutes, with a 30-minute lifetime.</span>
+                    </li>
+                    <li style="margin-bottom: 15px; border-bottom: 1px dashed var(--vn-border); padding-bottom: 10px;">
+                        <strong>Q: What is the limitation of DHCP regarding router redundancy?</strong><br>
+                        <span style="color: var(--vn-ink-secondary);">A: DHCP provides a default gateway but lacks a mechanism to switch to an alternative if that gateway fails.</span>
+                    </li>
+                    <li style="margin-bottom: 15px; border-bottom: 1px dashed var(--vn-border); padding-bottom: 10px;">
+                        <strong>Q: In an HSRP group, what is the role of the 'Active' router?</strong><br>
+                        <span style="color: var(--vn-ink-secondary);">A: It is responsible for forwarding packets sent by hosts to the virtual router.</span>
+                    </li>
+                    <li style="margin-bottom: 15px; border-bottom: 1px dashed var(--vn-border); padding-bottom: 10px;">
+                        <strong>Q: What happens to the 'Standby' router if the 'Active' router fails?</strong><br>
+                        <span style="color: var(--vn-ink-secondary);">A: The Standby router assumes the packet-forwarding duties of the Active router.</span>
+                    </li>
+                </ul>
+            </div>
+        </noscript>
+
         <div class="controls">
             <!-- Previous Button -->
             <button class="btn-control" id="prevBtn" aria-label="Previous Card">

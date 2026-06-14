@@ -1680,6 +1680,15 @@
             }
         }
     </style>
+    <noscript>
+        <style>
+            .vn-reveal {
+                opacity: 1 !important;
+                transform: none !important;
+                visibility: visible !important;
+            }
+        </style>
+    </noscript>
 </head>
 
 <body>
@@ -2591,6 +2600,13 @@
         }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
         document.querySelectorAll('.vn-reveal').forEach(el => revealObserver.observe(el));
+
+        // Fallback for bots/renderers that do not trigger scroll/IntersectionObserver
+        setTimeout(() => {
+            document.querySelectorAll('.vn-reveal').forEach(el => {
+                el.classList.add('visible');
+            });
+        }, 1500);
 
         // ===== FAQ ACCORDION =====
         document.querySelectorAll('.vn-faq-question').forEach(btn => {

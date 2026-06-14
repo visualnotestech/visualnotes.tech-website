@@ -317,6 +317,15 @@
             }
         }
     </style>
+    <noscript>
+        <style>
+            .vn-reveal {
+                opacity: 1 !important;
+                transform: none !important;
+                visibility: visible !important;
+            }
+        </style>
+    </noscript>
 </head>
 
 <body>
@@ -729,6 +738,13 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.vn-reveal').forEach(el => revealObserver.observe(el));
+
+            // Fallback for bots/renderers that do not trigger scroll/IntersectionObserver
+            setTimeout(() => {
+                document.querySelectorAll('.vn-reveal').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 1500);
             
             // Restore theme preference
             const savedTheme = localStorage.getItem('darkMode');

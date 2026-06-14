@@ -46,6 +46,126 @@
   ],
   "redirects": [
     {
+      "source": "/privacy-policy.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "visualnotes.tech"
+        }
+      ],
+      "destination": "https://www.visualnotes.tech/privacy",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy-policy",
+      "has": [
+        {
+          "type": "host",
+          "value": "visualnotes.tech"
+        }
+      ],
+      "destination": "https://www.visualnotes.tech/privacy",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy-policy.html",
+      "destination": "/privacy",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy",
+      "statusCode": 301
+    },
+    {
+      "source": "/index.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "visualnotes.tech"
+        }
+      ],
+      "destination": "https://www.visualnotes.tech/",
+      "statusCode": 301
+    },
+    {
+      "source": "/index",
+      "has": [
+        {
+          "type": "host",
+          "value": "visualnotes.tech"
+        }
+      ],
+      "destination": "https://www.visualnotes.tech/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/index.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "visualnotes.tech"
+        }
+      ],
+      "destination": "https://www.visualnotes.tech/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/index",
+      "has": [
+        {
+          "type": "host",
+          "value": "visualnotes.tech"
+        }
+      ],
+      "destination": "https://www.visualnotes.tech/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/guides/index.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "visualnotes.tech"
+        }
+      ],
+      "destination": "https://www.visualnotes.tech/guides",
+      "statusCode": 301
+    },
+    {
+      "source": "/guides/index",
+      "has": [
+        {
+          "type": "host",
+          "value": "visualnotes.tech"
+        }
+      ],
+      "destination": "https://www.visualnotes.tech/guides",
+      "statusCode": 301
+    },
+    {
+      "source": "/(.*)\\.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "visualnotes.tech"
+        }
+      ],
+      "destination": "https://www.visualnotes.tech/$1",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "visualnotes.tech"
+        }
+      ],
+      "destination": "https://www.visualnotes.tech/:path*",
+      "statusCode": 301
+    },
+    {
       "source": "/index.html",
       "destination": "/",
       "statusCode": 301
