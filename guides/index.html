@@ -1811,7 +1811,12 @@
             try {
                 await loadPdfJs();
                 view.innerHTML = '<div style="color:white; text-align:center; padding:50px;">Loading document...</div>';
-                pdfDoc = await pdfjsLib.getDocument(resolvePath(guide.pdfUrl)).promise;
+                pdfDoc = await pdfjsLib.getDocument({
+                    url: resolvePath(guide.pdfUrl),
+                    disableAutoFetch: true,
+                    disableStream: false,
+                    disableRange: false
+                }).promise;
                 zoom = 1.0; currentPage = 1;
                 renderPage();
                 document.getElementById('zoomLevel').textContent = '100%';
