@@ -6,6 +6,14 @@
 // ===== VISUAL NOTES DATA =====
 const visualNotes = [
     {
+        id: "how-to-investigate-a-domain-osint-workflow",
+        title: "How to Investigate Any Domain: A Practical OSINT Workflow",
+        description: "A step-by-step domain OSINT methodology covering WHOIS, DNS, subdomain enumeration, historical recon, and breach correlation.",
+        image: "blog/images/how-to-investigate-a-domain-osint-workflow.webp",
+        tags: ["OSINT", "Security", "Infrastructure"],
+        dateAdded: "2026-06-27"
+    },
+    {
         id: "ospf-timer-lab",
         title: "OSPF Timer Lab: Hello, Dead & Adjacency Rules",
         description: "Visual breakdown of OSPF Hello & Dead intervals, timer verification, and troubleshooting adjacency rules.",
