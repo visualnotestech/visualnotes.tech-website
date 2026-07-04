@@ -107,7 +107,7 @@
           "value": "visualnotes.tech"
         }
       ],
-      "destination": "https://www.visualnotes.tech/blog",
+      "destination": "https://www.visualnotes.tech/blog/",
       "statusCode": 301
     },
     {
@@ -118,7 +118,7 @@
           "value": "visualnotes.tech"
         }
       ],
-      "destination": "https://www.visualnotes.tech/blog",
+      "destination": "https://www.visualnotes.tech/blog/",
       "statusCode": 301
     },
     {
@@ -129,7 +129,7 @@
           "value": "visualnotes.tech"
         }
       ],
-      "destination": "https://www.visualnotes.tech/guides",
+      "destination": "https://www.visualnotes.tech/guides/",
       "statusCode": 301
     },
     {
@@ -140,7 +140,7 @@
           "value": "visualnotes.tech"
         }
       ],
-      "destination": "https://www.visualnotes.tech/guides",
+      "destination": "https://www.visualnotes.tech/guides/",
       "statusCode": 301
     },
     {
@@ -177,22 +177,32 @@
     },
     {
       "source": "/blog/index.html",
-      "destination": "/blog",
+      "destination": "/blog/",
       "statusCode": 301
     },
     {
       "source": "/blog/index",
-      "destination": "/blog",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog/",
       "statusCode": 301
     },
     {
       "source": "/guides/index.html",
-      "destination": "/guides",
+      "destination": "/guides/",
       "statusCode": 301
     },
     {
       "source": "/guides/index",
-      "destination": "/guides",
+      "destination": "/guides/",
+      "statusCode": 301
+    },
+    {
+      "source": "/guides",
+      "destination": "/guides/",
       "statusCode": 301
     },
     {
