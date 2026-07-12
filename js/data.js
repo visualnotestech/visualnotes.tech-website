@@ -6,6 +6,14 @@
 // ===== VISUAL NOTES DATA =====
 const visualNotes = [
     {
+        id: "smyrtos-tanker-sanctions-seizure-maritime-osint",
+        title: "Chasing the Shadow Fleet: A Beginner-Friendly Maritime OSINT Investigation",
+        description: "A step-by-step maritime OSINT investigation into the tanker Smyrtos, seized in the English Channel in June 2026. Fully verified with VesselFinder, MarineTraffic, Equasis, and Copernicus satellite data.",
+        image: "blog/images/smyrtos/hero-image.png",
+        tags: ["OSINT", "Security", "Investigation", "Maritime"],
+        dateAdded: "2026-07-12"
+    },
+    {
         id: "how-to-investigate-a-domain-osint-workflow",
         title: "How to Investigate Any Domain: A Practical OSINT Workflow",
         description: "A step-by-step domain OSINT methodology covering WHOIS, DNS, subdomain enumeration, historical recon, and breach correlation.",
