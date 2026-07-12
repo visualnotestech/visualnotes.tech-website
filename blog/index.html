@@ -495,7 +495,7 @@
         <section class="vn-masthead vn-reveal">
             <h1>📝 The Journal</h1>
             <p class="vn-subtitle">In-depth guides and study notes on infrastructure, cloud, security, and open-source intelligence.</p>
-            <span class="vn-counter">10 articles across 4 topics</span>
+            <span class="vn-counter">11 articles across 4 topics</span>
         </section>
 
         <!-- ============================================ -->
@@ -503,8 +503,8 @@
         <!-- ============================================ -->
         <section class="vn-filters-section vn-reveal">
             <div class="vn-filter-pills">
-                <button class="vn-filter-pill active" data-filter="all">All (11)</button>
-                <button class="vn-filter-pill" data-filter="osint">OSINT (6)</button>
+                <button class="vn-filter-pill active" data-filter="all">All (12)</button>
+                <button class="vn-filter-pill" data-filter="osint">OSINT (7)</button>
                 <button class="vn-filter-pill" data-filter="security">Security (3)</button>
                 <button class="vn-filter-pill" data-filter="infrastructure">Infrastructure (1)</button>
                 <button class="vn-filter-pill" data-filter="cloud">Cloud (1)</button>
@@ -521,6 +521,23 @@
             </div>
 
             <div class="vn-articles-grid series-grid">
+                <!-- Smyrtos Tanker OSINT Case Study -->
+                <a href="/blog/smyrtos-tanker-sanctions-seizure-maritime-osint" class="vn-article-card" data-category="osint">
+                    <div class="vn-article-thumb">
+                        <span class="vn-series-badge-floating">Case Study</span>
+                        <img src="/blog/images/smyrtos/hero-image.png" alt="Smyrtos Tanker Sanctions Seizure Case Study" loading="lazy">
+                    </div>
+                    <div class="vn-article-body">
+                        <span class="guide-category">OSINT · Investigation</span>
+                        <h3 class="guide-title">Chasing the Shadow Fleet: A Beginner-Friendly Maritime OSINT Investigation</h3>
+                        <p class="guide-desc">A step-by-step maritime OSINT investigation into the tanker Smyrtos, seized in the English Channel in June 2026. Fully verified with VesselFinder, MarineTraffic, Equasis, and Copernicus satellite data.</p>
+                        <div class="guide-footer">
+                            <span class="guide-meta">12 min read</span>
+                            <span class="btn-read">READ NOW</span>
+                        </div>
+                    </div>
+                </a>
+
                 <!-- Domain OSINT Workflow -->
                 <a href="/blog/how-to-investigate-a-domain-osint-workflow" class="vn-article-card" data-category="osint">
                     <div class="vn-article-thumb">
@@ -1038,7 +1055,7 @@
         });
 
         // ===== EMAIL INTEGRATION =====
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyt3yXiow0mYGHwfLNcl_k1lH6s6DU51P8_i50DqqYZxcONrSTX_gQdtxFO4tOQ0sMMdA/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwYxzHdMiTy0Q8O-dURdyERoag-iak2lJuQ3TEv6gL57txAGe--VItTvGfkXzjv9tOmPA/exec';
 
         async function handleEmailSubmit(e) {
             e.preventDefault();

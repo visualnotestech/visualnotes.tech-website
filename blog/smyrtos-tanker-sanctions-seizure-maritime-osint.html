@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#365FF0">
+    <title>Chasing the Shadow Fleet: A Beginner-Friendly Maritime OSINT Investigation | VisualNotes</title>
+    <meta name="description" content="A beginner-friendly step-by-step guide to tracking shadow fleet vessels for free. Fully verified with VesselFinder, MarineTraffic, Equasis, and Copernicus satellite data.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="Abhiney Sharma">
+    <link rel="canonical" href="https://www.visualnotes.tech/blog/smyrtos-tanker-sanctions-seizure-maritime-osint">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.visualnotes.tech/blog/smyrtos-tanker-sanctions-seizure-maritime-osint">
+    <meta property="og:title" content="Chasing the Shadow Fleet: A Beginner-Friendly Maritime OSINT Investigation | VisualNotes">
+    <meta property="og:description" content="A beginner-friendly step-by-step guide to tracking shadow fleet vessels for free. Fully verified with VesselFinder, MarineTraffic, Equasis, and Copernicus satellite data.">
+    <meta property="og:image" content="https://www.visualnotes.tech/blog/images/smyrtos/hero-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="627">
+    <meta property="og:image:alt" content="Visual workflow diagram of the Smyrtos maritime OSINT sanctions investigation.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Chasing the Shadow Fleet: A Beginner-Friendly Maritime OSINT Investigation | VisualNotes">
+    <meta name="twitter:description" content="A beginner-friendly step-by-step guide to tracking shadow fleet vessels for free. Fully verified with VesselFinder, MarineTraffic, Equasis, and Copernicus satellite data.">
+    <meta name="twitter:image" content="https://www.visualnotes.tech/blog/images/smyrtos/hero-image.png">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" sizes="32x32" type="image/png" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/dist/tabler-icons.min.css">
+    <link rel="stylesheet" href="/blog/article.css">
+    <noscript>
+        <style>
+            .vn-reveal {
+                opacity: 1 !important;
+                transform: none !important;
+                visibility: visible !important;
+            }
+        </style>
+    </noscript>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MHPEMGRWXH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-MHPEMGRWXH', {
+            'anonymize_ip': true,
+            'cookie_flags': 'SameSite=None;Secure'
+        });
+    </script>
+    
+    <style>
+        /* AEO/GEO Answer Card Styles */
+        .vn-aeo-summary {
+            background: var(--vn-bg-white);
+            border: 1px solid var(--vn-border);
+            border-radius: var(--vn-radius);
+            padding: 20px;
+            margin: 24px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border-left: 4px solid var(--vn-accent);
+        }
+        .aeo-summary-title {
+            font-family: var(--vn-font-display);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--vn-accent);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .aeo-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        .aeo-summary-item {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: var(--vn-ink-secondary);
+            line-height: 1.5;
+        }
+        .aeo-summary-item strong {
+            color: var(--vn-ink);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* Engaging Table of Contents styling */
+        .toc-list {
+            position: relative;
+            padding-left: 12px;
+            list-style: none !important;
+        }
+        .toc-list::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 4px;
+            bottom: 4px;
+            width: 2px;
+            background: var(--vn-border);
+            border-radius: 1px;
+        }
+        .toc-link {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 4px 0 4px 8px;
+            border-left: none !important;
+            font-size: 13px;
+            color: var(--vn-ink-secondary);
+            text-decoration: none;
+            display: block;
+        }
+        .toc-link::before {
+            content: '';
+            position: absolute;
+            left: -16px;
+            top: 50%;
+            transform: translateY(-50%) scale(0);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--vn-accent);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .toc-link:hover {
+            color: var(--vn-accent);
+            transform: translateX(4px);
+        }
+        .toc-link.active {
+            color: var(--vn-accent);
+            font-weight: 700;
+        }
+        .toc-link.active::before {
+            transform: translateY(-50%) scale(1);
+        }
+
+        /* Tool Links Grid Styling */
+        .vn-tool-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 10px;
+            margin: 12px 0 24px 0;
+        }
+        .vn-tool-label {
+            grid-column: 1 / -1;
+            font-family: var(--vn-font-display);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--vn-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+        .vn-tool-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--vn-bg-white);
+            border: 1px solid var(--vn-border);
+            border-radius: var(--vn-radius);
+            padding: 8px 12px;
+            font-size: 12.5px;
+            color: var(--vn-ink);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: var(--vn-font-display);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.01);
+        }
+        .vn-tool-link:hover {
+            border-color: var(--vn-accent);
+            background: var(--vn-accent-subtle);
+            color: var(--vn-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(224, 122, 47, 0.04);
+        }
+        .vn-tool-link i {
+            font-size: 10px;
+            color: var(--vn-accent);
+        }
+
+        /* Image Display Cards */
+        .vn-image-wrap {
+            margin: 28px 0;
+            background: var(--vn-bg-white);
+            border: 1px solid var(--vn-border);
+            border-radius: var(--vn-radius);
+            padding: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.01);
+        }
+        .vn-image-wrap img {
+            border-radius: calc(var(--vn-radius) - 4px);
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+        .image-caption {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 12.5px;
+            color: var(--vn-ink-secondary);
+            margin-top: 10px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* Simple Numbered FAQ layout */
+        .vn-faq-numbered {
+            padding-left: 20px;
+            margin: 24px 0;
+            font-family: 'Inter', sans-serif;
+        }
+        .vn-faq-numbered li {
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .vn-faq-numbered li strong {
+            font-family: var(--vn-font-display);
+            font-size: 14px;
+            color: var(--vn-ink);
+            display: block;
+            margin-bottom: 4px;
+        }
+        .vn-faq-numbered li p {
+            font-size: 13.5px;
+            color: var(--vn-ink-secondary);
+            margin: 0;
+        }
+
+        /* Markdown-style Tables */
+        .vn-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+        }
+        .vn-body th, .vn-body td {
+            border: 1px solid var(--vn-border);
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .vn-body th {
+            background: var(--vn-bg-white);
+            color: var(--vn-ink);
+            font-family: var(--vn-font-display);
+            font-weight: 700;
+        }
+        .vn-body tr:nth-child(even) td {
+            background: var(--vn-bg-white);
+        }
+
+        /* Credit box styling */
+        .vn-inspiration-box {
+            background: var(--vn-accent-subtle);
+            border: 1px dashed var(--vn-accent);
+            border-radius: var(--vn-radius);
+            padding: 16px;
+            margin: 32px 0 16px 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: var(--vn-ink-secondary);
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .vn-inspiration-box i {
+            font-size: 20px;
+            color: var(--vn-accent);
+        }
+        .vn-inspiration-box a {
+            color: var(--vn-accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .vn-inspiration-box a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Chasing the Shadow Fleet: A Beginner-Friendly Maritime OSINT Investigation",
+        "description": "A step-by-step maritime OSINT investigation into the tanker Smyrtos, seized in the English Channel in June 2026, using free ship tracking and ownership lookups.",
+        "author": {
+            "@type": "Person",
+            "name": "Abhiney Sharma",
+            "url": "https://www.linkedin.com/in/abhineysharma/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "VisualNotes",
+            "url": "https://www.visualnotes.tech",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.visualnotes.tech/logo.webp"
+            }
+        },
+        "datePublished": "2026-07-12",
+        "dateModified": "2026-07-12",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.visualnotes.tech/blog/smyrtos-tanker-sanctions-seizure-maritime-osint"
+        },
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.visualnotes.tech/blog/images/smyrtos/hero-image.png",
+            "width": 1200,
+            "height": 627
+        },
+        "keywords": [
+            "Maritime OSINT tracking",
+            "Smyrtos tanker",
+            "shadow fleet OSINT case study",
+            "VesselFinder IMO lookup",
+            "MarineTraffic AIS tracking",
+            "Equasis ownership lookup",
+            "OpenSanctions vessel search",
+            "Sentinel-2 Copernicus ship tracking",
+            "UK sanctions tanker seizure",
+            "how to track a ship for free"
+        ],
+        "articleSection": "OSINT Investigation",
+        "inLanguage": "en"
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is the Smyrtos tanker?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The Smyrtos is a Crude Oil Tanker built in 2009 (IMO 9389100), boarded by UK Royal Marine Commandos in the English Channel on June 14, 2026, on suspicion of carrying sanctioned Russian oil."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is the Smyrtos officially sanctioned?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Public OpenSanctions records tied to IMO 9389100 show designations from the EU, the UK, Switzerland, Ukraine, and Canada between July 2025 and February 2026."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Who owns the Smyrtos?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "As of February 2025, Daira Shipping Ltd (Seychelles) was the owner with Crest Maritime Pte Ltd (Singapore) as ISM manager. As of September 2025, Equasis records show Zhao Yao Shipping Ltd (Hong Kong) holding both the commercial management and registered ownership roles. As of May 2026, the ISM Manager is listed as Unknown."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What happened to the ship's captain?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Captain Ajay Pant, 38, was charged by the UK Crown Prosecution Service on June 15, 2026, with breaching Russian sanctions. He is presumed innocent until proven guilty."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I verify any of this myself for free?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. All data points in this study can be validated using free public platforms like VesselFinder, MarineTraffic, OpenSanctions, Equasis, and the Copernicus Browser Dataspace."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <script>(function(){if(localStorage.getItem('darkMode')==='true'){document.body.classList.add('dark-mode');}})();</script>
+    
+    <!-- ============================================ -->
+    <!-- STICKY NAVIGATION HEADER                     -->
+    <!-- ============================================ -->
+    <header class="vn-header" id="vnHeader">
+        <nav class="vn-nav">
+            <div class="vn-logo-wrap">
+                <a href="/" class="vn-logo">VisualNotes</a>
+                <span class="vn-logo-tagline">Learn visually. Think Clearly.</span>
+            </div>
+            <div class="vn-nav-links">
+                <a href="/">Home</a>
+                <a href="/guides">Guides</a>
+                <a href="/blog">Blog</a>
+                <a href="/about">About</a>
+                <a href="/faq">FAQ</a>
+                <a href="#subscribe" class="vn-btn-subscribe">Subscribe</a>
+            </div>
+            <button class="vn-hamburger" id="vnHamburger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="vn-mobile-nav" id="vnMobileNav">
+        <a href="/" onclick="closeMobileNav()">Home</a>
+        <a href="/guides" onclick="closeMobileNav()">Guides</a>
+        <a href="/blog" onclick="closeMobileNav()">Blog</a>
+        <a href="/about" onclick="closeMobileNav()">About</a>
+        <a href="/faq" onclick="closeMobileNav()">FAQ</a>
+        <a href="#subscribe" class="vn-btn-subscribe" onclick="closeMobileNav()">Subscribe</a>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- MAIN 3-COLUMN READER GRID                    -->
+    <!-- ============================================ -->
+    <div class="vn-layout-wrapper">
+        <!-- Left Sidebar: Table of Contents -->
+        <aside class="vn-left-sidebar">
+            <div class="toc-title">On this page</div>
+            <ul class="toc-list">
+                <li><a href="#step-1-news" class="toc-link">1. News &amp; Background</a></li>
+                <li><a href="#step-2-identity" class="toc-link">2. Vessel Identity</a></li>
+                <li><a href="#step-3-sanctions" class="toc-link">3. Sanctions Status</a></li>
+                <li><a href="#step-4-tracking" class="toc-link">4. AIS Tracking Data</a></li>
+                <li><a href="#step-5-ownership" class="toc-link">5. Ownership Timeline</a></li>
+                <li><a href="#step-6-satellite" class="toc-link">6. Satellite Check</a></li>
+                <li><a href="#evidence-log" class="toc-link">Evidence Log</a></li>
+                <li><a href="#findings-summary" class="toc-link">Key Findings</a></li>
+                <li><a href="#free-tools-table" class="toc-link">Free Tools Directory</a></li>
+                <li><a href="#takeaways" class="toc-link">Takeaways &amp; FAQ</a></li>
+            </ul>
+        </aside>
+
+        <!-- Center Column: Main Content -->
+        <main class="vn-main-content">
+            <article class="vn-article vn-reveal">
+                <!-- Article Header -->
+                <div class="vn-article-header">
+                    <span class="vn-category-pill">OSINT · Investigation</span>
+                    <h1 class="vn-title">Chasing the Shadow Fleet: A Beginner-Friendly Maritime OSINT Investigation</h1>
+                    <div class="vn-byline">
+                        <div class="vn-avatar">AS</div>
+                        <div class="vn-byline-text">
+                            <div class="vn-byline-name">
+                                <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank">Abhiney Sharma</a>
+                            </div>
+                            <div class="vn-byline-date">July 2026 &nbsp;·&nbsp; 12 min read</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image (Investigation Workflow Diagram) -->
+                <img src="/blog/images/smyrtos/hero-image.png" class="article-image" alt="Smyrtos Tanker Sanctions Seizure OSINT Investigation Workflow Diagram">
+
+                <!-- GEO/AEO Quick Summary Block -->
+                <div class="vn-aeo-summary">
+                    <div class="aeo-summary-title">⚡ Quick Case Overview (AI Overview Summary)</div>
+                    <div class="aeo-summary-grid">
+                        <div class="aeo-summary-item">
+                            <strong>The Interception</strong>
+                            The tanker Smyrtos (IMO 9389100) was boarded by UK Royal Marine Commandos in the English Channel on June 14, 2026, suspected of carrying sanctioned Russian oil.
+                        </div>
+                        <div class="aeo-summary-item">
+                            <strong>Sanctions Registry</strong>
+                            OpenSanctions records confirm designations by the EU, UK, Switzerland, Canada, and Ukraine between July 2025 and February 2026.
+                        </div>
+                        <div class="aeo-summary-item">
+                            <strong>Ownership Timeline</strong>
+                            Transitioned from Daira Shipping (Seychelles) to Zhao Yao Shipping (Hong Kong) in Sept 2025. Technical management was listed as "Unknown" by May 2026.
+                        </div>
+                        <div class="aeo-summary-item">
+                            <strong>Legal Status</strong>
+                            Captain Ajay Pant was charged by the UK Crown Prosecution Service on June 15, 2026, for sanctions breaches. He is presumed innocent until proven guilty.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Legal Notice Disclaimer -->
+                <div class="vn-disclaimer">
+                    <strong>⚠ Legal disclaimer &amp; boundaries</strong>
+                    This case study is an educational OSINT walkthrough. All ownership, flag, and sanctions facts are sourced to named public registries and official databases. Ajay Pant has been charged, not convicted; he is legally presumed innocent. Corporate entities are named because they appear in public records. Snapshots are correct as of July 12, 2026, and do not constitute legal or financial advice.
+                </div>
+
+                <!-- Article Body -->
+                <div class="vn-body">
+                    <p>On June 14, 2026, a headline moved quickly across international news: UK Royal Marine Commandos had boarded a tanker in the English Channel. The ship was the <strong>Smyrtos</strong>, and the UK Ministry of Defence described the operation as the first UK-led interdiction of its kind against a vessel suspected of belonging to Russia's sanctions-busting shadow fleet.</p>
+
+                    <p>This case study reconstructs that story using only free, publicly accessible tools, cross-checking every claim against at least one independent source. Screenshots taken during this research are integrated directly inside this walkthrough as a numbered evidence log (Image 1 through Image 20) with every visible data point transcribed.</p>
+
+                    <p>Below is the complete step-by-step ship tracking workflow that a beginner can use to replicate this investigation for free.</p>
+
+                    <h2 id="step-1-news">Step 1: Starting From the News (Primary Reporting)</h2>
+                    
+                    <p>Every open-source investigation starts with a spark of primary reporting. In this case, international news coverage and official government announcements provided the core anchor facts: vessel name, location, and legal action.</p>
+
+                    <div class="vn-image-wrap">
+                        <img src="/blog/images/smyrtos/al-jazeera-news-seizure.png" alt="Al Jazeera news article covering the seizure of the shadow fleet tanker Smyrtos" loading="lazy">
+                        <span class="image-caption"><strong>Image 20:</strong> Al Jazeera reporting on June 14, 2026, announcing the interception of the Smyrtos by UK Royal Marine Commandos in the English Channel. Actual report: <a href="https://www.aljazeera.com/news/2026/6/14/uk-boards-and-seizes-russian-shadow-fleet-shadow-fleet-tanker-in-english-channel" target="_blank">Al Jazeera News</a></span>
+                    </div>
+
+                    <p>To cross-reference the news reporting, the UK Prime Minister's office released a public statement confirming that the operation was directly sanctioned under national security provisions. Public reaction was immediate, indicating high visibility for the operation.</p>
+
+                    <div class="vn-image-wrap">
+                        <img src="/blog/images/smyrtos/prime-minister-statement.png" alt="Prime Minister Keir Starmer statement on X about interception of shadow fleet oil tanker" loading="lazy">
+                        <span class="image-caption"><strong>Image 19:</strong> Official statement on X by Prime Minister Keir Starmer, confirming he directed the armed forces to intercept the vessel. Actual post: <a href="https://x.com/Keir_Starmer" target="_blank">Keir Starmer Profile</a></span>
+                    </div>
+
+                    <p>By June 15, 2026, the case escalated from an operational security event to a formal criminal prosecution. The UK Crown Prosecution Service (CPS) announced official charges against the ship's master, bringing the incident into the legal system.</p>
+
+                    <div class="vn-image-wrap">
+                        <img src="/blog/images/smyrtos/cps-captain-charged.png" alt="Crown Prosecution Service press release about Captain Ajay Pant charged over sanctions breach" loading="lazy">
+                        <span class="image-caption"><strong>Image 18:</strong> CPS press release confirming Captain Ajay Pant was charged following a National Crime Agency (NCA) investigation. Actual release: <a href="https://www.cps.gov.uk/cps/news/captain-charged-over-sanctions-breach-russian-shadow-oil-tanker-operation" target="_blank">CPS Release</a></span>
+                    </div>
+
+                    <p>At this stage, we have established a baseline of facts: the ship is the <strong>MV Smyrtos</strong>, the captain is <strong>Ajay Pant</strong>, and the charging authority is the UK Crown Prosecution Service. Now we begin the OSINT lookup steps to verify the ship's underlying records.</p>
+
+                    <h2 id="step-2-identity">Step 2: Establishing the Ship's Identity (Google and VesselFinder)</h2>
+                    
+                    <p>A ship's name can be painted over or changed in days. To track a vessel reliably, beginners must locate its permanent identifiers: the <strong>IMO (International Maritime Organization) Number</strong> and the <strong>MMSI (Maritime Mobile Service Identity)</strong>. An initial search query was used to grab these identifiers from indexing engines.</p>
+
+                    <div class="vn-image-wrap">
+                        <img src="/blog/images/smyrtos/google-search-chrome.png" alt="Google Chrome browser search for Smyrtos tanker" loading="lazy">
+                        <span class="image-caption"><strong>Image 17:</strong> Initial Google search query page showing VesselFinder listings index details. Actual query: <a href="https://www.google.com/search?q=Smyrtos+tanker+IMO+9389100" target="_blank">Google Search Lookup</a></span>
+                    </div>
+
+                    <div class="vn-image-wrap">
+                        <img src="/blog/images/smyrtos/google-search-snippet.png" alt="Google Search result snippet displaying IMO 9389100 and MMSI 613411302" loading="lazy">
+                        <span class="image-caption"><strong>Image 16:</strong> Snippet search result highlighting the vessel's key specs: IMO 9389100, MMSI 613411302, and Cameroon flag status.</span>
+                    </div>
+
+                    <p>With the IMO number (<strong>9389100</strong>) in hand, we cross-referenced the global VesselFinder database to check the vessel's current registered identity. This confirmed that the IMO points exclusively to the <strong>Smyrtos</strong>, a Crude Oil Tanker built in 2009 with a gross tonnage of 58,667 tonnes.</p>
+
+                    <div class="vn-image-wrap">
+                        <img src="/blog/images/smyrtos/vesselfinder-search-result.png" alt="VesselFinder database search matching IMO 9389100 to SMYRTOS" loading="lazy">
+                        <span class="image-caption"><strong>Image 11:</strong> VesselFinder database search query confirming the IMO anchors a single matching vessel: SMYRTOS. Actual database search: <a href="https://www.vesselfinder.com/vessels?name=9389100" target="_blank">VesselFinder Search</a></span>
+                    </div>
+
+                    <div class="vn-tool-links">
+                        <span class="vn-tool-label">Free Search &amp; Registry Tools:</span>
+                        <a href="https://www.vesselfinder.com" target="_blank" class="vn-tool-link">VesselFinder <i class="ti ti-external-link"></i></a>
+                        <a href="https://www.google.com" target="_blank" class="vn-tool-link">Google Search <i class="ti ti-external-link"></i></a>
+                    </div>
+
+                    <h2 id="step-3-sanctions">Step 3: Checking the Sanctions Claim (OpenSanctions)</h2>
+                    
+                    <p>To verify the MoD's claim that the Smyrtos was a sanctioned entity, we ran the IMO through <strong>OpenSanctions</strong>, a public database that aggregates sanctions lists across multiple jurisdictions.</p>
+
+                    <p>The query returned a highly comprehensive profile showing that the vessel is flagged across at least six major sanctions datasets. The specs match our VesselFinder search:</p>
+
+                    <div class="vn-image-wrap">
+                        <img src="/blog/images/smyrtos/opensanctions-vessel-details.png" alt="OpenSanctions vessel details overview page" loading="lazy">
+                        <span class="image-caption"><strong>Image 6:</strong> OpenSanctions specs overview listing vessel gross registered tonnage, MMSI details, and alternate flag histories. Actual profile: <a href="https://www.opensanctions.org/entities/NK-9xzgfZhGrbEopZfaUG3ePM/" target="_blank">OpenSanctions Record</a></span>
+                    </div>
+
+                    <div class="vn-image-wrap">
+                        <img src="/blog/images/smyrtos/opensanctions-specs-flag.png" alt="OpenSanctions flag history for IMO 9389100" loading="lazy">
+                        <span class="image-caption"><strong>Image 8:</strong> OpenSanctions historical flag indicators showing previous registries including Panama, Malta, Greece, and Gambia.</span>
+                    </div>
+
+                    <div class="vn-image-wrap">
+                        <img src="/blog/images/smyrtos/opensanctions-narrative-part1.png" alt="OpenSanctions narrative description timeline details" loading="lazy">
+                        <span class="image-caption"><strong>Image 9:</strong> Narrative timeline pulled from public database detailing the ship's Russian oil transit runs from Kozmino.</span>
+                    </div>
+
+                    <p>The sanctions tags show designations spanning multiple international regulatory bodies. This indicates that the vessel has been systematically blacklisted globally rather than facing a single national embargo.</p>
+
+                    <div class="vn-image-wrap">
+                        <img src="/blog/images/smyrtos/opensanctions-topics-list.png" alt="OpenSanctions topics list showing Sanctioned Entity status" loading="lazy">
+                        <span class="image-caption"><strong>Image 7:</strong> List of sanctions topics in OpenSanctions: Canada Consolidated Sanctions, UK FCDO, Switzerland SECO, and EU Sanctions Map.</span>
+                    </div>
+
+                    <div class="vn-image-wrap">
+                        <img src="/blog/images/smyrtos/opensanctions-description-timeline.png" alt="OpenSanctions description detailing dates of sanctions" loading="lazy">
+                        <span class="image-caption"><strong>Image 5:</strong> Chronology of sanctions: EU (July 2025), Switzerland (Aug 2025), UK (Oct 2025), Ukraine (Dec 2025), Canada (Feb 2026).</span>
+                    </div>
+
+                    <div class="vn-tool-links">
+                        <span class="vn-tool-label">Free Sanctions Tools:</span>
+                        <a href="https://www.opensanctions.org" target="_blank" class="vn-tool-link">OpenSanctions <i class="ti ti-external-link"></i></a>
+                    </div>
+
+                    <h2 id="step-4-tracking">Step 4: Checking Live Tracking Data (VesselFinder vs MarineTraffic)</h2>
+                    
+                    <p>To verify the ship's recent voyages and current status, we cross-referenced AIS (Automatic Identification System) tracking data across two independent, free-tier platforms: <strong>VesselFinder</strong> and <strong>MarineTraffic</strong>.</p>
+
+                    <div class="vn-image-wrap">
+                        <img src="/blog/images/smyrtos/vesselfinder-ship-details.png" alt="VesselFinder vessel detail card for SMYRTOS" loading="lazy">
+                        <span class="image-caption"><strong>Image 10:</strong> VesselFinder details showing the ship's status as 'At anchor' off the UK coast, with its last port listed as Ust-Luga, Russia. Actual details page: <a href="https://www.vesselfinder.com/vessels/details/9389100" target="_blank">VesselFinder Details</a></span>
+                    </div>
+
+                    <p>Next, we queried MarineTraffic to verify these parameters. Both platforms agreed on the vessel's current "At anchor" status, draught (14.6 meters), and heading (158-159 degrees), but revealed a slight mismatch on the departure timestamp from Russia.</p>
+
+                    <div class="vn-image-wrap">
+                        <img src="/blog/images/smyrtos/marinetraffic-vessel-details.png" alt="MarineTraffic vessel detail page showing AIS data" loading="lazy">
+                        <span class="image-caption"><strong>Image 13:</strong> MarineTraffic specifications page showing Cameroon registry flag, Terrestrial AIS source, and destination Port Said, Egypt. Actual details page: <a href="https://www.marinetraffic.com/en/ais/details/ships/shipid:214178" target="_blank">MarineTraffic Details</a></span>
+                    </div>
+
+                    <div class="vn-image-wrap">
+                        <img src="/blog/images/smyrtos/marinetraffic-map-popup.png" alt="MarineTraffic map popup card with route metadata" loading="lazy">
+                        <span class="image-caption"><strong>Image 4:</strong> MarineTraffic card showing the voyage route: RU ULU (Ust-Luga) to EG PSD (Port Said), departing on June 5, 2026.</span>
+                    </div>
+
+                    <p>We verified the map telemetry views to pinpoint the exact location in the English Channel off the Dorset/Weymouth coast where the vessel has remained stationary since its boarding.</p>
+
+                    <div class="vn-image-wrap">
+                        <img src="/blog/images/smyrtos/marinetraffic-map-view.png" alt="MarineTraffic global map tracking view near Dorset coast" loading="lazy">
+                        <span class="image-caption"><strong>Image 12:</strong> Map overview showing the anchorage position offshore from Weymouth and Portland, UK.</span>
+                    </div>
+
+                    <div class="vn-image-wrap">
+                        <img src="/blog/images/smyrtos/marinetraffic-global-search.png" alt="MarineTraffic global search result page" loading="lazy">
+                        <span class="image-caption"><strong>Image 14:</strong> Search match showing IMO 9389100 mapped to the Cameroon flag vessel.</span>
+                    </div>
+
+                    <div class="vn-image-wrap">
+                        <img src="/blog/images/smyrtos/marinetraffic-fleet-map.png" alt="MarineTraffic global fleet map layout" loading="lazy">
+                        <span class="image-caption"><strong>Image 15:</strong> Map configuration view showing the active satellite tracking selector options.</span>
+                    </div>
+
+                    <p><strong>The Telemetry Discrepancy:</strong> VesselFinder recorded the departure from Ust-Luga, Russia, on June 1, 19:07 UTC. MarineTraffic recorded it on June 5, 12:22 UTC. This four-day variance is typical in OSINT work and usually indicates differing reporting endpoints (port berth vs. anchorage bounds) or temporary AIS sensor gaps. It does not alter the fact that the vessel departed Russia in early June bound for Egypt, but was detained mid-voyage.</p>
+
+                    <div class="vn-tool-links">
+                        <span class="vn-tool-label">Free Tracking Tools:</span>
+                        <a href="https://www.vesselfinder.com" target="_blank" class="vn-tool-link">VesselFinder <i class="ti ti-external-link"></i></a>
+                        <a href="https://www.marinetraffic.com" target="_blank" class="vn-tool-link">MarineTraffic <i class="ti ti-external-link"></i></a>
+                    </div>
+
+                    <h2 id="step-5-ownership">Step 5: Following the Ownership Chain (Equasis)</h2>
+                    
+                    <p>Operating in a shadow fleet requires layers of corporate management. To map this, we consulted <strong>Equasis</strong>, a public vessel registry database co-managed by several maritime administrations. Equasis requires a free account to log in, representing one of the best sources for ship manager research.</p>
+
+                    <div class="vn-image-wrap">
+                        <img src="/blog/images/smyrtos/equasis-management-detail.png" alt="Equasis Ship Info management detail registry table" loading="lazy">
+                        <span class="image-caption"><strong>Image 2:</strong> Equasis Management Detail showing registered owner and commercial manager as Zhao Yao Shipping Ltd (Hong Kong). Info portal: <a href="https://www.equasis.org/EquasisWeb/restricted/ShipInspection?fs=ShipInfo" target="_blank">Equasis Ship Search</a></span>
+                    </div>
+
+                    <div class="vn-image-wrap">
+                        <img src="/blog/images/smyrtos/equasis-ship-history.png" alt="Equasis Ship History table showing previous vessel names" loading="lazy">
+                        <span class="image-caption"><strong>Image 3:</strong> Equasis Ship History showing name changes, confirming the transition from 'Myrtos' to 'Smyrtos' in February 2025.</span>
+                    </div>
+
+                    <p><strong>The Corporate Timeline:</strong></p>
+                    <ol>
+                        <li><strong>Feb 2025:</strong> Ownership and commercial management held by <strong>Daira Shipping Ltd</strong> (Seychelles), with technical (ISM) management under <strong>Crest Maritime Pte Ltd</strong> (Singapore), as listed in the OpenSanctions narrative.</li>
+                        <li><strong>Sept 2025:</strong> Registered owner and commercial manager shifted to <strong>Zhao Yao Shipping Ltd</strong>, operating out of a shared commercial address in Mong Kok, Hong Kong, according to Equasis.</li>
+                        <li><strong>May 2026:</strong> The technical (ISM) manager in Equasis was updated to <strong>"UNKNOWN,"</strong> indicating the ship's operational oversight records were decoupled weeks before the Channel boarding.</li>
+                    </ol>
+
+                    <div class="vn-tool-links">
+                        <span class="vn-tool-label">Free Ownership Registry:</span>
+                        <a href="https://www.equasis.org" target="_blank" class="vn-tool-link">Equasis <i class="ti ti-external-link"></i></a>
+                    </div>
+
+                    <h2 id="step-6-satellite">Step 6: Attempting Satellite Confirmation (Copernicus Sentinel-2)</h2>
+                    
+                    <p>Finally, we used the free <strong>Copernicus Browser</strong> to view Sentinel-2 satellite imagery of the Weymouth/Portland anchorage area from a July 9, 2026 pass, aiming to visually confirm the vessel's presence.</p>
+
+                    <div class="vn-image-wrap">
+                        <img src="/blog/images/smyrtos/copernicus-sentinel-coastline.png" alt="Copernicus Sentinel-2 true color coastline satellite map near Weymouth" loading="lazy">
+                        <span class="image-caption"><strong>Image 1:</strong> Sentinel-2 true-color image of Weymouth Bay, showing general coastal geography and marine conservation bounds. Map browser link: <a href="https://browser.dataspace.copernicus.eu/?zoom=13&lat=50.53002&lng=-2.21786" target="_blank">Copernicus Browser Dataspace</a></span>
+                    </div>
+
+                    <p><strong>A Lesson in OSINT Limits:</strong> Sentinel-2 visual bands operate at a resolution of 10 meters per pixel. At this scale, a 244-meter ship appears only as a tiny cluster of pixels. While we can see the anchorage coordinates and confirm the coastal zone was clear of heavy cloud cover, we cannot resolve the ship's physical hull details or name. Acknowledge this limitation: free-tier satellite data is excellent for macro-analysis, but tasked commercial high-res radar or optical satellite services are required for positive visual identification.</p>
+
+                    <div class="vn-tool-links">
+                        <span class="vn-tool-label">Free Satellite Maps:</span>
+                        <a href="https://browser.dataspace.copernicus.eu" target="_blank" class="vn-tool-link">Copernicus Dataspace <i class="ti ti-external-link"></i></a>
+                    </div>
+
+                    <hr id="evidence-log">
+
+                    <h2>Complete Evidence Log</h2>
+                    <p>This table maps all 20 images referenced in this case study, matching each database claim to its corresponding screenshot asset in the repository:</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Source Platform</th>
+                                <th>Evidence Description &amp; Filename</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Image 1</td>
+                                <td>Copernicus Browser</td>
+                                <td>Sentinel-2 L2A imagery near Weymouth (<code>copernicus-sentinel-coastline.png</code>)</td>
+                            </tr>
+                            <tr>
+                                <td>Image 2</td>
+                                <td>Equasis Ship Info</td>
+                                <td>Hong Kong owner / ISM Manager detail table (<code>equasis-management-detail.png</code>)</td>
+                            </tr>
+                            <tr>
+                                <td>Image 3</td>
+                                <td>Equasis Ship History</td>
+                                <td>Vessel name transition particulars list (<code>equasis-ship-history.png</code>)</td>
+                            </tr>
+                            <tr>
+                                <td>Image 4</td>
+                                <td>MarineTraffic Map</td>
+                                <td>Telemetric popup showing June 5 departure timestamp (<code>marinetraffic-map-popup.png</code>)</td>
+                            </tr>
+                            <tr>
+                                <td>Image 5</td>
+                                <td>OpenSanctions</td>
+                                <td>Chronological breakdown narrative of sanctions list dates (<code>opensanctions-description-timeline.png</code>)</td>
+                            </tr>
+                            <tr>
+                                <td>Image 6</td>
+                                <td>OpenSanctions</td>
+                                <td>Vessel specifications details page overview (<code>opensanctions-vessel-details.png</code>)</td>
+                            </tr>
+                            <tr>
+                                <td>Image 7</td>
+                                <td>OpenSanctions</td>
+                                <td>Sanctions topics registry matches listing (<code>opensanctions-topics-list.png</code>)</td>
+                            </tr>
+                            <tr>
+                                <td>Image 8</td>
+                                <td>OpenSanctions</td>
+                                <td>Identified flag history including Panama, Malta, Greece (<code>opensanctions-specs-flag.png</code>)</td>
+                            </tr>
+                            <tr>
+                                <td>Image 9</td>
+                                <td>OpenSanctions</td>
+                                <td>Kozmino port export narrative segment (<code>opensanctions-narrative-part1.png</code>)</td>
+                            </tr>
+                            <tr>
+                                <td>Image 10</td>
+                                <td>VesselFinder</td>
+                                <td>Vessel specs details and active sanctions status banners (<code>vesselfinder-ship-details.png</code>)</td>
+                            </tr>
+                            <tr>
+                                <td>Image 11</td>
+                                <td>VesselFinder</td>
+                                <td>Database query output for IMO 9389100 (<code>vesselfinder-search-result.png</code>)</td>
+                            </tr>
+                            <tr>
+                                <td>Image 12</td>
+                                <td>MarineTraffic</td>
+                                <td>Anchorage map layout of Weymouth Bay coordinates (<code>marinetraffic-map-view.png</code>)</td>
+                            </tr>
+                            <tr>
+                                <td>Image 13</td>
+                                <td>MarineTraffic</td>
+                                <td>General overview and registered AIS details (<code>marinetraffic-vessel-details.png</code>)</td>
+                            </tr>
+                            <tr>
+                                <td>Image 14</td>
+                                <td>MarineTraffic</td>
+                                <td>Database search result interface for IMO matching (<code>marinetraffic-global-search.png</code>)</td>
+                            </tr>
+                            <tr>
+                                <td>Image 15</td>
+                                <td>MarineTraffic</td>
+                                <td>Global fleet map configuration layout (<code>marinetraffic-fleet-map.png</code>)</td>
+                            </tr>
+                            <tr>
+                                <td>Image 16</td>
+                                <td>Google Search</td>
+                                <td>Search result snippet detailing Cameroon flag and MMSI (<code>google-search-snippet.png</code>)</td>
+                            </tr>
+                            <tr>
+                                <td>Image 17</td>
+                                <td>Google Search</td>
+                                <td>Full web search view for query 'Smyrtos tanker' (<code>google-search-chrome.png</code>)</td>
+                            </tr>
+                            <tr>
+                                <td>Image 18</td>
+                                <td>CPS Press Release</td>
+                                <td>Prosecution announcement details page (<code>cps-captain-charged.png</code>)</td>
+                            </tr>
+                            <tr>
+                                <td>Image 19</td>
+                                <td>X (Twitter)</td>
+                                <td>Prime Minister Keir Starmer statement card (<code>prime-minister-statement.png</code>)</td>
+                            </tr>
+                            <tr>
+                                <td>Image 20</td>
+                                <td>Al Jazeera</td>
+                                <td>News report headline and coverage photograph (<code>al-jazeera-news-seizure.png</code>)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <hr id="findings-summary">
+
+                    <h2>Key Findings Summary</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Investigative Question</th>
+                                <th>Verified Data Points</th>
+                                <th>Corroboration Sources</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Permanent Identity</strong></td>
+                                <td>IMO 9389100, MMSI 613411302 (formerly 352005289)</td>
+                                <td>VesselFinder, MarineTraffic, OpenSanctions</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sanctions Status</strong></td>
+                                <td>EU, UK, Switzerland, Canada, Ukraine lists matching IMO</td>
+                                <td>OpenSanctions</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Voyage History</strong></td>
+                                <td>Ust-Luga (Russia) to Port Said (Egypt); Interdicted in English Channel</td>
+                                <td>VesselFinder, MarineTraffic, News Reports</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ownership / Mgmt</strong></td>
+                                <td>Daira Shipping (Seychelles) &rarr; Zhao Yao Shipping (Hong Kong)</td>
+                                <td>OpenSanctions, Equasis</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Flag Transitions</strong></td>
+                                <td>Greece &rarr; Malta &rarr; Gambia &rarr; Panama &rarr; Cameroon</td>
+                                <td>OpenSanctions, Equasis</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Legal Proceedings</strong></td>
+                                <td>Captain Ajay Pant charged on June 15, 2026</td>
+                                <td>Crown Prosecution Service Release</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <hr id="free-tools-table">
+
+                    <h2>Free Tools Directory</h2>
+                    <p>Below is the complete list of free tools used in this maritime OSINT investigation along with their live access links:</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tool Name</th>
+                                <th>Purpose in Investigation</th>
+                                <th>Direct Access Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Google Search</strong></td>
+                                <td>Initial lookup, news indexing, and finding registry snippets</td>
+                                <td><a href="https://www.google.com" target="_blank">https://www.google.com</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>VesselFinder</strong></td>
+                                <td>IMO lookup database, general specifications, and AIS coastal tracking</td>
+                                <td><a href="https://www.vesselfinder.com" target="_blank">https://www.vesselfinder.com</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>MarineTraffic</strong></td>
+                                <td>Dual-source AIS tracking data, voyage route maps, and telemetry</td>
+                                <td><a href="https://www.marinetraffic.com" target="_blank">https://www.marinetraffic.com</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>OpenSanctions</strong></td>
+                                <td>Checking entities and vessels against consolidated global sanctions lists</td>
+                                <td><a href="https://www.opensanctions.org" target="_blank">https://www.opensanctions.org</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Equasis</strong></td>
+                                <td>Tracing corporate management timelines, registered owners, and address details</td>
+                                <td><a href="https://www.equasis.org" target="_blank">https://www.equasis.org</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Copernicus Browser</strong></td>
+                                <td>Accessing Sentinel-2 visual bands satellite imagery passes of coastal areas</td>
+                                <td><a href="https://browser.dataspace.copernicus.eu" target="_blank">https://browser.dataspace.copernicus.eu</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <hr id="lessons">
+
+                    <h2>Lessons Learned and Actionable Takeaways</h2>
+                    <ol>
+                        <li><strong>Anchor every investigation to the IMO number</strong> rather than the vessel name, which changes frequently.</li>
+                        <li><strong>Cross-reference sanctions lists across jurisdictions</strong> using aggregators like OpenSanctions for comprehensive data.</li>
+                        <li><strong>Ownership is a timeline.</strong> Map the historical sequence of commercial and technical entities to expose patterns.</li>
+                        <li><strong>Acknowledge tracking discrepancies and tool limits</strong>, such as satellite resolution bounds and AIS timestamp offsets.</li>
+                    </ol>
+
+                    <h2>Frequently Asked Questions</h2>
+                    <ul class="vn-faq-numbered">
+                        <li>
+                            <strong>What is the Smyrtos tanker?</strong>
+                            <p>The Smyrtos is a Crude Oil Tanker built in 2009 (IMO 9389100), boarded by UK Royal Marine Commandos in the English Channel on June 14, 2026, on suspicion of carrying sanctioned Russian oil.</p>
+                        </li>
+                        <li>
+                            <strong>Is the Smyrtos officially sanctioned?</strong>
+                            <p>Yes. Public OpenSanctions records tied to IMO 9389100 show designations from the EU, the UK, Switzerland, Ukraine, and Canada between July 2025 and February 2026.</p>
+                        </li>
+                        <li>
+                            <strong>Who owns the Smyrtos?</strong>
+                            <p>Ownership recorded in public registries changed over time. As of February 2025, Daira Shipping Ltd (Seychelles) was the owner and commercial manager, with Crest Maritime Pte Ltd (Singapore) as ISM manager. As of September 2025, Equasis records show Zhao Yao Shipping Ltd, a Hong Kong registered company, holding both the commercial management and registered ownership roles. As of May 2026, the ISM Manager field in Equasis shows "Unknown."</p>
+                        </li>
+                        <li>
+                            <strong>What happened to the ship's captain?</strong>
+                            <p>Captain Ajay Pant, 38, was charged by the UK Crown Prosecution Service on June 15, 2026, with breaching Russian sanctions. He is presumed innocent until proven guilty.</p>
+                        </li>
+                        <li>
+                            <strong>Can I verify any of this myself for free?</strong>
+                            <p>Yes. Every source used in this case study, including VesselFinder, MarineTraffic, OpenSanctions, Equasis, and the Copernicus Browser, offers free public access, and direct links are provided throughout this article.</p>
+                        </li>
+                        <li>
+                            <strong>Does this article accuse any country of wrongdoing?</strong>
+                            <p>No. This is an educational OSINT case study built entirely from information that governments, sanctions bodies, and news organizations have already made public. It is not a complaint, a legal filing, or an accusation beyond what those public sources already state.</p>
+                        </li>
+                    </ul>
+
+                    <h2>Conclusion</h2>
+                    <p>The Smyrtos case shows that a real, breaking maritime news story can be independently verified, layer by layer, using entirely free and public tools. Starting from a single ship name in a headline, this investigation confirmed identity, sanctions status, voyage history, and a genuine two-stage ownership timeline, while staying transparent about the one place the evidence did not fully cooperate: satellite confirmation, and the one place two good sources simply disagreed: departure timestamps. That balance, verifying what can be verified and being honest about what cannot, is the core discipline of maritime OSINT.</p>
+
+                    <div class="vn-inspiration-box">
+                        <i class="ti ti-bulb"></i>
+                        <span><strong>Case Study Credit:</strong> Inspired by the outstanding maritime investigative workflows at <a href="https://www.youtube.com/@Bendobrown" target="_blank">Bendo Brown (YouTube)</a> and the weekly threat intel briefs at <a href="https://osintnewsletter.com/" target="_blank">The OSINT Newsletter</a>. We highly recommend exploring their platforms to master advanced vessel tracking.</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Share Buttons & Actions -->
+            <div class="vn-share-actions">
+                <button class="vn-share-btn share-tw" onclick="shareArticle('twitter')" aria-label="Share on Twitter">
+                    <i class="ti ti-brand-x"></i> Share on X
+                </button>
+                <button class="vn-share-btn share-ln" onclick="shareArticle('linkedin')" aria-label="Share on LinkedIn">
+                    <i class="ti ti-brand-linkedin"></i> Share on LinkedIn
+                </button>
+                <button class="vn-share-btn share-link" onclick="copyLink()" aria-label="Copy Article Link">
+                    <i class="ti ti-link"></i> Copy Link
+                </button>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- RELATED ARTICLES GRID                        -->
+            <!-- ============================================ -->
+            <div class="vn-related-section">
+                <div class="section-header-wrap">
+                    <h3 class="section-title">Related Case Studies</h3>
+                    <div class="section-label-line"></div>
+                </div>
+                <div class="vn-related-grid">
+                    <a href="/blog/openosint-ai-osint-framework-deep-dive" class="vn-article-card" data-category="osint">
+                        <div class="vn-article-thumb">
+                            <img src="/blog/images/openosint-deep-dive-hero.webp" alt="Beyond the Search Bar: A Practitioner's Look at OpenOSINT" loading="lazy">
+                        </div>
+                        <div class="vn-article-body">
+                            <span class="guide-category">OSINT · Tooling</span>
+                            <h4 class="guide-title">Beyond the Search Bar: A Practitioner's Look at OpenOSINT</h4>
+                            <div class="guide-footer">
+                                <span class="guide-meta">8 min read</span>
+                                <span class="btn-read">READ NOW</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/blog/osint-case-lazarus-dream-job" class="vn-article-card" data-category="osint">
+                        <div class="vn-article-thumb">
+                            <img src="/blog/images/horizon-lure-thumbnail.webp" alt="Operation Horizon-Lure Sketchnote" loading="lazy">
+                        </div>
+                        <div class="vn-article-body">
+                            <span class="guide-category">OSINT · Investigation</span>
+                            <h4 class="guide-title">OSINT Case Study: Operation Horizon-Lure</h4>
+                            <div class="guide-footer">
+                                <span class="guide-meta">18 min read</span>
+                                <span class="btn-read">READ NOW</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/blog/osint-case-viper-ghost" class="vn-article-card" data-category="osint">
+                        <div class="vn-article-thumb">
+                            <img src="/blog/images/viper-ghost-thumbnail.webp" alt="Operation VIPER-GHOST Sketchnote" loading="lazy">
+                        </div>
+                        <div class="vn-article-body">
+                            <span class="guide-category">OSINT · Investigation</span>
+                            <h4 class="guide-title">OSINT Case File: Operation VIPER-GHOST</h4>
+                            <div class="guide-footer">
+                                <span class="guide-meta">20 min read</span>
+                                <span class="btn-read">READ NOW</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- NEWSLETTER CTA STRIP                         -->
+    <!-- ============================================ -->
+    <section class="vn-newsletter" id="subscribe">
+        <div class="vn-newsletter-inner">
+            <h2>Never Miss a New Guide</h2>
+            <p>Get visual notes and deep-dives delivered to your inbox. No spam, just learning.</p>
+
+            <ul class="vn-newsletter-benefits">
+                <li>New study guides delivered weekly</li>
+                <li>Exclusive tips &amp; tricks</li>
+                <li>Early access to new content</li>
+                <li>100% free, unsubscribe anytime</li>
+            </ul>
+
+            <form class="email-form" onsubmit="handleEmailSubmit(event)">
+                <input type="email" id="emailInput" class="email-input" placeholder="your@email.com" required>
+                <button type="submit" class="btn-subscribe">Subscribe</button>
+            </form>
+            <p class="vn-newsletter-proof">Join 5,000+ engineers already learning visually</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FOOTER SITEMAP                               -->
+    <!-- ============================================ -->
+    <footer class="vn-footer">
+        <div class="vn-footer-grid">
+            <div class="vn-footer-brand">
+                <span class="vn-logo">VisualNotes</span>
+                <p>Visual, handwritten-style notes for Infrastructure, Cloud, Security &amp; OSINT. Making complex tech concepts click.</p>
+                <div class="vn-footer-founder">
+                    Founder: <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank">Abhiney Sharma</a>
+                </div>
+                <div class="vn-footer-social">
+                    <a href="https://www.instagram.com/visualnotes.tech/" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://whatsapp.com/channel/0029Vb6z21DBqbr2xDU7Rc2P" target="_blank" rel="noopener" aria-label="Join WhatsApp channel">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="vn-footer-col">
+                <h4>Resources</h4>
+                <a href="/guides">Study Guides</a>
+                <a href="/blog">Blog Articles</a>
+                <a href="/guides">Visual Notes</a>
+                <a href="/hsrp-flashcards">Flashcards</a>
+            </div>
+            <div class="vn-footer-col">
+                <h4>Company</h4>
+                <a href="/about">About Us</a>
+                <a href="/write-for-us">Write for Us</a>
+                <a href="/faq">FAQ</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+            </div>
+            <div class="vn-footer-col">
+                <h4>Connect</h4>
+                <a href="https://www.instagram.com/visualnotes.tech/" target="_blank">Instagram</a>
+                <a href="https://whatsapp.com/channel/0029Vb6z21DBqbr2xDU7Rc2P" target="_blank">WhatsApp</a>
+                <a href="https://www.linkedin.com/in/abhineysharma/" target="_blank">LinkedIn</a>
+                <a href="mailto:visualnotes.tech@gmail.com">Email Us</a>
+            </div>
+        </div>
+        <div class="vn-footer-bottom">
+            © 2026 VisualNotes. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Thank You Modal -->
+    <div id="thankYouModal" class="vn-thank-modal">
+        <div class="vn-thank-content">
+            <div style="font-size: 3.5rem; margin-bottom: 20px;">🎉</div>
+            <h2 style="color: var(--vn-accent); margin-bottom: 12px; font-size: 1.8rem;">Thank You for Subscribing!</h2>
+            <p style="color: var(--vn-ink-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px;">
+                Welcome to the VisualNotes community! We've sent a welcome email to your inbox with exclusive resources and tips.
+            </p>
+            <div style="background: var(--vn-bg); padding: 18px; border-radius: var(--vn-radius); margin-bottom: 24px; text-align: left;">
+                <p style="color: var(--vn-ink); font-weight: 600; margin-bottom: 8px;">🚀 What's Next?</p>
+                <p style="color: var(--vn-ink-secondary); font-size: 0.92rem; line-height: 1.5;">Check your email for your welcome message and start exploring our visual study guides!</p>
+            </div>
+            <button onclick="closeThankYouModal()" class="vn-btn-primary" style="width: 100%;">Start Exploring</button>
+        </div>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" style="display:none;">
+        <div>
+            <p>We use cookies to improve your experience. By continuing, you agree to our use of cookies.</p>
+            <button onclick="acceptCookies()">Accept</button>
+        </div>
+    </div>
+
+    <!-- Floating Theme Toggle Button -->
+    <button id="theme-toggle" onclick="toggleDarkMode()">
+        🌙 DARK MODE
+    </button>
+
+    <!-- ============================================ -->
+    <!-- INTERACTIVE SCRIPTS                          -->
+    <!-- ============================================ -->
+    <script>
+        // ===== HEADER SCROLL BEHAVIOR =====
+        const header = document.getElementById('vnHeader');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ===== MOBILE NAV =====
+        const hamburger = document.getElementById('vnHamburger');
+        const mobileNav = document.getElementById('vnMobileNav');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // ===== CLOSE MOBILE NAV =====
+        function closeMobileNav() {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ===== SCROLL REVEAL =====
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.vn-reveal').forEach(el => revealObserver.observe(el));
+
+        // Fallback for bots/renderers
+        setTimeout(() => {
+            document.querySelectorAll('.vn-reveal').forEach(el => {
+                el.classList.add('visible');
+            });
+        }, 1500);
+
+        // ===== SOCIAL SHARE HANDLERS =====
+        function shareArticle(platform) {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            let shareUrl = '';
+
+            switch (platform) {
+                case 'twitter':
+                    shareUrl = 'https://twitter.com/intent/tweet?text=' + title + '&url=' + url;
+                    break;
+                case 'linkedin':
+                    shareUrl = 'https://www.linkedin.com/sharing/share-offsite/?url=' + url;
+                    break;
+            }
+
+            if (shareUrl) window.open(shareUrl, '_blank');
+        }
+
+        // ===== COPY ARTICLE LINK =====
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href);
+            alert('🔗 Link copied to clipboard!');
+        }
+
+        // ===== EMAIL SIGNUP FORM SUBMISSION =====
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwYxzHdMiTy0Q8O-dURdyERoag-iak2lJuQ3TEv6gL57txAGe--VItTvGfkXzjv9tOmPA/exec';
+
+        async function handleEmailSubmit(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value.trim().toLowerCase();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) { alert('⚠️ Please enter a valid email address'); return; }
+            const junkList = ['abc@gmail.com', 'test@gmail.com', 'test@test.com', 'admin@gmail.com', 'user@gmail.com'];
+            if (junkList.includes(email) || email.length < 6) { alert('⚠️ Please enter a real email address'); return; }
+
+            const button = e.target.querySelector('button');
+            const originalText = button.textContent;
+            button.textContent = 'Subscribing...';
+            button.disabled = true;
+
+            try {
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST', mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: JSON.stringify({ email: email, country: 'detect-server-side' })
+                });
+            } catch (e) { console.error('Submission error (ignored):', e); }
+
+            showThankYouModal();
+            document.getElementById('emailInput').value = '';
+            button.textContent = originalText;
+            button.disabled = false;
+        }
+
+        // ===== SHOW/CLOSE THANK YOU MODAL =====
+        function showThankYouModal() {
+            const modal = document.getElementById('thankYouModal');
+            if (modal) modal.style.display = 'flex';
+        }
+
+        // ===== CLOSE THANK YOU MODAL =====
+        function closeThankYouModal() {
+            const modal = document.getElementById('thankYouModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        window.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('thankYouModal')?.addEventListener('click', function (e) {
+                if (e.target === this) closeThankYouModal();
+            });
+        });
+
+        // ===== COOKIE CONSENT =====
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'true');
+            document.getElementById('cookie-consent').style.display = 'none';
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            if (!localStorage.getItem('cookieConsent')) {
+                document.getElementById('cookie-consent').style.display = 'block';
+            }
+        });
+
+        // ===== DARK MODE TOGGLE =====
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark ? 'true' : 'false');
+            updateThemeButtonText();
+        }
+
+        function updateThemeButtonText() {
+            const btn = document.getElementById('theme-toggle');
+            if (!btn) return;
+            const isDark = document.body.classList.contains('dark-mode');
+            btn.innerHTML = isDark ? '☀ LIGHT MODE' : '🌙 DARK MODE';
+        }
+
+        // Restore theme preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('darkMode');
+            if (savedTheme === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+            updateThemeButtonText();
+        });
+
+        // ===== SCROLL SPY FOR TABLE OF CONTENTS =====
+        window.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -60% 0px',
+                threshold: 0
+            };
+
+            const links = document.querySelectorAll('.toc-link');
+            const headings = Array.from(links).map(link => {
+                const id = link.getAttribute('href').substring(1);
+                return document.getElementById(id);
+            }).filter(h => h !== null);
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const activeId = entry.target.getAttribute('id');
+                        links.forEach(link => {
+                            if (link.getAttribute('href') === `#${activeId}`) {
+                                link.classList.add('active');
+                            } else {
+                                link.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            headings.forEach(heading => observer.observe(heading));
+        });
+    </script>
+</body>
+
+</html>
