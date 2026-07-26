@@ -123,6 +123,16 @@ const visualNotes = [
 // ===== GUIDES DATA =====
 const guides = [
     {
+        id: "internet-archive-gov-docs-osint-guide",
+        title: "Internet Archive Govt Documents OSINT Guide",
+        category: "OSINT",
+        tags: ["OSINT", "Security", "Investigation"],
+        pages: "9 Pages",
+        description: "Practical guide to using Internet Archive's 17.7M+ government records for company due diligence, court records, and timeline building.",
+        pdfUrl: "guides/osint/how-to-use-internet-archive-government-documents-for-osint-research.pdf",
+        thumbnail: "guides/thumbnails/how-to-use-internet-archive-government-documents-for-osint-research.webp"
+    },
+    {
         id: "sd-wan-notes",
         title: "SD-WAN Fundamentals",
         category: "Networking",
