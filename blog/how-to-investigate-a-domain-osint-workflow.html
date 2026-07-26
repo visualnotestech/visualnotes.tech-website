@@ -472,6 +472,50 @@
                         <a href="https://www.whois.com/whois" target="_blank" class="vn-tool-link">WHOIS.com <i class="ti ti-external-link"></i></a>
                     </div>
 
+                    <h3>Redacted WHOIS: Moving Beyond the GDPR Wall</h3>
+
+                    <p>Since the implementation of GDPR in 2018, public WHOIS records have been systematically redacted. In most domain investigations, queries for registrant contact details will return blank fields or generic privacy proxy addresses. As Chris Morris explains in the <a href="https://domainintel.app/guides/why-is-whois-data-redacted" target="_blank" style="color: var(--vn-accent); text-decoration: none;">DomainIntel guide on WHOIS redaction</a>, while this often stalls novice researchers, it is a routine baseline for experienced investigators rather than the end of the line.</p>
+
+                    <p>For scenarios where disclosure of non-public registrant data is legally justified, ICANN provides a formal channel: the <a href="https://www.icann.org/rdrs-en" target="_blank" style="color: var(--vn-accent); text-decoration: none;">Registration Data Request Service (RDRS)</a>. This platform aggregates disclosure requests and routes them to participating registrars through a single interface. Originally established as a pilot program in November 2023, the RDRS transitioned to a permanent, ongoing service following the conclusion of its pilot phase in November 2025.</p>
+
+                    <p>Filing a request through the service is a formal administrative process, not a quick lookup. According to the <a href="https://www.icann.org/en/contracted-parties/consensus-policies/registration-data-policy" target="_blank" style="color: var(--vn-accent); text-decoration: none;">ICANN Registration Data Policy</a>, registrars must acknowledge receipt of a standard request within two business days and provide a substantive response within 30 calendar days of that acknowledgement. Although a policy update in May 2026 introduced an urgent 24-hour response pathway for cases involving child exploitation, threats to life, or critical infrastructure protection, it requires a certified Authenticated Requestor. ICANN is currently developing the supporting authentication framework through its Law Enforcement Authentication Input Group (LEAIG), convened in June 2026 with participation from organizations including Interpol and the FBI. Until that work is complete, the urgent pathway is not yet available for general use.</p>
+
+                    <p>Even when RDRS is available, investigators must manage expectations. The official <a href="https://www.icann.org/en/system/files/files/rdrs-two-year-pilot-summary-report-27feb26-en.pdf" target="_blank" style="color: var(--vn-accent); text-decoration: none;">ICANN RDRS Two-Year Pilot Summary Report</a> shows that of the more than 3,700 requests submitted, only 26% were approved, while 55% were denied (the remaining 19% were partially approved or involved data already public). Registrars reject requests that fail to demonstrate a clear legal basis, such as trademark infringement or an active law enforcement subpoena. For general threat modeling, RDRS is rarely a viable option.</p>
+
+                    <p>Because waiting up to 30 days for a disclosure request that has a high probability of denial is inefficient, investigators do not pause their work. As detailed in the core <a href="https://domainintel.app/" target="_blank" style="color: var(--vn-accent); text-decoration: none;">DomainIntel methodology</a>, they continue with passive, correlation-based techniques. Analyzing active DNS configurations, tracking historical WHOIS archives, parsing Certificate Transparency logs, querying passive DNS databases, and correlating shared infrastructure elements regularly produce attribution far faster than waiting on administrative disclosure processes.</p>
+
+                    <div class="info-box">
+                        <h4>💡 Practical Tip</h4>
+                        <p>Do not treat RDRS as your default step. The high denial rate means filing a disclosure request without a concrete legal claim is almost always a waste of time. While you wait for a response, focus on infrastructure correlations. Mapping certificate reuse, historical WHOIS records, and passive DNS history is not only faster but often yields the owner's true footprint without alerting them to your investigation.</p>
+                    </div>
+
+                    <pre class="mermaid">
+flowchart TD
+    A[WHOIS Lookup]
+    A --> B{Registrant Information Available?}
+    B -->|Yes| C[Continue Investigation]
+    B -->|No| D[WHOIS Information Redacted]
+    D --> E[Consider ICANN RDRS if Disclosure is Justified]
+    E --> F[Continue Passive OSINT]
+    F --> G[DNS Records]
+    F --> H[Certificate Transparency]
+    F --> I[Historical WHOIS]
+    F --> J[Passive DNS]
+    F --> K[Archived Websites]
+    F --> L[Infrastructure Correlation]
+                    </pre>
+
+                    <p>If RDRS is not viable or your request is denied, you must pivot to passive, correlation-based techniques. The workflow continues by looking at DNS records, historical WHOIS archives, Certificate Transparency logs, passive DNS datasets, archived web pages, and infrastructure footprints to link the domain to other assets.</p>
+
+                    <h4>Further Reading</h4>
+                    <ul style="font-size: 13px; color: var(--vn-ink-secondary); line-height: 1.6; margin-bottom: 32px; list-style-type: disc; padding-left: 20px;">
+                        <li><a href="https://www.icann.org/en/contracted-parties/consensus-policies/registration-data-policy" target="_blank" style="color: var(--vn-accent); text-decoration: none;">ICANN Registration Data Policy</a></li>
+                        <li><a href="https://www.icann.org/rdrs-en" target="_blank" style="color: var(--vn-accent); text-decoration: none;">ICANN Registration Data Request Service (RDRS)</a></li>
+                        <li><a href="https://www.icann.org/en/system/files/files/rdrs-two-year-pilot-summary-report-27feb26-en.pdf" target="_blank" style="color: var(--vn-accent); text-decoration: none;">ICANN RDRS Two-Year Pilot Summary Report</a></li>
+                        <li><a href="https://domainintel.app/" target="_blank" style="color: var(--vn-accent); text-decoration: none;">DomainIntel</a></li>
+                        <li><a href="https://domainintel.app/guides/why-is-whois-data-redacted" target="_blank" style="color: var(--vn-accent); text-decoration: none;">Chris Morris – Why Is WHOIS Data Redacted?</a></li>
+                    </ul>
+
                     <h3>Step 2: DNS Records: Mapping What's Actually Running</h3>
 
                     <p>If WHOIS tells you who owns the domain, DNS tells you what it's actually doing day to day.</p>
@@ -969,7 +1013,7 @@ site:example.com intitle:index.of</code></pre>
         }
 
         // ===== EMAIL SIGNUP FORM SUBMISSION =====
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyt3yXiow0mYGHwfLNcl_k1lH6s6DU51P8_i50DqqYZxcONrSTX_gQdtxFO4tOQ0sMMdA/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwYxzHdMiTy0Q8O-dURdyERoag-iak2lJuQ3TEv6gL57txAGe--VItTvGfkXzjv9tOmPA/exec';
 
         async function handleEmailSubmit(e) {
             e.preventDefault();
@@ -1081,6 +1125,19 @@ site:example.com intitle:index.of</code></pre>
             }, observerOptions);
 
             headings.forEach(heading => observer.observe(heading));
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            if (typeof mermaid !== 'undefined') {
+                const isDark = document.body.classList.contains('dark-mode');
+                mermaid.initialize({
+                    startOnLoad: true,
+                    theme: isDark ? 'dark' : 'default',
+                    securityLevel: 'loose'
+                });
+            }
         });
     </script>
 </body>
