@@ -46,111 +46,107 @@
   ],
   "redirects": [
     {
-      "source": "/privacy-policy.html",
-      "has": [
-        {
-          "type": "host",
-          "value": "visualnotes.tech"
-        }
-      ],
-      "destination": "https://www.visualnotes.tech/privacy",
-      "statusCode": 301
-    },
-    {
-      "source": "/privacy-policy",
-      "has": [
-        {
-          "type": "host",
-          "value": "visualnotes.tech"
-        }
-      ],
-      "destination": "https://www.visualnotes.tech/privacy",
-      "statusCode": 301
-    },
-    {
-      "source": "/privacy-policy.html",
-      "destination": "/privacy",
-      "statusCode": 301
-    },
-    {
-      "source": "/privacy-policy",
-      "destination": "/privacy",
-      "statusCode": 301
-    },
-    {
       "source": "/index.html",
-      "has": [
-        {
-          "type": "host",
-          "value": "visualnotes.tech"
-        }
-      ],
       "destination": "https://www.visualnotes.tech/",
       "statusCode": 301
     },
     {
       "source": "/index",
-      "has": [
-        {
-          "type": "host",
-          "value": "visualnotes.tech"
-        }
-      ],
+      "destination": "https://www.visualnotes.tech/",
+      "statusCode": 301
+    },
+    {
+      "source": "/home",
       "destination": "https://www.visualnotes.tech/",
       "statusCode": 301
     },
     {
       "source": "/blog/index.html",
-      "has": [
-        {
-          "type": "host",
-          "value": "visualnotes.tech"
-        }
-      ],
       "destination": "https://www.visualnotes.tech/blog/",
       "statusCode": 301
     },
     {
       "source": "/blog/index",
-      "has": [
-        {
-          "type": "host",
-          "value": "visualnotes.tech"
-        }
-      ],
+      "destination": "https://www.visualnotes.tech/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog",
       "destination": "https://www.visualnotes.tech/blog/",
       "statusCode": 301
     },
     {
       "source": "/guides/index.html",
-      "has": [
-        {
-          "type": "host",
-          "value": "visualnotes.tech"
-        }
-      ],
       "destination": "https://www.visualnotes.tech/guides/",
       "statusCode": 301
     },
     {
       "source": "/guides/index",
-      "has": [
-        {
-          "type": "host",
-          "value": "visualnotes.tech"
-        }
-      ],
       "destination": "https://www.visualnotes.tech/guides/",
       "statusCode": 301
     },
     {
+      "source": "/guides",
+      "destination": "https://www.visualnotes.tech/guides/",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy-policy.html",
+      "destination": "https://www.visualnotes.tech/privacy",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "https://www.visualnotes.tech/privacy",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy.html",
+      "destination": "https://www.visualnotes.tech/privacy",
+      "statusCode": 301
+    },
+    {
+      "source": "/terms.html",
+      "destination": "https://www.visualnotes.tech/terms",
+      "statusCode": 301
+    },
+    {
+      "source": "/about.html",
+      "destination": "https://www.visualnotes.tech/about",
+      "statusCode": 301
+    },
+    {
+      "source": "/faq.html",
+      "destination": "https://www.visualnotes.tech/faq",
+      "statusCode": 301
+    },
+    {
+      "source": "/write-for-us.html",
+      "destination": "https://www.visualnotes.tech/write-for-us",
+      "statusCode": 301
+    },
+    {
+      "source": "/socmint-flashcards.html",
+      "destination": "https://www.visualnotes.tech/socmint-flashcards",
+      "statusCode": 301
+    },
+    {
+      "source": "/hsrp-flashcards.html",
+      "destination": "https://www.visualnotes.tech/hsrp-flashcards",
+      "statusCode": 301
+    },
+    {
+      "source": "/subnetting-flashcards.html",
+      "destination": "https://www.visualnotes.tech/subnetting-flashcards",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/:slug.html",
+      "destination": "https://www.visualnotes.tech/blog/:slug",
+      "statusCode": 301
+    },
+    {
       "source": "/(.*)\\.html",
-      "has": [
-        {
-          "type": "host",
-          "value": "visualnotes.tech"
-        }
-      ],
       "destination": "https://www.visualnotes.tech/$1",
       "statusCode": 301
     },
@@ -163,56 +159,6 @@
         }
       ],
       "destination": "https://www.visualnotes.tech/:path*",
-      "statusCode": 301
-    },
-    {
-      "source": "/index.html",
-      "destination": "/",
-      "statusCode": 301
-    },
-    {
-      "source": "/index",
-      "destination": "/",
-      "statusCode": 301
-    },
-    {
-      "source": "/blog/index.html",
-      "destination": "/blog/",
-      "statusCode": 301
-    },
-    {
-      "source": "/blog/index",
-      "destination": "/blog/",
-      "statusCode": 301
-    },
-    {
-      "source": "/blog",
-      "destination": "/blog/",
-      "statusCode": 301
-    },
-    {
-      "source": "/guides/index.html",
-      "destination": "/guides/",
-      "statusCode": 301
-    },
-    {
-      "source": "/guides/index",
-      "destination": "/guides/",
-      "statusCode": 301
-    },
-    {
-      "source": "/guides",
-      "destination": "/guides/",
-      "statusCode": 301
-    },
-    {
-      "source": "/(.*)\\.html",
-      "destination": "/$1",
-      "statusCode": 301
-    },
-    {
-      "source": "/home",
-      "destination": "/",
       "statusCode": 301
     }
   ],
