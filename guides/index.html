@@ -1757,7 +1757,7 @@
 
         function copyVisualLink() {
             if (!currentVisual) return;
-            const url = `${window.location.origin}/blog/index.html#visual-${currentVisual.id}`;
+            const url = `${window.location.origin}/blog/#visual-${currentVisual.id}`;
             navigator.clipboard.writeText(url).then(() => alert('✅ Link copied to clipboard!')).catch(() => {
                 const t = document.createElement('input'); t.value = url; document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t); alert('✅ Link copied!');
             });
@@ -1765,7 +1765,7 @@
 
         function shareVisual(platform) {
             if (!currentVisual) return;
-            const url = `${window.location.origin}/blog/index.html#visual-${currentVisual.id}`;
+            const url = `${window.location.origin}/blog/#visual-${currentVisual.id}`;
             const text = `Check out this visual study note: ${currentVisual.title}`;
             if (platform === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
             else if (platform === 'linkedin') window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
@@ -1773,14 +1773,14 @@
 
         // ===== FEATURED SHARE DELEGATORS =====
         function copyFeaturedLink(guideId) {
-            const url = `${window.location.origin}/guides/index.html#${guideId}`;
+            const url = `${window.location.origin}/guides/#${guideId}`;
             navigator.clipboard.writeText(url).then(() => alert('✅ Link copied!')).catch(() => {
                 alert('🔗 Link: ' + url);
             });
         }
 
         function shareFeatured(platform, title, guideId) {
-            const url = `${window.location.origin}/guides/index.html#${guideId}`;
+            const url = `${window.location.origin}/guides/#${guideId}`;
             const text = `📚 Read the free ${title} study guide on @visualnotes_tech!`;
             if (platform === 'twitter') window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
             else if (platform === 'linkedin') window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
