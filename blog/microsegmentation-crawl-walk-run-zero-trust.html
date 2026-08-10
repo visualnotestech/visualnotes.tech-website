@@ -47,6 +47,10 @@ window.dataLayer = window.dataLayer || [];
 {
     "@context": "https://schema.org",
     "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.visualnotes.tech/blog/microsegmentation-crawl-walk-run-zero-trust"
+    },
     "headline": "Microsegmentation Done Right: A Practical, Phased Approach for Zero Trust Security",
     "description": "Learn how to implement microsegmentation using a phased Crawl-Walk-Run approach. This guide explains architectural intent, enforcement strategy, and real-world execution for Zero Trust environments.",
     "author": {
@@ -66,6 +70,32 @@ window.dataLayer = window.dataLayer || [];
     "datePublished": "2026-02-08",
     "dateModified": "2026-02-08",
     "image": "https://www.visualnotes.tech/blog/images/microsegmentation-architecture-cover.webp"
+}
+</script>
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.visualnotes.tech/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://www.visualnotes.tech/blog/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Microsegmentation Done Right",
+            "item": "https://www.visualnotes.tech/blog/microsegmentation-crawl-walk-run-zero-trust"
+        }
+    ]
 }
 </script>
 </head>
@@ -213,7 +243,6 @@ window.dataLayer = window.dataLayer || [];
             resilient to infrastructure changes.</p><h2 id="conclusion">Conclusion</h2><p>Microsegmentation is not about blocking traffic—it is about controlling trust.</p><p>By adopting a Crawl-Walk-Run approach, organizations can move from visibility to enforcement without
             disrupting production, while ensuring policies are durable, auditable, and scalable.</p><p>When implemented correctly, microsegmentation becomes a long-term security capability—not a stalled
             initiative.</p>
-</img>
                 </div>
             </article>
         </main>
@@ -483,7 +512,7 @@ window.dataLayer = window.dataLayer || [];
         }
 
         // ===== EMAIL SIGNUP FORM SUBMISSION =====
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyt3yXiow0mYGHwfLNcl_k1lH6s6DU51P8_i50DqqYZxcONrSTX_gQdtxFO4tOQ0sMMdA/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwYxzHdMiTy0Q8O-dURdyERoag-iak2lJuQ3TEv6gL57txAGe--VItTvGfkXzjv9tOmPA/exec';
 
         async function handleEmailSubmit(e) {
             e.preventDefault();
