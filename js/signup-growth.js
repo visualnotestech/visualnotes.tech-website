@@ -154,8 +154,16 @@
                 showStatus('', false);
 
                 // Double submit prevention
+                if (form.getAttribute('data-vn-submitting') === 'true' || submitBtn.disabled) return;
+                form.setAttribute('data-vn-submitting', 'true');
                 submitBtn.disabled = true;
-                var originalBtnHtml = submitBtn.innerHTML;
+
+                // Explicitly preserve original text or use safe default
+                var originalBtnHtml = submitBtn.getAttribute('data-original-text') || submitBtn.innerHTML;
+                if (!originalBtnHtml || originalBtnHtml.indexOf('Sending') !== -1) {
+                    originalBtnHtml = '<span>Get the free Networking Cheat Sheet Pack</span>';
+                }
+                submitBtn.setAttribute('data-original-text', originalBtnHtml);
                 submitBtn.innerHTML = '<span>Sending...</span>';
 
                 trackEvent('signup_submit', { source: source || 'unknown' });
@@ -191,9 +199,10 @@
                         emailInput.value = '';
                         submitBtn.innerHTML = originalBtnHtml;
                         submitBtn.disabled = false;
+                        form.removeAttribute('data-vn-submitting');
                         if (statusEl) statusEl.textContent = '';
                     } catch (e) {}
-                }, 800);
+                }, 500);
 
             } catch (err) {
                 console.error('Signup error:', err);
@@ -365,10 +374,10 @@
                     });
                 }
 
-                // Attach robust submit handlers
+                // Attach robust submit handlers only if not already using inline onsubmit
                 var forms = document.querySelectorAll('.vn-signup-form');
                 forms.forEach(function (f) {
-                    if (!f.hasAttribute('data-vn-bound')) {
+                    if (!f.hasAttribute('data-vn-bound') && !f.getAttribute('onsubmit')) {
                         f.setAttribute('data-vn-bound', 'true');
                         f.addEventListener('submit', function (ev) {
                             var src = f.closest('[data-vn-source]') ? f.closest('[data-vn-source]').getAttribute('data-vn-source') : (f.closest('#vn-signup-popup-overlay') ? 'popup' : 'hero');
