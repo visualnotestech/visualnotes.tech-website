@@ -1689,6 +1689,7 @@
             }
         </style>
     </noscript>
+    <link rel="stylesheet" href="/css/signup-growth.css">
 </head>
 
 <body>
@@ -1707,7 +1708,7 @@
                 <a href="#articles">Blog</a>
                 <a href="/about">About</a>
                 <a href="/faq">FAQ</a>
-                <a href="#subscribe" class="vn-btn-subscribe">Subscribe</a>
+                <a href="#subscribe" class="vn-btn-subscribe vn-signup-nav-btn">Subscribe</a>
             </div>
             <button class="vn-hamburger" id="vnHamburger" aria-label="Toggle navigation">
                 <span></span>
@@ -1723,7 +1724,7 @@
         <a href="#articles" onclick="closeMobileNav()">Blog</a>
         <a href="/about">About</a>
         <a href="/faq">FAQ</a>
-        <a href="#subscribe" class="vn-btn-subscribe" onclick="closeMobileNav()">Subscribe</a>
+        <a href="#subscribe" class="vn-btn-subscribe vn-signup-nav-btn" onclick="closeMobileNav()">Subscribe</a>
     </div>
 
     <!-- ============================================ -->
@@ -1750,9 +1751,21 @@
                 <a href="#cat-osint" class="vn-pill">🔍 OSINT</a>
             </div>
 
-            <div class="vn-hero-cta">
-                <a href="/guides" class="vn-btn-primary">Explore Guides</a>
-                <a href="#articles" class="vn-btn-ghost">Read Articles →</a>
+            <div class="vn-signup-hero-wrap" data-vn-source="hero">
+                <form class="vn-signup-form vn-signup-hero-form" onsubmit="window.vnSignup && window.vnSignup.handleFormSubmit(event, 'hero')">
+                    <label for="vn-hero-email" class="vn-signup-sr-only">Email address</label>
+                    <div class="vn-signup-input-group">
+                        <input type="email" id="vn-hero-email" name="email" class="vn-signup-input" placeholder="Enter your email address" required autocomplete="email" aria-required="true">
+                        <button type="submit" class="vn-signup-btn vn-signup-btn-primary">
+                            <span>Get the free Networking Cheat Sheet Pack</span>
+                        </button>
+                    </div>
+                    <p class="vn-signup-microcopy">One hand-drawn diagram every Friday. Unsubscribe anytime.</p>
+                    <div class="vn-signup-status" role="status" aria-live="polite"></div>
+                </form>
+                <div class="vn-signup-hero-secondary">
+                    <a href="/guides" class="vn-signup-explore-btn">Explore Guides →</a>
+                </div>
             </div>
         </div>
     </section>
@@ -1771,7 +1784,8 @@
                 <div class="vn-stat-label">Deep Articles</div>
             </div>
             <div class="vn-stat">
-                <div class="vn-stat-value" data-count="5000">5K+</div>
+                <!-- TODO: Replace with real verified metrics before publicizing (see config/growth-stats.json) -->
+                <div class="vn-stat-value" data-count="0">TODO</div>
                 <div class="vn-stat-label">Readers</div>
             </div>
             <div class="vn-stat">
@@ -2098,7 +2112,8 @@
     </section>
 
     <!-- ============================================ -->
-    <!-- SECTION 9 — TESTIMONIALS                     -->
+    <!-- SECTION 9 — TESTIMONIALS -->
+    <!-- TODO: Replace with real, attributable quotes from verified readers (Name, Role/Company, Avatar, Quote) -->
     <!-- ============================================ -->
     <section class="vn-testimonials vn-reveal">
         <div class="vn-section-header">
@@ -2167,7 +2182,7 @@
                 <input type="email" id="emailInput" class="email-input" placeholder="your@email.com" required>
                 <button type="submit" class="btn-subscribe">Subscribe</button>
             </form>
-            <p class="vn-newsletter-proof">Join 5,000+ engineers already learning visually</p>
+            <p class="vn-newsletter-proof">Join engineers learning visually with hand-drawn notes</p>
         </div>
     </section>
 
@@ -2526,19 +2541,28 @@
         </div>
     </div>
 
-    <!-- Thank You Modal -->
-    <div id="thankYouModal" class="vn-thank-modal">
-        <div class="vn-thank-content">
-            <div style="font-size: 3.5rem; margin-bottom: 20px;">🎉</div>
-            <h2 style="color: var(--vn-accent); margin-bottom: 12px; font-size: 1.8rem;">Thank You for Subscribing!</h2>
-            <p style="color: var(--vn-ink-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px;">
-                Welcome to the VisualNotes community! We've sent a welcome email to your inbox with exclusive resources and tips.
-            </p>
-            <div style="background: var(--vn-bg); padding: 18px; border-radius: var(--vn-radius); margin-bottom: 24px;">
-                <p style="color: var(--vn-ink); font-weight: 600; margin-bottom: 8px;">🚀 What's Next?</p>
-                <p style="color: var(--vn-ink-secondary); font-size: 0.92rem;">Check your email for your welcome message and start exploring our visual study guides!</p>
+    
+    <!-- Thank You Modal (Enhanced with Lead Magnet & Flashcards) -->
+    <div id="thankYouModal" class="vn-thank-modal" role="dialog" aria-modal="true" aria-labelledby="vn-thank-title" style="display:none;">
+        <div class="vn-thank-content" style="position:relative; max-width:540px; background:#ffffff; border-radius:14px; padding:32px 24px; box-shadow:0 20px 40px rgba(0,0,0,0.2);">
+            <button class="vn-signup-popup-close" onclick="window.vnSignup && window.vnSignup.closeModal()" aria-label="Close dialog">×</button>
+            <div class="vn-signup-success-box">
+                <div class="vn-signup-success-icon">🎉</div>
+                <h2 id="vn-thank-title" class="vn-signup-success-title">You're in! Download your pack</h2>
+                <p class="vn-signup-success-desc">Here is your free 11-page Networking Cheat Sheet Pack. We've also emailed a copy for your reference.</p>
+                <div class="vn-signup-download-box">
+                    <a href="/downloads/networking-cheat-sheet-pack.pdf" class="vn-signup-btn vn-signup-download-btn" target="_blank" rel="noopener" download="networking-cheat-sheet-pack.pdf" data-vn-source="success_modal">
+                        <span>📥 Download the pack (PDF)</span>
+                    </a>
+                </div>
+                <div class="vn-signup-recommended-links">
+                    <p class="vn-signup-recommended-title">💡 Practice with interactive flashcards:</p>
+                    <div class="vn-signup-pills-row">
+                        <a href="/subnetting-flashcards" class="vn-signup-pill-link">⚡ Subnetting Flashcards →</a>
+                        <a href="/hsrp-flashcards" class="vn-signup-pill-link">🛡️ HSRP Flashcards →</a>
+                    </div>
+                </div>
             </div>
-            <button onclick="closeThankYouModal()" class="vn-btn-primary" style="width: 100%;">Start Exploring</button>
         </div>
     </div>
 
@@ -2555,44 +2579,44 @@
         🌙 DARK MODE
     </button>
 
-    <!-- First-Time Visitor Popup -->
-    <div id="vn-popup-overlay" class="vn-popup-overlay">
-        <div class="vn-popup-container">
-            <div class="vn-popup-header">
-                <button class="vn-popup-close" onclick="closeSubscribePopup()">×</button>
-                <div class="vn-popup-icon">📚</div>
-                <h2>Get Free Visual Study Guides!</h2>
-                <p>Join 5,000+ engineers learning visually</p>
-            </div>
-            <div class="vn-popup-body">
-                <div id="vn-popup-form-container">
-                    <ul class="vn-popup-benefits">
-                        <li>New study guides delivered weekly</li>
-                        <li>Exclusive tips & tricks</li>
-                        <li>Early access to new content</li>
-                        <li>100% free, unsubscribe anytime</li>
-                    </ul>
-                    <form class="vn-popup-form" onsubmit="submitPopupForm(event)">
-                        <input type="email" class="vn-popup-input" placeholder="Enter your email address" required id="vn-popup-email">
-                        <button type="submit" class="vn-popup-submit">Get Free Study Guides →</button>
-                    </form>
-                    <div class="vn-popup-skip">
-                        <a onclick="closeSubscribePopup()">No thanks, maybe later</a>
-                    </div>
+    
+    <!-- Enhanced Lead Magnet Popup (Gated by SIGNUP_GROWTH_ENABLED) -->
+    <div id="vn-signup-popup-overlay" class="vn-signup-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="vn-popup-lead-title" style="display:none;">
+        <div class="vn-signup-popup-modal">
+            <button class="vn-signup-popup-close" onclick="window.dismissSignupPopup && window.dismissSignupPopup()" aria-label="Close popup">×</button>
+            <span class="vn-signup-inline-badge">Free 11-Page PDF</span>
+            <h2 id="vn-popup-lead-title" class="vn-signup-inline-headline" style="font-size: 1.5rem; margin-top: 4px;">Free Networking Cheat Sheet Pack</h2>
+            <p class="vn-signup-inline-desc">
+                Nine one-page handwritten visual references for CCNA study, interviews, and day-to-day troubleshooting.
+            </p>
+            <ul class="vn-signup-popup-topics">
+                <li>Subnetting (4-step method)</li>
+                <li>VLANs & Inter-VLAN Routing</li>
+                <li>Spanning Tree (STP / RSTP)</li>
+                <li>HSRP & VRRP Failover</li>
+                <li>Routing & Admin Distance</li>
+                <li>DNS Records & Resolution</li>
+                <li>Common Ports & Protocols</li>
+                <li>OSI & Troubleshooting Flow</li>
+                <li>SNMP, NetFlow, NTP, Syslog</li>
+            </ul>
+            <form class="vn-signup-form" onsubmit="window.vnSignup && window.vnSignup.handleFormSubmit(event, 'popup')">
+                <label for="vn-popup-email-input" class="vn-signup-sr-only">Email address</label>
+                <div class="vn-signup-input-group">
+                    <input type="email" id="vn-popup-email-input" name="email" class="vn-signup-input" placeholder="Enter your email address" required autocomplete="email" aria-required="true">
+                    <button type="submit" class="vn-signup-btn vn-signup-btn-primary">
+                        <span>Get the Free Cheat Sheet Pack</span>
+                    </button>
                 </div>
-                <div id="vn-popup-success" class="vn-popup-success">
-                    <div style="font-size:3.5rem; color:var(--vn-accent); margin-bottom:12px;">✓</div>
-                    <h3 style="color:var(--vn-accent); margin:0 0 8px 0; font-size:1.4rem;">You're All Set!</h3>
-                    <p style="color:var(--vn-ink-secondary); margin:0; font-size:0.95rem;">Check your email for a welcome message with exclusive resources.</p>
-                </div>
-            </div>
+                <p class="vn-signup-microcopy">One hand-drawn diagram every Friday. Unsubscribe anytime.</p>
+                <div class="vn-signup-status" role="status" aria-live="polite"></div>
+            </form>
+            <button type="button" class="vn-signup-popup-dismiss" onclick="window.dismissSignupPopup && window.dismissSignupPopup()">
+                No thanks, I don't need networking notes
+            </button>
         </div>
     </div>
 
-    <!-- ============================================ -->
-    <!-- JAVASCRIPT                                   -->
-    <!-- ============================================ -->
-    <script src="js/data.js"></script>
     <script>
         // ===== HEADER SCROLL BEHAVIOR =====
         const header = document.getElementById('vnHeader');
@@ -3161,7 +3185,8 @@
                 }
             });
 
-            if (!hasSeenPopup()) setTimeout(showPopup, POPUP_DELAY);
+            // Old popup disabled by SIGNUP_GROWTH_ENABLED; handled by /js/signup-growth.js
+            // if (!hasSeenPopup()) setTimeout(showPopup, POPUP_DELAY);
         })();
 
         // ===== DEEP LINKING =====
