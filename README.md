@@ -100,6 +100,28 @@ Email subscriptions powered by Google Apps Script:
 - Mobile-friendly
 - Core Web Vitals optimized
 
+## 🚩 Feature Flags & Signup Growth System
+
+The lead magnet and growth enhancements are strictly gated behind one environment variable:
+
+- **Variable:** `SIGNUP_GROWTH_ENABLED`
+  - *Accepted equivalents:* `NEXT_PUBLIC_SIGNUP_GROWTH_ENABLED`, `VITE_SIGNUP_GROWTH_ENABLED`
+  - *Values:* `true` to enable; unset or `false` to disable.
+  - *Default:* `false` (unset). When unset or `false`, all HTML pages are guaranteed 100% byte-for-byte identical to baseline.
+
+### Build & Verification Commands
+
+```bash
+# Build with growth features enabled
+SIGNUP_GROWTH_ENABLED=true npm run build
+
+# Build with flag off (default baseline parity)
+npm run build
+
+# Run verification test suite
+npm test
+```
+
 ## 📱 Browser Support
 
 - Chrome (latest)

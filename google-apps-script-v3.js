@@ -301,75 +301,78 @@ function sendEnhancedWelcomeEmail(email) {
     if (storedGuides) guides = JSON.parse(storedGuides);
   } catch (e) { Logger.log('Error parsing dynamic content: ' + e); }
 
-  const subject = "Welcome to VisualNotes - Your Learning Journey Starts Here!";
-  let articlesHTML = '';
-  articles.forEach(article => {
-    articlesHTML += `
-      <div style="background: #f8fafc; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 3px solid #FF6B6B;">
-        <h3 style="margin: 0 0 8px 0; color: #1e293b; font-size: 16px;">${article.title}</h3>
-        <p style="margin: 0 0 10px 0; color: #64748b; font-size: 14px;">${article.description}</p>
-        <a href="${article.url}" style="color: #FF6B6B; text-decoration: none; font-weight: 600; font-size: 14px;">Read Article →</a>
-      </div>
-    `;
-  });
-  let guidesHTML = '';
-  guides.forEach(guide => {
-    guidesHTML += `
-      <div style="display: inline-block; background: #ecfdf5; color: #10b981; padding: 8px 16px; border-radius: 20px; margin: 5px; font-size: 13px; font-weight: 600;">
-        ${guide.title}
-      </div>
-    `;
-  });
+  const subject = "Your Networking Cheat Sheet Pack is here";
+  const downloadUrl = "https://www.visualnotes.tech/downloads/networking-cheat-sheet-pack.pdf";
+  const subnettingUrl = "https://www.visualnotes.tech/subnetting-flashcards";
+  const hsrpUrl = "https://www.visualnotes.tech/hsrp-flashcards";
+
   const htmlBody = `
-    <div style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #1e293b; max-width: 600px; margin: 0 auto; padding: 20px;">
-      
-      <div style="background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%); color: white; padding: 40px 30px; border-radius: 12px 12px 0 0; text-align: center;">
-        <h1 style="margin: 0; font-size: 28px; font-weight: 700;">Welcome to VisualNotes!</h1>
-        <p style="margin: 10px 0 0 0; font-size: 16px; opacity: 0.9;">Your visual learning journey starts now</p>
-      </div>
-      
-      <div style="background: #ffffff; padding: 40px 30px; border: 1px solid #e2e8f0; border-top: none;">
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1e293b; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f8fafc;">
+      <div style="background-color: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <div style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: #ffffff; padding: 32px 24px; text-align: center;">
+          <h1 style="margin: 0; font-size: 24px; font-weight: 700;">VisualNotes</h1>
+          <p style="margin: 6px 0 0 0; font-size: 15px; opacity: 0.9;">Your Networking Cheat Sheet Pack is here</p>
+        </div>
         
-        <h2 style="color: #FF6B6B; margin-top: 0; font-size: 22px;">Thanks for subscribing!</h2>
-        <p style="color: #475569; margin-bottom: 30px;">
-          You've joined <strong>1000+ engineers</strong> who are learning Infrastructure, Cloud, Security & OSINT with visual guides that actually make sense.
-        </p>
-        <div style="margin: 30px 0;">
-          <h3 style="color: #1e293b; font-size: 18px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0;">
-            Latest Articles
-          </h3>
-          ${articlesHTML}
-        </div>
-        <div style="margin: 30px 0;">
-          <h3 style="color: #1e293b; font-size: 18px; margin-bottom: 15px;">
-            Popular Study Guides
-          </h3>
-          <div style="margin-bottom: 20px;">
-            ${guidesHTML}
-          </div>
-          <a href="${WEBSITE_URL}" 
-             style="display: inline-block; background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%); color: white; padding: 14px 30px; text-decoration: none; border-radius: 8px; font-weight: 600; margin-top: 15px;">
-            Explore All Study Guides →
-          </a>
-        </div>
-        <div style="background: #f8fafc; padding: 25px; border-radius: 10px; margin: 30px 0; border: 1px solid #e2e8f0;">
-          <h3 style="color: #1e293b; margin-top: 0; font-size: 18px;">Join Our Community</h3>
-          <p style="color: #64748b; margin-bottom: 20px;">Connect with fellow learners and get instant updates!</p>
-          <div style="display: flex; gap: 15px;">
-            <a href="${INSTAGRAM_URL}" 
-               style="flex: 1; background: #E1306C; color: white; padding: 12px 20px; text-decoration: none; border-radius: 8px; text-align: center; font-weight: 600;">
-              Instagram
+        <div style="padding: 32px 24px;">
+          <p style="font-size: 16px; margin-top: 0;">Hey there 👋,</p>
+          <p style="font-size: 16px;">Thanks for subscribing to <strong>VisualNotes</strong>!</p>
+          
+          <div style="text-align: center; margin: 28px 0;">
+            <a href="${downloadUrl}" 
+               style="display: inline-block; background-color: #10b981; color: #ffffff; font-size: 16px; font-weight: 700; text-decoration: none; padding: 14px 28px; border-radius: 8px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
+              📥 Download the pack (PDF)
             </a>
-            <a href="${WHATSAPP_URL}" 
-               style="flex: 1; background: #25D366; color: white; padding: 12px 20px; text-decoration: none; border-radius: 8px; text-align: center; font-weight: 600;">
-              WhatsApp
-            </a>
+            <p style="font-size: 13px; color: #64748b; margin-top: 8px;">Direct link: 11-page high-resolution PDF</p>
           </div>
+
+          <div style="background-color: #f1f5f9; border-radius: 8px; padding: 20px; margin: 28px 0;">
+            <h3 style="margin-top: 0; margin-bottom: 12px; font-size: 16px; color: #0f172a;">📖 What's inside your 11-page pack:</h3>
+            <ol style="margin: 0; padding-left: 20px; color: #334155; font-size: 14px; line-height: 1.8;">
+              <li><strong>Subnetting</strong> – 4-step method, block size table, private IP ranges</li>
+              <li><strong>VLANs and inter-VLAN routing</strong> – Access, trunk, native VLANs & SVIs</li>
+              <li><strong>Spanning Tree</strong> – 802.1D election rules, RSTP port roles & BPDU Guard</li>
+              <li><strong>HSRP/VRRP</strong> – Priority, timers, virtual MACs & failover flow</li>
+              <li><strong>Routing protocols and admin distance</strong> – AD table, OSPF, EIGRP & BGP</li>
+              <li><strong>DNS records</strong> – 4-step resolution, A, AAAA, CNAME, MX & TXT</li>
+              <li><strong>Common ports</strong> – Critical port numbers & TCP vs UDP</li>
+              <li><strong>OSI and troubleshooting</strong> – 7-layer model & bottom-up troubleshooting</li>
+              <li><strong>SNMP, NetFlow, NTP, syslog</strong> – Monitoring protocols & severity levels</li>
+            </ol>
+          </div>
+
+          <p style="font-size: 15px; color: #334155;">
+            <strong>What to expect:</strong> One new hand-drawn diagram every Friday. Unsubscribe anytime.
+          </p>
+
+          <div style="margin: 24px 0; padding: 18px; border: 1px solid #e2e8f0; border-radius: 8px;">
+            <p style="margin: 0 0 10px 0; font-size: 14px; font-weight: 600; color: #0f172a;">Practice what you just read:</p>
+            <p style="margin: 4px 0; font-size: 14px;">
+              ⚡ <a href="${subnettingUrl}" style="color: #2563eb; text-decoration: none; font-weight: 600;">Subnetting Flashcards →</a>
+            </p>
+            <p style="margin: 4px 0; font-size: 14px;">
+              🛡️ <a href="${hsrpUrl}" style="color: #2563eb; text-decoration: none; font-weight: 600;">HSRP Flashcards →</a>
+            </p>
+          </div>
+
+          <p style="font-size: 15px; color: #334155; background-color: #fefce8; border-left: 3px solid #eab308; padding: 12px 16px; border-radius: 4px;">
+            💬 <strong>Tell me what to draw next:</strong> Hit reply to this email and let me know which networking, cloud, or security topic gives you headaches. I read every reply!
+          </p>
+
+          <p style="font-size: 15px; margin-top: 28px; margin-bottom: 0;">
+            Happy learning,<br>
+            <strong>Abhiney, VisualNotes</strong><br>
+            <a href="${WEBSITE_URL}" style="color: #2563eb; text-decoration: none;">visualnotes.tech</a>
+          </p>
         </div>
-        <p style="color: #94a3b8; font-size: 14px; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
-          Happy learning!<br>
-          <strong style="color: #475569;">The VisualNotes Team</strong>
-        </p>
+
+        <div style="background-color: #f8fafc; border-top: 1px solid #e2e8f0; padding: 20px 24px; text-align: center; font-size: 12px; color: #94a3b8;">
+          <p style="margin: 0 0 8px 0;">You received this email because you requested the free Networking Cheat Sheet Pack on visualnotes.tech.</p>
+          <p style="margin: 0;">
+            <a href="https://www.visualnotes.tech" style="color: #64748b; text-decoration: underline;">VisualNotes</a> &bull; 
+            <a href="https://www.visualnotes.tech/privacy" style="color: #64748b; text-decoration: underline;">Privacy Policy</a>
+          </p>
+        </div>
       </div>
     </div>
   `;
