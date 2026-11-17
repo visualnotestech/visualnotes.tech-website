@@ -58,7 +58,7 @@
         }
 
         // ===== SUCCESS MODAL GENERATION & DISPLAY =====
-        function showSuccessModal(source) {
+        function showSuccessModal(source, submittedEmail) {
             try {
                 trackEvent('signup_success', { source: source || 'unknown' });
 
@@ -66,19 +66,23 @@
                 if (modal) {
                     var content = modal.querySelector('.vn-thank-content');
                     if (content) {
+                        var displayEmail = submittedEmail ? ('<strong>' + submittedEmail.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</strong>') : 'your email address';
                         content.innerHTML = [
                             '<button class="vn-signup-popup-close" style="top:10px;right:10px;" onclick="window.vnSignup && window.vnSignup.closeModal()" aria-label="Close dialog">×</button>',
                             '<div class="vn-signup-success-box">',
-                            '  <div class="vn-signup-success-icon">🎉</div>',
-                            '  <h2 class="vn-signup-success-title">You\'re in! Download your pack</h2>',
-                            '  <p class="vn-signup-success-desc">Here is your free 11-page Networking Cheat Sheet Pack. We\'ve also emailed a copy for your reference.</p>',
-                            '  <div class="vn-signup-download-box">',
-                            '    <a href="/downloads/networking-cheat-sheet-pack.pdf" class="vn-signup-btn vn-signup-download-btn" target="_blank" rel="noopener" download="networking-cheat-sheet-pack.pdf" onclick="window.vnSignup && window.vnSignup.trackEvent(\'pack_download_click\', { source: \'' + (source || 'modal') + '\' })">',
-                            '      📥 Download the pack (PDF)',
-                            '    </a>',
+                            '  <div class="vn-signup-success-icon">📬</div>',
+                            '  <h2 class="vn-signup-success-title">Check your inbox!</h2>',
+                            '  <p class="vn-signup-success-desc">We just sent your free <strong>11-page Networking Cheat Sheet Pack</strong> to ' + displayEmail + '.</p>',
+                            '  <div class="vn-signup-inbox-tip" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:16px 20px; margin:20px 0; text-align:left;">',
+                            '    <p style="margin:0 0 8px 0; font-weight:700; color:#0f172a; font-size:0.95rem;">📥 How to get your pack:</p>',
+                            '    <ol style="margin:0; padding-left:20px; color:#475569; font-size:0.88rem; line-height:1.6;">',
+                            '      <li>Open your email app and look for an email from <strong>VisualNotes</strong>.</li>',
+                            '      <li>Click the green <strong>"Download the pack (PDF)"</strong> button inside.</li>',
+                            '      <li><em>(If you don\'t see it in 1-2 minutes, check your Promotions or Spam folder).</em></li>',
+                            '    </ol>',
                             '  </div>',
                             '  <div class="vn-signup-recommended-links">',
-                            '    <p class="vn-signup-recommended-title">💡 Practice with interactive flashcards:</p>',
+                            '    <p class="vn-signup-recommended-title">💡 While you wait, test your networking skills:</p>',
                             '    <div class="vn-signup-pills-row">',
                             '      <a href="/subnetting-flashcards" class="vn-signup-pill-link">⚡ Subnetting Flashcards →</a>',
                             '      <a href="/hsrp-flashcards" class="vn-signup-pill-link">🛡️ HSRP Flashcards →</a>',
@@ -178,8 +182,8 @@
                 var popupOverlay = document.getElementById('vn-signup-popup-overlay');
                 if (popupOverlay) popupOverlay.style.display = 'none';
 
-                // Display success UI immediately with download button
-                showSuccessModal(source);
+                // Display success UI immediately with inbox verification instructions
+                showSuccessModal(source, email);
 
                 // Reset form button after brief delay
                 setTimeout(function () {
