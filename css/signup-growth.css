@@ -583,6 +583,19 @@ body.dark-mode .vn-signup-pill-link:hover {
     color: #ffffff !important;
 }
 
+body.dark-mode .vn-signup-inbox-tip {
+    background-color: #26262b !important;
+    border-color: #2e2d33 !important;
+}
+
+body.dark-mode .vn-signup-inbox-tip p {
+    color: #ffffff !important;
+}
+
+body.dark-mode .vn-signup-inbox-tip ol {
+    color: #cbd5e1 !important;
+}
+
 body.dark-mode .vn-signup-explore-btn {
     color: #a2a4b2 !important;
 }
