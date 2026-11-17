@@ -156,8 +156,9 @@
 
                 trackEvent('signup_submit', { source: source || 'unknown' });
 
+                // Dispatch to Google Apps Script backend (non-blocking so modal opens immediately)
                 try {
-                    await fetch(SCRIPT_URL, {
+                    fetch(SCRIPT_URL, {
                         method: 'POST',
                         mode: 'no-cors',
                         headers: { 'Content-Type': 'text/plain' },
@@ -166,10 +167,10 @@
                             country: 'detect-server-side',
                             source: source || 'growth_form'
                         })
+                    }).catch(function (fetchErr) {
+                        console.warn('Backend notification caught:', fetchErr);
                     });
-                } catch (fetchErr) {
-                    // With no-cors Google Apps Script, network errors are caught, but opaque success is silent
-                }
+                } catch (dispatchErr) {}
 
                 setStoredState('subscribed');
 
@@ -177,7 +178,7 @@
                 var popupOverlay = document.getElementById('vn-signup-popup-overlay');
                 if (popupOverlay) popupOverlay.style.display = 'none';
 
-                // Display success UI
+                // Display success UI immediately with download button
                 showSuccessModal(source);
 
                 // Reset form button after brief delay
@@ -188,7 +189,7 @@
                         submitBtn.disabled = false;
                         if (statusEl) statusEl.textContent = '';
                     } catch (e) {}
-                }, 500);
+                }, 800);
 
             } catch (err) {
                 console.error('Signup error:', err);
@@ -347,15 +348,44 @@
             } catch (err) {}
         }
 
+        // ===== AUTO-PREFILL FROM URL & ATTACH FORM LISTENERS =====
+        function setupFormListeners() {
+            try {
+                // Prefill ?email= if present in URL
+                var urlParams = new URLSearchParams(window.location.search);
+                var emailParam = urlParams.get('email');
+                if (emailParam) {
+                    var inputs = document.querySelectorAll('.vn-signup-input');
+                    inputs.forEach(function (inp) {
+                        if (!inp.value) inp.value = emailParam;
+                    });
+                }
+
+                // Attach robust submit handlers
+                var forms = document.querySelectorAll('.vn-signup-form');
+                forms.forEach(function (f) {
+                    if (!f.hasAttribute('data-vn-bound')) {
+                        f.setAttribute('data-vn-bound', 'true');
+                        f.addEventListener('submit', function (ev) {
+                            var src = f.closest('[data-vn-source]') ? f.closest('[data-vn-source]').getAttribute('data-vn-source') : (f.closest('#vn-signup-popup-overlay') ? 'popup' : 'hero');
+                            handleFormSubmit(ev, src);
+                        });
+                    }
+                });
+            } catch (err) {}
+        }
+
         // Initialize when DOM is ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', function () {
+                setupFormListeners();
                 setupPopup();
                 setupViewTracking();
                 handleDeepLinks();
                 setupDownloadTracking();
             });
         } else {
+            setupFormListeners();
             setupPopup();
             setupViewTracking();
             handleDeepLinks();
