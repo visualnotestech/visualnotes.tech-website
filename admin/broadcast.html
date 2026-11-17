@@ -2,57 +2,46 @@
 <html lang="en">
 
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="VisualNotes Admin Newsletter Broadcast portal for queued subscriber messaging.">
-    <meta name="robots" content="noindex, nofollow">
-    <link rel="canonical" href="https://www.visualnotes.tech/admin/broadcast">
-    <title>VisualNotes Admin | Newsletter Broadcast</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    <title>VisualNotes - Admin Broadcast Dashboard</title>
     <style>
         :root {
-            --primary: #FF6B6B;
-            --bg: var(--vn-bg);
-            --card: var(--vn-bg-white);
-            --text: var(--vn-ink);
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --border: #334155;
+            --text: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #FF6B6B;
+            --accent-gradient: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
         }
 
         body {
-            font-family: var(--vn-font-body), sans-serif;
-            background: var(--bg);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
             color: var(--text);
+            padding: 30px 20px;
+            margin: 0;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            transition: background 0.3s, color 0.3s;
         }
 
         .container {
-            background: var(--card);
-            padding: 40px;
-            border-radius: var(--vn-radius);
-            border: 2.5px solid var(--vn-ink);
             width: 100%;
-            max-width: 500px;
-            box-shadow: 3px 3px 0px var(--vn-border);
-            transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
-        }
-        
-        body.dark-mode .container {
-            border: 2.5px solid var(--vn-border);
+            max-width: 600px;
+            background: var(--surface);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
         }
 
         h1 {
-            color: var(--primary);
-            margin-bottom: 30px;
-            text-align: center;
+            margin-top: 0;
+            font-size: 1.5rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .form-group {
@@ -63,120 +52,116 @@
             display: block;
             margin-bottom: 8px;
             font-size: 0.9rem;
-            color: var(--vn-ink-secondary);
+            font-weight: 600;
+            color: var(--text-secondary);
         }
 
         input,
         textarea {
             width: 100%;
             padding: 12px;
-            background: var(--vn-bg-white);
-            border: 1.5px solid var(--vn-border);
-            border-radius: 8px;
-            color: var(--vn-ink);
-            font-family: inherit;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: #0b1120;
+            color: white;
+            font-size: 0.95rem;
             box-sizing: border-box;
-            transition: background 0.3s, border-color 0.3s, color 0.3s;
         }
 
         input:focus,
         textarea:focus {
             outline: none;
-            border-color: var(--vn-accent);
+            border-color: #4ECDC4;
         }
 
         button {
             width: 100%;
-            padding: 15px;
-            background: var(--primary);
+            padding: 14px;
+            background: var(--accent-gradient);
             color: white;
             border: none;
-            border-radius: 8px;
-            font-weight: 800;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
             cursor: pointer;
             transition: opacity 0.2s;
-            margin-top: 10px;
         }
 
         button:hover {
             opacity: 0.9;
         }
 
-        #status {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 0.9rem;
-            min-height: 1.2em;
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
 
-        .warning {
-            background: var(--vn-warning-bg);
-            color: var(--vn-warning-text);
-            border: 1.5px solid var(--vn-warning-border);
-            padding: 10px;
-            border-radius: 8px;
+        #status {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .helper {
             font-size: 0.8rem;
-            margin-bottom: 20px;
+            color: var(--text-secondary);
+            margin-top: 4px;
         }
     </style>
 </head>
 
 <body>
-    <script>(function(){if(localStorage.getItem('darkMode')==='true'){document.body.classList.add('dark-mode');}})();</script>
-    <!-- Import shared data (Cache bust with timestamp) -->
-    <script>
-        document.write('<script src="../js/data.js?v=' + Date.now() + '"><\/script>');
-    </script>
 
     <div class="container">
-        <h1>📢 Newsletter Broadcast</h1>
+        <h1>📢 Broadcast Newsletter</h1>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 25px;">
+            Send an update to all active subscribers via Google Apps Script.
+        </p>
 
-        <div class="warning">
-            ⚠️ <strong>Strictly Private:</strong> Do not share this URL or your Admin Key.
-        </div>
-
-        <!-- AUTO-FILL BUTTON -->
-        <button onclick="autoFillLatest()"
-            style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); margin-bottom: 25px;">
-            ✨ Auto-Fill from Latest Content
-        </button>
-
-        <!-- Script URL Input (One-time setup per session) -->
-        <div class="form-group">
-            <label>Google Script URL (Web App URL)</label>
-            <input type="url" id="scriptUrl" placeholder="https://script.google.com/macros/s/..." required>
-        </div>
-
+        <!-- Credentials -->
         <div class="form-group">
             <label>Admin Key</label>
-            <input type="password" id="adminKey" placeholder="Enter your secret key" required>
-        </div>
-
-        <hr style="border-color: #334155; margin: 25px 0;">
-
-        <div class="form-group">
-            <label>Email Title (Subject)</label>
-            <input type="text" id="title" placeholder="e.g., New Guide: AWS vs Azure" required>
+            <input type="password" id="adminKey" placeholder="Enter your secret admin key" required>
+            <div class="helper">Set this up in Apps Script using scriptProperties.</div>
         </div>
 
         <div class="form-group">
-            <label>Description (Body)</label>
-            <textarea id="desc" rows="6" placeholder="Brief summary of the new content..." required></textarea>
+            <label>Script Web App URL</label>
+            <input type="url" id="scriptUrl" value="https://script.google.com/macros/s/AKfycbwYxzHdMiTy0Q8O-dURdyERoag-iak2lJuQ3TEv6gL57txAGe--VItTvGfkXzjv9tOmPA/exec" placeholder="https://script.google.com/macros/s/..." required>
+        </div>
+
+        <hr style="border-color: var(--border); margin: 25px 0;">
+
+        <!-- Message Details -->
+        <div class="form-group">
+            <label>Update Title / Subject Line</label>
+            <input type="text" id="title" placeholder="e.g. New Visual Guide: SD-WAN Architecture 🚀" required>
         </div>
 
         <div class="form-group">
-            <label>Link URL (Primary CTA)</label>
-            <input type="url" id="url" placeholder="https://www.visualnotes.tech/blog/..." required>
+            <label>Short Description (Body Text)</label>
+            <textarea id="desc" rows="4" placeholder="Write a short summary about the new content..." required></textarea>
         </div>
 
-        <!-- V3: Secondary CTA -->
-        <div class="form-group" style="border-top: 1px solid #334155; padding-top: 20px;">
-            <label style="color: #94a3b8; margin-bottom: 10px; display: block;">Secondary Link (Optional)</label>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <input type="url" id="secondaryUrl" placeholder="URL (e.g. Visual Link)" style="font-size: 0.9em;">
-                <input type="text" id="secondaryLabel" placeholder="Button Text (e.g. View Visual)"
-                    style="font-size: 0.9em;">
-            </div>
+        <div class="form-group">
+            <label>Content Deep Link URL (Main Button)</label>
+            <input type="url" id="url" placeholder="https://visualnotes.tech/#sd-wan-notes" required>
+            <div class="helper">The primary destination where subscribers will be sent.</div>
+        </div>
+
+        <!-- V3: Secondary Resource Option -->
+        <div class="form-group">
+            <label>Secondary Button URL (Optional)</label>
+            <input type="url" id="secondaryUrl" placeholder="https://visualnotes.tech/guides/sd-wan.pdf">
+        </div>
+
+        <div class="form-group">
+            <label>Secondary Button Label (Optional)</label>
+            <input type="text" id="secondaryLabel" placeholder="e.g. Download Cheatsheet">
         </div>
 
         <button onclick="sendBroadcast()" id="sendBtn">🚀 Send to All Subscribers</button>
@@ -184,11 +169,12 @@
     </div>
 
     <script>
-        // Pre-fill script URL if saved previously (optional convenience)
+        // Pre-fill script URL with current deployment URL
+        const DEFAULT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwYxzHdMiTy0Q8O-dURdyERoag-iak2lJuQ3TEv6gL57txAGe--VItTvGfkXzjv9tOmPA/exec";
         let savedUrl = localStorage.getItem('vn_script_url');
-        // Default to the user's deployed URL if not in local storage yet
-        if (!savedUrl) {
-            savedUrl = "https://script.google.com/macros/s/AKfycbwYxzHdMiTy0Q8O-dURdyERoag-iak2lJuQ3TEv6gL57txAGe--VItTvGfkXzjv9tOmPA/exec";
+        if (!savedUrl || savedUrl !== DEFAULT_SCRIPT_URL) {
+            savedUrl = DEFAULT_SCRIPT_URL;
+            localStorage.setItem('vn_script_url', DEFAULT_SCRIPT_URL);
         }
         document.getElementById('scriptUrl').value = savedUrl;
 
@@ -209,6 +195,7 @@
             const btn = document.getElementById('sendBtn');
 
             if (!scriptUrl || !adminKey || !title || !desc || !url) {
+                status.style.display = 'block';
                 status.innerHTML = '<span style="color: #ff6b6b">Please fill in all required fields</span>';
                 return;
             }
@@ -219,7 +206,8 @@
 
             btn.disabled = true;
             btn.innerText = "Sending...";
-            status.innerText = "";
+            status.style.display = 'block';
+            status.innerText = "Broadcasting to subscribers...";
 
             try {
                 await fetch(scriptUrl, {
@@ -232,12 +220,12 @@
                         title: title,
                         description: desc,
                         url: url,
-                        secondaryUrl: secondaryUrl, // V3
-                        secondaryLabel: secondaryLabel // V3
+                        secondaryUrl: secondaryUrl,
+                        secondaryLabel: secondaryLabel
                     })
                 });
-                status.innerHTML = '<span style="color: #4ade80">✅ Broadcast queued! Check logs.</span>';
-                // Clear fields but keep keys
+                status.style.display = 'block';
+                status.innerHTML = '<span style="color: #4ade80">✅ Broadcast queued! Check your Google Sheet logs.</span>';
                 document.getElementById('title').value = '';
                 document.getElementById('desc').value = '';
                 document.getElementById('url').value = '';
@@ -246,166 +234,14 @@
 
             } catch (error) {
                 console.error(error);
+                status.style.display = 'block';
                 status.innerHTML = '<span style="color: #ff6b6b">❌ Network Error: ' + error.message + '</span>';
             }
 
             btn.disabled = false;
             btn.innerText = "🚀 Send to All Subscribers";
         }
-
-        // ===== CONTENT SYNC & THUMBNAIL TOOLS =====
-        async function syncContent() {
-            const scriptUrl = document.getElementById('scriptUrl').value;
-            const adminKey = document.getElementById('adminKey').value;
-            const status = document.getElementById('status');
-
-            if (!scriptUrl || !adminKey) {
-                status.innerHTML = '<span style="color: #ff6b6b">Please enter Script URL and Admin Key first</span>';
-                return;
-            }
-
-            const syncBtn = document.getElementById('syncBtn');
-            syncBtn.disabled = true;
-            syncBtn.innerText = "Syncing...";
-
-            // Prepare Data from imported data.js
-            // We take the top 2 items for "Latest"
-            const latestVisuals = visualNotes.slice(0, 2).map(v => ({
-                title: v.title,
-                url: `https://www.visualnotes.tech/#visual-${v.id}`,
-                description: v.description
-            }));
-
-            const latestGuides = guides.slice(0, 3).map(g => ({
-                title: g.title,
-                category: g.category
-            }));
-
-            try {
-                await fetch(scriptUrl, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'text/plain' },
-                    body: JSON.stringify({
-                        action: 'update_content',
-                        adminKey: adminKey,
-                        latestArticles: latestVisuals,
-                        latestGuides: latestGuides
-                    })
-                });
-                status.innerHTML = '<span style="color: #4ade80">✅ Content Synced to Welcome Email!</span>';
-            } catch (error) {
-                status.innerHTML = '<span style="color: #ff6b6b">❌ Sync Failed: ' + error.message + '</span>';
-            }
-            syncBtn.disabled = false;
-            syncBtn.innerText = "🔄 Sync Local Content to Welcome Email";
-        }
     </script>
-
-    <hr style="border-color: #334155; margin: 25px 0;">
-
-    <!-- Automation Tools Section -->
-    <div style="background: #0f172a; padding: 20px; border-radius: 10px; border: 1px solid #334155;">
-        <h2 style="color: #4ade80; margin-top: 0; font-size: 1.2rem;">⚡ Automation Tools</h2>
-
-        <button id="syncBtn" onclick="syncContent()" style="background: #0ea5e9; margin-bottom: 15px;">
-            🔄 Sync Local Content to Welcome Email
-        </button>
-        <p style="font-size: 0.8rem; color: #94a3b8; margin: 0 0 15px 0;">
-            Updates the "Latest Articles" and "Popular Guides" in the Welcome Email based on your local
-            <code>data.js</code> file.
-        </p>
-
-        <h3 style="color: #fbbf24; font-size: 1rem; margin-top: 20px;">🖼️ Thumbnail Generator</h3>
-        <input type="file" id="pdfInput" accept="application/pdf" style="background: var(--bg);">
-        <button onclick="generateThumbnail()" style="background: #fbbf24; color: #451a03;">Generat & Download
-            PNG</button>
-        <canvas id="thumbCanvas" style="display: none;"></canvas>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-    <script>
-        // Set PDF Worker
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
-        async function autoFillLatest() {
-            // Get latest items (Assuming new items are PREPENDED to the array in data.js)
-            const lastGuide = guides[0];
-            const lastVisual = visualNotes[0];
-
-            if (!lastGuide && !lastVisual) {
-                alert("No content found in data.js");
-                return;
-            }
-
-            // Construct Title
-            const titleField = document.getElementById('title');
-            titleField.value = `New Content: ${lastGuide ? lastGuide.title : ''} & ${lastVisual ? lastVisual.title : ''}`;
-
-            // Construct Description
-            const descField = document.getElementById('desc');
-            let descText = "Hey techies!\n\nWe just dropped new resources:\n\n";
-
-            if (lastGuide) {
-                descText += `1. ${lastGuide.title} (Guide)\n${lastGuide.category} guide available now.\n\n`;
-            }
-            if (lastVisual) {
-                descText += `2. ${lastVisual.title} (Visual Note)\n${lastVisual.description}\n\n`;
-            }
-            descText += "Check them out now!";
-            descField.value = descText;
-
-            // Construct Primary Link (Guide Priority)
-            const urlField = document.getElementById('url');
-            if (lastGuide) {
-                urlField.value = `https://www.visualnotes.tech/#${lastGuide.id}`;
-            } else if (lastVisual) {
-                urlField.value = `https://www.visualnotes.tech/#visual-${lastVisual.id}`;
-            }
-
-            // Construct Secondary Link (Visual Priority)
-            const secUrlField = document.getElementById('secondaryUrl');
-            const secLabelField = document.getElementById('secondaryLabel');
-
-            if (lastGuide && lastVisual) {
-                // If we have both, Primary is Guide, Secondary is Visual
-                secUrlField.value = `https://www.visualnotes.tech/#visual-${lastVisual.id}`;
-                secLabelField.value = `View ${lastVisual.title}`;
-            } else {
-                secUrlField.value = '';
-                secLabelField.value = '';
-            }
-        }
-
-        // ===== DARK MODE TOGGLE =====
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
-            localStorage.setItem('darkMode', isDark ? 'true' : 'false');
-            updateThemeButtonText();
-        }
-
-        function updateThemeButtonText() {
-            const btn = document.getElementById('theme-toggle');
-            if (!btn) return;
-            const isDark = document.body.classList.contains('dark-mode');
-            btn.innerHTML = isDark ? '☀ LIGHT MODE' : '🌙 DARK MODE';
-        }
-
-        // Restore theme preference
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('darkMode');
-            if (savedTheme === 'true') {
-                document.body.classList.add('dark-mode');
-            }
-            updateThemeButtonText();
-        });
-    </script>
-
-    <!-- Floating Theme Toggle Button -->
-    <button id="theme-toggle" onclick="toggleDarkMode()">
-        🌙 DARK MODE
-    </button>
 </body>
 
 </html>
