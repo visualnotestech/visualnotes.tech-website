@@ -52,13 +52,18 @@
     padding: 12px 16px;
     font-size: 1rem;
     font-family: inherit;
-    color: var(--vn-ink, #1e293b);
-    background-color: var(--vn-surface, #ffffff);
-    border: 2px solid var(--vn-border, #cbd5e1);
+    color: #0f172a;
+    background-color: #ffffff;
+    border: 2px solid #cbd5e1;
     border-radius: 8px;
     outline: none;
     box-sizing: border-box;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.vn-signup-input::placeholder {
+    color: #94a3b8;
+    opacity: 1;
 }
 
 .vn-signup-input:focus-visible {
@@ -69,6 +74,7 @@
 .vn-signup-input.vn-signup-input-error {
     border-color: #ef4444 !important;
     background-color: #fef2f2 !important;
+    color: #991b1b !important;
 }
 
 .vn-signup-btn {
@@ -477,4 +483,111 @@
         animation: none !important;
         transform: none !important;
     }
+}
+
+/* ==========================================================================
+   Dark Mode Support for VisualNotes
+   ========================================================================== */
+body.dark-mode .vn-signup-input {
+    color: #ffffff !important;
+    background-color: #1d1c20 !important;
+    border-color: #2e2d33 !important;
+}
+
+body.dark-mode .vn-signup-input::placeholder {
+    color: #757785 !important;
+}
+
+body.dark-mode .vn-signup-input:focus-visible {
+    border-color: #365ff0 !important;
+    box-shadow: 0 0 0 3px rgba(54, 95, 240, 0.3) !important;
+}
+
+body.dark-mode .vn-signup-input.vn-signup-input-error {
+    border-color: #ef4444 !important;
+    background-color: rgba(239, 68, 68, 0.15) !important;
+    color: #fca5a5 !important;
+}
+
+body.dark-mode .vn-signup-inline-box {
+    background: #1d1c20 !important;
+    border-color: #2e2d33 !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-mode .vn-signup-inline-headline {
+    color: #ffffff !important;
+}
+
+body.dark-mode .vn-signup-inline-desc,
+body.dark-mode .vn-signup-microcopy {
+    color: #a2a4b2 !important;
+}
+
+body.dark-mode .vn-signup-popup-modal {
+    background: #1d1c20 !important;
+    color: #ffffff !important;
+    border: 1px solid #2e2d33 !important;
+}
+
+body.dark-mode .vn-signup-popup-close {
+    color: #a2a4b2 !important;
+}
+
+body.dark-mode .vn-signup-popup-close:hover {
+    color: #ffffff !important;
+    background-color: #2e2d33 !important;
+}
+
+body.dark-mode .vn-signup-popup-topics {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .vn-signup-popup-dismiss {
+    color: #757785 !important;
+}
+
+body.dark-mode .vn-signup-popup-dismiss:hover {
+    color: #ffffff !important;
+}
+
+body.dark-mode .vn-thank-content {
+    background: #1d1c20 !important;
+    border: 1px solid #2e2d33 !important;
+}
+
+body.dark-mode .vn-signup-success-title {
+    color: #365ff0 !important;
+}
+
+body.dark-mode .vn-signup-success-desc {
+    color: #a2a4b2 !important;
+}
+
+body.dark-mode .vn-signup-recommended-title {
+    color: #ffffff !important;
+}
+
+body.dark-mode .vn-signup-recommended-links {
+    border-top-color: #2e2d33 !important;
+}
+
+body.dark-mode .vn-signup-pill-link {
+    background-color: #26262b !important;
+    color: #d0daff !important;
+    border: 1px solid #2e2d33 !important;
+}
+
+body.dark-mode .vn-signup-pill-link:hover {
+    background-color: #365ff0 !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .vn-signup-explore-btn {
+    color: #a2a4b2 !important;
+}
+
+body.dark-mode .vn-signup-explore-btn:hover {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.08) !important;
 }
